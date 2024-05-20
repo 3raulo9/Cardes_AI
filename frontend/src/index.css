@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
-/* Import a typewriter-like font */
-
 /* General styles */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
+
 * {
     font-family: sans-serif;
 }
@@ -11,42 +11,50 @@ body {
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #fafafc;
-    color: #777;
+    background-color: #faf1e0;
+    color: #777777;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 p {
-    font-weight: 300;
+    font-weight: 600;
     font-size: 14px;
 }
 
 .app {
     width: 600px;
-    /* Set a fixed width for the app container */
     height: 80vh;
-    /* Use the full viewport height */
+    background-color: #fcedd200;
     margin: 10vw 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center content horizontally */
     justify-content: flex-end;
-    /* Align items to the bottom */
     position: relative;
-    /* Create a reference point for absolutely positioned elements */
+    border: none; /* Remove default border */
 }
+
+.app::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -100px;
+    right: -70px;
+    bottom: 45px;
+    background: linear-gradient(to right, #fce1af, #faf1e000);
+    z-index: -2;
+    filter: blur(20px); /* Adjust the blur for the glow effect */
+}
+
+
 
 .search-result {
     margin-top: 10px;
     flex-grow: 1;
-    /* Allow the search result container to grow */
     overflow-y: auto;
-    /* Enable vertical scrolling */
     width: 100%;
-    /* Ensure the search result takes the full width */
 }
 
 .surprise {
@@ -66,18 +74,15 @@ p {
 
 .input-container-wrapper {
     width: 100%;
-    /* Ensure the input container wrapper takes the full width of the app */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
     position: relative;
-    /* Create a reference point for absolutely positioned elements */
 }
 
 .input-container {
     width: 140%;
-    /* Ensure the input container takes the full width of the app */
     display: flex;
     border: solid 1px #ddd;
     box-sizing: border-box;
@@ -85,7 +90,6 @@ p {
     box-shadow: rgba(0, 0, 82, 0.15) 0 2px 4px;
     overflow: hidden;
     margin-top: 10px;
-    /* Add space between the buttons and the input container */
     background: #f9f9f9;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -97,10 +101,8 @@ p {
     font-size: 15px;
     outline: none;
     width: calc(100% - 100px);
-    /* Fixed width minus the button width */
     font-weight: 200;
     flex-shrink: 0;
-    /* Prevent the input from shrinking */
     background: transparent;
 }
 
@@ -111,7 +113,6 @@ p {
 
 .input-container button {
     width: 100px;
-    /* Set a fixed width for the button */
     border: none;
     border-left: 1px solid #ddd;
     background-color: hsl(27, 100%, 50%);
@@ -119,7 +120,6 @@ p {
     font-weight: bold;
     cursor: pointer;
     flex-shrink: 0;
-    /* Prevent the button from shrinking */
     transition: background-color 0.3s ease;
 }
 
@@ -131,7 +131,6 @@ p {
     background-color: #ff4b3e;
 }
 
-/* Add a typewriter font effect to the answer class */
 .answer {
     padding: 13px 14px;
     border: solid 1px #ddd;
@@ -141,21 +140,18 @@ p {
     font-weight: 200;
     border-radius: 6px;
     font-family: 'Courier Prime', monospace;
-    /* Use a typewriter-like font */
     white-space: pre-wrap;
-    /* Preserve whitespace */
     overflow: hidden;
-    /* Ensure the text doesn't overflow */
-    animation: typing 2s steps(40, end);
-    /* Typing animation */
 }
 
-/* Define the typing animation */
+.typewriter {
+    animation: typing 2s steps(40, end);
+}
+
 @keyframes typing {
     from {
         width: 0;
     }
-
     to {
         width: 100%;
     }
@@ -163,23 +159,17 @@ p {
 
 .windowed-cat {
     width: 155px;
-    /* Adjust the width as needed */
     height: auto;
-    /* Maintain the aspect ratio */
     display: block;
     position: absolute;
     top: 312px;
-    /* Adjust the top value to slide the image over the input bar */
     left: 111.7%;
     transform: translateX(-50%);
     margin: 0;
-    /* Remove default margin */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     pointer-events: none;
-    /* Make the image non-interactive */
 }
 
-/* Additional animations and transitions */
 .app,
 .answer,
 .input-container-wrapper,
@@ -193,7 +183,6 @@ p {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
 }
 
-/* Hover effect for input-container and windowed-cat */
 .input-container-wrapper:hover .input-container-wrapper:hover .windowed-cat {
     transform: translateY(-3px);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
@@ -207,10 +196,33 @@ p {
     margin-left: 10px;
     display: flex;
     align-items: center;
+    animation: pulse 1s infinite;
 }
 
-.copy-button .fa-icon {
-    margin-left: 55px;
+.copy-button::before,
+.copy-button::after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all .35s ease;
+    opacity: 0;
+}
+
+.copy-button::before {
+    right: 0;
+    top: 0;
+    border-top: 3px solid #3E8914;
+    border-right: 3px solid #2E640F;
+}
+
+.copy-button:hover {
+    color: #a33d3d;
+}
+
+.answer-container {
+    display: flex;
+    align-items: center;
 }
 
 .chat-item {
@@ -219,21 +231,82 @@ p {
     margin-bottom: 10px;
 }
 
-.answer-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+.chat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-item.user {
+    justify-content: flex-end;
+    text-align: left;
+}
+
+.chat-item.model {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.chat-item.model .answer-container {
+    flex-direction: row;
 }
 
 .copied-popup {
     position: fixed;
     top: 20px;
-    right: 913px;
+    right: 20px;
     background-color: #4caf50;
     color: white;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+}
+.typed-out {
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: pre-wrap; /* Change from nowrap to pre-wrap */
+    animation: typing 4s forwards;
+    width: 0;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+/* Skeleton loader styles */
+.skeleton-loader {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    height: 20px;
+    width: 60%;
+    border-radius: 4px;
+    margin: 5px 0;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skeleton-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+    animation: shimmer 1.5s infinite linear;
 }

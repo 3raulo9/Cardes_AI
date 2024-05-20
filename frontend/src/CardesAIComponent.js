@@ -1,3 +1,4 @@
+// webapp/CardesAIComponent.js
 import React, { useState, useEffect } from "react";
 import windowedCat from "./static/images/windowed-cat.png";
 import catIcon from "./static/images/cat_icon.png";
@@ -6,7 +7,7 @@ import "./index.css"; // Import the CSS file
 
 import { SlCopyButton } from '@shoelace-style/shoelace/dist/react';
 
-const App = () => {
+const CardesAIComponent = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
@@ -145,4 +146,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default CardesAIComponent;
