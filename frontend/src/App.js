@@ -1,10 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import windowedCat from "./static/images/windowed-cat.png"; // Adjust the path if necessary
+import './index.css'; // Import the CSS file
 
 const App = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [copied, setCopied] = useState(false);
 
   const surpriseOptions = [
     "How are you?",
@@ -60,22 +64,42 @@ const App = () => {
     setChatHistory([]);
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text copied to clipboard");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000); // Hide after 2 seconds
+      })
+      .catch((err) => {
+        console.error("Could not copy text: ", err);
+      });
+  };
+
   return (
     <div className="app">
+      {copied && <div className="copied-popup">Copied!</div>}
       <div className="search-result">
         {chatHistory.map((chatItem, _index) => (
-          <div key={_index}>
+          <div key={_index} className="chat-item">
             <p className="answer">
               {chatItem.role}: {chatItem.parts.join(" ")}
             </p>
+            <button
+              className="copy-button"
+              onClick={() => copyToClipboard(chatItem.parts.join(" "))}
+            >
+              <FontAwesomeIcon icon={faCopy} />
+            </button>
           </div>
         ))}
       </div>
       <div className="input-container-wrapper">
         <p>
-          What do you want to know?
+          Hello, my name is Cardes
           <button className="surprise" onClick={surprise}>
-            Surprise me!
+            test me!
           </button>
         </p>
         <div className="input-container">

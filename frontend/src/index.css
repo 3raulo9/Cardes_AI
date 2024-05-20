@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap'); /* Import a typewriter-like font */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+/* Import a typewriter-like font */
 
 /* General styles */
 * {
@@ -23,21 +24,29 @@ p {
 }
 
 .app {
-    width: 600px; /* Set a fixed width for the app container */
-    height: 80vh; /* Use the full viewport height */
+    width: 600px;
+    /* Set a fixed width for the app container */
+    height: 80vh;
+    /* Use the full viewport height */
     margin: 10vw 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: flex-end; /* Align items to the bottom */
-    position: relative; /* Create a reference point for absolutely positioned elements */
+    align-items: center;
+    /* Center content horizontally */
+    justify-content: flex-end;
+    /* Align items to the bottom */
+    position: relative;
+    /* Create a reference point for absolutely positioned elements */
 }
 
 .search-result {
     margin-top: 10px;
-    flex-grow: 1; /* Allow the search result container to grow */
-    overflow-y: auto; /* Enable vertical scrolling */
-    width: 100%; /* Ensure the search result takes the full width */
+    flex-grow: 1;
+    /* Allow the search result container to grow */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    width: 100%;
+    /* Ensure the search result takes the full width */
 }
 
 .surprise {
@@ -56,23 +65,27 @@ p {
 }
 
 .input-container-wrapper {
-    width: 100%; /* Ensure the input container wrapper takes the full width of the app */
+    width: 100%;
+    /* Ensure the input container wrapper takes the full width of the app */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
-    position: relative; /* Create a reference point for absolutely positioned elements */
+    position: relative;
+    /* Create a reference point for absolutely positioned elements */
 }
 
 .input-container {
-    width: 140%; /* Ensure the input container takes the full width of the app */
+    width: 140%;
+    /* Ensure the input container takes the full width of the app */
     display: flex;
     border: solid 1px #ddd;
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 82, 0.15) 0 2px 4px;
     overflow: hidden;
-    margin-top: 10px; /* Add space between the buttons and the input container */
+    margin-top: 10px;
+    /* Add space between the buttons and the input container */
     background: #f9f9f9;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -83,9 +96,11 @@ p {
     box-sizing: border-box;
     font-size: 15px;
     outline: none;
-    width: calc(100% - 100px); /* Fixed width minus the button width */
+    width: calc(100% - 100px);
+    /* Fixed width minus the button width */
     font-weight: 200;
-    flex-shrink: 0; /* Prevent the input from shrinking */
+    flex-shrink: 0;
+    /* Prevent the input from shrinking */
     background: transparent;
 }
 
@@ -95,14 +110,16 @@ p {
 }
 
 .input-container button {
-    width: 100px; /* Set a fixed width for the button */
+    width: 100px;
+    /* Set a fixed width for the button */
     border: none;
     border-left: 1px solid #ddd;
     background-color: hsl(27, 100%, 50%);
     color: #fff;
     font-weight: bold;
     cursor: pointer;
-    flex-shrink: 0; /* Prevent the button from shrinking */
+    flex-shrink: 0;
+    /* Prevent the button from shrinking */
     transition: background-color 0.3s ease;
 }
 
@@ -123,10 +140,14 @@ p {
     font-size: 15px;
     font-weight: 200;
     border-radius: 6px;
-    font-family: 'Courier Prime', monospace; /* Use a typewriter-like font */
-    white-space: pre-wrap; /* Preserve whitespace */
-    overflow: hidden; /* Ensure the text doesn't overflow */
-    animation: typing 2s steps(40, end); /* Typing animation */
+    font-family: 'Courier Prime', monospace;
+    /* Use a typewriter-like font */
+    white-space: pre-wrap;
+    /* Preserve whitespace */
+    overflow: hidden;
+    /* Ensure the text doesn't overflow */
+    animation: typing 2s steps(40, end);
+    /* Typing animation */
 }
 
 /* Define the typing animation */
@@ -134,37 +155,85 @@ p {
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
 }
 
 .windowed-cat {
-    width: 155px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
+    width: 155px;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain the aspect ratio */
     display: block;
     position: absolute;
-    top: 312px; /* Adjust the top value to slide the image over the input bar */
+    top: 312px;
+    /* Adjust the top value to slide the image over the input bar */
     left: 111.7%;
     transform: translateX(-50%);
-    margin: 0; /* Remove default margin */
+    margin: 0;
+    /* Remove default margin */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    pointer-events: none; /* Make the image non-interactive */
+    pointer-events: none;
+    /* Make the image non-interactive */
 }
 
 /* Additional animations and transitions */
-.app, .answer, .input-container-wrapper, .surprise {
+.app,
+.answer,
+.input-container-wrapper,
+.surprise {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.answer:hover, .surprise:hover {
+.answer:hover,
+.surprise:hover {
     transform: translateY(-3px);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
 }
 
 /* Hover effect for input-container and windowed-cat */
-.input-container-wrapper:hover 
-.input-container-wrapper:hover .windowed-cat {
+.input-container-wrapper:hover .input-container-wrapper:hover .windowed-cat {
     transform: translateY(-3px);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.copy-button .fa-icon {
+    margin-left: 55px;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.answer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.copied-popup {
+    position: fixed;
+    top: 20px;
+    right: 913px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
