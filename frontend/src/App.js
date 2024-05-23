@@ -5,13 +5,12 @@ import anonIcon from "./static/images/anon_icon.png";
 import "./index.css"; // Import the CSS file
 
 import { SlCopyButton } from '@shoelace-style/shoelace/dist/react';
+import Typewriter from 'typewriter-effect';
 
 const App = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
-  const [showTypewriterEffect, setShowTypewriterEffect] = useState(false);
-  const [newMessageIndex, setNewMessageIndex] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const surpriseOptions = [
@@ -56,36 +55,21 @@ const App = () => {
       const response = await fetch("http://localhost:8000/gemini", options);
       const data = await response.text();
       console.log(data);
-      setChatHistory((oldChatHistory) => {
-        const newIndex = oldChatHistory.length;
-        setNewMessageIndex(newIndex);
-        setShowTypewriterEffect(true);
-        setLoading(false); // Hide the skeleton loader
-        return [
-          ...oldChatHistory,
-          {
-            role: "model",
-            parts: [data],
-          },
-        ];
-      });
+      setChatHistory((oldChatHistory) => [
+        ...oldChatHistory,
+        {
+          role: "model",
+          parts: [data],
+        },
+      ]);
       setValue("");
+      setLoading(false); // Hide the skeleton loader
     } catch (error) {
       console.error(error);
       setError("Something went wrong, try again.");
       setLoading(false); // Hide the skeleton loader in case of error
     }
   };
-
-  useEffect(() => {
-    if (showTypewriterEffect) {
-      const timer = setTimeout(() => {
-        setShowTypewriterEffect(false);
-        setNewMessageIndex(null);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [showTypewriterEffect]);
 
   const clear = () => {
     setValue("");
@@ -106,9 +90,23 @@ const App = () => {
               />
             </div>
             <div className="answer-container">
-              <p className={`answer ${showTypewriterEffect && index === newMessageIndex ? 'typed-out' : ''}`}>
-                {chatItem.parts.join(" ")}
-              </p>
+              {chatItem.role === "model" ? (
+                <div className="typed-out">
+                  <Typewriter
+                    onInit={(typewriter) => {
+                      typewriter
+                        .typeString(chatItem.parts.join(" "))
+                        .start();
+                    }}
+                    options={{
+                      delay: 20, // Faster typing speed
+                      cursor: "🐾" // Remove the default blinking cursor
+                    }}
+                  />
+                </div>
+              ) : (
+                <p className="answer">{chatItem.parts.join(" ")}</p>
+              )}
               <button className="copy-button">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
               </button>
@@ -135,12 +133,15 @@ const App = () => {
             placeholder="When is Christmas...?"
             onChange={(e) => setValue(e.target.value)}
           />
-          {!error && <button onClick={getResponse}>Ask me</button>}
+          {!error && (
+            <button onClick={getResponse}>
+              Ask me
+            </button>
+          )}
           {error && <button onClick={clear}>Clear</button>}
         </div>
-        {error && <p>{error}</p>}
+        <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
       </div>
-      <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
     </div>
   );
 };
