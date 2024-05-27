@@ -1,0 +1,56 @@
+/* sidebar.css */
+.sidebar {
+    height: 100vh; /* Full height */
+    width: 230px; /* Sidebar width */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    top: 0;
+    left: 0;
+    background-color: hsl(27, 100%, 50%); /* Dark background color */
+    padding-top: 20px;
+    transition: 0.3s; /* Transition effect */
+    border-right: 2px solid hsl(0, 0%, 88%); /* Border on the right */
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: hsl(27, 98%, 48%);
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width on small screens */
+        height: auto; /* Auto height */
+        position: relative; /* Relative position */
+        border-right: none; /* Remove border */
+        border-bottom: 2px solid #333; /* Border on the bottom */
+    }
+    .sidebar ul li {
+        float: left; /* Float items */
+    }
+    .sidebar ul li a {
+        text-align: center; /* Center text */
+        padding: 14px; /* Padding */
+    }
+}

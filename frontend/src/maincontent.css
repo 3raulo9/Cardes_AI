@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
+
+* {
+    font-family: sans-serif;
+    
+}
+
+body {
+    
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #faf1e0;
+    color: #777777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+p {
+
+    font-weight: 600;
+    font-size: 14px;
+}
+.app {
+    width: 600px;
+    height: 80vh;
+    background-color: #fcedd200;
+    margin: 2vw 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    border: none; /* Remove default border */
+}
+.app::before {
+    
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -100px;
+    right: -70px;
+    bottom: 65px;
+    background: linear-gradient(to right, #fce1af, #faf1e000);
+    z-index: -2;
+    filter: blur(20px); /* Adjust the blur for the glow effect */
+}
+
+.search-result {
+    margin-top: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.surprise {
+    background-color: hsl(27, 100%, 50%);
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 6px 16px;
+    margin: 0 0 2px 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.surprise:hover {
+    background-color: hsl(15, 100%, 35%);
+}
+
+.input-container-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    position: relative;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    border: solid 1px #ddd;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 82, 0.15) 0 2px 4px;
+    overflow: hidden;
+    margin-top: 10px;
+    background: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.input-container input {
+    border: none;
+    padding: 16px 14px;
+    box-sizing: border-box;
+    font-size: 15px;
+    outline: none;
+    width: calc(100% - 100px);
+    font-weight: 200;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.input-container input::placeholder {
+    color: #aaa;
+    font-weight: 200;
+}
+
+.input-container button {
+    width: 100px;
+    border: none;
+    border-left: 1px solid #ddd;
+    background-color: hsl(27, 100%, 50%);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+    position: relative; /* Ensure the button is relative for positioning */
+}
+
+.input-container button:hover {
+    background-color: hsl(15, 100%, 35%);
+}
+
+.input-container button:active {
+    background-color: #ff4b3e;
+}
+
+.answer {
+    background-color: #fff;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: 200;
+    border-radius: 6px;
+    font-family: 'Courier Prime', monospace;
+    white-space: pre-wrap;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.windowed-cat {
+    width: 155px; /* Larger size */
+    height: auto;
+    position: absolute;
+    bottom: 19.6px; /* Adjust this value to position the cat above the button */
+    right: -27.5px; /* Adjust this value to align with the button */
+    margin: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: none;
+}
+
+.app,
+.answer,
+.input-container-wrapper,
+.surprise {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.surprise:hover {
+    transform: translateY(-3px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+}
+
+.input-container-wrapper:hover .input-container-wrapper:hover .windowed-cat {
+    transform: translateY(-3px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    animation: pulse 1s infinite;
+}
+
+.copy-button::before,
+.copy-button::after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all .35s ease;
+    opacity: 0;
+}
+
+.copy-button::before {
+    right: 0;
+    top: 0;
+    border-top: 3px solid #3E8914;
+    border-right: 3px solid #2E640F;
+}
+
+.copy-button:hover {
+    color: #a33d3d;
+}
+
+.answer-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: solid 1px #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 5px;
+    max-width: 80%;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.chat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-item.user {
+    justify-content: flex-end;
+    text-align: left;
+}
+
+.chat-item.model {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.copied-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Skeleton loader styles */
+.skeleton-loader {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    height: 20px;
+    width: 60%;
+    border-radius: 4px;
+    margin: 5px 0;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skeleton-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@media screen and (max-width: 768px) {
+    .app {
+        margin-left: 0; /* Remove margin on small screens */
+        width: 100%; /* Full width on small screens */
+    }
+
+    .input-container button {
+        width: 80px;
+    }
+
+    .answer {
+        font-size: 14px;
+    }
+
+    .windowed-cat {
+        width: 100px;
+        right: 0;
+    }
+}
+
+/* maincontent.css */
+.main-content {
+    margin-left: 230px; /* Add a left margin to make room for the sidebar */
+    width: calc(100% - 230px); /* Adjust the width based on sidebar width */
+    transition: margin-left 0.3s; /* Transition for smooth sidebar */
+}
+
+@media screen and (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Remove margin on small screens */
+        width: 100%; /* Full width on small screens */
+    }
+}
