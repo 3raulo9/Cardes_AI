@@ -1,0 +1,44 @@
+/* sidebar.css */
+
+.rightbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightbar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.rightbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rightbar ul li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+
+button {
+  width: 20x;
+  border: none;
+  background-color: hsl(27, 100%, 50%);
+  
+  
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+
+
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: hidden;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+

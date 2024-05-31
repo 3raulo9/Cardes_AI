@@ -183,6 +183,8 @@ p {
     display: flex;
     align-items: center;
     animation: pulse 1s infinite;
+    color: #ff4b3e;
+
 }
 
 .copy-button::before,

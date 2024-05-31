@@ -3,7 +3,7 @@ import windowedCat from "./static/images/windowed-cat.png";
 import catIcon from "./static/images/cat_icon.png";
 import anonIcon from "./static/images/anon_icon.png";
 import "./maincontent.css";
-
+import Rightbar from "./Rightbar";
 import { SlCopyButton } from "@shoelace-style/shoelace/dist/react";
 import Typewriter from "typewriter-effect";
 
@@ -25,8 +25,8 @@ const Maincontent = () => {
     setValue(randomValue);
   };
 
-  const getResponse = async () => {
-    if (!value) {
+  const getResponse = async (customValue = value) => {
+    if (!customValue) {
       setError("Error! Please ask a question!");
       return;
     }
@@ -35,7 +35,7 @@ const Maincontent = () => {
       ...oldChatHistory,
       {
         role: "user",
-        parts: [value],
+        parts: [customValue],
       },
     ]);
 
@@ -46,7 +46,7 @@ const Maincontent = () => {
         method: "POST",
         body: JSON.stringify({
           history: chatHistory,
-          message: value,
+          message: customValue,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -155,14 +155,15 @@ const Maincontent = () => {
         <div className="input-container">
           <input
             value={value}
-            placeholder="When is Christmas...?"
+            placeholder="How do i say hello in greek?"
             onChange={(e) => setValue(e.target.value)}
           />
-          {!error && <button onClick={getResponse}>Ask me</button>}
+          {!error && <button onClick={() => getResponse()}>Ask me</button>}
           {error && <button onClick={clear}>Clear</button>}
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
       </div>
+      <Rightbar getResponse={getResponse} />
     </div>
   );
 };
