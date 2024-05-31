@@ -1,17 +1,31 @@
 // Sidebar.js
-import React from 'react';
-import './sidebar.css'; // Import the CSS file for the sidebar
+import React from "react";
+import "./sidebar.css"; // Import the CSS file for the sidebar
+
+import logo from "./static/images/cardes_logo.png"; // Import the logo image
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Cardes AI 🐾</h2>
+      <img src={logo} alt="Cardes AI Logo" className="sidebar-logo" />
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#contact">Learn</a></li>
-        <li><a href="#services">Flashcards</a></li>
-        <li><a href="#clients">Texts</a></li>
+        <li>
+          <a href="#home">Home</a>
+        </li>
+        <li>
+          <a href="#learn">Learn</a>
+        </li>
+        <li>
+          <a href="#flashcard">Flashcards</a>
+        </li>
+        <li>
+          <a href="#texts">Texts</a>
+        </li>
+        <li>
+          <a href="#chat_history">chat history</a>
+        </li>
       </ul>
+     
     </div>
   );
 };

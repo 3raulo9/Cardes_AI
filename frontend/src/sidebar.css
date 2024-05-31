@@ -1,14 +1,19 @@
-/* sidebar.css */
 .sidebar {
-    height: 100vh; /* Full height */
-    width: 230px; /* Sidebar width */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    height: 100vh;
+    /* Full height */
+    width: 230px;
+    /* Sidebar width */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
     top: 0;
     left: 0;
-    background-color: hsl(27, 100%, 50%); /* Dark background color */
+    background-color: hsl(27, 99%, 58%);
+    /* Dark background color */
     padding-top: 20px;
-    transition: 0.3s; /* Transition effect */
-    border-right: 2px solid hsl(0, 0%, 88%); /* Border on the right */
+    transition: 0.3s;
+    /* Transition effect */
+    border-right: 6px solid hsl(0, 68%, 27%);
+    /* Border on the right */
 }
 
 .sidebar h2 {
@@ -28,29 +33,64 @@
 }
 
 .sidebar ul li a {
-    color: white;
+    color: rgb(255, 233, 219);
     text-decoration: none;
     display: block;
     transition: 0.3s;
+    position: relative;
 }
 
-.sidebar ul li a:hover {
-    background-color: hsl(27, 98%, 48%);
+.sidebar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 50%; /* Adjusted the width to make it smaller */
+    height: 2px; 
+    bottom: 0;
+    left: 25%; /* Center the line */
+    background-color: hsl(0, 68%, 27%);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar ul li a:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
 }
 
 @media screen and (max-width: 768px) {
     .sidebar {
-        width: 100%; /* Full width on small screens */
-        height: auto; /* Auto height */
-        position: relative; /* Relative position */
-        border-right: none; /* Remove border */
-        border-bottom: 2px solid #333; /* Border on the bottom */
+        width: 100%;
+        /* Full width on small screens */
+        height: auto;
+        /* Auto height */
+        position: relative;
+        /* Relative position */
+        border-right: none;
+        /* Remove border */
+        border-bottom: 2px solid #333;
+        /* Border on the bottom */
     }
+
     .sidebar ul li {
-        float: left; /* Float items */
+        float: left;
+        /* Float items */
     }
+
     .sidebar ul li a {
-        text-align: center; /* Center text */
-        padding: 14px; /* Padding */
+        text-align: center;
+        /* Center text */
+        padding: 14px;
+        /* Padding */
     }
+}
+
+.sidebar-logo {
+    width: 150px;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto;
+    /* Center the logo */
 }

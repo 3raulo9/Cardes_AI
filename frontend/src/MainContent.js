@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import windowedCat from "./static/images/windowed-cat.png";
 import catIcon from "./static/images/cat_icon.png";
 import anonIcon from "./static/images/anon_icon.png";
-import "./maincontent.css"; // Import the CSS file
+import "./maincontent.css";
 
-import { SlCopyButton } from '@shoelace-style/shoelace/dist/react';
-import Typewriter from 'typewriter-effect';
+import { SlCopyButton } from "@shoelace-style/shoelace/dist/react";
+import Typewriter from "typewriter-effect";
 
 const Maincontent = () => {
   const [value, setValue] = useState("");
@@ -31,7 +31,6 @@ const Maincontent = () => {
       return;
     }
 
-    // Add user's message to chat history
     setChatHistory((oldChatHistory) => [
       ...oldChatHistory,
       {
@@ -40,7 +39,7 @@ const Maincontent = () => {
       },
     ]);
 
-    setLoading(true); // Show the skeleton loader
+    setLoading(true);
 
     try {
       const options = {
@@ -55,7 +54,6 @@ const Maincontent = () => {
       };
       const response = await fetch("http://localhost:8000/gemini", options);
       const data = await response.text();
-      console.log(data);
       setChatHistory((oldChatHistory) => [
         ...oldChatHistory,
         {
@@ -64,11 +62,11 @@ const Maincontent = () => {
         },
       ]);
       setValue("");
-      setLoading(false); // Hide the skeleton loader
+      setLoading(false);
     } catch (error) {
       console.error(error);
       setError("Something went wrong, try again.");
-      setLoading(false); // Hide the skeleton loader in case of error
+      setLoading(false);
     }
   };
 
@@ -76,6 +74,28 @@ const Maincontent = () => {
     setValue("");
     setError("");
     setChatHistory([]);
+  };
+
+  const handleTextToSpeech = async (text) => {
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify({ text }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch("http://localhost:8000/text-to-speech", options);
+      if (response.ok) {
+        const audioUrl = URL.createObjectURL(await response.blob());
+        const audio = new Audio(audioUrl);
+        audio.play();
+      } else {
+        console.error("Error generating the audio");
+      }
+    } catch (error) {
+      console.error("Error generating the audio", error);
+    }
   };
 
   return (
@@ -95,13 +115,11 @@ const Maincontent = () => {
                 <div className="typed-out">
                   <Typewriter
                     onInit={(typewriter) => {
-                      typewriter
-                        .typeString(chatItem.parts.join(" "))
-                        .start();
+                      typewriter.typeString(chatItem.parts.join(" ")).start();
                     }}
                     options={{
-                      delay: 20, // Faster typing speed
-                      cursor: "🐾" // Remove the default blinking cursor
+                      delay: 20,
+                      cursor: "🐾",
                     }}
                   />
                 </div>
@@ -110,6 +128,12 @@ const Maincontent = () => {
               )}
               <button className="copy-button">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
+              </button>
+              <button
+                className="audio-button"
+                onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
+              >
+                <sl-icon name="volume-down-fill" />
               </button>
             </div>
           </div>
@@ -134,11 +158,7 @@ const Maincontent = () => {
             placeholder="When is Christmas...?"
             onChange={(e) => setValue(e.target.value)}
           />
-          {!error && (
-            <button onClick={getResponse}>
-              Ask me
-            </button>
-          )}
+          {!error && <button onClick={getResponse}>Ask me</button>}
           {error && <button onClick={clear}>Clear</button>}
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
