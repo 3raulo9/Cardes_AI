@@ -38,6 +38,9 @@ app.post('/gemini', async (req, res) => {
         // Replace "Gemini AI" with "Cardes AI"
         text = text.replace(/Gemini/g, "Cardes AI");
 
+        // Add a tab at the end of each sentence
+        text = text.split('\n').map(sentence => sentence + '\t').join('\n');
+
         res.send(text);
     } catch (error) {
         console.error(error);

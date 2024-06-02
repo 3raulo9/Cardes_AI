@@ -68,7 +68,7 @@
         /* Relative position */
         border-right: none;
         /* Remove border */
-        border-bottom: 2px solid #333;
+        border-bottom: 2px solid hsl(0, 68%, 27%);
         /* Border on the bottom */
     }
 

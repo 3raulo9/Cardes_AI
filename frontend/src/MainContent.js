@@ -14,15 +14,29 @@ const Maincontent = () => {
   const [loading, setLoading] = useState(false);
 
   const surpriseOptions = [
-    "How are you?",
-    "Give me one sentence using the word hope",
-    "Who are you?",
+    "Give me 5 sentences in French for beginners",
+    "Give me one sentence using the word hope in German",
+    "Give me 10 sentences in Hebrew using the word שלום",
+    "Give me 5 sentences in Hebrew using the word שלום",
   ];
 
   const surprise = () => {
-    const randomValue =
-      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
+    const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
     setValue(randomValue);
+  };
+
+  const fetchResponse = async (url, options) => {
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return await response.text();
+    } catch (error) {
+      console.error("Fetching error: ", error);
+      setError("Something went wrong, try again.");
+      setLoading(false);
+    }
   };
 
   const getResponse = async (customValue = value) => {
@@ -33,40 +47,39 @@ const Maincontent = () => {
 
     setChatHistory((oldChatHistory) => [
       ...oldChatHistory,
-      {
-        role: "user",
-        parts: [customValue],
-      },
+      { role: "user", parts: [customValue] },
     ]);
 
     setLoading(true);
 
-    try {
-      const options = {
-        method: "POST",
-        body: JSON.stringify({
-          history: chatHistory,
-          message: customValue,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const response = await fetch("http://localhost:8000/gemini", options);
-      const data = await response.text();
+    const options = {
+      method: "POST",
+      body: JSON.stringify({ history: chatHistory, message: customValue }),
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const data = await fetchResponse("http://localhost:8000/gemini", options);
+    if (data) {
       setChatHistory((oldChatHistory) => [
         ...oldChatHistory,
-        {
-          role: "model",
-          parts: [data],
-        },
+        { role: "model", parts: [data] },
       ]);
       setValue("");
       setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setError("Something went wrong, try again.");
-      setLoading(false);
+    }
+  };
+
+  const handleTextToSpeech = async (text) => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify({ text }),
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const audioUrl = await fetchResponse("http://localhost:8000/text-to-speech", options);
+    if (audioUrl) {
+      const audio = new Audio(URL.createObjectURL(await audioUrl.blob()));
+      audio.play();
     }
   };
 
@@ -74,28 +87,6 @@ const Maincontent = () => {
     setValue("");
     setError("");
     setChatHistory([]);
-  };
-
-  const handleTextToSpeech = async (text) => {
-    try {
-      const options = {
-        method: "POST",
-        body: JSON.stringify({ text }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const response = await fetch("http://localhost:8000/text-to-speech", options);
-      if (response.ok) {
-        const audioUrl = URL.createObjectURL(await response.blob());
-        const audio = new Audio(audioUrl);
-        audio.play();
-      } else {
-        console.error("Error generating the audio");
-      }
-    } catch (error) {
-      console.error("Error generating the audio", error);
-    }
   };
 
   return (
@@ -117,20 +108,18 @@ const Maincontent = () => {
                     onInit={(typewriter) => {
                       typewriter.typeString(chatItem.parts.join(" ")).start();
                     }}
-                    options={{
-                      delay: 20,
-                      cursor: "🐾",
-                    }}
+                    options={{ delay: 20, cursor: "🐾" }}
                   />
                 </div>
               ) : (
                 <p className="answer">{chatItem.parts.join(" ")}</p>
               )}
-              <button className="copy-button">
+              <button className="copy-button" aria-label="Copy text">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
               </button>
               <button
                 className="audio-button"
+                aria-label="Play audio"
                 onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
               >
                 <sl-icon name="volume-down-fill" />
@@ -149,13 +138,13 @@ const Maincontent = () => {
         <p>
           Hello, my name is Cardes
           <button className="surprise" onClick={surprise}>
-            test me!
+            Test me!
           </button>
         </p>
         <div className="input-container">
           <input
             value={value}
-            placeholder="How do i say hello in greek?"
+            placeholder="How do I say hello in Greek?"
             onChange={(e) => setValue(e.target.value)}
           />
           {!error && <button onClick={() => getResponse()}>Ask me</button>}
