@@ -76,10 +76,20 @@ const Maincontent = () => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const audioUrl = await fetchResponse("http://localhost:8000/text-to-speech", options);
-    if (audioUrl) {
-      const audio = new Audio(URL.createObjectURL(await audioUrl.blob()));
+    try {
+      const response = await fetch("http://localhost:8000/text-to-speech", options);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const audioBlob = await response.blob(); // Get the response as a Blob
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = new Audio(audioUrl);
       audio.play();
+    } catch (error) {
+      console.error("Fetching error: ", error);
+      setError("Something went wrong, try again.");
+      setLoading(false);
     }
   };
 
@@ -87,6 +97,12 @@ const Maincontent = () => {
     setValue("");
     setError("");
     setChatHistory([]);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      getResponse();
+    }
   };
 
   return (
@@ -108,7 +124,7 @@ const Maincontent = () => {
                     onInit={(typewriter) => {
                       typewriter.typeString(chatItem.parts.join(" ")).start();
                     }}
-                    options={{ delay: 20, cursor: "🐾" }}
+                    options={{ delay: 8, cursor: "🐾" }}
                   />
                 </div>
               ) : (
@@ -146,6 +162,7 @@ const Maincontent = () => {
             value={value}
             placeholder="How do I say hello in Greek?"
             onChange={(e) => setValue(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
           {!error && <button onClick={() => getResponse()}>Ask me</button>}
           {error && <button onClick={clear}>Clear</button>}
