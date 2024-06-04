@@ -1,3 +1,4 @@
+// server.js
 const PORT = 8000;
 const express = require('express');
 const cors = require('cors');
@@ -26,7 +27,7 @@ app.post('/gemini', async (req, res) => {
     }));
 
     const chat = model.startChat({
-        history: req.body.chatHistory
+        history: chatHistory
     });
     const msg = req.body.message;
 

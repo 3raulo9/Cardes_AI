@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import annyang from "annyang";
 import windowedCat from "./static/images/windowed-cat.png";
 import catIcon from "./static/images/cat_icon.png";
 import anonIcon from "./static/images/anon_icon.png";
@@ -6,22 +7,48 @@ import "./maincontent.css";
 import Rightbar from "./Rightbar";
 import { SlCopyButton } from "@shoelace-style/shoelace/dist/react";
 import Typewriter from "typewriter-effect";
+import surpriseOptions from "./surpriseData"; // Import surpriseOptions from the other file
 
 const Maincontent = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
 
-  const surpriseOptions = [
-    "Give me 5 sentences in French for beginners",
-    "Give me one sentence using the word hope in German",
-    "Give me 10 sentences in Hebrew using the word שלום",
-    "Give me 5 sentences in Hebrew using the word שלום",
-  ];
+  useEffect(() => {
+    if (annyang) {
+      annyang.start({ autoRestart: false, continuous: false });
+      annyang.addCallback("result", handleSpeechRecognition);
+    }
+    return () => {
+      if (annyang) {
+        annyang.removeCallback("result", handleSpeechRecognition);
+        annyang.abort();
+      }
+    };
+  }, []);
+
+  const startListening = () => {
+    setIsListening(true);
+    annyang.start();
+  };
+
+  const stopListening = () => {
+    setIsListening(false);
+    annyang.abort();
+  };
+
+  const handleSpeechRecognition = (phrases) => {
+    const speech = phrases[0];
+    setValue(speech);
+    getResponse(speech);
+    stopListening();
+  };
 
   const surprise = () => {
-    const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
+    const randomValue =
+      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
     setValue(randomValue);
   };
 
@@ -77,7 +104,10 @@ const Maincontent = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/text-to-speech", options);
+      const response = await fetch(
+        "http://localhost:8000/text-to-speech",
+        options
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -133,6 +163,7 @@ const Maincontent = () => {
               <button className="copy-button" aria-label="Copy text">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
               </button>
+
               <button
                 className="audio-button"
                 aria-label="Play audio"
@@ -157,6 +188,13 @@ const Maincontent = () => {
             Test me!
           </button>
         </p>
+        <button
+          className={`surprise mic-button ${isListening ? "clicked" : ""}`}
+          onClick={() => (isListening ? stopListening() : startListening())}
+        >
+          <sl-icon name="mic" />
+        </button>
+
         <div className="input-container">
           <input
             value={value}
@@ -164,7 +202,29 @@ const Maincontent = () => {
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
           />
-          {!error && <button onClick={() => getResponse()}>Ask me</button>}
+
+          {!error && (
+            <button onClick={() => getResponse()}>
+              Ask me
+              <div class="svg-wrapper-1">
+                <div class="svg-wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path
+                      fill="currentColor"
+                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </button>
+          )}
+
           {error && <button onClick={clear}>Clear</button>}
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />

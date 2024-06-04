@@ -71,7 +71,7 @@ p {
     padding: 6px 16px;
     margin: 0 0 2px 5px;
     border: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 
 .surprise:hover {
@@ -118,28 +118,50 @@ p {
     font-weight: 200;
 }
 
+
 .input-container button {
+    
+    font-family: inherit;
     width: 100px;
-    border: none;
+    font-size: 14px;
+    background: linear-gradient(to bottom, hsl(27, 100%, 50%),hsl(27, 98%, 62%));
+    color: white;
     border-left: 1px solid #ddd;
-    background-color: hsl(27, 100%, 50%);
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background-color 0.3s ease;
-    position: relative;
-    /* Ensure the button is relative for positioning */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
 }
 
-.input-container button:hover {
-    background-color: hsl(15, 100%, 35%);
-}
 
 .input-container button:active {
-    background-color: #ff4b3e;
+    transform: scale(0.97);
 }
 
+button svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    transition: all 0.3s;
+  }
+  
+  button .svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 0.5em;
+    transition: all 0.3s;
+  }
+  
+
+  
+  button:hover svg {
+    transform: rotate(45deg);
+  }
 .answer {
     background-color: #fff;
     margin: 5px;
@@ -175,6 +197,47 @@ p {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.mic-button {
+    /* Your existing button styles */
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mic-button.clicked {
+    background-color: red; /* Change to the desired color */
+    animation: glow 1s infinite alternate;
+  }
+  
+  .mic-button.clicked sl-icon {
+    color: white; /* Initial color of the mic icon */
+    animation: iconGlow 1s infinite alternate;
+  }
+  
+  @keyframes glow {
+    0% {
+      background-color: red;
+      color: white; /* Initial color of the mic icon */
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0.952);
+      color: red; /* Final color of the mic icon */
+    }
+  }
+  
+  @keyframes iconGlow {
+    0% {
+      color: white; /* Initial color of the mic icon */
+    }
+    100% {
+      color: red; /* Final color of the mic icon */
+    }
+  }
+  
+  
+  
+  
+  
+
 .surprise:hover {
     transform: translateY(-3px);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
@@ -196,40 +259,23 @@ p {
     display: flex;
     align-items: center;
     animation: pulse 1s infinite;
-    color: #ff4b3e;
+    color: #863600;
 
 }
 
-.copy-button::before,
-.copy-button::after {
-    content: '';
-    height: 14px;
-    width: 14px;
-    position: absolute;
-    transition: all .35s ease;
-    opacity: 0;
-}
 
-.copy-button::before {
-    right: 0;
-    top: 0;
-    border-top: 3px solid #3E8914;
-    border-right: 3px solid #2E640F;
-}
 
-.copy-button:hover {
-    color: #a33d3d;
-}
 
 .answer-container {
     display: flex;
     align-items: center;
     background-color: #fff;
     border: solid 1px #ddd;
-    border-radius: 6px;
+    border-radius: 15px;
     padding: 10px;
     margin: 5px;
     max-width: 80%;
+
 }
 
 .chat-item {
@@ -253,6 +299,7 @@ p {
 .chat-item.model {
     justify-content: flex-start;
     text-align: left;
+
 }
 
 /* Skeleton loader styles */
@@ -339,5 +386,4 @@ p {
 /* maincontent.css */
 .orange-cursor .Typewriter__cursor {
     color: orange;
-  }
-  
+}
