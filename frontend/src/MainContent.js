@@ -188,12 +188,18 @@ const Maincontent = () => {
             Test me!
           </button>
         </p>
-        <button
-          className={`surprise mic-button ${isListening ? "clicked" : ""}`}
-          onClick={() => (isListening ? stopListening() : startListening())}
-        >
-          <sl-icon name="mic" />
-        </button>
+
+        <div className="button-wrapper">
+          <button
+            className={`surprise mic-button ${isListening ? "clicked" : ""}`}
+            onClick={() => (isListening ? stopListening() : startListening())}
+          >
+            <sl-icon name="mic" />
+          </button>
+          <button className="surprise">
+            <sl-icon name="file-earmark-image" />
+          </button>
+        </div>
 
         <div className="input-container">
           <input

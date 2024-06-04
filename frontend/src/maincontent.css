@@ -99,6 +99,7 @@ p {
     background: #f9f9f9;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    
 }
 
 .input-container input {
@@ -196,6 +197,12 @@ button svg {
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+
 
 .mic-button {
     /* Your existing button styles */
