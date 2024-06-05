@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 
 const API_KEY = process.env.API_KEY;
-const VOICE_ID = 'gD1IexrzCvsXPHUuT0s3';
+const VOICE_ID = 'hFgOzpmS0CMtL2to8sAl';
 const CHUNK_SIZE = 1024;
 
 app.post('/gemini', async (req, res) => {
