@@ -87,10 +87,12 @@ const Maincontent = () => {
 
     const data = await fetchResponse("http://localhost:8000/gemini", options);
     if (data) {
-      setChatHistory((oldChatHistory) => [
-        ...oldChatHistory,
-        { role: "model", parts: [data] },
-      ]);
+      const modelResponses = data.split("^").filter((sentence) => sentence.trim()); // Filter out empty sentences
+      const newChatItems = modelResponses.map((sentence) => ({
+        role: "model",
+        parts: [sentence.trim()], // Trim any extra whitespace
+      }));
+      setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
       setValue("");
       setLoading(false);
     }
@@ -163,7 +165,6 @@ const Maincontent = () => {
               <button className="copy-button" aria-label="Copy text">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
               </button>
-
               <button
                 className="audio-button"
                 aria-label="Play audio"

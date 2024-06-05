@@ -35,9 +35,9 @@ const Rightbar = ({ getResponse }) => {
             sentences in 
             <input type="text" placeholder="French" value={language1} onChange={(e) => setLanguage1(e.target.value)} />
             using the word 
-            <input type="text" value={input1} onChange={(e) => setInput1(e.target.value)} />
+            <input type="text" value={input1} onChange={(e) => setInput1(e.target.value )} /> 
           </label>
-          <button onClick={() => handleSubmit(`Create ${numberOfSentences} sentences in ${language1} using the word ${input1}`)}>Send</button>
+          <button onClick={() => handleSubmit(`Create ${numberOfSentences} sentences in ${language1} using the word ${input1} + 'and incase each sentence with "^"'`)}>Send</button>
         </div>
         <div className="custom-input">
           <label>
