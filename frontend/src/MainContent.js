@@ -88,9 +88,10 @@ const Maincontent = () => {
     const data = await fetchResponse("http://localhost:8000/gemini", options);
     if (data) {
       const modelResponses = data.split("^").filter((sentence) => sentence.trim()); // Filter out empty sentences
-      const newChatItems = modelResponses.map((sentence) => ({
+      const newChatItems = modelResponses.map((sentence, index) => ({
         role: "model",
         parts: [sentence.trim()], // Trim any extra whitespace
+        showCardButton: index % 2 !== 0 // Show card button after each second sentence
       }));
       setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
       setValue("");
@@ -173,6 +174,12 @@ const Maincontent = () => {
                 <sl-icon name="volume-down-fill" />
               </button>
             </div>
+            {chatItem.showCardButton && (
+              <div className="add-to-cards">
+                <div className="line"></div>
+                <button className="add-to-cards-button">ADD TO CARDS</button>
+              </div>
+            )}
           </div>
         ))}
         {loading && (

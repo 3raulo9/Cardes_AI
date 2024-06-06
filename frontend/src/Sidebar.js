@@ -22,7 +22,7 @@ const Sidebar = () => {
           <a href="#texts">Texts</a>
         </li>
         <li>
-          <a href="#chat_history">chat history</a>
+          <a href="#chat_history">Chat history</a>
         </li>
       </ul>
      
