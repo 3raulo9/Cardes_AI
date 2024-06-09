@@ -133,6 +133,7 @@ button svg {
 }
 
 button .svg-wrapper {
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,7 +165,7 @@ button:hover svg {
     width: 155px;
     height: auto;
     position: absolute;
-    bottom: -5.4px;
+    bottom: -1.5px;
     right: -27.5px;
     margin: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -184,6 +185,7 @@ button:hover svg {
 }
 
 .mic-button {
+    
     border: none;
     cursor: pointer;
 }
@@ -231,6 +233,7 @@ button:hover svg {
 }
 
 .copy-button {
+    
     border: 2.5px solid hsl(0, 68%, 27%);
     background: none;
     border: none;
@@ -241,10 +244,6 @@ button:hover svg {
     align-items: center;
     animation: pulse 1s infinite;
     color: #863600;
-}
-
-.copy-button:hover {
-    transform: translateY(-1.5px);
 }
 
 .answer-container {
@@ -385,22 +384,3 @@ button:hover svg {
 }
 
 
-
-.sidebar-logo {
-    margin-top: 40px;
-    width: 60%;
-    /* Increase the width to make it larger */
-    height: auto;
-    /* Maintain aspect ratio */
-    display: block;
-    /* Center the logo */
-    opacity: 0.04;
-    /* Make it more transparent */
-    position: absolute;
-    /* Position it absolutely */
-    top: 10px;
-    /* Adjust the top position as needed */
-    /* Adjust the right position as needed */
-    z-index: -1;
-    /* Ensure it stays below everything */
-}

@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
 
 * {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
@@ -22,11 +22,13 @@ body {
 
 .app-container {
     display: flex;
-    flex-direction: row; /* Align sidebar and main content horizontally */
+    flex-direction: row;
+    /* Align sidebar and main content horizontally */
 }
 
 .app-container .main-content {
-    flex: 1; /* Allow main content to grow */
+    flex: 1;
+    /* Allow main content to grow */
 }
 
 .app::before {
@@ -38,5 +40,52 @@ body {
     bottom: 65px;
     background: linear-gradient(to right, #fce1af, #faf1e000);
     z-index: -5;
-    filter: blur(20px); /* Adjust the blur for the glow effect */
+    filter: blur(20px);
+    /* Adjust the blur for the glow effect */
+}
+
+
+
+
+button {
+    margin-right: 6px;
+    border: none;
+    background-color: hsl(27, 100%, 50%);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.sidebar-logo {
+    width: 40%;
+    height: auto;
+    display: block;
+    opacity: 0.07;
+    position: fixed;
+    top: 30px;
+    left: 57%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* For tablets */
+@media (max-width: 768px) {
+    .sidebar-logo {
+        width: 70%;
+        top: 20px;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+    .sidebar-logo {
+        width: 80%;
+        top: 10px;
+    }
 }

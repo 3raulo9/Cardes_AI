@@ -24,7 +24,8 @@
 }
 
 .sidebar ul li {
-    padding: 0; /* Remove padding from the list item */
+    padding: 0;
+    /* Remove padding from the list item */
     text-align: left;
     position: relative;
 }
@@ -32,37 +33,52 @@
 .sidebar ul li a {
     color: rgb(255, 233, 219);
     text-decoration: none;
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Center items vertically */
     transition: 0.3s;
     position: relative;
     text-align: left;
-    padding: 10px; /* Add padding to the link itself */
-    width: 100%; /* Make the link span the entire width of the list item */
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    font-weight: bold; /* Make the text bolder */
+    padding: 10px;
+    /* Add padding to the link itself */
+    width: 100%;
+    /* Make the link span the entire width of the list item */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+    font-weight: bold;
+    /* Make the text bolder */
 }
 
 .sidebar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Apply hover effect directly */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Apply hover effect directly */
 }
 
 .sidebar sl-icon {
-    font-size: 40px !important; /* Adjust this value to make the icons smaller */
-    margin-right: 10px; /* Space to the right of the icon */
+    color: rgba(247, 243, 243, 0.863);
+    font-size: 40px !important;
+    /* Adjust this value to make the icons smaller */
+    margin-right: 10px;
+    /* Space to the right of the icon */
 }
 
 .footer {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
 .footer-text {
-    color: rgb(243, 243, 243) ;
-    font-size: 12px;
+    color: rgba(247, 243, 243, 0.863);
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px; /* Adjust the gap as needed */
+    padding: 10px; /* Optional: Add some padding */
 }
 
+
+.footer-text div,
+.footer-text a {
+    display: inline-block;
+}

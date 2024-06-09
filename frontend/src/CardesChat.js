@@ -5,7 +5,7 @@ import catIcon from "./static/images/cat_icon.png";
 import anonIcon from "./static/images/anon_icon.png";
 import "./cardeschat.css";
 import SuggestBar from "./SuggestBar";
-import { SlCopyButton } from "@shoelace-style/shoelace/dist/react";
+import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import Typewriter from "typewriter-effect";
 import surpriseOptions from "./surpriseData";
 import logo from "./static/images/cardes_logo.png";
@@ -17,6 +17,7 @@ const CardesChat = ({ isOpen }) => {
   const [loading, setLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [isTabOpen, setIsTabOpen] = useState(false);
+  const [tooltipContent, setTooltipContent] = useState({});
 
   useEffect(() => {
     if (annyang) {
@@ -103,7 +104,7 @@ const CardesChat = ({ isOpen }) => {
     }
   };
 
-  const handleTextToSpeech = async (text) => {
+  const handleTextToSpeech = async (text, forDownload = false) => {
     const options = {
       method: "POST",
       body: JSON.stringify({ text }),
@@ -121,8 +122,36 @@ const CardesChat = ({ isOpen }) => {
 
       const audioBlob = await response.blob();
       const audioUrl = URL.createObjectURL(audioBlob);
-      const audio = new Audio(audioUrl);
-      audio.play();
+
+      if (forDownload) {
+        const link = document.createElement("a");
+        link.href = audioUrl;
+        link.download = "audio.mp3";
+        link.click();
+        setTooltipContent((prev) => ({
+          ...prev,
+          download: "Downloading...",
+        }));
+        setTimeout(() => {
+          setTooltipContent((prev) => ({
+            ...prev,
+            download: "Download",
+          }));
+        }, 2000);
+      } else {
+        const audio = new Audio(audioUrl);
+        audio.play();
+        setTooltipContent((prev) => ({
+          ...prev,
+          listen: "Playing...",
+        }));
+        setTimeout(() => {
+          setTooltipContent((prev) => ({
+            ...prev,
+            listen: "Listen",
+          }));
+        }, 2000);
+      }
     } catch (error) {
       console.error("Fetching error: ", error);
       setError("Something went wrong, try again.");
@@ -151,7 +180,6 @@ const CardesChat = ({ isOpen }) => {
 
   return (
     <div className={`app ${isOpen ? "" : "sidebar-closed"}`}>
-      <img src={logo} alt="Cardes AI Logo" className="sidebar-logo" />
 
       <div className="search-result">
         {chatHistory.map((chatItem, index) => (
@@ -179,13 +207,26 @@ const CardesChat = ({ isOpen }) => {
               <button className="copy-button" aria-label="Copy text">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
               </button>
-              <button
-                className="audio-button"
-                aria-label="Play audio"
-                onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
-              >
-                <sl-icon name="volume-down-fill" />
-              </button>
+              <SlTooltip content={tooltipContent.listen || "Listen"}>
+                <button
+                  className="audio-button"
+                  aria-label="Play audio"
+                  onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
+                >
+                  <sl-icon name="volume-down-fill" />
+                </button>
+              </SlTooltip>
+              <SlTooltip content={tooltipContent.download || "Download"}>
+                <button
+                  className="download-button"
+                  aria-label="Download audio"
+                  onClick={() =>
+                    handleTextToSpeech(chatItem.parts.join(" "), true)
+                  }
+                >
+                  <sl-icon name="download" />
+                </button>
+              </SlTooltip>
             </div>
             {chatItem.showCardButton && (
               <div className="add-to-cards">
@@ -256,7 +297,11 @@ const CardesChat = ({ isOpen }) => {
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
       </div>
-      <SuggestBar getResponse={getResponse} isTabOpen={isTabOpen} setIsTabOpen={setIsTabOpen} />
+      <SuggestBar
+        getResponse={getResponse}
+        isTabOpen={isTabOpen}
+        setIsTabOpen={setIsTabOpen}
+      />
     </div>
   );
 };
