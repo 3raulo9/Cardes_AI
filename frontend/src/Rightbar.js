@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "./rightbar.css";
 
-const Rightbar = ({ getResponse }) => {
+const Rightbar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [transInput1, setTransInput1] = useState("");
-
   const [language1, setLanguage1] = useState("");
   const [language2, setLanguage2] = useState("");
-  const [isTabOpen, setIsTabOpen] = useState(false);
   const [numberOfSentences, setNumberOfSentences] = useState(5);
 
   const handleSubmit = (value) => {
@@ -20,13 +18,10 @@ const Rightbar = ({ getResponse }) => {
   return (
     <div className="rightbar">
       <div className="tab-header" onClick={() => setIsTabOpen(!isTabOpen)}>
-        <h2>Suggested uses</h2>
-        <button className="toggle-button">
-          {isTabOpen ? "Close" : "Open"}
-        </button>
       </div>
+
       <div className={`tab-content ${isTabOpen ? "open" : "closed"}`}>
-        <div className="custom-input">
+        <div className="input_suggest">
           <label>
             Create
             <input
@@ -46,12 +41,14 @@ const Rightbar = ({ getResponse }) => {
             using the word
             <input
               type="text"
+              placeholder="Merci"
               value={input1}
               onChange={(e) => setInput1(e.target.value)}
             />
             translation in
             <input
               type="text"
+              placeholder="English"
               value={transInput1}
               onChange={(e) => setTransInput1(e.target.value)}
             />
@@ -65,7 +62,7 @@ const Rightbar = ({ getResponse }) => {
             Send
           </button>
         </div>
-        <div className="custom-input">
+        <div className="input_suggest">
           <label>
             Give me 10 words in
             <input
@@ -77,6 +74,7 @@ const Rightbar = ({ getResponse }) => {
             using the letter
             <input
               type="text"
+              placeholder="ع"
               value={input2}
               onChange={(e) => setInput2(e.target.value)}
             />
@@ -91,11 +89,12 @@ const Rightbar = ({ getResponse }) => {
             Send
           </button>
         </div>
-        <div className="custom-input">
+        <div className="input_suggest">
           <label>
             Give me the word
             <input
               type="text"
+              placeholder="Хочу"
               value={input3}
               onChange={(e) => setInput3(e.target.value)}
             />
@@ -111,6 +110,12 @@ const Rightbar = ({ getResponse }) => {
             Send
           </button>
         </div>
+      </div>
+      <div className="tab-header" onClick={() => setIsTabOpen(!isTabOpen)}>
+        <h2>Suggested uses</h2>
+        <button className="toggle-button">
+          {isTabOpen ? "Close" : "Open"}
+        </button>
       </div>
     </div>
   );

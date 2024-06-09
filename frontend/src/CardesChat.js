@@ -3,18 +3,20 @@ import annyang from "annyang";
 import windowedCat from "./static/images/windowed-cat.png";
 import catIcon from "./static/images/cat_icon.png";
 import anonIcon from "./static/images/anon_icon.png";
-import "./maincontent.css";
+import "./cardeschat.css";
 import Rightbar from "./Rightbar";
 import { SlCopyButton } from "@shoelace-style/shoelace/dist/react";
 import Typewriter from "typewriter-effect";
 import surpriseOptions from "./surpriseData"; // Import surpriseOptions from the other file
+import logo from "./static/images/cardes_logo.png"; // Import the logo image
 
-const Maincontent = () => {
+const CardesChat = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
+  const [isTabOpen, setIsTabOpen] = useState(false);
 
   useEffect(() => {
     if (annyang) {
@@ -87,11 +89,13 @@ const Maincontent = () => {
 
     const data = await fetchResponse("http://localhost:8000/gemini", options);
     if (data) {
-      const modelResponses = data.split("^").filter((sentence) => sentence.trim()); // Filter out empty sentences
+      const modelResponses = data
+        .split("^")
+        .filter((sentence) => sentence.trim()); // Filter out empty sentences
       const newChatItems = modelResponses.map((sentence, index) => ({
         role: "model",
         parts: [sentence.trim()], // Trim any extra whitespace
-        showCardButton: index % 2 !== 0 // Show card button after each second sentence
+        showCardButton: index % 2 !== 0, // Show card button after each second sentence
       }));
       setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
       setValue("");
@@ -138,8 +142,17 @@ const Maincontent = () => {
     }
   };
 
+  const handleAskMeClick = () => {
+    if (isTabOpen) {
+      setIsTabOpen(false);
+    }
+    getResponse();
+  };
+
   return (
     <div className="app">
+      <img src={logo} alt="Cardes AI Logo" className="sidebar-logo" />
+
       <div className="search-result">
         {chatHistory.map((chatItem, index) => (
           <div key={index} className={`chat-item ${chatItem.role}`}>
@@ -197,7 +210,7 @@ const Maincontent = () => {
           </button>
         </p>
 
-        <div className="button-wrapper">
+        <div className="btn-wrapper">
           <button
             className={`surprise mic-button ${isListening ? "clicked" : ""}`}
             onClick={() => (isListening ? stopListening() : startListening())}
@@ -218,10 +231,10 @@ const Maincontent = () => {
           />
 
           {!error && (
-            <button onClick={() => getResponse()}>
+            <button onClick={handleAskMeClick}>
               Ask me
-              <div class="svg-wrapper-1">
-                <div class="svg-wrapper">
+              <div className="svg-wrapper-1">
+                <div className="svg-wrapper">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -243,9 +256,9 @@ const Maincontent = () => {
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
       </div>
-      <Rightbar getResponse={getResponse} />
+      <Rightbar getResponse={getResponse} isTabOpen={isTabOpen} setIsTabOpen={setIsTabOpen} />
     </div>
   );
 };
 
-export default Maincontent;
+export default CardesChat;

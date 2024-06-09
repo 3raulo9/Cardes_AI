@@ -2,12 +2,10 @@
 import React from "react";
 import "./sidebar.css"; // Import the CSS file for the sidebar
 
-import logo from "./static/images/cardes_logo.png"; // Import the logo image
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <img src={logo} alt="Cardes AI Logo" className="sidebar-logo" />
       <ul>
         <li>
           <a href="#home">Home</a>

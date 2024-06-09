@@ -12,7 +12,6 @@
     padding-top: 20px;
     transition: 0.3s;
     /* Transition effect */
-    border-right: 6px solid hsl(0, 68%, 27%);
     /* Border on the right */
 }
 
@@ -85,12 +84,3 @@
     }
 }
 
-.sidebar-logo {
-    width: 150px;
-    /* Adjust the width as needed */
-    height: auto;
-    /* Maintain aspect ratio */
-    display: block;
-    margin: 0 auto;
-    /* Center the logo */
-}

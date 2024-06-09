@@ -1,3 +1,5 @@
+
+/* Add other styles from CardesChat.css */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
 
@@ -178,7 +180,7 @@ button:hover svg {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.button-wrapper {
+.btn-wrapper {
     display: flex;
     align-items: center;
 }
@@ -382,4 +384,24 @@ button:hover svg {
     background-color: hsl(15, 100%, 35%);
     transform: translateY(-1.5px);
     box-shadow: rgba(214, 214, 214, 0.1) 0px 8px 16px;
+}
+
+
+
+.sidebar-logo {
+    width: 80%;
+    /* Increase the width to make it larger */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Center the logo */
+    opacity: 0.06;
+    /* Make it more transparent */
+    position: absolute;
+    /* Position it absolutely */
+    top: 10px;
+    /* Adjust the top position as needed */
+    /* Adjust the right position as needed */
+    z-index: -1;
+    /* Ensure it stays below everything */
 }
