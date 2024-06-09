@@ -1,19 +1,19 @@
-.rightbar {
+.SuggestBar {
   display: flex;
   flex-direction: column;
 }
 
-.rightbar h2 {
+.SuggestBar h2 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: -2px;
 }
 
-.rightbar ul {
+.SuggestBar ul {
   list-style: none;
   padding: 0;
 }
 
-.rightbar ul li {
+.SuggestBar ul li {
   margin-bottom: 10px;
   font-size: 18px;
 }
@@ -36,7 +36,7 @@ button {
   margin-left: 6px;
 }
 
-.rightbar {
+.SuggestBar {
   width: 100%; /* Adjust as needed */
 }
 

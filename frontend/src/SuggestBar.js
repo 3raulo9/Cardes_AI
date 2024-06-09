@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./rightbar.css";
+import "./suggestbar.css";
 
-const Rightbar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
+const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
@@ -16,7 +16,7 @@ const Rightbar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
   };
 
   return (
-    <div className="rightbar">
+    <div className="SuggestBar">
       <div className="tab-header" onClick={() => setIsTabOpen(!isTabOpen)}>
       </div>
 
@@ -121,4 +121,4 @@ const Rightbar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
   );
 };
 
-export default Rightbar;
+export default SuggestBar;

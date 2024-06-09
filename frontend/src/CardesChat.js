@@ -4,13 +4,13 @@ import windowedCat from "./static/images/windowed-cat.png";
 import catIcon from "./static/images/cat_icon.png";
 import anonIcon from "./static/images/anon_icon.png";
 import "./cardeschat.css";
-import Rightbar from "./Rightbar";
+import SuggestBar from "./SuggestBar";
 import { SlCopyButton } from "@shoelace-style/shoelace/dist/react";
 import Typewriter from "typewriter-effect";
-import surpriseOptions from "./surpriseData"; // Import surpriseOptions from the other file
-import logo from "./static/images/cardes_logo.png"; // Import the logo image
+import surpriseOptions from "./surpriseData";
+import logo from "./static/images/cardes_logo.png";
 
-const CardesChat = () => {
+const CardesChat = ({ isOpen }) => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
@@ -91,11 +91,11 @@ const CardesChat = () => {
     if (data) {
       const modelResponses = data
         .split("^")
-        .filter((sentence) => sentence.trim()); // Filter out empty sentences
+        .filter((sentence) => sentence.trim());
       const newChatItems = modelResponses.map((sentence, index) => ({
         role: "model",
-        parts: [sentence.trim()], // Trim any extra whitespace
-        showCardButton: index % 2 !== 0, // Show card button after each second sentence
+        parts: [sentence.trim()],
+        showCardButton: index % 2 !== 0,
       }));
       setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
       setValue("");
@@ -119,7 +119,7 @@ const CardesChat = () => {
         throw new Error("Network response was not ok");
       }
 
-      const audioBlob = await response.blob(); // Get the response as a Blob
+      const audioBlob = await response.blob();
       const audioUrl = URL.createObjectURL(audioBlob);
       const audio = new Audio(audioUrl);
       audio.play();
@@ -150,7 +150,7 @@ const CardesChat = () => {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${isOpen ? "" : "sidebar-closed"}`}>
       <img src={logo} alt="Cardes AI Logo" className="sidebar-logo" />
 
       <div className="search-result">
@@ -256,7 +256,7 @@ const CardesChat = () => {
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
       </div>
-      <Rightbar getResponse={getResponse} isTabOpen={isTabOpen} setIsTabOpen={setIsTabOpen} />
+      <SuggestBar getResponse={getResponse} isTabOpen={isTabOpen} setIsTabOpen={setIsTabOpen} />
     </div>
   );
 };
