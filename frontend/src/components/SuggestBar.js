@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import "./suggestbar.css";
+import React, { useState, useEffect } from "react";
+import anime from "animejs/lib/anime.es.js";
+import '../styles/suggestbar.css';
 
 const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
   const [input1, setInput1] = useState("");
@@ -15,9 +16,32 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
     setIsTabOpen(false); // Close the tab when "Send" is clicked
   };
 
+  useEffect(() => {
+    if (isTabOpen) {
+      anime({
+        targets: '.tab-content',
+        translateY: 0, // Adjust to make the tab content appear lower
+        opacity: [0, 1],
+        duration: 3000,
+      });
+    } else {
+      anime({
+        targets: '.tab-content',
+        translateY: 16,
+        opacity: [1, 0],
+        duration: 3000,
+        
+      });
+    }
+  }, [isTabOpen]);
+
   return (
     <div className="SuggestBar">
       <div className="tab-header" onClick={() => setIsTabOpen(!isTabOpen)}>
+        <h2>Suggested uses</h2>
+        <button className="toggle-button">
+          {isTabOpen ? "Close" : "Open"}
+        </button>
       </div>
 
       <div className={`tab-content ${isTabOpen ? "open" : "closed"}`}>
@@ -110,12 +134,6 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
             Send
           </button>
         </div>
-      </div>
-      <div className="tab-header" onClick={() => setIsTabOpen(!isTabOpen)}>
-        <h2>Suggested uses</h2>
-        <button className="toggle-button">
-          {isTabOpen ? "Close" : "Open"}
-        </button>
       </div>
     </div>
   );

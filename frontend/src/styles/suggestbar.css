@@ -1,6 +1,9 @@
+/* suggestbar.css */
+
 .SuggestBar {
   display: flex;
   flex-direction: column;
+  width: 100%; /* Adjust as needed */
 }
 
 .SuggestBar h2 {
@@ -23,10 +26,6 @@
   margin-left: 6px;
 }
 
-.SuggestBar {
-  width: 100%; /* Adjust as needed */
-}
-
 .tab-header {
   margin-top: 10px;
   display: flex;
@@ -40,13 +39,14 @@
   flex-direction: row-reverse; /* Align items from right to left */
   gap: 10px;
   overflow: hidden;
-  transition: max-height 0.9s ease, opacity 0.5s ease;
   opacity: 0;
   max-height: 0;
+  transition: max-height 0.9s ease, opacity 0.5s ease;
+  margin-top: 20px; /* Add margin to appear lower */
 }
 
 .tab-content.open {
-  max-height: 500px; /* Adjust this value based on your content's maximum height */
+  max-height: 260px; /* Adjust this value based on your content's maximum height */
   opacity: 1;
 }
 

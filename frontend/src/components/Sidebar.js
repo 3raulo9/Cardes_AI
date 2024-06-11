@@ -1,7 +1,6 @@
-// Sidebar.js
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./sidebar.css"; // Import the CSS file for the sidebar
+import "../styles/sidebar.css"; // Correct relative import path
 
 const Sidebar = () => {
   const location = useLocation();

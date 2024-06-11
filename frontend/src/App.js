@@ -1,15 +1,16 @@
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./index.css"; // Import the CSS file
-import Footer from "./Footer";
-import CardesChat from "./CardesChat";
-import Sidebar from "./Sidebar"; // Import the Sidebar component
+import "./styles/index.css"; // Import the CSS file
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar"; // Import the Sidebar component
 
-import HomePage from "./HomePage"; // Import the HomePage component
-import LearnPage from './LearnPage'
-import FlashcardsPage from './FlashcardsPage'
-import TextsPage from './TextsPage'
+import HomePage from "./pages/HomePage"; // Import the HomePage component
+import CardesChat from "./pages/CardesChat";
+
+import LearnPage from './pages/LearnPage'
+import FlashcardsPage from './pages/FlashcardsPage'
+import TextsPage from './pages/TextsPage'
 
 import logo from "./static/images/cardes_logo.png";
 

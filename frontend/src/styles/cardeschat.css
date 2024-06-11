@@ -16,7 +16,6 @@ body {
     color: #777777;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Changed from center to flex-end to push content towards the bottom */
 }
 
 p {
@@ -25,8 +24,8 @@ p {
 }
 
 .app {
-    width: 600px;
-    height: 93vh;
+    width: 700px;
+    height: 96vh;
     background-color: #00000000;
     margin: -vw 0;
     display: flex;
@@ -165,7 +164,7 @@ button:hover svg {
     width: 155px;
     height: auto;
     position: absolute;
-    bottom: -1.5px;
+    bottom: -4px;
     right: -27.5px;
     margin: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

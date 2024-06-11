@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import annyang from "annyang";
-import windowedCat from "./static/images/windowed-cat.png";
-import catIcon from "./static/images/cat_icon.png";
-import anonIcon from "./static/images/anon_icon.png";
-import "./cardeschat.css";
-import SuggestBar from "./SuggestBar";
+import windowedCat from "../static/images/windowed-cat.png";
+import catIcon from "../static/images/cat_icon.png";
+import anonIcon from "../static/images/anon_icon.png";
+import "../styles/cardeschat.css";
+import SuggestBar from "../components/SuggestBar";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import Typewriter from "typewriter-effect";
-import surpriseOptions from "./surpriseData";
-import logo from "./static/images/cardes_logo.png";
+import surpriseOptions from "../utils/surpriseData";
 
 const CardesChat = ({ isOpen }) => {
   const [value, setValue] = useState("");
