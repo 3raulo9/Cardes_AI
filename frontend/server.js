@@ -17,36 +17,41 @@ const API_KEY = process.env.API_KEY;
 const VOICE_ID = 'hFgOzpmS0CMtL2to8sAl';
 const CHUNK_SIZE = 1024;
 
-app.post('/gemini', async (req, res) => {
+app.post("/gemini", async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-    const chatHistory = req.body.history.map(item => ({
-        ...item,
-        parts: Array.isArray(item.parts) ? item.parts : [item.parts]
+    const chatHistory = req.body.history.map((item) => ({
+        role: item.role,
+        parts: item.parts.map((part) => ({ text: part })),
     }));
 
     const chat = model.startChat({
-        history: req.body.chatHistory
+        history: chatHistory,
     });
+
     const msg = req.body.message;
 
     try {
         const result = await chat.sendMessage(msg);
         const response = await result.response;
         let text = await response.text();
-        
+
         // Replace "Gemini AI" with "Cardes AI"
         text = text.replace(/Gemini/g, "Cardes AI");
 
         // Add a tab at the end of each sentence
-        text = text.split('\n').map(sentence => sentence + '\t').join('\n');
+        text = text
+            .split("\n")
+            .map((sentence) => sentence + "\t")
+            .join("\n");
 
         res.send(text);
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error processing the request');
+        res.status(500).send("Error processing the request");
     }
 });
+
 
 app.post('/text-to-speech', async (req, res) => {
     const text = req.body.text;
@@ -87,3 +92,5 @@ app.post('/text-to-speech', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+

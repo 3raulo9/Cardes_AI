@@ -70,38 +70,40 @@ const CardesChat = ({ isOpen }) => {
 
   const getResponse = async (customValue = value) => {
     if (!customValue) {
-      setError("Error! Please ask a question!");
-      return;
+        setError("Error! Please ask a question!");
+        return;
     }
 
     setChatHistory((oldChatHistory) => [
-      ...oldChatHistory,
-      { role: "user", parts: [customValue] },
+        ...oldChatHistory,
+        { role: "user", parts: [customValue] },
     ]);
 
     setLoading(true);
 
     const options = {
-      method: "POST",
-      body: JSON.stringify({ history: chatHistory, message: customValue }),
-      headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({ history: chatHistory, message: customValue }),
+        headers: { "Content-Type": "application/json" },
     };
 
     const data = await fetchResponse("http://localhost:8000/gemini", options);
     if (data) {
-      const modelResponses = data
-        .split("^")
-        .filter((sentence) => sentence.trim());
-      const newChatItems = modelResponses.map((sentence, index) => ({
-        role: "model",
-        parts: [sentence.trim()],
-        showCardButton: index % 2 !== 0,
-      }));
-      setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
-      setValue("");
-      setLoading(false);
+        const modelResponses = data.split("^").filter((sentence) => sentence.trim());
+        if (modelResponses.length === 0) {
+            modelResponses.push("I didn't catch that, try again.");
+        }
+        const newChatItems = modelResponses.map((sentence, index) => ({
+            role: "model",
+            parts: [sentence.trim()],
+            showCardButton: index % 2 !== 0,
+        }));
+        setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
+        setValue("");
+        setLoading(false);
     }
-  };
+};
+
 
   const handleTextToSpeech = async (text, forDownload = false) => {
     const options = {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import anime from "animejs/lib/anime.es.js";
-import '../styles/suggestbar.css';
+import "../styles/suggestbar.css";
 
 const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
   const [input1, setInput1] = useState("");
@@ -16,21 +16,24 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
     setIsTabOpen(false); // Close the tab when "Send" is clicked
   };
 
+  const handleTest = (inputs) => {
+    inputs.forEach(([setter, value]) => setter(value));
+  };
+
   useEffect(() => {
     if (isTabOpen) {
       anime({
-        targets: '.tab-content',
+        targets: ".tab-content",
         translateY: 0, // Adjust to make the tab content appear lower
         opacity: [0, 1],
         duration: 3000,
       });
     } else {
       anime({
-        targets: '.tab-content',
+        targets: ".tab-content",
         translateY: 16,
         opacity: [1, 0],
         duration: 3000,
-        
       });
     }
   }, [isTabOpen]);
@@ -77,14 +80,28 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
               onChange={(e) => setTransInput1(e.target.value)}
             />
           </label>
-          <button
-            onClick={() =>
-              handleSubmit(`Create ${numberOfSentences} sentences in ${language1} using the word ${input1} + translation in ${transInput1}
- 'and incase each sentence with "^"', first the translation then the sentence`)
-            }
-          >
-            Send
-          </button>
+          <div className="button-group">
+            <button
+              onClick={() =>
+                handleSubmit(`Create ${numberOfSentences} sentences in ${language1} using the word ${input1} + translation in ${transInput1}
+ 'and incase each sentence with "^"', first the translation then the sentence, only the sentences, the only allowed symbol to appear is the "^" that will incase each sentence, no symbols even -`)
+              }
+            >
+              Send
+            </button>
+            <button
+              onClick={() =>
+                handleTest([
+                  [setNumberOfSentences, 5],
+                  [setLanguage1, "French"],
+                  [setInput1, "Merci"],
+                  [setTransInput1, "English"],
+                ])
+              }
+            >
+              Test
+            </button>
+          </div>
         </div>
         <div className="input_suggest">
           <label>
@@ -103,15 +120,27 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
               onChange={(e) => setInput2(e.target.value)}
             />
           </label>
-          <button
-            onClick={() =>
-              handleSubmit(
-                `Give me 10 words in ${language2} using the letter ${input2}`
-              )
-            }
-          >
-            Send
-          </button>
+          <div className="button-group">
+            <button
+              onClick={() =>
+                handleSubmit(
+                  `Give me 10 words in ${language2} using the letter ${input2} and incase each word with "^"', first the translation then the word, only the word, the only allowed symbol to appear is the "^" that will incase each word, you cannot send numbers or any symbol other than the words i had demanded`
+                )
+              }
+            >
+              Send
+            </button>
+            <button
+              onClick={() =>
+                handleTest([
+                  [setLanguage2, "Arabic"],
+                  [setInput2, "ع"],
+                ])
+              }
+            >
+              Test
+            </button>
+          </div>
         </div>
         <div className="input_suggest">
           <label>
@@ -124,15 +153,20 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
             />
             in every possible pronoun expression
           </label>
-          <button
-            onClick={() =>
-              handleSubmit(
-                `Give me the word ${input3} in every possible pronoun expression`
-              )
-            }
-          >
-            Send
-          </button>
+          <div className="button-group">
+            <button
+              onClick={() =>
+                handleSubmit(
+                  `Give me the word ${input3} in every possible pronoun expression`
+                )
+              }
+            >
+              Send
+            </button>
+            <button onClick={() => handleTest([[setInput3, "Хочу"]])}>
+              Test
+            </button>
+          </div>
         </div>
       </div>
     </div>

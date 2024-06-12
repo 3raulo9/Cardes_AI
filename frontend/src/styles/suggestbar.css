@@ -88,3 +88,11 @@
   margin-top: 10px;
   align-self: flex-start;
 }
+
+
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2x; /* Adjust the space between the buttons as needed */
+}
