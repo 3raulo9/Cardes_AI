@@ -84,15 +84,23 @@
   margin-top: 5px;
 }
 
-.input_suggest button {
-  margin-top: 10px;
-  align-self: flex-start;
+
+
+
+
+.SuggestBar button {
+  background-color: hsl(27, 100%, 50%);
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer; /* Ensures the buttons are clickable */
+  margin-top: 10px; /* Adds a gap between buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Adds smooth animation for background color and transform */
 }
 
 
-
-.button-group {
-  display: flex;
-  justify-content: flex-start;
-  gap: 2x; /* Adjust the space between the buttons as needed */
+.input_suggest button:hover {
+  background-color: hsl(27, 100%, 40%); /* Optional: Add a hover effect */
+  transform: scale(1.05); /* Adds a slight zoom effect when hovered */
 }

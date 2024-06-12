@@ -47,19 +47,7 @@ body {
 
 
 
-button {
-    margin-right: 6px;
-    border: none;
-    background-color: hsl(27, 100%, 50%);
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    border-radius: 7px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+
 
 
 .sidebar-logo {

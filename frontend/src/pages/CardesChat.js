@@ -17,6 +17,7 @@ const CardesChat = ({ isOpen }) => {
   const [isListening, setIsListening] = useState(false);
   const [isTabOpen, setIsTabOpen] = useState(false);
   const [tooltipContent, setTooltipContent] = useState({});
+  const [cursorVisibility, setCursorVisibility] = useState({});
 
   useEffect(() => {
     if (annyang) {
@@ -40,6 +41,7 @@ const CardesChat = ({ isOpen }) => {
     setIsListening(false);
     annyang.abort();
   };
+  let hasShownCatIcon = false;
 
   const handleSpeechRecognition = (phrases) => {
     const speech = phrases[0];
@@ -70,40 +72,44 @@ const CardesChat = ({ isOpen }) => {
 
   const getResponse = async (customValue = value) => {
     if (!customValue) {
-        setError("Error! Please ask a question!");
-        return;
+      setError("Error! Please ask a question!");
+      return;
     }
 
     setChatHistory((oldChatHistory) => [
-        ...oldChatHistory,
-        { role: "user", parts: [customValue] },
+      ...oldChatHistory,
+      { role: "user", parts: [customValue] },
     ]);
 
     setLoading(true);
 
     const options = {
-        method: "POST",
-        body: JSON.stringify({ history: chatHistory, message: customValue }),
-        headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify({ history: chatHistory, message: customValue }),
+      headers: { "Content-Type": "application/json" },
     };
 
     const data = await fetchResponse("http://localhost:8000/gemini", options);
     if (data) {
-        const modelResponses = data.split("^").filter((sentence) => sentence.trim());
-        if (modelResponses.length === 0) {
-            modelResponses.push("I didn't catch that, try again.");
-        }
-        const newChatItems = modelResponses.map((sentence, index) => ({
-            role: "model",
-            parts: [sentence.trim()],
-            showCardButton: index % 2 !== 0,
-        }));
-        setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
-        setValue("");
-        setLoading(false);
+      const modelResponses = data
+        .split("^")
+        .filter((sentence) => sentence.trim())
+        .map((sentence) => sentence.replace(/[.,\/#$%\<>&\*:{}=\-_`~()]/g,"")); // Remove punctuation and dashes
+      if (modelResponses.length === 0) {
+        modelResponses.push("I didn't catch that try again");
+      }
+      const newChatItems = modelResponses.map((sentence, index) => ({
+        role: "model",
+        parts: [sentence.trim()],
+        showCardButton: index % 2 !== 0,
+        id: Date.now() + index, // Unique id for each message
+      }));
+      setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
+      setValue("");
+      setLoading(false);
     }
-};
-
+    
+  };
 
   const handleTextToSpeech = async (text, forDownload = false) => {
     const options = {
@@ -164,6 +170,7 @@ const CardesChat = ({ isOpen }) => {
     setValue("");
     setError("");
     setChatHistory([]);
+    setCursorVisibility({});
   };
 
   const handleKeyPress = (event) => {
@@ -179,38 +186,52 @@ const CardesChat = ({ isOpen }) => {
     getResponse();
   };
 
+  const handleTypingComplete = (id) => {
+    setCursorVisibility((prevState) => ({
+      ...prevState,
+      [id]: true,
+    }));
+  };
+
   return (
     <div className={`app ${isOpen ? "" : "sidebar-closed"}`}>
-
       <div className="search-result">
         {chatHistory.map((chatItem, index) => (
-          <div key={index} className={`chat-item ${chatItem.role}`}>
+          <div key={chatItem.id} className={`chat-item ${chatItem.role}`}>
             <div className="icon">
-              <img
-                src={chatItem.role === "user" ? anonIcon : catIcon}
-                alt={chatItem.role}
-                className="chat-icon"
-              />
+              {(index === 0 ||
+                (!chatItem.showCardButton && !hasShownCatIcon)) && (
+                <img
+                  src={chatItem.role === "user" ? anonIcon : catIcon}
+                  alt={chatItem.role}
+                  className="chat-icon"
+                />
+              )}
+              {chatItem.role !== "user" && chatItem.showCardButton && (hasShownCatIcon = true)}
             </div>
-            <div className="answer-container">
+            <div className={`answer-container ${chatItem.role === 'model' && index % 2 === 0 ? 'second-box' : ''}`}>
               {chatItem.role === "model" ? (
-                <div className="typed-out">
+                <div className={`typed-out ${cursorVisibility[chatItem.id] ? 'hide-cursor' : ''}`}>
                   <Typewriter
                     onInit={(typewriter) => {
-                      typewriter.typeString(chatItem.parts.join(" ")).start();
+                      typewriter.typeString(chatItem.parts.join(" "))
+                        .callFunction(() => {
+                          handleTypingComplete(chatItem.id);
+                        })
+                        .start();
                     }}
                     options={{ delay: 8, cursor: "🐾" }}
                   />
                 </div>
               ) : (
-                <p className="answer">{chatItem.parts.join(" ")}</p>
+                <p className="answer">{chatItem.parts.join(" ")} </p>
               )}
-              <button className="copy-button" aria-label="Copy text">
+              <button className="copy-button " aria-label="Copy text">
                 <SlCopyButton value={chatItem.parts.join(" ")} />
               </button>
               <SlTooltip content={tooltipContent.listen || "Listen"}>
                 <button
-                  className="audio-button"
+                  className="audio-button asnwer-buttons"
                   aria-label="Play audio"
                   onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
                 >
@@ -219,7 +240,7 @@ const CardesChat = ({ isOpen }) => {
               </SlTooltip>
               <SlTooltip content={tooltipContent.download || "Download"}>
                 <button
-                  className="download-button"
+                  className="download-button asnwer-buttons"
                   aria-label="Download audio"
                   onClick={() =>
                     handleTextToSpeech(chatItem.parts.join(" "), true)
@@ -229,12 +250,17 @@ const CardesChat = ({ isOpen }) => {
                 </button>
               </SlTooltip>
             </div>
+            <SlTooltip  placement="right" content={  "Add to cards"}>
+
             {chatItem.showCardButton && (
               <div className="add-to-cards">
                 <div className="line"></div>
-                <button className="add-to-cards-button">ADD TO CARDS</button>
+                <button className="add-to-cards-button">
+                  <sl-icon className="add-to-cards-button" name="file-plus-fill" />
+                </button>
               </div>
             )}
+            </SlTooltip>
           </div>
         ))}
         {loading && (
@@ -251,7 +277,6 @@ const CardesChat = ({ isOpen }) => {
             Test me!
           </button>
         </p>
-
         <div className="btn-wrapper">
           <button
             className={`surprise mic-button ${isListening ? "clicked" : ""}`}
@@ -263,7 +288,6 @@ const CardesChat = ({ isOpen }) => {
             <sl-icon name="file-earmark-image" />
           </button>
         </div>
-
         <div className="input-container">
           <input
             value={value}
@@ -271,7 +295,6 @@ const CardesChat = ({ isOpen }) => {
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
           />
-
           {!error && (
             <button onClick={handleAskMeClick}>
               Ask me
@@ -293,7 +316,6 @@ const CardesChat = ({ isOpen }) => {
               </div>
             </button>
           )}
-
           {error && <button onClick={clear}>Clear</button>}
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />

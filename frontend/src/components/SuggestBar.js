@@ -83,9 +83,10 @@ const SuggestBar = ({ getResponse, isTabOpen, setIsTabOpen }) => {
           <div className="button-group">
             <button
               onClick={() =>
-                handleSubmit(`Create ${numberOfSentences} sentences in ${language1} using the word ${input1} + translation in ${transInput1}
- 'and incase each sentence with "^"', first the translation then the sentence, only the sentences, the only allowed symbol to appear is the "^" that will incase each sentence, no symbols even -`)
-              }
+                handleSubmit(`Create ${numberOfSentences} sentences in ${language1} using the word ${input1}. Provide the translation in ${transInput1}. 
+                  Each sentence and its translation should be enclosed in "^" without any other symbols or punctuation. 
+                  Format: ^translation in ${transInput1}^sentence in ${language1}^, and do not use the "-" symbol.`)
+                    }
             >
               Send
             </button>

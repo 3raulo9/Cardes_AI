@@ -1,5 +1,10 @@
+/* Add margin-right to every second answer container */
+.answer-container.alternate {
+    margin-right: 20px;
+    /* Adjust the value as needed */
+}
 
-/* Add other styles from CardesChat.css */
+/* Existing CSS */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
 
@@ -112,13 +117,17 @@ p {
     font-family: inherit;
     width: 100px;
     font-size: 14px;
-    background: linear-gradient(to bottom, hsl(27, 100%, 50%), hsl(27, 98%, 62%));
+    background: linear-gradient(to bottom right, hsl(27, 100%, 50%), hsl(27, 100%, 76%));
     color: white;
     border-left: 1px solid #ddd;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+
 }
+
+
 
 .input-container button:active {
     transform: scale(0.97);
@@ -184,7 +193,7 @@ button:hover svg {
 }
 
 .mic-button {
-    
+
     border: none;
     cursor: pointer;
 }
@@ -232,7 +241,7 @@ button:hover svg {
 }
 
 .copy-button {
-    
+
     border: 2.5px solid hsl(0, 68%, 27%);
     background: none;
     border: none;
@@ -245,16 +254,63 @@ button:hover svg {
     color: #863600;
 }
 
+
+
+.asnwer-buttons {
+    font-size: 16px;
+
+    margin-right: 6px;
+    border: none;
+    background-color: hsl(27, 100%, 50%);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.input-button-field {
+    font-size: 16px;
+
+    margin-right: 6px;
+    border: none;
+    background-color: hsl(27, 100%, 50%);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 .answer-container {
     display: flex;
     align-items: center;
     background-color: #fff;
     border: solid 1px #ddd;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 10px;
     margin: 5px;
     max-width: 80%;
 }
+
+.third-card-style {
+    margin-left: 55px;
+}
+
+
+.second-box {
+    margin-left: 55px;
+    /* Optional: Add rounded corners */
+}
+
 
 .chat-item {
     display: flex;
@@ -350,36 +406,77 @@ button:hover svg {
 }
 
 .orange-cursor .Typewriter__cursor {
-    color: orange;
+    color: hsl(27, 100%, 50%);
 }
 
-.add-to-cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.add-to-cards .line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #ccc;
-    margin-right: 10px;
-}
 
 .add-to-cards-button {
-    background-color: hsl(27, 100%, 50%);
     border: none;
-    padding: 5px 10px;
+    outline: none;
+    background: none;
+    font-size: 27px;
+    margin-left: -10px;
+    margin-top: 8px;
+    transition: transform 0.4s ease, border-color 0.2s ease, background-color 0.2s ease;
+    color: hsl(0, 0%, 71%);
     cursor: pointer;
-    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    position: relative;
+    /* Added to position the pseudo-element */
+    z-index: 1;
+    /* Ensure the button is above the pseudo-element */
+}
+
+.add-to-cards-button::after {
+    content: "";
+    display: block;
+    width: 30%;
+    /* Match the button's width */
+    height: 20px;
+    /* Adjust the height as needed */
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 45%;
+    /* Position directly below the button */
+    left: 50%;
+    /* Adjust this value to move it to the right */
+    transform: translateX(-50%);
+    /* Center the pseudo-element horizontally */
+    border-radius: 8px;
+    /* Optional: to match the button's border radius */
+    margin-top: -10px;
+    /* Slightly overlap the button */
+    z-index: -1;
+    /* Place it behind the button */
 }
 
 .add-to-cards-button:hover {
-    background-color: hsl(15, 100%, 35%);
-    transform: translateY(-1.5px);
-    box-shadow: rgba(214, 214, 214, 0.1) 0px 8px 16px;
+    transform: scale(1.2);
+}
+
+.add-to-cards-button:active {
+    transform: scale(0.98);
+}
+
+.testtest {
+    margin-left: 100px;
 }
 
 
+
+/* In your CSS file */
+.hide-cursor .Typewriter__cursor {
+    display: none;
+}
+
+.hide-cursor .Typewriter__wrapper {
+    margin-right: 20px;
+    /* Adjust this value as needed */
+}
+
+
+.custom-tooltip::part(base) {
+    transform: translateX(-10px); /* Adjust this value to move the tooltip content to the left */
+  }
+  
