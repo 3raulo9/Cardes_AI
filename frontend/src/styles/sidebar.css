@@ -9,8 +9,11 @@
     background-color: hsl(27, 99%, 58%);
     padding-top: 20px;
     transition: 0.3s;
+    z-index: 1;
 }
 
+
+  
 .sidebar h2 {
     color: white;
     text-align: center;
@@ -82,3 +85,4 @@
 .footer-text a {
     display: inline-block;
 }
+

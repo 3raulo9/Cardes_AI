@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import annyang from "annyang";
+import React, { useState } from "react";
 import windowedCat from "../static/images/windowed-cat.png";
-import catIcon from "../static/images/cat_icon.png";
-import anonIcon from "../static/images/anon_icon.png";
 import "../styles/cardeschat.css";
 import SuggestBar from "../components/SuggestBar";
-import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
-import Typewriter from "typewriter-effect";
+import useSpeechRecognition from "../hooks/useSpeechRecognition";
+import { fetchResponse } from "../utils/fetchUtils";
+import ChatItem from "../components/ChatItem";
 import surpriseOptions from "../utils/surpriseData";
 
 const CardesChat = ({ isOpen }) => {
@@ -14,33 +12,9 @@ const CardesChat = ({ isOpen }) => {
   const [error, setError] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isListening, setIsListening] = useState(false);
   const [isTabOpen, setIsTabOpen] = useState(false);
   const [tooltipContent, setTooltipContent] = useState({});
   const [cursorVisibility, setCursorVisibility] = useState({});
-
-  useEffect(() => {
-    if (annyang) {
-      annyang.start({ autoRestart: false, continuous: false });
-      annyang.addCallback("result", handleSpeechRecognition);
-    }
-    return () => {
-      if (annyang) {
-        annyang.removeCallback("result", handleSpeechRecognition);
-        annyang.abort();
-      }
-    };
-  }, []);
-
-  const startListening = () => {
-    setIsListening(true);
-    annyang.start();
-  };
-
-  const stopListening = () => {
-    setIsListening(false);
-    annyang.abort();
-  };
   let hasShownCatIcon = false;
 
   const handleSpeechRecognition = (phrases) => {
@@ -50,24 +24,12 @@ const CardesChat = ({ isOpen }) => {
     stopListening();
   };
 
+  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
+
   const surprise = () => {
     const randomValue =
       surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
     setValue(randomValue);
-  };
-
-  const fetchResponse = async (url, options) => {
-    try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return await response.text();
-    } catch (error) {
-      console.error("Fetching error: ", error);
-      setError("Something went wrong, try again.");
-      setLoading(false);
-    }
   };
 
   const getResponse = async (customValue = value) => {
@@ -89,26 +51,31 @@ const CardesChat = ({ isOpen }) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const data = await fetchResponse("http://localhost:8000/gemini", options);
-    if (data) {
-      const modelResponses = data
-        .split("^")
-        .filter((sentence) => sentence.trim())
-        .map((sentence) => sentence.replace(/[.,\/#$%\<>&\*:{}=\-_`~()]/g,"")); // Remove punctuation and dashes
-      if (modelResponses.length === 0) {
-        modelResponses.push("I didn't catch that try again");
+    try {
+      const data = await fetchResponse("http://localhost:8000/gemini", options);
+      if (data) {
+        const modelResponses = data
+          .split("^")
+          .filter((sentence) => sentence.trim())
+          .map((sentence) => sentence.replace(/[.,\/#$%\<>&\*:{}=\-_`~()]/g, "")); // Remove punctuation and dashes
+        if (modelResponses.length === 0) {
+          modelResponses.push("I didn't catch that try again");
+        }
+        const newChatItems = modelResponses.map((sentence, index) => ({
+          role: "model",
+          parts: [sentence.trim()],
+          showCardButton: index % 2 !== 0,
+          id: Date.now() + index, // Unique id for each message
+        }));
+        setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
+        setValue("");
+        setLoading(false);
       }
-      const newChatItems = modelResponses.map((sentence, index) => ({
-        role: "model",
-        parts: [sentence.trim()],
-        showCardButton: index % 2 !== 0,
-        id: Date.now() + index, // Unique id for each message
-      }));
-      setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
-      setValue("");
+    } catch (error) {
+      console.error("Fetching error: ", error);
+      setError("Something went wrong, try again.");
       setLoading(false);
     }
-    
   };
 
   const handleTextToSpeech = async (text, forDownload = false) => {
@@ -180,9 +147,6 @@ const CardesChat = ({ isOpen }) => {
   };
 
   const handleAskMeClick = () => {
-    if (isTabOpen) {
-      setIsTabOpen(false);
-    }
     getResponse();
   };
 
@@ -197,71 +161,16 @@ const CardesChat = ({ isOpen }) => {
     <div className={`app ${isOpen ? "" : "sidebar-closed"}`}>
       <div className="search-result">
         {chatHistory.map((chatItem, index) => (
-          <div key={chatItem.id} className={`chat-item ${chatItem.role}`}>
-            <div className="icon">
-              {(index === 0 ||
-                (!chatItem.showCardButton && !hasShownCatIcon)) && (
-                <img
-                  src={chatItem.role === "user" ? anonIcon : catIcon}
-                  alt={chatItem.role}
-                  className="chat-icon"
-                />
-              )}
-              {chatItem.role !== "user" && chatItem.showCardButton && (hasShownCatIcon = true)}
-            </div>
-            <div className={`answer-container ${chatItem.role === 'model' && index % 2 === 0 ? 'second-box' : ''}`}>
-              {chatItem.role === "model" ? (
-                <div className={`typed-out ${cursorVisibility[chatItem.id] ? 'hide-cursor' : ''}`}>
-                  <Typewriter
-                    onInit={(typewriter) => {
-                      typewriter.typeString(chatItem.parts.join(" "))
-                        .callFunction(() => {
-                          handleTypingComplete(chatItem.id);
-                        })
-                        .start();
-                    }}
-                    options={{ delay: 8, cursor: "🐾" }}
-                  />
-                </div>
-              ) : (
-                <p className="answer">{chatItem.parts.join(" ")} </p>
-              )}
-              <button className="copy-button " aria-label="Copy text">
-                <SlCopyButton value={chatItem.parts.join(" ")} />
-              </button>
-              <SlTooltip content={tooltipContent.listen || "Listen"}>
-                <button
-                  className="audio-button asnwer-buttons"
-                  aria-label="Play audio"
-                  onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
-                >
-                  <sl-icon name="volume-down-fill" />
-                </button>
-              </SlTooltip>
-              <SlTooltip content={tooltipContent.download || "Download"}>
-                <button
-                  className="download-button asnwer-buttons"
-                  aria-label="Download audio"
-                  onClick={() =>
-                    handleTextToSpeech(chatItem.parts.join(" "), true)
-                  }
-                >
-                  <sl-icon name="download" />
-                </button>
-              </SlTooltip>
-            </div>
-            <SlTooltip  placement="right" content={  "Add to cards"}>
-
-            {chatItem.showCardButton && (
-              <div className="add-to-cards">
-                <div className="line"></div>
-                <button className="add-to-cards-button">
-                  <sl-icon className="add-to-cards-button" name="file-plus-fill" />
-                </button>
-              </div>
-            )}
-            </SlTooltip>
-          </div>
+          <ChatItem
+            key={chatItem.id}
+            chatItem={chatItem}
+            index={index}
+            cursorVisibility={cursorVisibility}
+            tooltipContent={tooltipContent}
+            handleTextToSpeech={handleTextToSpeech}
+            handleTypingComplete={handleTypingComplete}
+            hasShownCatIcon={hasShownCatIcon}
+          />
         ))}
         {loading && (
           <div className="skeleton-container">
@@ -271,13 +180,10 @@ const CardesChat = ({ isOpen }) => {
         )}
       </div>
       <div className="input-container-wrapper">
-        <p>
-          Hello, my name is Cardes
-          <button className="surprise" onClick={surprise}>
-            Test me!
-          </button>
-        </p>
         <div className="btn-wrapper">
+          <button className="surprise" onClick={surprise}>
+            test
+          </button>
           <button
             className={`surprise mic-button ${isListening ? "clicked" : ""}`}
             onClick={() => (isListening ? stopListening() : startListening())}
