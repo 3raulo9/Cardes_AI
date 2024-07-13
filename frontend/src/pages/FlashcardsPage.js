@@ -1,39 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/flashcardspage.css'; // Assume you have a CSS file for styling
 
-const FlashCardsPage = () => {
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      title: 'Ελληνικά - ένα',
-      memorized: 26,
-      total: 306,
-    },
-    {
-      id: 2,
-      title: 'Ελληνικά δύο',
-      memorized: 0,
-      total: 105,
-    },
-  ]);
 
-  const renderPracticeOptions = () => (
-    <div className="practice-options">
-      <div className="option">Basic Review</div>
-      <div className="option">Multiple answers</div>
-      <div className="option">Match Cards</div>
-      <div className="option">Writing Review</div>
-      <div className="option">Audio Player</div>
-      <div className="option">Whiteboard review <span className="pro-badge">PRO</span></div>
-    </div>
-  );
+const FlashCardsPage = ({ decks }) => {
+  if (!decks) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flash-cards-page">
       <header className="header">
         <div className="header-title">Greek</div>
         <div className="header-buttons">
-          <button>REVIEW ALL</button>
-          <button>PRACTICE ALL</button>
           <button>+ CREATE SET</button>
         </div>
       </header>
@@ -42,18 +21,17 @@ const FlashCardsPage = () => {
         <span>Use the flashcards.world website to create cards.</span>
       </div>
       <div className="cards-container">
-        {cards.map((card) => (
-          <div key={card.id} className="card">
-            <div className="card-title">{card.title}</div>
-            <div className="card-progress">{card.memorized}/{card.total} Cards memorized</div>
+        {decks.map((deck) => (
+          <div key={deck.id} className="card">
+            <div className="card-title">{deck.title}</div>
+            <div className="card-progress">Total Cards: {deck.cards.length}</div>
             <div className="card-buttons">
-              <button>REVIEW</button>
-              <button>PRACTICE</button>
+              <Link to={`/flashcards/edit/${deck.id}`}><button>EDIT</button></Link>
+              <Link to={`/flashcards/practice/${deck.id}`}><button>PRACTICE</button></Link>
             </div>
           </div>
         ))}
       </div>
-      {renderPracticeOptions()}
     </div>
   );
 };

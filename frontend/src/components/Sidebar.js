@@ -2,8 +2,12 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/sidebar.css"; // Correct relative import path
 
-const Sidebar = () => {
+const Sidebar = ({ setLoading }) => {
   const location = useLocation();
+
+  const handleNavigation = () => {
+    setLoading(true);
+  };
 
   return (
     <div className="sidebar">
@@ -11,25 +15,25 @@ const Sidebar = () => {
         {location.pathname === "/" ? (
           <>
             <li>
-              <Link to="/chat">
+              <Link to="/chat" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="chat"></sl-icon>
                 Chat
               </Link>
             </li>
             <li>
-              <Link to="/learn">
+              <Link to="/learn" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="lightning-charge"></sl-icon>
                 Learn
               </Link>
             </li>
             <li>
-              <Link to="/flashcards">
+              <Link to="/flashcards" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="card-text"></sl-icon>
                 Flashcards
               </Link>
             </li>
             <li>
-              <Link to="/texts">
+              <Link to="/texts" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="textarea-t"></sl-icon>
                 Texts
               </Link>
@@ -38,31 +42,31 @@ const Sidebar = () => {
         ) : (
           <>
             <li>
-              <Link to="/">
+              <Link to="/" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="house"></sl-icon>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/learn">
+              <Link to="/learn" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="lightning-charge"></sl-icon>
                 Learn
               </Link>
             </li>
             <li>
-              <Link to="/flashcards">
+              <Link to="/flashcards" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="card-text"></sl-icon>
                 Flashcards
               </Link>
             </li>
             <li>
-              <Link to="/texts">
+              <Link to="/texts" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="textarea-t"></sl-icon>
                 Texts
               </Link>
             </li>
             <li>
-              <Link to="/chat_history">
+              <Link to="/chat_history" onClick={handleNavigation}>
                 <sl-icon className="sl-icon" name="clock-history"></sl-icon>
                 Chat history
               </Link>
