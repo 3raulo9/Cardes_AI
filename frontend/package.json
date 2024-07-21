@@ -41,6 +41,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.x",
     "typescript": "^4.6.2",
     "ts-node": "^10.7.0",
     "nodemon": "^2.0.15",
