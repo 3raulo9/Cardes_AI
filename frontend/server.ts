@@ -1,28 +1,31 @@
+// Importing required modules
+import express from 'express';
+import cors from 'cors';
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+// Initializing environment variables
+dotenv.config();
+
 const PORT = 8000;
-const express = require('express');
-const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
-require('dotenv').config();
 
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEN_AI_KEY);
+// Ensuring the environment variable is treated as a string
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEN_AI_KEY!);
 
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+// Declaring the VOICE_ID variable
+const VOICE_ID = 'hFgOzpmS0CMtL2to8sAl';  // Ensure this is the correct ID or fetched appropriately
 
-const API_KEY = process.env.API_KEY;
-const VOICE_ID = 'hFgOzpmS0CMtL2to8sAl';
-const CHUNK_SIZE = 1024;
-
-app.post("/gemini", async (req, res) => {
+app.post("/gemini", async (req: express.Request, res: express.Response) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    const chatHistory = req.body.history.map((item) => ({
+    const chatHistory = req.body.history.map((item: any) => ({
         role: item.role,
-        parts: item.parts.map((part) => ({ text: part })),
+        parts: item.parts.map((part: string) => ({ text: part })),
     }));
 
     const chat = model.startChat({
@@ -36,10 +39,7 @@ app.post("/gemini", async (req, res) => {
         const response = await result.response;
         let text = await response.text();
 
-        // Replace "Gemini AI" with "Cardes AI"
         text = text.replace(/Gemini/g, "Cardes AI");
-
-        // Add a tab at the end of each sentence
         text = text
             .split("\n")
             .map((sentence) => sentence + "\t")
@@ -52,29 +52,27 @@ app.post("/gemini", async (req, res) => {
     }
 });
 
-
-app.post('/text-to-speech', async (req, res) => {
+app.post('/text-to-speech', async (req: express.Request, res: express.Response) => {
     const text = req.body.text;
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`;
     const headers = {
-        'xi-api-key': API_KEY,
+        'xi-api-key': process.env.API_KEY!,
         'Content-Type': 'application/json',
         'Accept': 'audio/mpeg'
     };
     const data = {
-        'text': text,
-        'model_id': 'eleven_multilingual_v2',
-        'voice_settings': {
-            'stability': 0.5,
-            'similarity_boost': 0.5
+        text: text,
+        model_id: 'eleven_multilingual_v2',
+        voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.5
         },
-        "languages": [
+        languages: [
             {
-                "language_id": "fr-FR",
-                "name": "French Voiceover"
-              }
+                language_id: "fr-FR",
+                name: "French Voiceover"
+            }
         ]
-        
     };
 
     try {
@@ -98,6 +96,4 @@ app.post('/text-to-speech', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`));
-
-
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
