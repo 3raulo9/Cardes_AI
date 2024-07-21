@@ -52,7 +52,7 @@ const CardesChat = ({ isOpen }) => {
     };
 
     try {
-      const data = await fetchResponse("http://localhost:8000/gemini", options);
+      const data = await fetchResponse("https://cardes-ai.onrender.com/gemini", options);
       if (data) {
         const modelResponses = data
           .split("^")
@@ -87,7 +87,7 @@ const CardesChat = ({ isOpen }) => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/text-to-speech",
+        "https://cardes-ai.onrender.com/text-to-speech",
         options
       );
       if (!response.ok) {
