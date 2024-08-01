@@ -4,9 +4,15 @@ import "../styles/sidebar.css"; // Correct relative import path
 
 const Sidebar = ({ setLoading }) => {
   const location = useLocation();
+  const accessToken = localStorage.getItem('accessToken');
 
   const handleNavigation = () => {
     setLoading(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    window.location.href = '/login'; // Redirect to login page after logout
   };
 
   return (
@@ -71,7 +77,28 @@ const Sidebar = ({ setLoading }) => {
                 Chat history
               </Link>
             </li>
+            <li>
+              <Link to="/register" onClick={handleNavigation}>
+                <sl-icon className="sl-icon" name="person-add"></sl-icon>
+                Register
+              </Link>
+            </li>
           </>
+        )}
+        {accessToken ? (
+          <li>
+            <button onClick={handleLogout} className="logout-button">
+              <sl-icon className="sl-icon" name="logout"></sl-icon>
+              Logout
+            </button>
+          </li>
+        ) : (
+          <li>
+            <Link to="/login" onClick={handleNavigation}>
+              <sl-icon className="sl-icon" name="login"></sl-icon>
+              Login
+            </Link>
+          </li>
         )}
       </ul>
       <div className="footer">

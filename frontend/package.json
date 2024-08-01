@@ -50,12 +50,11 @@
     "@types/dotenv": "^8.2.0"
   },
   "scripts": {
-    "start:frontend": "craco start",
-    "start:backend": "nodemon --exec ts-node server.ts",
-    "start": "ts-node server.ts",
-    "build": "tsc && craco build",
+    "start": "craco start",
+    "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:frontend": "craco start"
   },
   "eslintConfig": {
     "extends": [

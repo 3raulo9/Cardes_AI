@@ -15,6 +15,9 @@ import EditCardPage from "./pages/EditCardPage";
 import PracticeCardPage from "./pages/PracticeCardPage";
 import logo from "./static/images/cardes_logo.png";
 import { initialDecks } from "./data"; // Import the static data
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Logout from "./components/Logout";
 
 const AppContent = ({ setLoading }) => {
   const location = useLocation();
@@ -38,6 +41,9 @@ const AppContent = ({ setLoading }) => {
           <Route path="/chat_history" element={<ChatHistory />} />
           <Route path="/flashcards/edit/:id" element={<EditCardPage decks={initialDecks} />} />
           <Route path="/flashcards/practice/:id" element={<PracticeCardPage decks={initialDecks} />} />
+          <Route path="/login" element={<Login setLoading={setLoading} />} />
+          <Route path="/register" element={<Register setLoading={setLoading} />} />
+          <Route path="/logout" element={<Logout />} /> 
         </Routes>
         <Footer />
       </div>

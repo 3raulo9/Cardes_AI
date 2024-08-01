@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axiosInstance from "../utils/axiosInstance";
 import windowedCat from "../static/images/windowed-cat.png";
 import "../styles/cardeschat.css";
 import SuggestBar from "../components/SuggestBar";
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
-import { fetchResponse } from "../utils/fetchUtils";
 import ChatItem from "../components/ChatItem";
 import surpriseOptions from "../utils/surpriseData";
 
@@ -15,20 +15,25 @@ const CardesChat = ({ isOpen }) => {
   const [isTabOpen, setIsTabOpen] = useState(false);
   const [tooltipContent, setTooltipContent] = useState({});
   const [cursorVisibility, setCursorVisibility] = useState({});
-  let hasShownCatIcon = false;
+  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
 
-  const handleSpeechRecognition = (phrases) => {
+  // Move function declaration above useSpeechRecognition hook
+  function handleSpeechRecognition(phrases) {
     const speech = phrases[0];
     setValue(speech);
     getResponse(speech);
     stopListening();
-  };
+  }
 
-  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+  }, []);
 
   const surprise = () => {
-    const randomValue =
-      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
+    const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
     setValue(randomValue);
   };
 
@@ -45,30 +50,35 @@ const CardesChat = ({ isOpen }) => {
 
     setLoading(true);
 
-    const options = {
-      method: "POST",
-      body: JSON.stringify({ history: chatHistory, message: customValue }),
-      headers: { "Content-Type": "application/json" },
-    };
-
     try {
-      const data = await fetchResponse("http://localhost:8000/gemini", options);
-      if (data) {
-        const modelResponses = data
+      const { data } = await axiosInstance.post("/api/gemini/", {
+        history: chatHistory,
+        message: customValue,
+      });
+
+      if (data && data.text) {
+        const modelResponse = data.text
           .split("^")
           .filter((sentence) => sentence.trim())
-          .map((sentence) => sentence.replace(/[.,\/#$%\<>&\*:{}=\-_`~()]/g, "")); // Remove punctuation and dashes
-        if (modelResponses.length === 0) {
-          modelResponses.push("I didn't catch that try again");
+          .map((sentence) => sentence.replace(/[.,\/#$%\<>&\*:{}=\-_`~()]/g, ""));
+
+        if (modelResponse.length === 0) {
+          modelResponse.push("I didn't catch that, try again.");
         }
-        const newChatItems = modelResponses.map((sentence, index) => ({
+
+        const newChatItems = modelResponse.map((sentence, index) => ({
           role: "model",
           parts: [sentence.trim()],
           showCardButton: index % 2 !== 0,
-          id: Date.now() + index, // Unique id for each message
+          id: Date.now() + index,
         }));
+
         setChatHistory((oldChatHistory) => [...oldChatHistory, ...newChatItems]);
         setValue("");
+        setLoading(false);
+      } else {
+        console.error("Unexpected response format: ", data);
+        setError("Unexpected response format, try again.");
         setLoading(false);
       }
     } catch (error) {
@@ -79,22 +89,12 @@ const CardesChat = ({ isOpen }) => {
   };
 
   const handleTextToSpeech = async (text, forDownload = false) => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify({ text }),
-      headers: { "Content-Type": "application/json" },
-    };
-
     try {
-      const response = await fetch(
-        "http://localhost:8000/text-to-speech",
-        options
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      const response = await axiosInstance.post("/api/text-to-speech/", { text }, {
+        responseType: 'blob',
+      });
 
-      const audioBlob = await response.blob();
+      const audioBlob = response.data;
       const audioUrl = URL.createObjectURL(audioBlob);
 
       if (forDownload) {
@@ -109,8 +109,8 @@ const CardesChat = ({ isOpen }) => {
         setTimeout(() => {
           setTooltipContent((prev) => ({
             ...prev,
-            download: "Download",
-          }));
+          download: "Download",
+        }));
         }, 2000);
       } else {
         const audio = new Audio(audioUrl);
@@ -129,7 +129,6 @@ const CardesChat = ({ isOpen }) => {
     } catch (error) {
       console.error("Fetching error: ", error);
       setError("Something went wrong, try again.");
-      setLoading(false);
     }
   };
 
@@ -157,6 +156,24 @@ const CardesChat = ({ isOpen }) => {
     }));
   };
 
+  const updateMessage = async (messageId, newContent) => {
+    try {
+      const { data } = await axiosInstance.patch(`/api/message/${messageId}/`, {
+        content: newContent,
+      });
+
+      setChatHistory((prevHistory) =>
+        prevHistory.map((item) =>
+          item.id === messageId ? { ...item, content: data.content } : item
+        )
+      );
+    } catch (error) {
+      console.error("Error updating message: ", error);
+      setError("Failed to update message.");
+    }
+  };
+
+
   return (
     <div className={`app ${isOpen ? "" : "sidebar-closed"}`}>
       <div className="search-result">
@@ -169,7 +186,7 @@ const CardesChat = ({ isOpen }) => {
             tooltipContent={tooltipContent}
             handleTextToSpeech={handleTextToSpeech}
             handleTypingComplete={handleTypingComplete}
-            hasShownCatIcon={hasShownCatIcon}
+            updateMessage={updateMessage}
           />
         ))}
         {loading && (
@@ -182,7 +199,7 @@ const CardesChat = ({ isOpen }) => {
       <div className="input-container-wrapper">
         <div className="btn-wrapper">
           <button className="surprise" onClick={surprise}>
-            test
+            Surprise Me
           </button>
           <button
             className={`surprise mic-button ${isListening ? "clicked" : ""}`}
@@ -201,7 +218,7 @@ const CardesChat = ({ isOpen }) => {
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
           />
-          {!error && (
+          {!error ? (
             <button onClick={handleAskMeClick}>
               Ask me
               <div className="svg-wrapper-1">
@@ -221,8 +238,9 @@ const CardesChat = ({ isOpen }) => {
                 </div>
               </div>
             </button>
+          ) : (
+            <button onClick={clear}>Clear</button>
           )}
-          {error && <button onClick={clear}>Clear</button>}
         </div>
         <img src={windowedCat} alt="Windowed Cat" className="windowed-cat" />
       </div>
