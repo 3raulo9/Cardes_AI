@@ -18,14 +18,20 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import api_view, permission_classes
 from .decorators import log_request, require_permissions, class_log_request
+from rest_framework.permissions import AllowAny
 from .models import *
 from .serializers import *
 
+
+#logger for debug log
 logger = logging.getLogger(__name__)
+
+#fetch from .env
 GOOGLE_API_KEY =os.getenv('GOOGLE_API_KEY')
 ELABS_API_KEY = os.getenv('ELABS_API_KEY')
 VOICE_ID = os.getenv('VOICE_ID')
 
+#login
 class MyTokenObtainPairView(TokenObtainPairView):
     @method_decorator(log_request)
     def post(self, request, *args, **kwargs):
@@ -35,6 +41,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 @api_view(['POST'])
 @log_request
+@permission_classes([AllowAny])
 def register(request):
     try:
         user = User.objects.create_user(
@@ -51,6 +58,8 @@ def register(request):
         logger.error(f"Error during user registration: {e}")
         return Response({"error": str(e)}, status=500)
 
+
+#chat application
 @class_log_request
 # @method_decorator(require_permissions(['IsAuthenticated']), name='post')
 class GeminiView(APIView):
@@ -59,26 +68,26 @@ class GeminiView(APIView):
     def post(self, request):
         user = request.user
         logger.info(f"User {user.username} permissions: {user.get_all_permissions()}")
-        user_input = request.data.get('message', '')
+        user_input = request.data.get('message', '') #input message
         if not user_input:
             return Response({"error": "No message provided"}, status=status.HTTP_400_BAD_REQUEST)
 
         chat, created = Chat.objects.get_or_create(user=request.user)
-        Message.objects.create(chat=chat, sender='user', content=user_input)
+        Message.objects.create(chat=chat, sender='user', content=user_input) #save message in db
 
         try:
             response = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={GOOGLE_API_KEY}",
+                f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={GOOGLE_API_KEY}", #fetching GOOGLE_API_KEY
                 headers={"Content-Type": "application/json"},
                 json={"contents": [{"parts": [{"text": user_input}]}]}
             )
             if response.status_code != 200:
                 return Response({"error": f"API request failed with status {response.status_code}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            response_json = response.json()
+            response_json = response.json() #gemini response
             text_response = response_json.get("candidates", [])[0].get("content", {}).get("parts", [])[0].get("text", "No response")
 
-            Message.objects.create(chat=chat, sender='system', content=text_response)
+            Message.objects.create(chat=chat, sender='system', content=text_response)#save gemini message in db
 
             return Response({"text": text_response})
         except requests.RequestException as e:
@@ -142,7 +151,7 @@ class TextToSpeechView(APIView):
             logger.error(f"Error generating audio: {e}")
             return JsonResponse({'error': 'Error generating the audio'}, status=500)
         
-class ChatHistoryView(APIView):
+class ChatHistoryView(APIView): #all messages in a chat with user are getting saved together as chat, currently there is 1 chat for every user create new chat=wip
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
