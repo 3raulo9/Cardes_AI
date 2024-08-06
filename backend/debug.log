@@ -261,3 +261,532 @@ WARNING 2024-08-01 02:35:53,396 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
 INFO 2024-08-01 02:36:25,918 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\urls.py changed, reloading.
 INFO 2024-08-01 02:36:26,326 autoreload Watching for file changes with StatReloader
 INFO 2024-08-01 02:36:55,997 basehttp "GET /api/chat-history/ HTTP/1.1" 200 2219
+INFO 2024-08-06 21:27:43,640 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:29:15,364 basehttp "OPTIONS /api/register/ HTTP/1.1" 200 0
+WARNING 2024-08-06 21:29:15,483 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:29:15,484 basehttp "POST /api/register/ HTTP/1.1" 401 183
+WARNING 2024-08-06 21:31:35,379 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:31:35,379 basehttp "POST /api/register/ HTTP/1.1" 401 183
+WARNING 2024-08-06 21:34:42,747 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:34:42,747 basehttp "POST /api/register/ HTTP/1.1" 401 58
+WARNING 2024-08-06 21:35:54,830 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:35:54,831 basehttp "POST /api/register/ HTTP/1.1" 401 58
+WARNING 2024-08-06 21:36:09,429 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:36:09,430 basehttp "POST /api/register/ HTTP/1.1" 401 58
+INFO 2024-08-06 21:38:03,248 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:38:03,785 autoreload Watching for file changes with StatReloader
+WARNING 2024-08-06 21:38:04,743 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:38:04,743 basehttp "POST /api/register/ HTTP/1.1" 401 58
+INFO 2024-08-06 21:38:08,844 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:38:09,273 autoreload Watching for file changes with StatReloader
+WARNING 2024-08-06 21:39:51,557 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:39:51,558 basehttp "POST /api/register/ HTTP/1.1" 401 58
+WARNING 2024-08-06 21:39:52,500 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:39:52,500 basehttp "POST /api/register/ HTTP/1.1" 401 58
+INFO 2024-08-06 21:41:10,708 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:41:11,124 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:41:26,516 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:41:26,949 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:41:29,468 views User zz registered successfully.
+INFO 2024-08-06 21:41:29,468 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2024-08-06 21:41:47,767 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:41:48,192 autoreload Watching for file changes with StatReloader
+WARNING 2024-08-06 21:41:54,627 log Unauthorized: /api/register/
+WARNING 2024-08-06 21:41:54,628 basehttp "POST /api/register/ HTTP/1.1" 401 58
+INFO 2024-08-06 21:41:59,667 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:42:00,070 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:42:03,008 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:42:03,407 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:42:06,179 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:42:06,575 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:42:09,481 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:42:09,898 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:42:36,934 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:42:37,312 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:42:44,197 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:42:44,588 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:42:56,997 decorators Handling POST request to /api/register/
+ERROR 2024-08-06 21:42:57,236 views Error during user registration: UNIQUE constraint failed: auth_user.username
+ERROR 2024-08-06 21:42:57,237 decorators Error response: 500, URL: /api/register/
+ERROR 2024-08-06 21:42:57,237 log Internal Server Error: /api/register/
+ERROR 2024-08-06 21:42:57,237 basehttp "POST /api/register/ HTTP/1.1" 500 56
+INFO 2024-08-06 21:43:19,951 decorators Handling POST request to /api/register/
+INFO 2024-08-06 21:43:19,972 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:43:20,364 autoreload Watching for file changes with StatReloader
+ERROR 2024-08-06 21:43:21,410 views Error during user registration: UNIQUE constraint failed: auth_user.username
+ERROR 2024-08-06 21:43:21,411 log Internal Server Error: /api/register/
+ERROR 2024-08-06 21:43:21,411 basehttp "POST /api/register/ HTTP/1.1" 500 56
+INFO 2024-08-06 21:43:58,260 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:43:58,650 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:00,520 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:00,913 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:02,783 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:03,161 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:05,056 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:05,441 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:07,305 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:07,694 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:09,546 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:09,945 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:13,880 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:14,251 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:16,121 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:16,508 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:44:18,383 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:18,791 autoreload Watching for file changes with StatReloader
+ERROR 2024-08-06 21:44:37,347 views Error during user registration: UNIQUE constraint failed: auth_user.username
+ERROR 2024-08-06 21:44:37,347 log Internal Server Error: /api/register/
+ERROR 2024-08-06 21:44:37,348 basehttp "POST /api/register/ HTTP/1.1" 500 56
+INFO 2024-08-06 21:44:40,711 views User zzzz registered successfully.
+INFO 2024-08-06 21:44:40,712 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2024-08-06 21:44:57,967 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:44:58,384 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:45:00,311 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-08-06 21:45:00,718 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 21:45:03,052 decorators Handling POST request to /api/register/
+INFO 2024-08-06 21:45:03,291 views User zzzzz registered successfully.
+INFO 2024-08-06 21:45:03,292 decorators Response status code: 201, URL: /api/register/
+INFO 2024-08-06 21:45:03,292 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2024-08-06 21:45:12,500 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-08-06 21:45:12,502 decorators Handling POST request to /api/login/
+INFO 2024-08-06 21:45:12,767 views Token obtained for a, status code: 200
+INFO 2024-08-06 21:45:12,768 decorators Response status code: 200, URL: /api/login/
+INFO 2024-08-06 21:45:12,768 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-08-06 21:45:22,257 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2024-08-06 21:45:22,259 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 21:45:22,261 views User a permissions: set()
+DEBUG 2024-08-06 21:45:22,271 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 21:45:24,463 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 21:45:24,473 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 21:45:24,474 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-08-06 21:45:26,974 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-08-06 21:45:26,975 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 21:45:26,978 views User a permissions: set()
+DEBUG 2024-08-06 21:45:26,978 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 21:45:26,978 views Data: {'text': 'Hello there! How can I help you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 21:45:26,979 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 21:45:29,245 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 38452
+DEBUG 2024-08-06 21:45:29,246 views Response status: 200
+INFO 2024-08-06 21:45:29,303 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 21:45:29,304 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 38452
+WARNING 2024-08-06 21:45:59,905 log Unauthorized: /api/chat-history/
+WARNING 2024-08-06 21:45:59,906 basehttp "GET /api/chat-history/ HTTP/1.1" 401 58
+WARNING 2024-08-06 21:45:59,908 log Unauthorized: /api/chat-history/
+WARNING 2024-08-06 21:45:59,909 basehttp "GET /api/chat-history/ HTTP/1.1" 401 58
+INFO 2024-08-06 21:46:23,563 decorators Handling POST request to /api/login/
+INFO 2024-08-06 21:46:23,984 views Token obtained for a, status code: 200
+INFO 2024-08-06 21:46:23,985 decorators Response status code: 200, URL: /api/login/
+INFO 2024-08-06 21:46:23,986 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-08-06 21:46:45,535 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 21:46:45,539 views User a permissions: set()
+DEBUG 2024-08-06 21:46:45,545 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 21:46:48,453 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 21:46:48,460 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 21:46:48,461 basehttp "POST /api/gemini/ HTTP/1.1" 200 250
+INFO 2024-08-06 21:46:50,790 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 21:46:50,794 views User a permissions: set()
+DEBUG 2024-08-06 21:46:50,795 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 21:46:50,795 views Data: {'text': 'Merci pour votre aide', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 21:46:50,797 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 21:46:52,963 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 20480
+DEBUG 2024-08-06 21:46:52,964 views Response status: 200
+INFO 2024-08-06 21:46:53,024 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 21:46:53,026 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 20480
+INFO 2024-08-06 21:46:56,352 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 21:46:56,355 views User a permissions: set()
+DEBUG 2024-08-06 21:46:56,362 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 21:46:59,707 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 21:46:59,717 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 21:46:59,720 basehttp "POST /api/gemini/ HTTP/1.1" 200 323
+INFO 2024-08-06 21:47:03,203 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 21:47:03,207 views User a permissions: set()
+DEBUG 2024-08-06 21:47:03,208 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 21:47:03,208 views Data: {'text': 'I\n me\n my\n mine\n myself\n\n You\n your\n yours\n yourself\n\n He\n him\n his\n himself\n\n She\n her\n hers\n herself\n\n We\n us\n our\n ours\n ourselves\n\n You plural\n your\n yours\n yourselves\n\n They\n them\n their\n theirs\n themselves\n\n It\n it\n its\n itself', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 21:47:03,210 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+INFO 2024-08-06 21:47:07,863 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-08-06 21:47:07,867 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-08-06 21:47:07,873 basehttp "GET /api/chat-history/ HTTP/1.1" 200 3675
+INFO 2024-08-06 21:47:07,880 basehttp "GET /api/chat-history/ HTTP/1.1" 200 3675
+DEBUG 2024-08-06 21:47:07,895 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 267493
+DEBUG 2024-08-06 21:47:07,895 views Response status: 200
+INFO 2024-08-06 21:47:07,976 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 21:47:07,978 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 267493
+INFO 2024-08-06 22:31:45,176 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:32:06,528 decorators Handling POST request to /api/login/
+ERROR 2024-08-06 22:32:06,929 log Internal Server Error: /api/login/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\decorators.py", line 21, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 38, in post
+    response = super().post(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 77, in validate
+    data["refresh"] = str(refresh)
+                      ^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 95, in __str__
+    return self.get_token_backend().encode(self.payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 229, in get_token_backend
+    return self.token_backend
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 222, in token_backend
+    self._token_backend = import_string(
+                          ^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\state.py", line 1, in <module>
+    from .backends import TokenBackend
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\backends.py", line 8, in <module>
+    from jwt import InvalidAlgorithmError, InvalidTokenError, algorithms
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\jwt\algorithms.py", line 10, in <module>
+    from .exceptions import InvalidKeyError
+ImportError: cannot import name 'InvalidKeyError' from 'jwt.exceptions' (C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\jwt\exceptions.py)
+ERROR 2024-08-06 22:32:06,939 basehttp "POST /api/login/ HTTP/1.1" 500 213114
+INFO 2024-08-06 22:34:58,791 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:35:05,292 decorators Handling POST request to /api/login/
+ERROR 2024-08-06 22:35:05,569 log Internal Server Error: /api/login/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\decorators.py", line 21, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 38, in post
+    response = super().post(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 77, in validate
+    data["refresh"] = str(refresh)
+                      ^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 95, in __str__
+    return self.get_token_backend().encode(self.payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 229, in get_token_backend
+    return self.token_backend
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 222, in token_backend
+    self._token_backend = import_string(
+                          ^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\state.py", line 1, in <module>
+    from .backends import TokenBackend
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\backends.py", line 8, in <module>
+    from jwt import InvalidAlgorithmError, InvalidTokenError, algorithms
+ImportError: cannot import name 'InvalidAlgorithmError' from 'jwt' (unknown location)
+ERROR 2024-08-06 22:35:05,581 basehttp "POST /api/login/ HTTP/1.1" 500 197608
+INFO 2024-08-06 22:35:23,119 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:35:28,956 decorators Handling POST request to /api/login/
+ERROR 2024-08-06 22:35:29,260 log Internal Server Error: /api/login/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\decorators.py", line 21, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 38, in post
+    response = super().post(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 77, in validate
+    data["refresh"] = str(refresh)
+                      ^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 95, in __str__
+    return self.get_token_backend().encode(self.payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 229, in get_token_backend
+    return self.token_backend
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 222, in token_backend
+    self._token_backend = import_string(
+                          ^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1206, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\state.py", line 1, in <module>
+    from .backends import TokenBackend
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework_simplejwt\backends.py", line 8, in <module>
+    from jwt import InvalidAlgorithmError, InvalidTokenError, algorithms
+ImportError: cannot import name 'InvalidAlgorithmError' from 'jwt' (unknown location)
+ERROR 2024-08-06 22:35:29,270 basehttp "POST /api/login/ HTTP/1.1" 500 197608
+INFO 2024-08-06 22:36:41,788 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:36:48,076 decorators Handling POST request to /api/login/
+INFO 2024-08-06 22:36:48,343 views Token obtained for a, status code: 200
+INFO 2024-08-06 22:36:48,344 decorators Response status code: 200, URL: /api/login/
+INFO 2024-08-06 22:36:48,345 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-08-06 22:36:54,441 decorators Handling POST request to /api/login/
+INFO 2024-08-06 22:36:54,686 views Token obtained for a, status code: 200
+INFO 2024-08-06 22:36:54,686 decorators Response status code: 200, URL: /api/login/
+INFO 2024-08-06 22:36:54,687 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-08-06 22:36:57,359 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 22:36:57,365 views User a permissions: set()
+DEBUG 2024-08-06 22:36:57,385 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 22:36:59,069 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 22:36:59,078 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 22:36:59,079 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2024-08-06 22:37:01,421 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:37:01,427 views User a permissions: set()
+DEBUG 2024-08-06 22:37:01,428 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:37:01,428 views Data: {'text': 'Hey there! How can I help you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:37:01,430 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:37:03,315 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 34690
+DEBUG 2024-08-06 22:37:03,316 views Response status: 200
+INFO 2024-08-06 22:37:03,360 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 22:37:03,361 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 34690
+INFO 2024-08-06 22:39:25,115 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:39:25,118 views User a permissions: set()
+DEBUG 2024-08-06 22:39:25,118 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:39:25,118 views Data: {'text': 'Hey there! How can I help you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:39:25,120 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:39:27,016 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 36362
+DEBUG 2024-08-06 22:39:27,017 views Response status: 200
+INFO 2024-08-06 22:39:27,067 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 22:39:27,067 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 36362
+INFO 2024-08-06 22:39:42,100 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:39:50,120 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 22:39:50,173 views User a permissions: set()
+DEBUG 2024-08-06 22:39:50,187 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 22:39:51,965 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 22:39:51,975 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 22:39:51,977 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-08-06 22:39:52,370 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:39:52,375 views User a permissions: set()
+DEBUG 2024-08-06 22:39:52,376 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:39:52,376 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:39:52,378 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:39:52,822 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 400 112
+DEBUG 2024-08-06 22:39:52,822 views Response status: 400
+ERROR 2024-08-06 22:39:52,823 views HTTP error occurred: 400 Client Error: Bad Request for url: https://api.elevenlabs.io/v1/text-to-speech/hFgOzpmS0CMtL2to8sAl
+ERROR 2024-08-06 22:39:52,824 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-08-06 22:39:52,824 log Bad Request: /api/text-to-speech/
+WARNING 2024-08-06 22:39:52,825 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 128
+INFO 2024-08-06 22:39:55,134 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:39:55,137 views User a permissions: set()
+DEBUG 2024-08-06 22:39:55,137 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:39:55,138 views Data: {'text': 'Hey there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:39:55,139 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:39:55,580 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 400 112
+DEBUG 2024-08-06 22:39:55,581 views Response status: 400
+ERROR 2024-08-06 22:39:55,581 views HTTP error occurred: 400 Client Error: Bad Request for url: https://api.elevenlabs.io/v1/text-to-speech/hFgOzpmS0CMtL2to8sAl
+ERROR 2024-08-06 22:39:55,582 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-08-06 22:39:55,583 log Bad Request: /api/text-to-speech/
+WARNING 2024-08-06 22:39:55,583 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 128
+INFO 2024-08-06 22:40:00,344 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:40:00,348 views User a permissions: set()
+DEBUG 2024-08-06 22:40:00,349 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:40:00,349 views Data: {'text': 'Hey there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:40:00,351 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:40:00,850 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 400 112
+DEBUG 2024-08-06 22:40:00,850 views Response status: 400
+ERROR 2024-08-06 22:40:00,851 views HTTP error occurred: 400 Client Error: Bad Request for url: https://api.elevenlabs.io/v1/text-to-speech/hFgOzpmS0CMtL2to8sAl
+ERROR 2024-08-06 22:40:00,851 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-08-06 22:40:00,853 log Bad Request: /api/text-to-speech/
+WARNING 2024-08-06 22:40:00,853 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 128
+INFO 2024-08-06 22:40:02,727 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:40:02,730 views User a permissions: set()
+DEBUG 2024-08-06 22:40:02,730 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:40:02,730 views Data: {'text': 'Hey there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:40:02,732 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:40:03,169 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 400 112
+DEBUG 2024-08-06 22:40:03,170 views Response status: 400
+ERROR 2024-08-06 22:40:03,170 views HTTP error occurred: 400 Client Error: Bad Request for url: https://api.elevenlabs.io/v1/text-to-speech/hFgOzpmS0CMtL2to8sAl
+ERROR 2024-08-06 22:40:03,172 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-08-06 22:40:03,173 log Bad Request: /api/text-to-speech/
+WARNING 2024-08-06 22:40:03,173 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 128
+INFO 2024-08-06 22:40:04,664 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:40:04,667 views User a permissions: set()
+DEBUG 2024-08-06 22:40:04,668 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:40:04,668 views Data: {'text': 'Hey there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:40:04,670 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:40:05,120 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 400 112
+DEBUG 2024-08-06 22:40:05,121 views Response status: 400
+ERROR 2024-08-06 22:40:05,121 views HTTP error occurred: 400 Client Error: Bad Request for url: https://api.elevenlabs.io/v1/text-to-speech/hFgOzpmS0CMtL2to8sAl
+ERROR 2024-08-06 22:40:05,123 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-08-06 22:40:05,124 log Bad Request: /api/text-to-speech/
+WARNING 2024-08-06 22:40:05,124 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 128
+INFO 2024-08-06 22:40:11,884 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:40:16,038 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 22:40:16,085 views User a permissions: set()
+DEBUG 2024-08-06 22:40:16,097 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 22:40:17,736 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 22:40:17,747 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 22:40:17,748 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-08-06 22:40:18,146 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:40:18,151 views User a permissions: set()
+DEBUG 2024-08-06 22:40:18,151 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:40:18,151 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:40:18,153 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:40:19,885 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 10866
+DEBUG 2024-08-06 22:40:19,886 views Response status: 200
+INFO 2024-08-06 22:40:19,956 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 22:40:19,957 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 10866
+INFO 2024-08-06 22:41:11,342 autoreload Watching for file changes with StatReloader
+INFO 2024-08-06 22:41:21,618 decorators Handling POST request to /api/gemini/
+INFO 2024-08-06 22:41:21,665 views User a permissions: set()
+DEBUG 2024-08-06 22:41:21,677 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-06 22:41:22,789 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-08-06 22:41:22,799 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-06 22:41:22,802 basehttp "POST /api/gemini/ HTTP/1.1" 200 48
+INFO 2024-08-06 22:41:23,539 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:41:23,543 views User a permissions: set()
+DEBUG 2024-08-06 22:41:23,544 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:41:23,544 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:41:23,545 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:41:25,241 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 15464
+DEBUG 2024-08-06 22:41:25,241 views Response status: 200
+INFO 2024-08-06 22:41:25,278 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 22:41:25,279 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 15464
+INFO 2024-08-06 22:41:25,896 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-06 22:41:25,899 views User a permissions: set()
+DEBUG 2024-08-06 22:41:25,899 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-06 22:41:25,900 views Data: {'text': 'Hi there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-06 22:41:25,901 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-06 22:41:27,762 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 39288
+DEBUG 2024-08-06 22:41:27,762 views Response status: 200
+INFO 2024-08-06 22:41:27,831 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-06 22:41:27,832 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 39288
+INFO 2024-08-06 22:42:52,645 decorators Handling POST request to /api/gemini/
+ERROR 2024-08-06 22:42:52,646 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-08-06 22:42:52,646 log Unauthorized: /api/gemini/
+WARNING 2024-08-06 22:42:52,647 basehttp "POST /api/gemini/ HTTP/1.1" 401 58
+INFO 2024-08-06 22:42:54,060 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-08-06 22:42:54,061 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-08-06 22:42:54,061 log Unauthorized: /api/text-to-speech/
+WARNING 2024-08-06 22:42:54,063 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 58
+INFO 2024-08-06 22:43:21,650 decorators Handling POST request to /api/gemini/
+ERROR 2024-08-06 22:43:21,651 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-08-06 22:43:21,652 log Unauthorized: /api/gemini/
+WARNING 2024-08-06 22:43:21,652 basehttp "POST /api/gemini/ HTTP/1.1" 401 58
+INFO 2024-08-06 22:53:01,352 autoreload Watching for file changes with StatReloader

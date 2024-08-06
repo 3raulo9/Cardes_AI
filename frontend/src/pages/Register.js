@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axiosInstance from '../utils/axiosInstance'; // Adjust the import if necessary
+import unauthorizedAxiosInstance from '../utils/unauthorizedAxiosInstance'; // Adjust the import if necessary
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -12,7 +12,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axiosInstance.post('/api/register/', {
+      const response = await unauthorizedAxiosInstance.post('/api/register/', {
         username,
         email,
         password,
