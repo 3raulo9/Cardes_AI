@@ -1,0 +1,263 @@
+INFO 2024-07-31 17:17:18,039 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:17:18,040 decorators Error response: 403, URL: /api/gemini/
+WARNING 2024-07-31 17:17:18,040 log Forbidden: /api/gemini/
+WARNING 2024-07-31 17:17:18,040 basehttp "POST /api/gemini/ HTTP/1.1" 403 58
+INFO 2024-07-31 17:19:21,410 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\myproj\settings.py changed, reloading.
+INFO 2024-07-31 17:19:21,832 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:19:25,779 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\myproj\settings.py changed, reloading.
+INFO 2024-07-31 17:19:26,232 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:19:27,743 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:19:27,767 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-07-31 17:19:27,767 log Unauthorized: /api/gemini/
+WARNING 2024-07-31 17:19:27,768 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-07-31 17:19:51,473 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:19:51,709 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:19:51,709 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:19:51,710 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 17:20:00,317 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:20:00,563 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:20:00,563 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:20:00,563 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 17:20:22,147 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:20:22,151 decorators Error response: 403, URL: /api/gemini/
+WARNING 2024-07-31 17:20:22,151 log Forbidden: /api/gemini/
+WARNING 2024-07-31 17:20:22,151 basehttp "POST /api/gemini/ HTTP/1.1" 403 38
+INFO 2024-07-31 17:21:37,117 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:21:43,207 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:21:43,233 decorators Error response: 403, URL: /api/gemini/
+WARNING 2024-07-31 17:21:43,233 log Forbidden: /api/gemini/
+WARNING 2024-07-31 17:21:43,233 basehttp "POST /api/gemini/ HTTP/1.1" 403 38
+INFO 2024-07-31 17:21:57,555 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:22:12,559 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:22:12,825 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:22:12,826 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:22:12,826 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 17:22:20,263 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:22:20,499 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:22:20,499 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:22:20,499 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 17:22:33,263 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:22:33,266 decorators Error response: 403, URL: /api/gemini/
+WARNING 2024-07-31 17:22:33,266 log Forbidden: /api/gemini/
+WARNING 2024-07-31 17:22:33,266 basehttp "POST /api/gemini/ HTTP/1.1" 403 38
+INFO 2024-07-31 17:23:09,364 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:23:09,759 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:23:37,503 views User a permissions: set()
+WARNING 2024-07-31 17:23:37,503 log Bad Request: /api/gemini/
+WARNING 2024-07-31 17:23:37,504 basehttp "POST /api/gemini/ HTTP/1.1" 400 31
+INFO 2024-07-31 17:23:46,320 views User a permissions: set()
+DEBUG 2024-07-31 17:23:46,327 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:23:48,306 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:23:48,316 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-07-31 17:24:05,045 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:24:05,507 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:24:13,977 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 17:24:14,002 views User a permissions: set()
+DEBUG 2024-07-31 17:24:14,006 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:24:15,903 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:24:15,914 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 17:24:15,915 basehttp "POST /api/gemini/ HTTP/1.1" 200 15
+INFO 2024-07-31 17:24:35,798 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 17:24:35,801 views User a permissions: set()
+DEBUG 2024-07-31 17:24:35,806 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:24:38,418 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:24:38,429 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 17:24:38,430 basehttp "POST /api/gemini/ HTTP/1.1" 200 20
+INFO 2024-07-31 17:24:56,626 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:24:57,104 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:25:02,773 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:25:02,798 decorators Error response: 403, URL: /api/gemini/
+WARNING 2024-07-31 17:25:02,798 log Forbidden: /api/gemini/
+WARNING 2024-07-31 17:25:02,799 basehttp "POST /api/gemini/ HTTP/1.1" 403 38
+INFO 2024-07-31 17:25:09,601 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:25:10,029 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:25:14,011 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:25:14,412 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:40:06,872 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:40:07,319 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:40:07,319 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:40:07,320 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 17:47:27,370 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 17:47:27,373 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-07-31 17:47:27,374 log Unauthorized: /api/gemini/
+WARNING 2024-07-31 17:47:27,375 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-07-31 17:47:40,698 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:47:41,139 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:47:41,140 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:47:41,141 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 17:47:45,863 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 17:47:45,868 views User a permissions: set()
+DEBUG 2024-07-31 17:47:45,877 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:47:48,092 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:47:48,099 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 17:47:48,100 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-07-31 17:47:59,809 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 17:47:59,813 views User a permissions: set()
+DEBUG 2024-07-31 17:47:59,821 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:48:02,220 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:48:02,232 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 17:48:02,234 basehttp "POST /api/gemini/ HTTP/1.1" 200 27
+INFO 2024-07-31 17:48:04,488 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-07-31 17:48:04,489 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-07-31 17:48:04,494 views User a permissions: set()
+DEBUG 2024-07-31 17:48:04,494 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-07-31 17:48:04,525 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-07-31 17:48:06,882 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 22987
+DEBUG 2024-07-31 17:48:06,882 views Response status: 200
+INFO 2024-07-31 17:48:07,007 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-07-31 17:48:07,008 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 22987
+INFO 2024-07-31 17:48:32,564 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 17:48:32,567 views User a permissions: set()
+DEBUG 2024-07-31 17:48:32,573 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:48:34,910 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:48:34,918 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 17:48:34,919 basehttp "POST /api/gemini/ HTTP/1.1" 200 104
+INFO 2024-07-31 17:48:37,388 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-07-31 17:48:37,392 views User a permissions: set()
+DEBUG 2024-07-31 17:48:37,392 views Headers: {'xi-api-key': 'sk_75d81fda33fcb2403731de986f14c536a8be038ee0a00232', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-07-31 17:48:37,404 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-07-31 17:48:40,077 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/Xb7hH8MSUJpSbSDYk0k2 HTTP/1.1" 200 104071
+DEBUG 2024-07-31 17:48:40,078 views Response status: 200
+INFO 2024-07-31 17:48:40,124 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-07-31 17:48:40,125 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 104071
+INFO 2024-07-31 17:50:39,972 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:50:40,412 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:51:17,257 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 17:51:17,296 views User a permissions: set()
+DEBUG 2024-07-31 17:51:17,306 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 17:51:21,385 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 17:51:21,397 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 17:51:21,400 basehttp "POST /api/gemini/ HTTP/1.1" 200 302
+INFO 2024-07-31 17:54:04,350 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:54:04,762 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:54:28,066 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:54:28,459 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:54:32,406 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\views.py changed, reloading.
+INFO 2024-07-31 17:54:32,817 autoreload Watching for file changes with StatReloader
+INFO 2024-07-31 17:59:27,727 decorators Handling POST request to /api/login/
+INFO 2024-07-31 17:59:27,996 views Token obtained for a, status code: 200
+INFO 2024-07-31 17:59:27,996 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 17:59:27,996 basehttp "POST /api/login/ HTTP/1.1" 200 483
+WARNING 2024-07-31 17:59:54,694 log Not Found: /api/chat_history/
+WARNING 2024-07-31 17:59:54,694 basehttp "GET /api/chat_history/ HTTP/1.1" 404 3237
+WARNING 2024-07-31 18:00:25,266 log Not Found: /api/chat_history
+WARNING 2024-07-31 18:00:25,267 basehttp "GET /api/chat_history HTTP/1.1" 404 3234
+INFO 2024-07-31 18:00:45,444 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1896
+WARNING 2024-07-31 18:00:55,787 log Not Found: /api/chat-history/
+WARNING 2024-07-31 18:00:55,788 basehttp "PUT /api/chat-history/ HTTP/1.1" 404 29
+WARNING 2024-07-31 18:01:04,294 log Not Found: /api/chat-history/1
+WARNING 2024-07-31 18:01:04,295 basehttp "PUT /api/chat-history/1 HTTP/1.1" 404 3240
+WARNING 2024-07-31 18:01:09,774 log Not Found: /api/chat-history/
+WARNING 2024-07-31 18:01:09,775 basehttp "PUT /api/chat-history/ HTTP/1.1" 404 29
+INFO 2024-07-31 18:02:13,355 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:02:13,357 log Unauthorized: /api/chat-history/
+INFO 2024-07-31 18:02:13,357 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:02:13,358 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-07-31 18:02:13,359 log Unauthorized: /api/chat-history/
+WARNING 2024-07-31 18:02:13,360 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+INFO 2024-07-31 18:02:26,582 basehttp "OPTIONS /api/new-chat/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:02:26,589 log Not Found: /api/new-chat/
+WARNING 2024-07-31 18:02:26,590 basehttp "POST /api/new-chat/ HTTP/1.1" 404 3226
+WARNING 2024-07-31 18:05:09,777 log Unauthorized: /api/chat-history/
+WARNING 2024-07-31 18:05:09,777 basehttp "PUT /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-07-31 18:05:38,992 log Method Not Allowed: /api/login/
+WARNING 2024-07-31 18:05:38,992 basehttp "PUT /api/login/ HTTP/1.1" 405 40
+INFO 2024-07-31 18:05:43,078 decorators Handling POST request to /api/login/
+INFO 2024-07-31 18:05:43,321 views Token obtained for a, status code: 200
+INFO 2024-07-31 18:05:43,321 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 18:05:43,321 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 18:06:27,811 basehttp "POST /api/chat-history/ HTTP/1.1" 200 33
+WARNING 2024-07-31 18:06:41,138 log Not Found: /api/chat-history/
+WARNING 2024-07-31 18:06:41,138 basehttp "PUT /api/chat-history/ HTTP/1.1" 404 29
+INFO 2024-07-31 18:06:57,016 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1896
+WARNING 2024-07-31 18:07:08,218 log Not Found: /api/chat-history/
+WARNING 2024-07-31 18:07:08,218 basehttp "PUT /api/chat-history/ HTTP/1.1" 404 29
+INFO 2024-07-31 18:07:42,391 basehttp "PUT /api/chat-history/ HTTP/1.1" 200 29
+INFO 2024-07-31 18:07:47,295 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1902
+INFO 2024-07-31 18:07:56,822 basehttp "PUT /api/chat-history/ HTTP/1.1" 200 29
+INFO 2024-07-31 18:11:00,851 decorators Handling POST request to /api/login/
+INFO 2024-07-31 18:11:01,284 views Token obtained for a, status code: 200
+INFO 2024-07-31 18:11:01,284 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 18:11:01,285 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 18:11:02,089 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:11:02,094 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:11:33,320 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:11:33,323 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:11:58,317 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:11:58,322 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:12:13,053 basehttp "OPTIONS /api/chat/undefined/message/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:12:13,061 log Not Found: /api/chat/undefined/message/
+WARNING 2024-07-31 18:12:13,061 basehttp "POST /api/chat/undefined/message/ HTTP/1.1" 404 3268
+INFO 2024-07-31 18:13:03,899 basehttp "OPTIONS /api/chats/ HTTP/1.1" 200 0
+INFO 2024-07-31 18:13:03,900 basehttp "OPTIONS /api/chats/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:13:03,905 log Not Found: /api/chats/
+WARNING 2024-07-31 18:13:03,905 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+WARNING 2024-07-31 18:13:03,909 log Not Found: /api/chats/
+WARNING 2024-07-31 18:13:03,909 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+WARNING 2024-07-31 18:13:11,285 log Not Found: /api/chats/
+WARNING 2024-07-31 18:13:11,285 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+WARNING 2024-07-31 18:13:11,293 log Not Found: /api/chats/
+WARNING 2024-07-31 18:13:11,293 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+INFO 2024-07-31 18:13:25,228 basehttp "OPTIONS /api/chat_history/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:13:25,234 log Not Found: /api/chat_history/
+WARNING 2024-07-31 18:13:25,235 basehttp "GET /api/chat_history/ HTTP/1.1" 404 3237
+WARNING 2024-07-31 18:13:28,313 log Not Found: /api/chat_history/
+WARNING 2024-07-31 18:13:28,314 basehttp "GET /api/chat_history/ HTTP/1.1" 404 3237
+WARNING 2024-07-31 18:13:28,318 log Not Found: /api/chat_history/
+WARNING 2024-07-31 18:13:28,318 basehttp "GET /api/chat_history/ HTTP/1.1" 404 3237
+WARNING 2024-07-31 18:14:11,317 log Not Found: /api/chats/
+WARNING 2024-07-31 18:14:11,317 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+WARNING 2024-07-31 18:14:18,310 log Not Found: /api/chat_history/
+WARNING 2024-07-31 18:14:18,310 basehttp "GET /api/chat_history/ HTTP/1.1" 404 3237
+INFO 2024-07-31 18:14:55,552 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:14:57,893 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+INFO 2024-07-31 18:14:57,896 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1887
+WARNING 2024-07-31 18:15:49,002 log Not Found: /api/chat/undefined/message/
+WARNING 2024-07-31 18:15:49,003 basehttp "POST /api/chat/undefined/message/ HTTP/1.1" 404 3268
+INFO 2024-07-31 18:16:37,558 basehttp "OPTIONS /api/message/undefined/ HTTP/1.1" 200 0
+WARNING 2024-07-31 18:16:37,565 log Not Found: /api/message/undefined/
+WARNING 2024-07-31 18:16:37,566 basehttp "PATCH /api/message/undefined/ HTTP/1.1" 404 3254
+INFO 2024-07-31 18:17:18,451 decorators Handling POST request to /api/gemini/
+ERROR 2024-07-31 18:17:18,452 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-07-31 18:17:18,452 log Unauthorized: /api/gemini/
+WARNING 2024-07-31 18:17:18,453 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-07-31 18:17:24,702 decorators Handling POST request to /api/login/
+INFO 2024-07-31 18:17:25,157 views Token obtained for a, status code: 200
+INFO 2024-07-31 18:17:25,157 decorators Response status code: 200, URL: /api/login/
+INFO 2024-07-31 18:17:25,158 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-07-31 18:17:27,121 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 18:17:27,126 views User a permissions: set()
+DEBUG 2024-07-31 18:17:27,133 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 18:17:29,248 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 18:17:29,259 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 18:17:29,262 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+WARNING 2024-07-31 18:19:45,796 log Not Found: /api/chat/undefined/message/
+WARNING 2024-07-31 18:19:45,797 basehttp "POST /api/chat/undefined/message/ HTTP/1.1" 404 3268
+INFO 2024-07-31 18:21:57,673 decorators Handling POST request to /api/gemini/
+INFO 2024-07-31 18:21:57,677 views User a permissions: set()
+DEBUG 2024-07-31 18:21:57,681 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-07-31 18:21:59,583 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBEjmfuqlxHKw9iwh9MirG68wpx9Qpy8fs HTTP/1.1" 200 None
+INFO 2024-07-31 18:21:59,592 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-07-31 18:21:59,593 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+WARNING 2024-07-31 18:22:06,428 log Not Found: /api/message/undefined/
+WARNING 2024-07-31 18:22:06,428 basehttp "PATCH /api/message/undefined/ HTTP/1.1" 404 3254
+INFO 2024-08-01 02:23:17,295 autoreload Watching for file changes with StatReloader
+INFO 2024-08-01 02:34:06,307 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-08-01 02:34:06,311 decorators Handling POST request to /api/login/
+INFO 2024-08-01 02:34:06,851 views Token obtained for a, status code: 200
+INFO 2024-08-01 02:34:06,852 decorators Response status code: 200, URL: /api/login/
+INFO 2024-08-01 02:34:06,853 basehttp "POST /api/login/ HTTP/1.1" 200 483
+INFO 2024-08-01 02:34:11,217 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-08-01 02:34:11,217 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-08-01 02:34:11,224 basehttp "GET /api/chat-history/ HTTP/1.1" 200 2219
+INFO 2024-08-01 02:34:11,230 basehttp "GET /api/chat-history/ HTTP/1.1" 200 2219
+INFO 2024-08-01 02:35:10,653 basehttp "OPTIONS /api/chats/ HTTP/1.1" 200 0
+WARNING 2024-08-01 02:35:10,760 log Not Found: /api/chats/
+WARNING 2024-08-01 02:35:10,760 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+WARNING 2024-08-01 02:35:53,390 log Not Found: /api/chats/
+WARNING 2024-08-01 02:35:53,391 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+WARNING 2024-08-01 02:35:53,395 log Not Found: /api/chats/
+WARNING 2024-08-01 02:35:53,396 basehttp "GET /api/chats/ HTTP/1.1" 404 3216
+INFO 2024-08-01 02:36:25,918 autoreload D:\python stuff\AI\Cardes\Cardes_AI\backend\base\urls.py changed, reloading.
+INFO 2024-08-01 02:36:26,326 autoreload Watching for file changes with StatReloader
+INFO 2024-08-01 02:36:55,997 basehttp "GET /api/chat-history/ HTTP/1.1" 200 2219

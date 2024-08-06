@@ -1,5 +1,4 @@
-// src/components/ChatItem.js
-import React from "react";
+import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import catIcon from "../static/images/cat_icon.png";
@@ -12,13 +11,22 @@ const ChatItem = ({
   tooltipContent,
   handleTextToSpeech,
   handleTypingComplete,
-  hasShownCatIcon
+  hasShownCatIcon,
+  updateMessage,
 }) => {
+  const [editMode, setEditMode] = useState(false);
+  const [newMessageContent, setNewMessageContent] = useState(chatItem.parts.join(" "));
+
+  const handleEditClick = () => setEditMode(true);
+  const handleSaveClick = () => {
+    updateMessage(chatItem.id, newMessageContent);
+    setEditMode(false);
+  };
+
   return (
     <div key={chatItem.id} className={`chat-item ${chatItem.role}`}>
       <div className="icon">
-        {(index === 0 ||
-          (!chatItem.showCardButton && !hasShownCatIcon)) && (
+        {(index === 0 || (!chatItem.showCardButton && !hasShownCatIcon)) && (
           <img
             src={chatItem.role === "user" ? anonIcon : catIcon}
             alt={chatItem.role}
@@ -28,7 +36,15 @@ const ChatItem = ({
         {chatItem.role !== "user" && chatItem.showCardButton && (hasShownCatIcon = true)}
       </div>
       <div className={`answer-container ${chatItem.role === 'model' && index % 2 === 0 ? 'second-box' : ''}`}>
-        {chatItem.role === "model" ? (
+        {editMode ? (
+          <div>
+            <textarea
+              value={newMessageContent}
+              onChange={(e) => setNewMessageContent(e.target.value)}
+            />
+            <button onClick={handleSaveClick}>Save</button>
+          </div>
+        ) : chatItem.role === "model" ? (
           <div className={`typed-out ${cursorVisibility[chatItem.id] ? 'hide-cursor' : ''}`}>
             <Typewriter
               onInit={(typewriter) => {
@@ -67,8 +83,11 @@ const ChatItem = ({
             <sl-icon name="download" />
           </button>
         </SlTooltip>
+        {chatItem.role === "user" && (
+          <button onClick={handleEditClick}>Edit</button>
+        )}
       </div>
-      <SlTooltip  placement="right" content={  "Add to cards"}>
+      <SlTooltip placement="right" content={"Add to cards"}>
         {chatItem.showCardButton && (
           <div className="add-to-cards">
             <div className="line"></div>
