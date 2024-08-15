@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import "../styles/index.css";
 
 const Login = ({ setLoading }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize the navigate hook
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,10 +16,8 @@ const Login = ({ setLoading }) => {
         username,
         password,
       });
-      // Store access token in local storage
       localStorage.setItem('accessToken', response.data.access);
       setLoading(false);
-      // Redirect to the chat page after successful login
       navigate('/chat');
     } catch (error) {
       setError("Invalid credentials. Please try again.");
@@ -29,10 +26,29 @@ const Login = ({ setLoading }) => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div className="auth-container" style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100vh',
+    }}>
+      <form onSubmit={handleSubmit} style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+        boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#fff6eb'
+
+      }}>
+        <h2>Login</h2>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: '10px'
+        }}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -40,9 +56,18 @@ const Login = ({ setLoading }) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            style={{
+              padding: '10px',
+              borderRadius: '5px',
+              border: '1px solid #ccc'
+            }}
           />
         </div>
-        <div className="form-group">
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: '10px'
+        }}>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -50,10 +75,22 @@ const Login = ({ setLoading }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            style={{
+              padding: '10px',
+              borderRadius: '5px',
+              border: '1px solid #ccc'
+            }}
           />
         </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Login</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit" style={{
+          padding: '10px 20px',
+          backgroundColor: '#007bff',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}>Login</button>
         <p>
           Don't have an account? <a href="/register">Register here</a>
         </p>

@@ -31,34 +31,37 @@ const Register = () => {
     <div className="register-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div style={{ marginBottom: '10px' }}>
           <label>Username</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            style={{ width: '100%', padding: '5px', border: '1px solid #ccc', borderRadius: '3px' }}
           />
         </div>
-        <div>
+        <div style={{ marginBottom: '10px' }}>
           <label>Email</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            style={{ width: '100%', padding: '5px', border: '1px solid #ccc', borderRadius: '3px' }}
           />
         </div>
-        <div>
+        <div style={{ marginBottom: '10px' }}>
           <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            style={{ width: '100%', padding: '5px', border: '1px solid #ccc', borderRadius: '3px' }}
           />
         </div>
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '3px', cursor: 'pointer' }}>
           {loading ? 'Registering...' : 'Register'}
         </button>
         {error && <p className="error-message">{error}</p>}

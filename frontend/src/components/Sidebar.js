@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../styles/sidebar.css"; // Correct relative import path
+import "../styles/sidebar.css";
 
 const Sidebar = ({ setLoading }) => {
   const location = useLocation();
@@ -12,7 +12,7 @@ const Sidebar = ({ setLoading }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
-    window.location.href = '/login'; // Redirect to login page after logout
+    window.location.href = '/login';
   };
 
   return (
@@ -79,7 +79,7 @@ const Sidebar = ({ setLoading }) => {
             </li>
             <li>
               <Link to="/register" onClick={handleNavigation}>
-                <sl-icon className="sl-icon" name="person-add"></sl-icon>
+                <sl-icon className="sl-icon" name="person-fill-add"></sl-icon>
                 Register
               </Link>
             </li>
@@ -87,15 +87,15 @@ const Sidebar = ({ setLoading }) => {
         )}
         {accessToken ? (
           <li>
-            <button onClick={handleLogout} className="logout-button">
-              <sl-icon className="sl-icon" name="logout"></sl-icon>
+            <Link onClick={handleLogout} className="logout-button logout-button-styled">
+              <sl-icon className="sl-icon" name="person-dash"></sl-icon>
               Logout
-            </button>
+            </Link>
           </li>
         ) : (
           <li>
             <Link to="/login" onClick={handleNavigation}>
-              <sl-icon className="sl-icon" name="login"></sl-icon>
+              <sl-icon className="sl-icon" name="person"></sl-icon>
               Login
             </Link>
           </li>
