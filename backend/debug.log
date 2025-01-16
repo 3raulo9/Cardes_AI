@@ -705,3 +705,1137 @@ INFO 2024-08-15 19:15:51,904 decorators Handling POST request to /api/login/
 INFO 2024-08-15 19:15:52,114 views Token obtained for ra, status code: 200
 INFO 2024-08-15 19:15:52,115 decorators Response status code: 200, URL: /api/login/
 INFO 2024-08-15 19:15:52,115 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-08-15 20:13:33,342 autoreload Watching for file changes with StatReloader
+INFO 2024-08-15 20:14:11,191 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-08-15 20:14:11,198 decorators Handling POST request to /api/login/
+INFO 2024-08-15 20:14:11,500 views Token obtained for ra, status code: 200
+INFO 2024-08-15 20:14:11,500 decorators Response status code: 200, URL: /api/login/
+INFO 2024-08-15 20:14:11,501 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-08-15 20:14:13,092 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2024-08-15 20:14:13,094 decorators Handling POST request to /api/gemini/
+INFO 2024-08-15 20:14:13,099 views User ra permissions: set()
+DEBUG 2024-08-15 20:14:13,124 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-15 20:14:14,727 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-08-15 20:14:14,738 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-15 20:14:14,740 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+INFO 2024-08-15 20:14:17,028 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-08-15 20:14:17,031 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-15 20:14:17,036 views User ra permissions: set()
+DEBUG 2024-08-15 20:14:17,036 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-15 20:14:17,036 views Data: {'text': 'r', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-15 20:14:17,038 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-15 20:14:19,005 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 5015
+DEBUG 2024-08-15 20:14:19,006 views Response status: 200
+INFO 2024-08-15 20:14:19,042 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-15 20:14:19,043 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 5015
+INFO 2024-08-15 20:15:12,127 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-08-15 20:15:12,130 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-08-15 20:15:12,139 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1685
+INFO 2024-08-15 20:15:12,145 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1685
+INFO 2024-08-15 20:15:17,422 decorators Handling POST request to /api/gemini/
+INFO 2024-08-15 20:15:17,426 views User ra permissions: set()
+DEBUG 2024-08-15 20:15:17,437 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-08-15 20:15:19,287 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-08-15 20:15:19,295 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-08-15 20:15:19,295 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2024-08-15 20:15:20,057 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-15 20:15:20,061 views User ra permissions: set()
+DEBUG 2024-08-15 20:15:20,061 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-15 20:15:20,061 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-15 20:15:20,063 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+INFO 2024-08-15 20:15:23,653 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-15 20:15:23,656 views User ra permissions: set()
+DEBUG 2024-08-15 20:15:23,656 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-15 20:15:23,657 views Data: {'text': 'Hey there! How can I help you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-15 20:15:23,659 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-15 20:15:23,923 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 12538
+DEBUG 2024-08-15 20:15:23,924 views Response status: 200
+INFO 2024-08-15 20:15:23,964 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-15 20:15:23,965 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 12538
+DEBUG 2024-08-15 20:15:25,480 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 38452
+DEBUG 2024-08-15 20:15:25,481 views Response status: 200
+INFO 2024-08-15 20:15:25,567 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-15 20:15:25,568 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 38452
+INFO 2024-08-15 20:16:08,981 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-08-15 20:16:08,985 views User ra permissions: set()
+DEBUG 2024-08-15 20:16:08,986 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-08-15 20:16:08,986 views Data: {'text': 'Hey there! How can I help you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-08-15 20:16:08,988 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-08-15 20:16:11,543 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 42213
+DEBUG 2024-08-15 20:16:11,543 views Response status: 200
+INFO 2024-08-15 20:16:11,599 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-08-15 20:16:11,599 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 42213
+INFO 2024-08-15 20:18:56,983 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1888
+INFO 2024-08-15 20:18:56,989 basehttp "GET /api/chat-history/ HTTP/1.1" 200 1888
+WARNING 2024-08-15 20:29:52,133 log Unauthorized: /api/chat-history/
+WARNING 2024-08-15 20:29:52,134 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-08-15 20:29:52,137 log Unauthorized: /api/chat-history/
+WARNING 2024-08-15 20:29:52,137 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:14:53,102 autoreload Watching for file changes with StatReloader
+INFO 2024-10-27 22:15:22,081 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2024-10-27 22:15:22,089 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:15:22,193 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:15:22,194 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:15:22,194 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:26,854 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-10-27 22:15:26,856 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:26,857 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:26,857 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:26,857 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:35,413 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:35,414 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:35,414 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:35,414 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:41,731 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:41,731 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:41,732 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:41,732 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:42,340 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:42,341 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:42,341 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:42,341 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:42,643 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:42,644 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:42,644 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:42,645 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:42,851 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:42,852 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:42,852 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:42,853 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:43,041 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:43,042 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:43,042 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:43,043 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:15:43,257 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:15:43,259 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:15:43,260 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:15:43,260 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:16:02,542 decorators Handling POST request to /api/text-to-speech/
+ERROR 2024-10-27 22:16:02,543 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2024-10-27 22:16:02,543 log Unauthorized: /api/text-to-speech/
+WARNING 2024-10-27 22:16:02,543 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:16:05,835 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:16:05,836 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:16:05,837 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:16:05,837 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:16:10,470 autoreload Watching for file changes with StatReloader
+INFO 2024-10-27 22:16:15,418 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:16:15,453 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:16:15,454 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:16:15,455 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:33,637 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:18:33,638 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:18:33,639 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:18:33,639 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:35,817 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:18:35,818 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:18:35,818 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:18:35,818 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:36,748 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:18:36,749 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:18:36,750 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:18:36,750 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:37,118 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:18:37,119 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:18:37,120 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:18:37,120 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:37,344 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:18:37,345 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:18:37,345 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:18:37,346 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:37,549 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-27 22:18:37,550 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-27 22:18:37,550 log Unauthorized: /api/gemini/
+WARNING 2024-10-27 22:18:37,551 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-27 22:18:57,448 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-10-27 22:18:57,450 decorators Handling POST request to /api/login/
+INFO 2024-10-27 22:18:57,664 views Token obtained for ra, status code: 200
+INFO 2024-10-27 22:18:57,665 decorators Response status code: 200, URL: /api/login/
+INFO 2024-10-27 22:18:57,666 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-10-27 22:18:59,615 decorators Handling POST request to /api/gemini/
+INFO 2024-10-27 22:18:59,619 views User ra permissions: set()
+DEBUG 2024-10-27 22:18:59,635 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-27 22:19:00,769 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-27 22:19:00,778 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-27 22:19:00,779 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2024-10-27 22:19:02,014 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-27 22:19:02,019 views User ra permissions: set()
+DEBUG 2024-10-27 22:19:02,020 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-27 22:19:02,020 views Data: {'text': 'Hello there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-27 22:19:02,022 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-27 22:19:03,645 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-27 22:19:03,646 views Response status: 200
+INFO 2024-10-27 22:19:04,212 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-27 22:19:04,213 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 43049
+INFO 2024-10-27 22:19:11,422 decorators Handling POST request to /api/gemini/
+INFO 2024-10-27 22:19:11,425 views User ra permissions: set()
+DEBUG 2024-10-27 22:19:11,435 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-27 22:19:12,596 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-27 22:19:12,605 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-27 22:19:12,606 basehttp "POST /api/gemini/ HTTP/1.1" 200 74
+INFO 2024-10-27 22:19:15,237 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-27 22:19:15,240 views User ra permissions: set()
+DEBUG 2024-10-27 22:19:15,241 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-27 22:19:15,241 views Data: {'text': "That's okay I'm here to help you What can I do for you today?", 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-27 22:19:15,242 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-27 22:19:16,640 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-27 22:19:16,640 views Response status: 200
+INFO 2024-10-27 22:19:16,916 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-27 22:19:16,917 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 60186
+INFO 2024-10-27 22:20:42,660 decorators Handling POST request to /api/gemini/
+INFO 2024-10-27 22:20:42,664 views User ra permissions: set()
+DEBUG 2024-10-27 22:20:42,674 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-27 22:20:46,176 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-27 22:20:46,186 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-27 22:20:46,187 basehttp "POST /api/gemini/ HTTP/1.1" 200 480
+INFO 2024-10-28 00:37:20,090 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-10-28 00:37:20,099 decorators Handling POST request to /api/login/
+INFO 2024-10-28 00:37:20,328 views Token obtained for ra, status code: 200
+INFO 2024-10-28 00:37:20,328 decorators Response status code: 200, URL: /api/login/
+INFO 2024-10-28 00:37:20,329 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-10-28 00:37:22,851 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2024-10-28 00:37:22,854 decorators Handling POST request to /api/gemini/
+INFO 2024-10-28 00:37:22,862 views User ra permissions: set()
+DEBUG 2024-10-28 00:37:22,875 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-28 00:37:23,878 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-28 00:37:23,889 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-28 00:37:23,890 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+INFO 2024-10-28 00:37:26,285 decorators Handling POST request to /api/gemini/
+INFO 2024-10-28 00:37:26,289 views User ra permissions: set()
+DEBUG 2024-10-28 00:37:26,297 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-28 00:37:31,974 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-28 00:37:31,983 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-28 00:37:31,984 basehttp "POST /api/gemini/ HTTP/1.1" 200 1216
+INFO 2024-10-28 00:37:36,578 decorators Handling POST request to /api/gemini/
+INFO 2024-10-28 00:37:36,583 views User ra permissions: set()
+DEBUG 2024-10-28 00:37:36,592 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+INFO 2024-10-28 00:37:38,141 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-10-28 00:37:38,144 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:37:38,149 views User ra permissions: set()
+DEBUG 2024-10-28 00:37:38,150 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-28 00:37:38,151 views Data: {'text': 'what', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-28 00:37:38,153 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-28 00:37:39,284 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-28 00:37:39,296 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-28 00:37:39,296 basehttp "POST /api/gemini/ HTTP/1.1" 200 437
+DEBUG 2024-10-28 00:37:39,306 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-28 00:37:39,306 views Response status: 200
+INFO 2024-10-28 00:37:39,578 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-28 00:37:39,579 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 15464
+INFO 2024-10-28 00:37:59,490 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:37:59,493 views User ra permissions: set()
+DEBUG 2024-10-28 00:37:59,494 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-28 00:37:59,495 views Data: {'text': 'I am an AI chatbot and my name is Gemini I am designed to understand and respond to a wide range of natural language prompts and to generate humanlike text I can help you with a variety of tasks such as answering questions providing information generating creative content translating languages writing different kinds of text formats like poems or scripts and more\n\nIs there anything I can help you with today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-28 00:37:59,497 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-28 00:38:06,158 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-28 00:38:06,159 views Response status: 200
+INFO 2024-10-28 00:38:06,569 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-28 00:38:06,573 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 508656
+INFO 2024-10-28 00:41:47,591 decorators Handling POST request to /api/gemini/
+INFO 2024-10-28 00:41:47,595 views User ra permissions: set()
+DEBUG 2024-10-28 00:41:47,603 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-28 00:41:50,303 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-28 00:41:50,313 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-28 00:41:50,314 basehttp "POST /api/gemini/ HTTP/1.1" 200 538
+INFO 2024-10-28 00:41:52,238 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:41:52,242 views User ra permissions: set()
+DEBUG 2024-10-28 00:41:52,242 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-28 00:41:52,432 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-28 00:41:53,616 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-28 00:41:53,616 views Response status: 200
+INFO 2024-10-28 00:41:53,973 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-28 00:41:53,974 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 25077
+INFO 2024-10-28 00:41:56,852 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:41:56,854 views User ra permissions: set()
+DEBUG 2024-10-28 00:41:56,855 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-28 00:41:56,855 views Data: {'text': 'I went to the city', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-28 00:41:56,856 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-28 00:41:57,996 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-28 00:41:57,997 views Response status: 200
+INFO 2024-10-28 00:41:58,321 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-28 00:41:58,321 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 22987
+INFO 2024-10-28 00:42:03,019 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:42:03,022 views User ra permissions: set()
+DEBUG 2024-10-28 00:42:03,022 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-28 00:42:03,037 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-28 00:42:04,369 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-28 00:42:04,370 views Response status: 200
+INFO 2024-10-28 00:42:04,664 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-28 00:42:04,666 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 50991
+INFO 2024-10-28 00:42:10,126 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:42:10,129 views User ra permissions: set()
+ERROR 2024-10-28 00:42:10,129 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-10-28 00:42:10,130 log Bad Request: /api/text-to-speech/
+WARNING 2024-10-28 00:42:10,130 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 29
+INFO 2024-10-28 00:42:15,457 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-28 00:42:15,460 views User ra permissions: set()
+ERROR 2024-10-28 00:42:15,461 decorators Error response: 400, URL: /api/text-to-speech/
+WARNING 2024-10-28 00:42:15,461 log Bad Request: /api/text-to-speech/
+WARNING 2024-10-28 00:42:15,462 basehttp "POST /api/text-to-speech/ HTTP/1.1" 400 29
+INFO 2024-10-28 00:51:19,496 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-10-28 00:51:19,497 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+WARNING 2024-10-28 00:51:19,500 log Unauthorized: /api/chat-history/
+WARNING 2024-10-28 00:51:19,501 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-10-28 00:51:19,503 log Unauthorized: /api/chat-history/
+WARNING 2024-10-28 00:51:19,503 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+INFO 2024-10-28 00:58:14,529 decorators Handling POST request to /api/login/
+INFO 2024-10-28 00:58:14,739 views Token obtained for ra, status code: 200
+INFO 2024-10-28 00:58:14,740 decorators Response status code: 200, URL: /api/login/
+INFO 2024-10-28 00:58:14,741 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-10-28 01:00:33,224 decorators Handling POST request to /api/gemini/
+INFO 2024-10-28 01:00:33,227 views User ra permissions: set()
+DEBUG 2024-10-28 01:00:33,243 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-28 01:00:34,327 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-28 01:00:34,338 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-28 01:00:34,338 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2024-10-30 22:59:32,772 autoreload Watching for file changes with StatReloader
+INFO 2024-10-30 22:59:59,246 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2024-10-30 22:59:59,246 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+WARNING 2024-10-30 22:59:59,357 log Unauthorized: /api/chat-history/
+WARNING 2024-10-30 22:59:59,357 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-10-30 22:59:59,360 log Unauthorized: /api/chat-history/
+WARNING 2024-10-30 22:59:59,360 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-10-30 23:00:02,445 log Unauthorized: /api/chat-history/
+WARNING 2024-10-30 23:00:02,447 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2024-10-30 23:00:02,450 log Unauthorized: /api/chat-history/
+WARNING 2024-10-30 23:00:02,451 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:00:20,149 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2024-10-30 23:00:20,151 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:00:20,152 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:00:20,153 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:00:20,153 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:00:26,160 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-10-30 23:00:26,162 decorators Handling POST request to /api/login/
+INFO 2024-10-30 23:00:26,398 views Token obtained for ra, status code: 200
+INFO 2024-10-30 23:00:26,399 decorators Response status code: 200, URL: /api/login/
+INFO 2024-10-30 23:00:26,399 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-10-30 23:00:28,802 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:00:28,807 views User ra permissions: set()
+DEBUG 2024-10-30 23:00:28,822 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:00:29,856 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:00:29,864 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:00:29,864 basehttp "POST /api/gemini/ HTTP/1.1" 200 13
+INFO 2024-10-30 23:00:32,196 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-10-30 23:00:32,197 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-30 23:00:32,201 views User ra permissions: set()
+DEBUG 2024-10-30 23:00:32,202 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-30 23:00:32,202 views Data: {'text': 'yo', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-30 23:00:32,204 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-30 23:00:33,499 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-30 23:00:33,500 views Response status: 200
+INFO 2024-10-30 23:00:33,847 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-30 23:00:33,848 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13374
+INFO 2024-10-30 23:00:36,480 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-30 23:00:36,483 views User ra permissions: set()
+DEBUG 2024-10-30 23:00:36,484 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-30 23:00:36,484 views Data: {'text': 'ey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-30 23:00:36,486 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-30 23:00:37,650 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-30 23:00:37,651 views Response status: 200
+INFO 2024-10-30 23:00:37,949 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-30 23:00:37,950 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13792
+INFO 2024-10-30 23:23:15,682 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:23:15,683 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:23:15,683 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:23:15,684 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:23:18,958 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:23:18,959 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:23:18,960 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:23:18,960 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:23:24,821 decorators Handling POST request to /api/login/
+INFO 2024-10-30 23:23:25,028 views Token obtained for ra, status code: 200
+INFO 2024-10-30 23:23:25,029 decorators Response status code: 200, URL: /api/login/
+INFO 2024-10-30 23:23:25,029 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-10-30 23:23:26,722 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:23:26,725 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:26,733 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:23:28,544 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:23:28,553 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:23:28,554 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2024-10-30 23:23:29,682 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:23:29,688 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:29,696 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:23:32,659 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:23:32,669 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:23:32,670 basehttp "POST /api/gemini/ HTTP/1.1" 200 325
+INFO 2024-10-30 23:23:36,788 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:23:36,793 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:36,801 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:23:38,905 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:23:38,916 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:23:38,916 basehttp "POST /api/gemini/ HTTP/1.1" 200 101
+INFO 2024-10-30 23:23:41,387 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-30 23:23:41,391 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:41,391 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-30 23:23:41,391 views Data: {'text': 'Inside', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-30 23:23:41,392 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-30 23:23:42,553 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-30 23:23:42,555 views Response status: 200
+INFO 2024-10-30 23:23:42,810 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-30 23:23:42,811 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 17136
+INFO 2024-10-30 23:23:44,120 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-30 23:23:44,124 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:44,124 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-30 23:23:44,124 views Data: {'text': 'Indeed', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-30 23:23:44,126 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-30 23:23:45,193 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-30 23:23:45,194 views Response status: 200
+INFO 2024-10-30 23:23:45,480 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-30 23:23:45,481 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 15464
+INFO 2024-10-30 23:23:46,596 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-10-30 23:23:46,599 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:46,600 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-10-30 23:23:46,600 views Data: {'text': 'Indian', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-10-30 23:23:46,601 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-10-30 23:23:47,844 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-10-30 23:23:47,845 views Response status: 200
+INFO 2024-10-30 23:23:48,115 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-10-30 23:23:48,116 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 15464
+INFO 2024-10-30 23:23:59,043 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:23:59,046 views User ra permissions: set()
+DEBUG 2024-10-30 23:23:59,054 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:24:02,128 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:24:02,137 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:24:02,138 basehttp "POST /api/gemini/ HTTP/1.1" 200 309
+INFO 2024-10-30 23:24:07,708 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:24:07,711 views User ra permissions: set()
+DEBUG 2024-10-30 23:24:07,720 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:24:18,152 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:24:18,161 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:24:18,161 basehttp "POST /api/gemini/ HTTP/1.1" 200 2846
+INFO 2024-10-30 23:26:26,007 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:26:26,012 views User ra permissions: set()
+DEBUG 2024-10-30 23:26:26,023 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:26:27,795 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:26:27,803 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:26:27,804 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-10-30 23:29:32,978 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:29:32,980 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:29:32,980 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:29:32,980 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:38:21,021 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:38:21,023 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:38:21,023 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:38:21,024 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:38:25,534 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:38:25,535 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:38:25,536 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:38:25,536 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:38:29,675 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:38:29,675 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:38:29,676 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:38:29,676 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-30 23:38:35,277 decorators Handling POST request to /api/login/
+INFO 2024-10-30 23:38:35,517 views Token obtained for ra, status code: 200
+INFO 2024-10-30 23:38:35,517 decorators Response status code: 200, URL: /api/login/
+INFO 2024-10-30 23:38:35,518 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-10-30 23:38:38,429 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:38:38,433 views User ra permissions: set()
+DEBUG 2024-10-30 23:38:38,443 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:38:39,905 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:38:39,916 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:38:39,917 basehttp "POST /api/gemini/ HTTP/1.1" 200 186
+INFO 2024-10-30 23:39:41,475 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:39:41,479 views User ra permissions: set()
+DEBUG 2024-10-30 23:39:41,492 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:39:42,519 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:39:42,527 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:39:42,528 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2024-10-30 23:40:05,495 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:40:05,499 views User ra permissions: set()
+DEBUG 2024-10-30 23:40:05,509 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:40:06,538 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:40:06,548 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:40:06,549 basehttp "POST /api/gemini/ HTTP/1.1" 200 48
+INFO 2024-10-30 23:40:59,772 basehttp "GET /api/chat-history/ HTTP/1.1" 200 14941
+INFO 2024-10-30 23:40:59,780 basehttp "GET /api/chat-history/ HTTP/1.1" 200 14941
+INFO 2024-10-30 23:41:04,383 basehttp "GET /api/chat-history/ HTTP/1.1" 200 14941
+INFO 2024-10-30 23:41:04,390 basehttp "GET /api/chat-history/ HTTP/1.1" 200 14941
+INFO 2024-10-30 23:41:11,125 decorators Handling POST request to /api/gemini/
+INFO 2024-10-30 23:41:11,128 views User ra permissions: set()
+DEBUG 2024-10-30 23:41:11,137 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-10-30 23:41:12,299 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-10-30 23:41:12,313 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-10-30 23:41:12,314 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2024-10-30 23:52:01,914 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-30 23:52:01,915 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-30 23:52:01,917 log Unauthorized: /api/gemini/
+WARNING 2024-10-30 23:52:01,917 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-10-31 00:00:40,210 decorators Handling POST request to /api/gemini/
+ERROR 2024-10-31 00:00:40,212 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-10-31 00:00:40,212 log Unauthorized: /api/gemini/
+WARNING 2024-10-31 00:00:40,213 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-11-19 14:02:24,759 autoreload Watching for file changes with StatReloader
+INFO 2024-11-19 14:03:51,186 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2024-11-19 14:03:51,198 decorators Handling POST request to /api/gemini/
+ERROR 2024-11-19 14:03:51,329 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-11-19 14:03:51,329 log Unauthorized: /api/gemini/
+WARNING 2024-11-19 14:03:51,329 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2024-11-19 14:04:12,186 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2024-11-19 14:04:12,186 decorators Handling POST request to /api/login/
+INFO 2024-11-19 14:04:12,455 views Token obtained for ra, status code: 200
+INFO 2024-11-19 14:04:12,455 decorators Response status code: 200, URL: /api/login/
+INFO 2024-11-19 14:04:12,457 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2024-11-19 14:04:14,204 decorators Handling POST request to /api/gemini/
+INFO 2024-11-19 14:04:14,210 views User ra permissions: set()
+DEBUG 2024-11-19 14:04:14,232 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+INFO 2024-11-19 14:04:46,705 decorators Handling POST request to /api/gemini/
+INFO 2024-11-19 14:04:46,717 views User ra permissions: set()
+DEBUG 2024-11-19 14:04:46,726 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-11-19 14:04:51,191 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-11-19 14:04:51,205 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-11-19 14:04:51,205 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2024-11-19 14:04:52,176 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2024-11-19 14:04:52,176 decorators Handling POST request to /api/text-to-speech/
+INFO 2024-11-19 14:04:52,184 views User ra permissions: set()
+DEBUG 2024-11-19 14:04:52,184 views Headers: {'xi-api-key': '61b38ea400c417b477c6421ffdbdead0', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2024-11-19 14:04:52,184 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2024-11-19 14:04:52,184 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2024-11-19 14:04:54,249 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2024-11-19 14:04:54,249 views Response status: 200
+INFO 2024-11-19 14:04:54,894 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2024-11-19 14:04:54,894 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 14628
+ERROR 2024-11-19 14:04:57,799 views Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+ERROR 2024-11-19 14:04:57,799 decorators Error response: 500, URL: /api/gemini/
+ERROR 2024-11-19 14:04:57,799 log Internal Server Error: /api/gemini/
+INFO 2024-11-19 14:04:57,802 basehttp - Broken pipe from ('127.0.0.1', 54990)
+INFO 2024-11-19 14:05:15,441 decorators Handling POST request to /api/gemini/
+INFO 2024-11-19 14:05:15,441 views User ra permissions: set()
+DEBUG 2024-11-19 14:05:15,455 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-11-19 14:05:19,539 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-11-19 14:05:19,552 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-11-19 14:05:19,555 basehttp "POST /api/gemini/ HTTP/1.1" 200 166
+INFO 2024-11-19 14:05:43,079 decorators Handling POST request to /api/gemini/
+INFO 2024-11-19 14:05:43,087 views User ra permissions: set()
+DEBUG 2024-11-19 14:05:43,101 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-11-19 14:05:45,920 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-11-19 14:05:45,934 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-11-19 14:05:45,934 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2024-11-19 14:08:17,301 decorators Handling POST request to /api/gemini/
+INFO 2024-11-19 14:08:17,309 views User ra permissions: set()
+DEBUG 2024-11-19 14:08:17,322 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2024-11-19 14:08:19,531 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2024-11-19 14:08:19,538 decorators Response status code: 200, URL: /api/gemini/
+INFO 2024-11-19 14:08:19,538 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2024-11-19 14:16:54,131 decorators Handling POST request to /api/gemini/
+ERROR 2024-11-19 14:16:54,131 decorators Error response: 401, URL: /api/gemini/
+WARNING 2024-11-19 14:16:54,131 log Unauthorized: /api/gemini/
+WARNING 2024-11-19 14:16:54,131 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:27:05,986 autoreload Watching for file changes with StatReloader
+INFO 2025-01-03 22:27:20,123 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-01-03 22:27:20,130 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-03 22:27:20,266 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-03 22:27:20,266 log Unauthorized: /api/gemini/
+WARNING 2025-01-03 22:27:20,267 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:27:27,640 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-03 22:27:27,641 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-03 22:27:27,642 log Unauthorized: /api/gemini/
+WARNING 2025-01-03 22:27:27,642 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:27:28,900 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-01-03 22:27:28,902 decorators Handling POST request to /api/text-to-speech/
+ERROR 2025-01-03 22:27:28,903 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2025-01-03 22:27:28,903 log Unauthorized: /api/text-to-speech/
+WARNING 2025-01-03 22:27:28,903 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:33:15,483 autoreload Watching for file changes with StatReloader
+INFO 2025-01-03 22:33:51,166 decorators Handling POST request to /api/text-to-speech/
+ERROR 2025-01-03 22:33:51,259 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2025-01-03 22:33:51,259 log Unauthorized: /api/text-to-speech/
+WARNING 2025-01-03 22:33:51,259 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:33:57,079 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-03 22:33:57,080 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-03 22:33:57,081 log Unauthorized: /api/gemini/
+WARNING 2025-01-03 22:33:57,081 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:33:58,756 decorators Handling POST request to /api/text-to-speech/
+ERROR 2025-01-03 22:33:58,757 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2025-01-03 22:33:58,757 log Unauthorized: /api/text-to-speech/
+WARNING 2025-01-03 22:33:58,757 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:36:05,249 decorators Handling POST request to /api/text-to-speech/
+ERROR 2025-01-03 22:36:05,250 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2025-01-03 22:36:05,251 log Unauthorized: /api/text-to-speech/
+WARNING 2025-01-03 22:36:05,251 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:36:13,037 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-03 22:36:13,038 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-03 22:36:13,039 log Unauthorized: /api/gemini/
+WARNING 2025-01-03 22:36:13,039 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:36:14,771 decorators Handling POST request to /api/text-to-speech/
+ERROR 2025-01-03 22:36:14,772 decorators Error response: 401, URL: /api/text-to-speech/
+WARNING 2025-01-03 22:36:14,772 log Unauthorized: /api/text-to-speech/
+WARNING 2025-01-03 22:36:14,773 basehttp "POST /api/text-to-speech/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:36:35,238 basehttp "OPTIONS /api/register/ HTTP/1.1" 200 0
+INFO 2025-01-03 22:36:35,239 decorators Handling POST request to /api/register/
+INFO 2025-01-03 22:36:35,469 views User hey registered successfully.
+INFO 2025-01-03 22:36:35,469 decorators Response status code: 201, URL: /api/register/
+INFO 2025-01-03 22:36:35,470 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2025-01-03 22:36:49,565 decorators Handling POST request to /api/register/
+ERROR 2025-01-03 22:36:49,774 views Error during user registration: UNIQUE constraint failed: auth_user.username
+ERROR 2025-01-03 22:36:49,775 decorators Error response: 500, URL: /api/register/
+ERROR 2025-01-03 22:36:49,776 log Internal Server Error: /api/register/
+ERROR 2025-01-03 22:36:49,776 basehttp "POST /api/register/ HTTP/1.1" 500 56
+INFO 2025-01-03 22:37:04,607 decorators Handling POST request to /api/register/
+INFO 2025-01-03 22:37:04,822 views User assss registered successfully.
+INFO 2025-01-03 22:37:04,822 decorators Response status code: 201, URL: /api/register/
+INFO 2025-01-03 22:37:04,823 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2025-01-03 22:37:15,747 decorators Handling POST request to /api/register/
+ERROR 2025-01-03 22:37:15,965 views Error during user registration: UNIQUE constraint failed: auth_user.username
+ERROR 2025-01-03 22:37:15,965 decorators Error response: 500, URL: /api/register/
+ERROR 2025-01-03 22:37:15,966 log Internal Server Error: /api/register/
+ERROR 2025-01-03 22:37:15,967 basehttp "POST /api/register/ HTTP/1.1" 500 56
+INFO 2025-01-03 22:37:20,262 decorators Handling POST request to /api/register/
+INFO 2025-01-03 22:37:20,479 views User asssss registered successfully.
+INFO 2025-01-03 22:37:20,479 decorators Response status code: 201, URL: /api/register/
+INFO 2025-01-03 22:37:20,480 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2025-01-03 22:37:25,423 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-01-03 22:37:25,425 decorators Handling POST request to /api/login/
+INFO 2025-01-03 22:37:25,643 views Token obtained for asssss, status code: 200
+INFO 2025-01-03 22:37:25,643 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-03 22:37:25,644 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-03 22:37:29,021 decorators Handling POST request to /api/gemini/
+INFO 2025-01-03 22:37:29,025 views User asssss permissions: set()
+DEBUG 2025-01-03 22:37:29,051 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-03 22:37:31,250 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-03 22:37:31,260 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-03 22:37:31,260 basehttp "POST /api/gemini/ HTTP/1.1" 200 127
+INFO 2025-01-03 22:37:32,497 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-03 22:37:32,501 views User asssss permissions: set()
+DEBUG 2025-01-03 22:37:32,502 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-03 22:37:32,502 views Data: {'text': 'geh', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-03 22:37:32,503 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-03 22:37:33,757 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-03 22:37:33,757 views Response status: 200
+INFO 2025-01-03 22:37:34,112 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-03 22:37:34,113 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 10449
+INFO 2025-01-03 22:37:34,183 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-03 22:37:34,187 views User asssss permissions: set()
+DEBUG 2025-01-03 22:37:34,187 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-03 22:37:34,187 views Data: {'text': 'geh', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-03 22:37:34,190 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-03 22:37:35,412 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-03 22:37:35,412 views Response status: 200
+INFO 2025-01-03 22:37:35,711 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-03 22:37:35,712 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 11702
+INFO 2025-01-03 22:37:36,721 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-03 22:37:36,725 views User asssss permissions: set()
+DEBUG 2025-01-03 22:37:36,725 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-03 22:37:36,726 views Data: {'text': 'Es tut mir leid aber ich verstehe nicht was Sie mit "geh" meinen Können Sie bitte weitere Informationen geben?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-03 22:37:36,726 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-03 22:37:39,138 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-03 22:37:39,138 views Response status: 200
+INFO 2025-01-03 22:37:39,539 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-03 22:37:39,540 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 117864
+INFO 2025-01-03 22:37:53,133 autoreload Watching for file changes with StatReloader
+INFO 2025-01-03 22:37:58,000 decorators Handling POST request to /api/gemini/
+INFO 2025-01-03 22:37:58,063 views User asssss permissions: set()
+DEBUG 2025-01-03 22:37:58,081 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-03 22:37:59,825 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-03 22:37:59,833 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-03 22:37:59,834 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2025-01-03 22:38:01,250 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-03 22:38:01,254 views User asssss permissions: set()
+DEBUG 2025-01-03 22:38:01,254 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-03 22:38:01,255 views Data: {'text': 'Hey there how can I help you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-03 22:38:01,257 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-03 22:38:02,504 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-03 22:38:02,504 views Response status: 200
+INFO 2025-01-03 22:38:02,773 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-03 22:38:02,774 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 33436
+INFO 2025-01-03 22:38:04,675 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-03 22:38:04,679 views User asssss permissions: set()
+DEBUG 2025-01-03 22:38:04,679 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-03 22:38:04,680 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-03 22:38:04,681 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-03 22:38:05,909 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-03 22:38:05,909 views Response status: 200
+INFO 2025-01-03 22:38:06,088 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-03 22:38:06,089 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13374
+INFO 2025-01-03 22:50:41,858 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-03 22:50:41,860 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-03 22:50:41,860 log Unauthorized: /api/gemini/
+WARNING 2025-01-03 22:50:41,861 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:50:45,655 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-03 22:50:45,656 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-03 22:50:45,656 log Unauthorized: /api/gemini/
+WARNING 2025-01-03 22:50:45,657 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-03 22:50:57,497 decorators Handling POST request to /api/login/
+INFO 2025-01-03 22:50:57,729 views Token obtained for hey, status code: 200
+INFO 2025-01-03 22:50:57,730 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-03 22:50:57,731 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-03 22:51:01,351 decorators Handling POST request to /api/gemini/
+INFO 2025-01-03 22:51:01,355 views User hey permissions: set()
+DEBUG 2025-01-03 22:51:01,376 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-03 22:51:03,463 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-03 22:51:03,473 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-03 22:51:03,475 basehttp "POST /api/gemini/ HTTP/1.1" 200 111
+INFO 2025-01-03 22:51:10,277 decorators Handling POST request to /api/gemini/
+INFO 2025-01-03 22:51:10,280 views User hey permissions: set()
+DEBUG 2025-01-03 22:51:10,288 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-03 22:51:12,263 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-03 22:51:12,274 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-03 22:51:12,274 basehttp "POST /api/gemini/ HTTP/1.1" 200 159
+INFO 2025-01-03 22:51:18,410 decorators Handling POST request to /api/gemini/
+INFO 2025-01-03 22:51:18,414 views User hey permissions: set()
+DEBUG 2025-01-03 22:51:18,423 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-03 22:51:44,893 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-03 22:51:44,907 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-03 22:51:44,909 basehttp - Broken pipe from ('127.0.0.1', 59808)
+INFO 2025-01-03 22:53:21,136 decorators Handling POST request to /api/gemini/
+INFO 2025-01-03 22:53:21,143 views User hey permissions: set()
+DEBUG 2025-01-03 22:53:21,155 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-03 22:53:23,041 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-03 22:53:23,052 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-03 22:53:23,052 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-15 23:52:05,117 autoreload Watching for file changes with StatReloader
+INFO 2025-01-15 23:52:26,874 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-01-15 23:52:26,885 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-15 23:52:27,106 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-15 23:52:27,107 log Unauthorized: /api/gemini/
+WARNING 2025-01-15 23:52:27,108 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 00:48:14,464 autoreload Watching for file changes with StatReloader
+INFO 2025-01-16 00:48:41,619 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+INFO 2025-01-16 00:48:41,620 basehttp "OPTIONS /api/chat-history/ HTTP/1.1" 200 0
+WARNING 2025-01-16 00:48:41,713 log Unauthorized: /api/chat-history/
+WARNING 2025-01-16 00:48:41,713 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2025-01-16 00:48:41,716 log Unauthorized: /api/chat-history/
+WARNING 2025-01-16 00:48:41,716 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2025-01-16 00:48:42,667 log Unauthorized: /api/chat-history/
+WARNING 2025-01-16 00:48:42,668 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+WARNING 2025-01-16 00:48:42,676 log Unauthorized: /api/chat-history/
+WARNING 2025-01-16 00:48:42,677 basehttp "GET /api/chat-history/ HTTP/1.1" 401 183
+INFO 2025-01-16 00:48:58,004 basehttp "OPTIONS /api/register/ HTTP/1.1" 200 0
+INFO 2025-01-16 00:48:58,006 decorators Handling POST request to /api/register/
+ERROR 2025-01-16 00:48:58,209 views Error during user registration: UNIQUE constraint failed: auth_user.username
+ERROR 2025-01-16 00:48:58,210 decorators Error response: 500, URL: /api/register/
+ERROR 2025-01-16 00:48:58,210 log Internal Server Error: /api/register/
+ERROR 2025-01-16 00:48:58,211 basehttp "POST /api/register/ HTTP/1.1" 500 56
+INFO 2025-01-16 00:49:03,338 decorators Handling POST request to /api/register/
+INFO 2025-01-16 00:49:03,567 views User rara registered successfully.
+INFO 2025-01-16 00:49:03,568 decorators Response status code: 201, URL: /api/register/
+INFO 2025-01-16 00:49:03,568 basehttp "POST /api/register/ HTTP/1.1" 201 18
+INFO 2025-01-16 00:49:15,357 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-01-16 00:49:15,359 decorators Handling POST request to /api/login/
+INFO 2025-01-16 00:49:15,570 views Token obtained for ra, status code: 200
+INFO 2025-01-16 00:49:15,571 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 00:49:15,571 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 00:49:17,517 basehttp "GET /api/chat-history/ HTTP/1.1" 200 16222
+INFO 2025-01-16 00:49:17,525 basehttp "GET /api/chat-history/ HTTP/1.1" 200 16222
+INFO 2025-01-16 00:49:22,821 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 00:49:22,825 views User ra permissions: set()
+DEBUG 2025-01-16 00:49:22,839 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 00:49:24,618 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 00:49:24,627 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 00:49:24,627 basehttp "POST /api/gemini/ HTTP/1.1" 200 52
+INFO 2025-01-16 00:49:26,043 basehttp "GET /api/chat-history/ HTTP/1.1" 200 16432
+INFO 2025-01-16 00:49:26,050 basehttp "GET /api/chat-history/ HTTP/1.1" 200 16432
+INFO 2025-01-16 00:49:27,774 basehttp "GET /api/chat-history/ HTTP/1.1" 200 16432
+INFO 2025-01-16 00:49:27,788 basehttp "GET /api/chat-history/ HTTP/1.1" 200 16432
+INFO 2025-01-16 00:49:30,903 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 00:49:30,906 views User ra permissions: set()
+DEBUG 2025-01-16 00:49:30,916 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 00:49:32,461 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 00:49:32,469 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 00:49:32,470 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 00:49:32,535 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-01-16 00:49:32,536 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-16 00:49:32,539 views User ra permissions: set()
+DEBUG 2025-01-16 00:49:32,540 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-16 00:49:32,540 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-16 00:49:32,542 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-16 00:49:33,961 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-16 00:49:33,962 views Response status: 200
+INFO 2025-01-16 00:49:34,186 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-16 00:49:34,186 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13792
+INFO 2025-01-16 00:49:36,075 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-16 00:49:36,078 views User ra permissions: set()
+DEBUG 2025-01-16 00:49:36,078 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-16 00:49:36,078 views Data: {'text': 'hey', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-16 00:49:36,079 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-16 00:49:37,141 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-16 00:49:37,142 views Response status: 200
+INFO 2025-01-16 00:49:37,351 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-16 00:49:37,352 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13792
+INFO 2025-01-16 00:49:38,329 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-01-16 00:49:38,332 views User ra permissions: set()
+DEBUG 2025-01-16 00:49:38,332 views Headers: {'xi-api-key': 'sk_b3c698051649260a856b51d70792543c960a0dec6fcb9325', 'Content-Type': 'application/json', 'Accept': 'audio/mpeg'}
+DEBUG 2025-01-16 00:49:38,332 views Data: {'text': 'Hello there! How can I assist you today?', 'model_id': 'eleven_multilingual_v2', 'voice_settings': {'stability': 0.5, 'similarity_boost': 0.5}, 'languages': [{'language_id': 'fr-FR', 'name': 'French Voiceover'}]}
+DEBUG 2025-01-16 00:49:38,334 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-01-16 00:49:39,790 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+DEBUG 2025-01-16 00:49:39,791 views Response status: 200
+INFO 2025-01-16 00:49:39,995 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-01-16 00:49:39,996 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 39288
+INFO 2025-01-16 00:58:29,210 autoreload Watching for file changes with StatReloader
+INFO 2025-01-16 01:04:58,585 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 01:04:58,681 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 01:04:58,682 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 01:04:58,682 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 01:26:51,818 autoreload Watching for file changes with StatReloader
+INFO 2025-01-16 01:27:24,054 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-01-16 01:27:24,059 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:27:24,299 views Token obtained for rara, status code: 200
+INFO 2025-01-16 01:27:24,299 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:27:24,300 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:27:28,868 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:27:29,059 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:27:29,060 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:27:29,061 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:27:59,807 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:28:00,038 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:28:00,039 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:28:00,039 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:28:12,512 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-01-16 01:28:12,513 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:28:12,516 views User ra permissions: set()
+DEBUG 2025-01-16 01:28:12,529 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:28:14,152 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:28:14,161 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:28:14,161 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 01:28:26,151 decorators Handling POST request to /api/login/
+WARNING 2025-01-16 01:28:26,350 log Unauthorized: /api/login/
+WARNING 2025-01-16 01:28:26,350 basehttp "POST /api/login/ HTTP/1.1" 401 63
+INFO 2025-01-16 01:28:29,805 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:28:30,013 views Token obtained for rara, status code: 200
+INFO 2025-01-16 01:28:30,014 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:28:30,014 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:31:13,258 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:31:13,450 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:31:13,450 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:31:13,450 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:32:34,472 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:32:34,667 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:32:34,668 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:32:34,669 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:35:22,771 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:35:22,774 views User ra permissions: set()
+DEBUG 2025-01-16 01:35:22,783 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:35:24,377 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:35:24,387 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:35:24,388 basehttp "POST /api/gemini/ HTTP/1.1" 200 46
+INFO 2025-01-16 01:37:24,316 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:37:24,515 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:37:24,515 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:37:24,516 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:40:41,445 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:40:41,643 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:40:41,644 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:40:41,644 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:40:44,991 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:40:44,994 views User ra permissions: set()
+DEBUG 2025-01-16 01:40:45,003 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:40:46,586 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:40:46,594 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:40:46,595 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-16 01:44:33,277 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:44:33,537 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:44:33,538 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:44:33,539 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:44:39,865 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:44:39,868 views User ra permissions: set()
+DEBUG 2025-01-16 01:44:39,876 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:44:41,558 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:44:41,567 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:44:41,568 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2025-01-16 01:44:50,342 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:44:50,346 views User ra permissions: set()
+DEBUG 2025-01-16 01:44:50,356 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:44:51,901 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:44:51,911 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:44:51,911 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 01:45:00,348 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:45:00,352 views User ra permissions: set()
+DEBUG 2025-01-16 01:45:00,358 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:45:01,959 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:45:01,968 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:45:01,969 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 01:45:07,494 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:45:07,499 views User ra permissions: set()
+DEBUG 2025-01-16 01:45:07,509 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:45:09,017 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:45:09,025 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:45:09,026 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2025-01-16 01:51:38,551 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:51:38,750 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:51:38,751 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:51:38,752 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:51:40,631 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:51:40,635 views User ra permissions: set()
+DEBUG 2025-01-16 01:51:40,643 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:51:42,233 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:51:42,242 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:51:42,243 basehttp "POST /api/gemini/ HTTP/1.1" 200 48
+INFO 2025-01-16 01:58:03,543 autoreload Watching for file changes with StatReloader
+INFO 2025-01-16 01:58:31,268 decorators Handling POST request to /api/login/
+INFO 2025-01-16 01:58:31,508 views Token obtained for ra, status code: 200
+INFO 2025-01-16 01:58:31,508 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 01:58:31,508 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 01:58:34,339 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:58:34,344 views User ra permissions: set()
+DEBUG 2025-01-16 01:58:34,357 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:58:36,088 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:58:36,101 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:58:36,102 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 01:58:42,134 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:58:42,139 views User ra permissions: set()
+DEBUG 2025-01-16 01:58:42,149 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:58:43,790 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:58:43,800 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:58:43,801 basehttp "POST /api/gemini/ HTTP/1.1" 200 54
+INFO 2025-01-16 01:58:52,923 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 01:58:52,928 views User ra permissions: set()
+DEBUG 2025-01-16 01:58:52,936 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 01:58:54,504 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 01:58:54,512 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 01:58:54,513 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-16 02:00:54,968 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:00:54,973 views User ra permissions: set()
+DEBUG 2025-01-16 02:00:54,983 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:00:56,468 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:00:56,477 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:00:56,478 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+INFO 2025-01-16 02:01:36,980 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:01:36,984 views User ra permissions: set()
+DEBUG 2025-01-16 02:01:36,996 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:01:38,428 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:01:38,438 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:01:38,439 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+INFO 2025-01-16 02:02:29,520 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:02:29,525 views User ra permissions: set()
+DEBUG 2025-01-16 02:02:29,534 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:02:31,050 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:02:31,060 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:02:31,061 basehttp "POST /api/gemini/ HTTP/1.1" 200 42
+INFO 2025-01-16 02:03:20,848 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:03:20,851 views User ra permissions: set()
+DEBUG 2025-01-16 02:03:20,871 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:03:22,703 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:03:22,716 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:03:22,717 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-16 02:03:43,903 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:43,904 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:43,904 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:43,905 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:49,902 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:49,903 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:49,903 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:49,904 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:51,179 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:51,180 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:51,180 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:51,180 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:51,909 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:51,909 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:51,910 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:51,911 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:52,356 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:52,357 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:52,358 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:52,358 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:52,730 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:52,731 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:52,732 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:52,733 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:53,099 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:53,100 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:53,100 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:53,101 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:55,071 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:55,072 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:55,072 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:55,072 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:03:57,253 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:03:57,254 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:03:57,255 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:03:57,255 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:04:01,645 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:04:01,646 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:04:01,646 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:04:01,647 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:04:04,183 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:04:04,184 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:04:04,184 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:04:04,185 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:04:07,664 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:04:07,665 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:04:07,665 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:04:07,666 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:04:11,944 decorators Handling POST request to /api/login/
+INFO 2025-01-16 02:04:12,135 views Token obtained for ra, status code: 200
+INFO 2025-01-16 02:04:12,136 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 02:04:12,136 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 02:04:13,643 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:04:13,646 views User ra permissions: set()
+DEBUG 2025-01-16 02:04:13,655 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:04:15,204 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:04:15,213 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:04:15,214 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+INFO 2025-01-16 02:04:19,899 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:04:19,903 views User ra permissions: set()
+DEBUG 2025-01-16 02:04:19,914 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:04:21,428 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:04:21,437 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:04:21,438 basehttp "POST /api/gemini/ HTTP/1.1" 200 16
+INFO 2025-01-16 02:04:31,489 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:04:31,493 views User ra permissions: set()
+DEBUG 2025-01-16 02:04:31,501 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:04:33,284 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:04:33,294 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:04:33,295 basehttp "POST /api/gemini/ HTTP/1.1" 200 55
+INFO 2025-01-16 02:04:39,316 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:04:39,320 views User ra permissions: set()
+DEBUG 2025-01-16 02:04:39,329 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:04:41,739 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:04:41,748 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:04:41,750 basehttp "POST /api/gemini/ HTTP/1.1" 200 316
+INFO 2025-01-16 02:05:01,324 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:05:01,329 views User ra permissions: set()
+DEBUG 2025-01-16 02:05:01,342 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:05:02,847 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:05:02,856 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:05:02,857 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 02:09:11,498 decorators Handling POST request to /api/login/
+INFO 2025-01-16 02:09:11,692 views Token obtained for ra, status code: 200
+INFO 2025-01-16 02:09:11,693 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 02:09:11,694 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 02:10:23,528 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:10:23,532 views User ra permissions: set()
+DEBUG 2025-01-16 02:10:23,541 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:10:25,080 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:10:25,088 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:10:25,089 basehttp "POST /api/gemini/ HTTP/1.1" 200 12
+INFO 2025-01-16 02:10:35,401 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:10:35,404 views User ra permissions: set()
+DEBUG 2025-01-16 02:10:35,414 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:10:36,954 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:10:36,964 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:10:36,964 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2025-01-16 02:11:11,220 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:11:11,223 views User ra permissions: set()
+DEBUG 2025-01-16 02:11:11,232 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:11:12,768 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:11:12,779 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:11:12,779 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-16 02:11:18,015 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:11:18,019 views User ra permissions: set()
+DEBUG 2025-01-16 02:11:18,030 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:11:20,577 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:11:20,587 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:11:20,588 basehttp "POST /api/gemini/ HTTP/1.1" 200 366
+INFO 2025-01-16 02:13:35,953 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:13:35,956 views User ra permissions: set()
+DEBUG 2025-01-16 02:13:35,965 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:13:37,461 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:13:37,470 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:13:37,471 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2025-01-16 02:14:31,008 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:14:31,009 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:14:31,009 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:14:31,010 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:14:35,274 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:14:35,275 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:14:35,276 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:14:35,276 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:14:41,700 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:14:41,701 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:14:41,702 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:14:41,702 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:14:44,891 decorators Handling POST request to /api/login/
+INFO 2025-01-16 02:14:45,087 views Token obtained for ra, status code: 200
+INFO 2025-01-16 02:14:45,088 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 02:14:45,088 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 02:15:58,801 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:15:58,806 views User ra permissions: set()
+DEBUG 2025-01-16 02:15:58,816 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:15:59,816 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:15:59,826 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:15:59,827 basehttp "POST /api/gemini/ HTTP/1.1" 200 68
+INFO 2025-01-16 02:17:42,341 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:17:42,345 views User ra permissions: set()
+DEBUG 2025-01-16 02:17:42,355 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:17:43,869 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:17:43,879 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:17:43,880 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-16 02:17:59,179 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:17:59,184 views User ra permissions: set()
+DEBUG 2025-01-16 02:17:59,193 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:18:00,714 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:18:00,722 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:18:00,723 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 02:21:17,236 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:21:17,237 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:21:17,238 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:21:17,238 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:23:13,490 decorators Handling POST request to /api/gemini/
+ERROR 2025-01-16 02:23:13,491 decorators Error response: 401, URL: /api/gemini/
+WARNING 2025-01-16 02:23:13,492 log Unauthorized: /api/gemini/
+WARNING 2025-01-16 02:23:13,492 basehttp "POST /api/gemini/ HTTP/1.1" 401 183
+INFO 2025-01-16 02:23:18,998 decorators Handling POST request to /api/login/
+INFO 2025-01-16 02:23:19,195 views Token obtained for ra, status code: 200
+INFO 2025-01-16 02:23:19,195 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 02:23:19,196 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 02:23:21,744 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:23:21,748 views User ra permissions: set()
+DEBUG 2025-01-16 02:23:21,758 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:23:23,234 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:23:23,242 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:23:23,243 basehttp "POST /api/gemini/ HTTP/1.1" 200 23
+INFO 2025-01-16 02:23:31,352 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:23:31,357 views User ra permissions: set()
+DEBUG 2025-01-16 02:23:31,368 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:23:32,876 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:23:32,884 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:23:32,885 basehttp "POST /api/gemini/ HTTP/1.1" 200 51
+INFO 2025-01-16 02:27:50,513 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:27:50,518 views User ra permissions: set()
+DEBUG 2025-01-16 02:27:50,530 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:27:53,419 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:27:53,427 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:27:53,428 basehttp "POST /api/gemini/ HTTP/1.1" 200 301
+INFO 2025-01-16 02:28:35,297 decorators Handling POST request to /api/login/
+INFO 2025-01-16 02:28:35,501 views Token obtained for ra, status code: 200
+INFO 2025-01-16 02:28:35,502 decorators Response status code: 200, URL: /api/login/
+INFO 2025-01-16 02:28:35,502 basehttp "POST /api/login/ HTTP/1.1" 200 486
+INFO 2025-01-16 02:28:40,478 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:28:40,482 views User ra permissions: set()
+DEBUG 2025-01-16 02:28:40,491 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:28:42,081 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:28:42,089 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:28:42,090 basehttp "POST /api/gemini/ HTTP/1.1" 200 43
+INFO 2025-01-16 02:28:55,707 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:28:55,711 views User ra permissions: set()
+DEBUG 2025-01-16 02:28:55,721 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:28:57,223 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:28:57,236 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:28:57,237 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-01-16 02:29:05,224 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:29:05,228 views User ra permissions: set()
+DEBUG 2025-01-16 02:29:05,238 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+INFO 2025-01-16 02:29:05,730 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:29:05,734 views User ra permissions: set()
+DEBUG 2025-01-16 02:29:05,743 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+INFO 2025-01-16 02:29:05,763 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:29:05,769 views User ra permissions: set()
+DEBUG 2025-01-16 02:29:05,777 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:29:06,574 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:29:06,581 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:29:06,582 basehttp "POST /api/gemini/ HTTP/1.1" 200 15
+DEBUG 2025-01-16 02:29:06,754 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:29:06,762 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:29:06,763 basehttp "POST /api/gemini/ HTTP/1.1" 200 44
+DEBUG 2025-01-16 02:29:07,130 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:29:07,140 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:29:07,140 basehttp "POST /api/gemini/ HTTP/1.1" 200 14
+INFO 2025-01-16 02:29:14,101 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:29:14,105 views User ra permissions: set()
+DEBUG 2025-01-16 02:29:14,113 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:29:15,844 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:29:15,853 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:29:15,854 basehttp "POST /api/gemini/ HTTP/1.1" 200 133
+INFO 2025-01-16 02:29:27,666 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:29:27,671 views User ra permissions: set()
+DEBUG 2025-01-16 02:29:27,679 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:29:28,965 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:29:28,975 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:29:28,975 basehttp "POST /api/gemini/ HTTP/1.1" 200 185
+INFO 2025-01-16 02:29:49,073 decorators Handling POST request to /api/gemini/
+INFO 2025-01-16 02:29:49,077 views User ra permissions: set()
+DEBUG 2025-01-16 02:29:49,088 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-01-16 02:29:50,317 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyBtbgrTSpA_NU7_xXffZUck655lJI00_SI HTTP/1.1" 200 None
+INFO 2025-01-16 02:29:50,326 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-01-16 02:29:50,327 basehttp "POST /api/gemini/ HTTP/1.1" 200 135

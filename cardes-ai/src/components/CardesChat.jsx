@@ -4,7 +4,7 @@ import ChatItem from "../components/ChatItem";
 import Sidebar from "../components/Sidebar";
 import SuggestBar from "../components/SuggestBar";
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
-import { FiMic, FiMicOff, FiCopy, FiSend, FiMenu } from "react-icons/fi";
+import { FiMic, FiMicOff, FiSend, FiMenu } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import surpriseOptions from "../utils/surpriseData";
@@ -90,16 +90,11 @@ const CardesChat = () => {
     toast.success("Chat cleared!");
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    toast.success("Copied to clipboard!");
-  };
-
   return (
     <div className="flex h-screen bg-primary">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-      <div className="flex-1 relative bg-darkAccent p-6">
+      <div className="flex-1 relative bg-darkAccent p-4 sm:p-6">
         <button
           className="md:hidden bg-secondary text-white p-2 rounded-lg mb-4"
           onClick={toggleSidebar}
@@ -107,63 +102,59 @@ const CardesChat = () => {
           <FiMenu size={24} />
         </button>
 
-        <div className="h-[65vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg space-y-4">
+        <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg space-y-4">
           {chatHistory.map((chatItem, index) => (
             <ChatItem
               key={chatItem.id}
               chatItem={chatItem}
               index={index}
               handleTextToSpeech={(text) => toast.info(`Playing audio: ${text}`)}
-            >
-              <button
-                className="text-gray-500 hover:text-gray-700 ml-2"
-                onClick={() => copyToClipboard(chatItem.parts.join(" "))}
-                aria-label="Copy to clipboard"
-              >
-                <FiCopy />
-              </button>
-            </ChatItem>
+            />
           ))}
           {loading && (
             <div className="text-center text-gray-500 animate-pulse">Loading...</div>
           )}
         </div>
 
-        <div className="mt-6 flex items-center gap-4">
-          <button
-            onClick={surprise}
-            className="bg-accent text-white px-4 py-2 rounded-lg hover:bg-secondary transition"
-          >
-            Surprise Me
-          </button>
-          <button
-            className={`p-2 rounded-full ${isListening ? "bg-red-500" : "bg-secondary"} text-white`}
-            onClick={() => (isListening ? stopListening() : startListening())}
-            aria-label="Toggle microphone"
-          >
-            {isListening ? <FiMicOff /> : <FiMic />}
-          </button>
+        {/* Input field and buttons */}
+        <div className="mt-6 space-y-4">
           <input
             value={value}
-            placeholder="Ask me something..."
+            placeholder="Message Cardes AI..."
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
-            className="flex-1 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full border border-gray-300 rounded-lg p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
-          <button
-            onClick={() => getResponse()}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-accent"
-          >
-            <FiSend />
-          </button>
-        </div>
 
-        <button
-          onClick={clear}
-          className="mt-4 w-full bg-accent text-white py-2 rounded-lg hover:bg-darkAccent"
-        >
-          Clear Chat
-        </button>
+          {/* Buttons row in a single line */}
+          <div className="flex flex-wrap justify-between items-center gap-2">
+            <button
+              onClick={surprise}
+              className="bg-accent text-white px-4 py-2 rounded-lg hover:bg-secondary flex-1 sm:flex-none"
+            >
+              Surprise Me
+            </button>
+            <button
+              className={`p-2 rounded-full ${isListening ? "bg-red-500" : "bg-secondary"} text-white`}
+              onClick={() => (isListening ? stopListening() : startListening())}
+              aria-label="Toggle microphone"
+            >
+              {isListening ? <FiMicOff /> : <FiMic />}
+            </button>
+            <button
+              onClick={() => getResponse()}
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-accent flex-1 sm:flex-none"
+            >
+              <FiSend className="inline" /> Send
+            </button>
+            <button
+              onClick={clear}
+              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex-1 sm:flex-none"
+            >
+              Clear Chat
+            </button>
+          </div>
+        </div>
 
         <ToastContainer />
       </div>
