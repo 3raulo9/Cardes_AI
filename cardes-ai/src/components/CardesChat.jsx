@@ -29,7 +29,18 @@ const CardesChat = () => {
     if (token) {
       axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
+
+    // Load chat history from local storage
+    const savedChatHistory = localStorage.getItem("chatHistory");
+    if (savedChatHistory) {
+      setChatHistory(JSON.parse(savedChatHistory));
+    }
   }, []);
+
+  // Save chat history to local storage whenever it updates
+  useEffect(() => {
+    localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+  }, [chatHistory]);
 
   const surprise = () => {
     const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
@@ -42,16 +53,18 @@ const CardesChat = () => {
       return;
     }
 
-    setChatHistory((oldChatHistory) => [
-      ...oldChatHistory,
+    // Append the user's query to chatHistory
+    const updatedChatHistory = [
+      ...chatHistory,
       { role: "user", parts: [customValue], id: Date.now() },
-    ]);
+    ];
 
+    setChatHistory(updatedChatHistory);
     setLoading(true);
 
     try {
       const { data } = await axiosInstance.post("/api/gemini/", {
-        history: chatHistory,
+        history: updatedChatHistory, // Pass the full history
         message: customValue,
       });
 
@@ -65,12 +78,38 @@ const CardesChat = () => {
         }));
 
       setChatHistory((oldChatHistory) => [...oldChatHistory, ...modelResponse]);
-      setValue("");
+      setValue(""); // Clear the input
     } catch (error) {
       console.error("Fetching error: ", error);
       toast.error("Something went wrong, please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleTextToSpeech = async (text, forDownload = false) => {
+    try {
+      const response = await axiosInstance.post("/api/text-to-speech/", { text }, {
+        responseType: 'blob',
+      });
+
+      const audioBlob = response.data;
+      const audioUrl = URL.createObjectURL(audioBlob);
+
+      if (forDownload) {
+        const link = document.createElement("a");
+        link.href = audioUrl;
+        link.download = "audio.mp3";
+        link.click();
+        toast.info("Downloading audio...");
+      } else {
+        const audio = new Audio(audioUrl);
+        audio.play();
+        toast.info("Playing audio...");
+      }
+    } catch (error) {
+      console.error("Fetching error: ", error);
+      toast.error("Something went wrong with text-to-speech.");
     }
   };
 
@@ -87,6 +126,7 @@ const CardesChat = () => {
   const clear = () => {
     setValue("");
     setChatHistory([]);
+    localStorage.removeItem("chatHistory"); // Clear from local storage
     toast.success("Chat cleared!");
   };
 
@@ -108,7 +148,7 @@ const CardesChat = () => {
               key={chatItem.id}
               chatItem={chatItem}
               index={index}
-              handleTextToSpeech={(text) => toast.info(`Playing audio: ${text}`)}
+              handleTextToSpeech={(text) => handleTextToSpeech(text)}
             />
           ))}
           {loading && (

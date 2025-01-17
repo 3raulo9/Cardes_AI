@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import catIcon from "../static/images/cat_icon.png";
 import anonIcon from "../static/images/anon_icon.png";
+import { SpeakerWaveIcon, ArrowDownTrayIcon } from '@heroicons/react/24/solid'; // Import icons
 
 const ChatItem = ({
   chatItem,
@@ -25,7 +26,11 @@ const ChatItem = ({
   };
 
   return (
-    <div className={`flex items-start gap-4 ${chatItem.role === "user" ? "justify-end" : "justify-start"} w-full`}>
+    <div
+      className={`flex items-start gap-4 w-full ${
+        chatItem.role === "user" ? "justify-end" : "justify-start"
+      }`}
+    >
       {/* Bot Icon */}
       {chatItem.role !== "user" && (
         <img
@@ -35,51 +40,62 @@ const ChatItem = ({
         />
       )}
 
-      {/* Message Bubble */}
-      <div
-        className={`relative max-w-full md:max-w-lg rounded-3xl px-4 sm:px-6 py-3 shadow-md ${
-          chatItem.role === "user"
-            ? "bg-indigo-500 text-white rounded-br-none"
-            : "bg-white border border-gray-200 text-gray-800 rounded-bl-none"
-        } transition-transform duration-300 transform ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
-      >
-        {editMode ? (
-          <div className="flex flex-col gap-2">
-            <textarea
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={newMessageContent}
-              onChange={(e) => setNewMessageContent(e.target.value)}
-            />
-            <button
-              onClick={handleSaveClick}
-              className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1"
-            >
-              Save
-            </button>
-          </div>
-        ) : (
-          <p className="whitespace-pre-line break-words">{chatItem.parts.join(" ")}</p>
-        )}
+      <div className="flex flex-col items-start">
+        {/* Message Bubble */}
+        <div
+          className={`relative max-w-full md:max-w-lg rounded-3xl px-4 sm:px-6 py-3 shadow-md ${
+            chatItem.role === "user"
+              ? "bg-indigo-500 text-white rounded-br-none"
+              : "bg-white border border-gray-200 text-gray-800 rounded-bl-none"
+          } transition-transform duration-300 transform ${
+            visible ? "scale-100 opacity-100" : "scale-95 opacity-0"
+          }`}
+        >
+          {editMode ? (
+            <div className="flex flex-col gap-2">
+              <textarea
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                value={newMessageContent}
+                onChange={(e) => setNewMessageContent(e.target.value)}
+              />
+              <button
+                onClick={handleSaveClick}
+                className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1"
+              >
+                Save
+              </button>
+            </div>
+          ) : (
+            <p className="whitespace-pre-line break-words">{chatItem.parts.join(" ")}</p>
+          )}
+        </div>
 
-        {/* Copy and Play Audio Buttons */}
-        <div className="absolute right-2 bottom-2 flex items-center gap-2">
-          <SlCopyButton value={chatItem.parts.join(" ")} className="text-gray-500" />
+        {/* Buttons Section */}
+        <div
+          className={`flex items-center gap-2 mt-2 ${
+            chatItem.role === "user" ? "justify-start" : "justify-end"
+          }`}
+        >
+          <SlCopyButton
+            value={chatItem.parts.join(" ")}
+            className="text-black hover:text-gray-700"
+          />
           <SlTooltip content={tooltipContent.listen || "Listen"}>
             <button
-              className="p-2 hover:bg-gray-100 rounded-full"
+              className="p-1 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none"
               aria-label="Play audio"
               onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
             >
-              <sl-icon name="volume-down-fill" />
+              <SpeakerWaveIcon className="w-6 h-6 text-black" />
             </button>
           </SlTooltip>
           <SlTooltip content={tooltipContent.download || "Download"}>
             <button
-              className="p-2 hover:bg-gray-100 rounded-full"
+              className="p-1 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none"
               aria-label="Download audio"
               onClick={() => handleTextToSpeech(chatItem.parts.join(" "), true)}
             >
-              <sl-icon name="download" />
+              <ArrowDownTrayIcon className="w-6 h-6 text-black" />
             </button>
           </SlTooltip>
         </div>

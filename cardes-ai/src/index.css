@@ -16,3 +16,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.reset-icon-button {
+  all: unset; /* Reset all inherited styles */
+  display: inline-flex; /* Ensure the button displays correctly */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.reset-icon {
+  color: black; /* Set icon color explicitly */
+  width: 1.5em; /* Set a fixed width for the icon */
+  height: 1.5em; /* Set a fixed height for the icon */
+}
