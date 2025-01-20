@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import ChatItem from "../components/ChatItem";
 import Sidebar from "../components/Sidebar";
-import SuggestBar from "../components/SuggestBar";
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
 import { FiMic, FiMicOff, FiSend, FiMenu } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,6 +14,7 @@ const CardesChat = () => {
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isTabOpen, setIsTabOpen] = useState(false);
+  const [messageSent, setMessageSent] = useState(false); // Track if a message has been sent
 
   const handleSpeechRecognition = (phrases) => {
     const speech = phrases[0];
@@ -61,6 +61,7 @@ const CardesChat = () => {
 
     setChatHistory(updatedChatHistory);
     setLoading(true);
+    setMessageSent(true); // Mark message as sent
 
     try {
       const { data } = await axiosInstance.post("/api/gemini/", {
@@ -127,6 +128,7 @@ const CardesChat = () => {
     setValue("");
     setChatHistory([]);
     localStorage.removeItem("chatHistory"); // Clear from local storage
+    setMessageSent(false); // Hide "Clear Chat" button
     toast.success("Chat cleared!");
   };
 
@@ -158,48 +160,59 @@ const CardesChat = () => {
 
         {/* Input field and buttons */}
         <div className="mt-6 space-y-4">
+          {/* Rounded input field */}
           <input
             value={value}
             placeholder="Message Cardes AI..."
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
-            className="w-full border border-gray-300 rounded-lg p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full border border-gray-300 rounded-full p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
 
-          {/* Buttons row in a single line */}
-          <div className="flex flex-wrap justify-between items-center gap-2">
-            <button
-              onClick={surprise}
-              className="bg-accent text-white px-4 py-2 rounded-lg hover:bg-secondary flex-1 sm:flex-none"
-            >
-              Surprise Me
-            </button>
-            <button
-              className={`p-2 rounded-full ${isListening ? "bg-red-500" : "bg-secondary"} text-white`}
-              onClick={() => (isListening ? stopListening() : startListening())}
-              aria-label="Toggle microphone"
-            >
-              {isListening ? <FiMicOff /> : <FiMic />}
-            </button>
-            <button
-              onClick={() => getResponse()}
-              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-accent flex-1 sm:flex-none"
-            >
-              <FiSend className="inline" /> Send
-            </button>
-            <button
-              onClick={clear}
-              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex-1 sm:flex-none"
-            >
-              Clear Chat
-            </button>
+          {/* Buttons row aligned to left and right corners */}
+          <div className="flex justify-between items-center mt-4">
+            <div className="flex space-x-2">
+              <button
+                onClick={surprise}
+                className="bg-accent text-white px-4 py-2 rounded-lg hover:bg-secondary"
+              >
+                Surprise Me
+              </button>
+
+              <button
+                className={`p-2 rounded-full ${isListening ? "bg-red-500" : "bg-secondary"} text-white`}
+                onClick={() => (isListening ? stopListening() : startListening())}
+                aria-label="Toggle microphone"
+              >
+                {isListening ? <FiMicOff /> : <FiMic />}
+              </button>
+            </div>
+
+            <div className="flex space-x-2">
+              <button
+                onClick={() => getResponse()}
+                className="bg-primary text-white px-4 py-2 rounded-full hover:bg-accent"
+              >
+                <FiSend className="inline" /> Send
+              </button>
+
+              {messageSent && (
+                <button
+                  onClick={clear}
+                  className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700"
+                >
+                  Clear Chat
+                </button>
+              )}
+            </div>
+
+
           </div>
         </div>
 
         <ToastContainer />
       </div>
 
-      <SuggestBar getResponse={getResponse} isTabOpen={isTabOpen} setIsTabOpen={setIsTabOpen} />
     </div>
   );
 };

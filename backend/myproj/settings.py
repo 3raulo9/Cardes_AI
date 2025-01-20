@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import logging
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -150,6 +151,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),  # Adjust the expiration time as needed
+    'REFRESH_TOKEN_LIFETIME': timedelta(0),  # Disables the refresh token by setting it to zero
+    'ROTATE_REFRESH_TOKENS': False,  # Prevent automatic token rotation
+    'BLACKLIST_AFTER_ROTATION': False,  # No blacklisting of rotated tokens
+    'UPDATE_LAST_LOGIN': False,  # Avoid updating the last login timestamp on token refresh
+}
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'

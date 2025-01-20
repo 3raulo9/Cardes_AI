@@ -3,10 +3,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#DDA853",  // Yellow
-        secondary: "#A6CDC6", // Orange
-        accent: "#16404D",   // Pink
-        darkAccent: "#FBF5DD", // Purple
+        primary: "#9A3B3B",  
+        secondary: "#C08261", 
+        accent: "#E2C799",   
+        darkAccent: "#F2ECBE",
       },
     },
   },
