@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "./Sidebar";
 
 const ChatLayout = ({ children }) => {
   return (
@@ -10,3 +9,4 @@ const ChatLayout = ({ children }) => {
 };
 
 export default ChatLayout;
+

@@ -6,7 +6,6 @@ from .views import *
 urlpatterns = [
     # JWT token authentication
     path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # Custom views
     path('register/', register, name='register_user'),

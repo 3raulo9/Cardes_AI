@@ -45,7 +45,7 @@ const ChatItem = ({
         <div
           className={`relative max-w-full md:max-w-lg rounded-3xl px-4 sm:px-6 py-3 shadow-md ${
             chatItem.role === "user"
-              ? "bg-indigo-500 text-white rounded-br-none"
+              ? "bg-orange-800 text-white rounded-br-none"
               : "bg-white border border-gray-200 text-gray-800 rounded-bl-none"
           } transition-transform duration-300 transform ${
             visible ? "scale-100 opacity-100" : "scale-95 opacity-0"
