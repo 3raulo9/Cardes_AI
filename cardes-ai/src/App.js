@@ -4,6 +4,7 @@ import CardesChat from "./components/CardesChat";
 import Login from "./components/Login";
 import ChatLayout from "./components/ChatLayout";
 import "@shoelace-style/shoelace/dist/themes/light.css";
+import Register from "./components/Register";  // Import the Register component
 
 function App() {
   const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
+        <Route path="/register" element={<Register />} />  {/* Add this line */}
         <Route
           path="/chat"
           element={

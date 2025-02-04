@@ -41,20 +41,14 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @log_request
 @permission_classes([AllowAny])
 def register(request):
-    try:
-        user = User.objects.create_user(
-            username=request.data['username'],
-            email=request.data['email'],
-            password=request.data['password']
-        )
-        user.is_active = True
-        user.is_staff = True
-        user.save()
-        logger.info(f"User {user.username} registered successfully.")
-        return Response({"message": "New user created"}, status=201)
-    except Exception as e:
-        logger.error(f"Error during user registration: {e}")
-        return Response({"error": str(e)}, status=500)
+    serializer = UserRegistrationSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        logger.info(f"User {serializer.validated_data['username']} registered successfully.")
+        return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
+    else:
+        logger.warning(f"Registration failed: {serializer.errors}")
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 # Chat application
