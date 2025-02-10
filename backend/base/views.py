@@ -22,7 +22,7 @@ from rest_framework import generics, permissions
 from .models import Category, CardSet, Card
 from .serializers import CategorySerializer, CardSetSerializer, CardSerializer
 
-# Category Views
+# 🛠️ List & Create Categories
 class CategoryListCreateView(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -33,12 +33,26 @@ class CategoryListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)  # Automatically set the user
 
+# 🛠️ Retrieve, Update & Delete Category (with Safe Deletion of Sets & Cards)
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Category.objects.filter(user=self.request.user)
+
+    def destroy(self, request, *args, **kwargs):
+        category = self.get_object()
+
+        # 🛠️ Manually delete related CardSets and Cards
+        sets = CardSet.objects.filter(category=category)
+        for card_set in sets:
+            Card.objects.filter(card_set=card_set).delete()  # Delete all Cards in this set
+            card_set.delete()  # Delete the CardSet
+
+        category.delete()  # Finally, delete the category
+
+        return Response({"message": "Category and all its related sets and cards deleted."}, status=status.HTTP_204_NO_CONTENT)
 
 # CardSet Views
 class CardSetListCreateView(generics.ListCreateAPIView):
@@ -59,13 +73,15 @@ class CardSetDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return CardSet.objects.filter(user=self.request.user)
 
-# Card Views
 class CardListCreateView(generics.ListCreateAPIView):
     serializer_class = CardSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Card.objects.filter(card_set__user=self.request.user)
+        card_set_id = self.request.query_params.get('card_set')  # Get `setId` from request
+        if card_set_id:
+            return Card.objects.filter(card_set=card_set_id)  # 🛠️ Filter by `card_set`
+        return Card.objects.none()  # 🛠️ Return empty if no set ID provided
 
 class CardDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CardSerializer

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiTrash2 } from "react-icons/fi"; // 🛠️ Import delete icon
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
@@ -31,10 +31,25 @@ const CategoryPage = () => {
     }
   };
 
+  const deleteCategory = async (categoryId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this category? All sets and cards within it will also be deleted."
+    );
+    if (!confirmDelete) return;
+
+    try {
+      await axiosInstance.delete(`/api/categories/${categoryId}/`);
+      setCategories(categories.filter((category) => category.id !== categoryId)); // Update UI
+    } catch (error) {
+      console.error("Error deleting category:", error.response?.data || error.message);
+      alert(`Error: ${JSON.stringify(error.response?.data)}`);
+    }
+  };
+
   return (
     <div className="p-6 bg-accent min-h-screen"> 
       <div className="flex justify-between">
-        <h1 className="text-2xl font-bold ml-11 md:ml-0 text-white">Categories</h1> {/* 🛠️ Ensured text is visible */}
+        <h1 className="text-2xl font-bold ml-11 md:ml-0 text-white">Categories</h1>
         <button
           onClick={createCategory}
           className="bg-secondary text-white px-4 py-2 rounded-lg flex items-center"
@@ -42,14 +57,25 @@ const CategoryPage = () => {
           <FiPlus className="mr-2" /> New Category
         </button>
       </div>
+
       <ul className="mt-4">
         {categories.map((category) => (
           <li
             key={category.id}
-            onClick={() => navigate(`/categories/${category.id}`)}
-            className="cursor-pointer p-4 bg-secondary text-white rounded-lg my-2"
+            className="p-4 bg-secondary text-white rounded-lg my-2 flex justify-between items-center"
           >
-            {category.name}
+            <span
+              onClick={() => navigate(`/categories/${category.id}`)}
+              className="cursor-pointer flex-1"
+            >
+              {category.name}
+            </span>
+            <button
+              onClick={() => deleteCategory(category.id)}
+              className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded-lg ml-4"
+            >
+              <FiTrash2 />
+            </button>
           </li>
         ))}
       </ul>
