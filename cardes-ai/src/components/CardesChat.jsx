@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import ChatItem from "../components/ChatItem";
-import Sidebar from "../components/Sidebar";
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
-import { FiMic, FiMicOff, FiSend, FiMenu } from "react-icons/fi";
+import { FiMic, FiMicOff, FiSend } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import surpriseOptions from "../utils/surpriseData";
@@ -12,8 +11,6 @@ const CardesChat = () => {
   const [value, setValue] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isTabOpen, setIsTabOpen] = useState(false);
   const [messageSent, setMessageSent] = useState(false); // Track if a message has been sent
 
   const handleSpeechRecognition = (phrases) => {
@@ -120,10 +117,6 @@ const CardesChat = () => {
     }
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev) => !prev);
-  };
-
   const clear = () => {
     setValue("");
     setChatHistory([]);
@@ -134,16 +127,7 @@ const CardesChat = () => {
 
   return (
     <div className="flex h-screen bg-primary">
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
       <div className="flex-1 relative bg-darkAccent p-4 sm:p-6">
-        <button
-          className="md:hidden bg-secondary text-white p-2 rounded-lg mb-4"
-          onClick={toggleSidebar}
-        >
-          <FiMenu size={24} />
-        </button>
-
         <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg space-y-4">
           {chatHistory.map((chatItem, index) => (
             <ChatItem
@@ -205,14 +189,11 @@ const CardesChat = () => {
                 </button>
               )}
             </div>
-
-
           </div>
         </div>
 
         <ToastContainer />
       </div>
-
     </div>
   );
 };

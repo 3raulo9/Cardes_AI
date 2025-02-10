@@ -153,12 +153,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),  # Adjust the expiration time as needed
-    'REFRESH_TOKEN_LIFETIME': timedelta(0),  # Disables the refresh token by setting it to zero
-    'ROTATE_REFRESH_TOKENS': False,  # Prevent automatic token rotation
-    'BLACKLIST_AFTER_ROTATION': False,  # No blacklisting of rotated tokens
-    'UPDATE_LAST_LOGIN': False,  # Avoid updating the last login timestamp on token refresh
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=365 * 100),  # Set to 100 years
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=365 * 100),  # Optional, since you're not using refresh tokens
+    'ROTATE_REFRESH_TOKENS': False, 
+    'BLACKLIST_AFTER_ROTATION': False,
+    'UPDATE_LAST_LOGIN': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
 }
+
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -169,8 +175,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Static files
+STATIC_URL = '/static/'

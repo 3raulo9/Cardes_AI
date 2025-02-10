@@ -17,6 +17,63 @@ from .decorators import log_request, require_permissions, class_log_request
 from .models import Chat, Message
 from .serializers import *
 
+
+from rest_framework import generics, permissions
+from .models import Category, CardSet, Card
+from .serializers import CategorySerializer, CardSetSerializer, CardSerializer
+
+# Category Views
+class CategoryListCreateView(generics.ListCreateAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Category.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)  # Automatically set the user
+
+class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Category.objects.filter(user=self.request.user)
+
+# CardSet Views
+class CardSetListCreateView(generics.ListCreateAPIView):
+    serializer_class = CardSetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return CardSet.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)  # Ensure user is set automatically
+
+
+class CardSetDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CardSetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return CardSet.objects.filter(user=self.request.user)
+
+# Card Views
+class CardListCreateView(generics.ListCreateAPIView):
+    serializer_class = CardSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Card.objects.filter(card_set__user=self.request.user)
+
+class CardDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CardSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Card.objects.filter(card_set__user=self.request.user)
+
 # Load environment variables
 load_dotenv()
 
