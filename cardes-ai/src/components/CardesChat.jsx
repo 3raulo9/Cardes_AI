@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import ChatItem from "../components/ChatItem";
+import ToolsWindow from "../components/ToolsWindow"; // Import the Tools Window component
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
-import { FiMic, FiMicOff, FiSend } from "react-icons/fi";
+import { FiMic, FiMicOff, FiSend, FiTool } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import surpriseOptions from "../utils/surpriseData";
@@ -11,7 +12,8 @@ const CardesChat = () => {
   const [value, setValue] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [messageSent, setMessageSent] = useState(false); // Track if a message has been sent
+  const [messageSent, setMessageSent] = useState(false);
+  const [isToolsOpen, setIsToolsOpen] = useState(false); // State for Tools Window
 
   const handleSpeechRecognition = (phrases) => {
     const speech = phrases[0];
@@ -19,7 +21,8 @@ const CardesChat = () => {
     getResponse(speech);
   };
 
-  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
+  const { isListening, startListening, stopListening } =
+    useSpeechRecognition(handleSpeechRecognition);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -27,20 +30,19 @@ const CardesChat = () => {
       axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
 
-    // Load chat history from local storage
     const savedChatHistory = localStorage.getItem("chatHistory");
     if (savedChatHistory) {
       setChatHistory(JSON.parse(savedChatHistory));
     }
   }, []);
 
-  // Save chat history to local storage whenever it updates
   useEffect(() => {
     localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
   }, [chatHistory]);
 
   const surprise = () => {
-    const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
+    const randomValue =
+      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
     setValue(randomValue);
   };
 
@@ -50,7 +52,6 @@ const CardesChat = () => {
       return;
     }
 
-    // Append the user's query to chatHistory
     const updatedChatHistory = [
       ...chatHistory,
       { role: "user", parts: [customValue], id: Date.now() },
@@ -58,11 +59,11 @@ const CardesChat = () => {
 
     setChatHistory(updatedChatHistory);
     setLoading(true);
-    setMessageSent(true); // Mark message as sent
+    setMessageSent(true);
 
     try {
       const { data } = await axiosInstance.post("/api/gemini/", {
-        history: updatedChatHistory, // Pass the full history
+        history: updatedChatHistory,
         message: customValue,
       });
 
@@ -76,7 +77,7 @@ const CardesChat = () => {
         }));
 
       setChatHistory((oldChatHistory) => [...oldChatHistory, ...modelResponse]);
-      setValue(""); // Clear the input
+      setValue("");
     } catch (error) {
       console.error("Fetching error: ", error);
       toast.error("Something went wrong, please try again.");
@@ -87,9 +88,11 @@ const CardesChat = () => {
 
   const handleTextToSpeech = async (text, forDownload = false) => {
     try {
-      const response = await axiosInstance.post("/api/text-to-speech/", { text }, {
-        responseType: 'blob',
-      });
+      const response = await axiosInstance.post(
+        "/api/text-to-speech/",
+        { text },
+        { responseType: "blob" }
+      );
 
       const audioBlob = response.data;
       const audioUrl = URL.createObjectURL(audioBlob);
@@ -120,8 +123,8 @@ const CardesChat = () => {
   const clear = () => {
     setValue("");
     setChatHistory([]);
-    localStorage.removeItem("chatHistory"); // Clear from local storage
-    setMessageSent(false); // Hide "Clear Chat" button
+    localStorage.removeItem("chatHistory");
+    setMessageSent(false);
     toast.success("Chat cleared!");
   };
 
@@ -130,30 +133,21 @@ const CardesChat = () => {
       <div className="flex-1 relative bg-darkAccent p-4 sm:p-6">
         <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg space-y-4">
           {chatHistory.map((chatItem, index) => (
-            <ChatItem
-              key={chatItem.id}
-              chatItem={chatItem}
-              index={index}
-              handleTextToSpeech={(text) => handleTextToSpeech(text)}
-            />
+            <ChatItem key={chatItem.id} chatItem={chatItem} />
           ))}
           {loading && (
             <div className="text-center text-gray-500 animate-pulse">Loading...</div>
           )}
         </div>
 
-        {/* Input field and buttons */}
         <div className="mt-6 space-y-4">
-          {/* Rounded input field */}
           <input
             value={value}
             placeholder="Message Cardes AI..."
             onChange={(e) => setValue(e.target.value)}
-            onKeyPress={handleKeyPress}
             className="w-full border border-gray-300 rounded-full p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
 
-          {/* Buttons row aligned to left and right corners */}
           <div className="flex justify-between items-center mt-4">
             <div className="flex space-x-2">
               <button
@@ -164,11 +158,19 @@ const CardesChat = () => {
               </button>
 
               <button
-                className={`p-2 rounded-full ${isListening ? "bg-red-500" : "bg-secondary"} text-white`}
+                className={`p-2 rounded-full ${
+                  isListening ? "bg-red-500" : "bg-secondary"
+                } text-white`}
                 onClick={() => (isListening ? stopListening() : startListening())}
-                aria-label="Toggle microphone"
               >
                 {isListening ? <FiMicOff /> : <FiMic />}
+              </button>
+
+              <button
+                className="p-2 bg-secondary text-white rounded-full hover:bg-accent transition duration-200"
+                onClick={() => setIsToolsOpen(true)}
+              >
+                <FiTool />
               </button>
             </div>
 
@@ -192,6 +194,7 @@ const CardesChat = () => {
           </div>
         </div>
 
+        <ToolsWindow isOpen={isToolsOpen} onClose={() => setIsToolsOpen(false)} />
         <ToastContainer />
       </div>
     </div>
