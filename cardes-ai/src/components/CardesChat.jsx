@@ -29,7 +29,6 @@ const CardesChat = () => {
     if (token) {
       axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-
     const savedChatHistory = localStorage.getItem("chatHistory");
     if (savedChatHistory) {
       setChatHistory(JSON.parse(savedChatHistory));
@@ -46,37 +45,55 @@ const CardesChat = () => {
     setValue(randomValue);
   };
 
-  const getResponse = async (customValue = value) => {
+  /**
+   * getResponse:
+   *   - customValue: The message to send (this may be the internal query)
+   *   - shouldAddUserMessage: If true (default), a new user message is added to the UI.
+   *   - historyToSend: (optional) A history override to ensure the API call uses the correct chat history.
+   */
+  const getResponse = async (
+    customValue = value,
+    shouldAddUserMessage = true,
+    historyToSend = null
+  ) => {
     if (!customValue) {
       toast.error("Please enter a question!");
       return;
     }
-
-    const updatedChatHistory = [
-      ...chatHistory,
-      { role: "user", parts: [customValue], id: Date.now() },
-    ];
-
-    setChatHistory(updatedChatHistory);
+    let updatedChatHistory = [];
+    if (shouldAddUserMessage) {
+      updatedChatHistory = [
+        ...chatHistory,
+        { role: "user", parts: [customValue], id: Date.now() },
+      ];
+      setChatHistory(updatedChatHistory);
+    } else {
+      updatedChatHistory = historyToSend || chatHistory;
+    }
     setLoading(true);
     setMessageSent(true);
-
     try {
       const { data } = await axiosInstance.post("/api/gemini/", {
         history: updatedChatHistory,
         message: customValue,
       });
-
-      const modelResponse = data?.text
+      // Split the returned text on '^', remove empty lines
+      const splitLines = data?.text
         ?.split("^")
-        .filter((sentence) => sentence.trim())
-        .map((sentence, index) => ({
-          role: "model",
-          parts: [sentence],
-          id: Date.now() + index,
-        }));
-
-      setChatHistory((oldChatHistory) => [...oldChatHistory, ...modelResponse]);
+        .map((line) => line.trim())
+        .filter((line) => line);
+      // For each line, create a separate model message.
+      // If the index is odd, set hideIcon: true to hide the cat icon for that bubble.
+      const modelResponse = splitLines.map((sentence, index) => ({
+        role: "model",
+        parts: [sentence],
+        id: Date.now() + index,
+        hideIcon: index % 2 === 1, // true for every second line (1, 3, 5, etc.)
+      }));
+      setChatHistory((oldChatHistory) => [
+        ...oldChatHistory,
+        ...modelResponse,
+      ]);
       setValue("");
     } catch (error) {
       console.error("Fetching error: ", error);
@@ -86,6 +103,20 @@ const CardesChat = () => {
     }
   };
 
+  /**
+   * handleTool3Submit:
+   *   - displayMessage: The message to display in the chat UI.
+   *   - internalQuery: The reformatted API query.
+   */
+  const handleTool3Submit = (displayMessage, internalQuery) => {
+    setIsToolsOpen(false);
+    const newUserMsg = { role: "user", parts: [displayMessage], id: Date.now() };
+    const newHistory = [...chatHistory, newUserMsg];
+    setChatHistory(newHistory);
+    // Call getResponse with the internal query, skipping the addition of a duplicate user message.
+    getResponse(internalQuery, false, newHistory);
+  };
+
   const handleTextToSpeech = async (text, forDownload = false) => {
     try {
       const response = await axiosInstance.post(
@@ -93,10 +124,8 @@ const CardesChat = () => {
         { text },
         { responseType: "blob" }
       );
-
       const audioBlob = response.data;
       const audioUrl = URL.createObjectURL(audioBlob);
-
       if (forDownload) {
         const link = document.createElement("a");
         link.href = audioUrl;
@@ -131,12 +160,19 @@ const CardesChat = () => {
   return (
     <div className="flex h-screen bg-primary">
       <div className="flex-1 relative bg-darkAccent p-4 sm:p-6">
-        <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg space-y-4">
-          {chatHistory.map((chatItem, index) => (
-            <ChatItem key={chatItem.id} chatItem={chatItem} />
+        <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg flex flex-col space-y-2">
+          {chatHistory.map((chatItem) => (
+            <ChatItem
+              key={chatItem.id}
+              chatItem={chatItem}
+              handleTextToSpeech={handleTextToSpeech}
+              updateMessage={() => {}}
+            />
           ))}
           {loading && (
-            <div className="text-center text-gray-500 animate-pulse">Loading...</div>
+            <div className="text-center text-gray-500 animate-pulse">
+              Loading...
+            </div>
           )}
         </div>
 
@@ -145,6 +181,7 @@ const CardesChat = () => {
             value={value}
             placeholder="Message Cardes AI..."
             onChange={(e) => setValue(e.target.value)}
+            onKeyPress={handleKeyPress}
             className="w-full border border-gray-300 rounded-full p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
 
@@ -161,7 +198,9 @@ const CardesChat = () => {
                 className={`p-2 rounded-full ${
                   isListening ? "bg-red-500" : "bg-secondary"
                 } text-white`}
-                onClick={() => (isListening ? stopListening() : startListening())}
+                onClick={() =>
+                  isListening ? stopListening() : startListening()
+                }
               >
                 {isListening ? <FiMicOff /> : <FiMic />}
               </button>
@@ -194,7 +233,11 @@ const CardesChat = () => {
           </div>
         </div>
 
-        <ToolsWindow isOpen={isToolsOpen} onClose={() => setIsToolsOpen(false)} />
+        <ToolsWindow
+          isOpen={isToolsOpen}
+          onClose={() => setIsToolsOpen(false)}
+          onTool3Submit={handleTool3Submit}
+        />
         <ToastContainer />
       </div>
     </div>
