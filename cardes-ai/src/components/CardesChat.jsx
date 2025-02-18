@@ -51,15 +51,12 @@ const CardesChat = () => {
    *   - shouldAddUserMessage: If true (default), a new user message is added to the UI.
    *   - historyToSend: (optional) A history override to ensure the API call uses the correct chat history.
    */
-  const getResponse = async (
-    customValue = value,
-    shouldAddUserMessage = true,
-    historyToSend = null
-  ) => {
+  const getResponse = async (customValue = value, shouldAddUserMessage = true, historyToSend = null) => {
     if (!customValue) {
       toast.error("Please enter a question!");
       return;
     }
+  
     let updatedChatHistory = [];
     if (shouldAddUserMessage) {
       updatedChatHistory = [
@@ -70,30 +67,49 @@ const CardesChat = () => {
     } else {
       updatedChatHistory = historyToSend || chatHistory;
     }
+  
     setLoading(true);
     setMessageSent(true);
+  
     try {
       const { data } = await axiosInstance.post("/api/gemini/", {
         history: updatedChatHistory,
         message: customValue,
       });
-      // Split the returned text on '^', remove empty lines
+  
+      console.log("🔍 API Response:", data.text); // 🛠️ Debug log
+  
       const splitLines = data?.text
-        ?.split("^")
-        .map((line) => line.trim())
-        .filter((line) => line);
-      // For each line, create a separate model message.
-      // If the index is odd, set hideIcon: true to hide the cat icon for that bubble.
-      const modelResponse = splitLines.map((sentence, index) => ({
-        role: "model",
-        parts: [sentence],
-        id: Date.now() + index,
-        hideIcon: index % 2 === 1, // true for every second line (1, 3, 5, etc.)
-      }));
-      setChatHistory((oldChatHistory) => [
-        ...oldChatHistory,
-        ...modelResponse,
-      ]);
+      ?.split("^")
+      .map((line) => line.trim())
+      .filter((line) => line);
+      const modelResponse = [];
+      for (let i = 0; i < splitLines.length; i += 2) {
+        if (splitLines[i] && splitLines[i + 1]) {
+          // First sentence (original)
+          modelResponse.push({
+            role: "model",
+            parts: [splitLines[i]],
+            id: Date.now() + i,
+            hideIcon: false, // Show cat icon
+          });
+      
+          // Second sentence (translation) - Stores first sentence for "Add to Deck"
+          modelResponse.push({
+            role: "model",
+            parts: [splitLines[i + 1]],
+            term: splitLines[i], // Store first sentence as the term
+            id: Date.now() + i + 1,
+            hideIcon: true, // Hide cat icon, show "Add to Deck" button
+          });
+        }
+      }
+      
+      
+    
+    
+  
+      setChatHistory((oldChatHistory) => [...oldChatHistory, ...modelResponse]);
       setValue("");
     } catch (error) {
       console.error("Fetching error: ", error);
@@ -102,6 +118,7 @@ const CardesChat = () => {
       setLoading(false);
     }
   };
+  
 
   /**
    * handleTool3Submit:

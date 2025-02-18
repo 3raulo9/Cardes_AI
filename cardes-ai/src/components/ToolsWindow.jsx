@@ -61,7 +61,7 @@ const ToolsWindow = ({ isOpen, onClose, onTool3Submit }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300">
-      <div className="bg-secondary p-6 rounded-2xl shadow-2xl w-11/12 max-w-5xl relative">
+      <div className="bg-secondary p-6 rounded-2xl shadow-2xl w-11/12 max-w-5xl relative max-h-[90vh] overflow-y-auto">
         {/* Title and Close Button */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-white">Suggested Uses</h2>

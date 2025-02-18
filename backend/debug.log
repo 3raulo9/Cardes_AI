@@ -4553,3 +4553,340 @@ INFO 2025-02-16 01:42:56,749 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 
 INFO 2025-02-16 01:42:56,756 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 258
 INFO 2025-02-16 01:42:58,345 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
 INFO 2025-02-16 01:42:58,352 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:51:23,113 autoreload Watching for file changes with StatReloader
+INFO 2025-02-19 00:52:31,949 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:31,951 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:32,134 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 00:52:32,139 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 00:52:32,937 basehttp "OPTIONS /api/cardsets/ HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:32,939 basehttp "OPTIONS /api/cardsets/ HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:32,949 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:52:32,958 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:52:33,777 basehttp "OPTIONS /api/cards/?card_set=8 HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:33,778 basehttp "OPTIONS /api/cards/?card_set=8 HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:33,789 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 1133
+INFO 2025-02-19 00:52:33,796 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 1133
+INFO 2025-02-19 00:52:54,467 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 00:52:54,475 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 00:52:58,815 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-02-19 00:52:58,817 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 00:52:58,821 views User ra permissions: set()
+DEBUG 2025-02-19 00:52:58,843 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 00:53:00,932 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 00:53:00,941 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 00:53:00,942 basehttp "POST /api/gemini/ HTTP/1.1" 200 370
+INFO 2025-02-19 00:53:06,537 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:53:08,082 basehttp "OPTIONS /api/cards/ HTTP/1.1" 200 0
+INFO 2025-02-19 00:53:08,098 basehttp "POST /api/cards/ HTTP/1.1" 201 149
+INFO 2025-02-19 00:58:23,450 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 00:58:23,458 views User ra permissions: set()
+DEBUG 2025-02-19 00:58:23,478 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 00:58:25,402 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 00:58:25,411 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 00:58:25,411 basehttp "POST /api/gemini/ HTTP/1.1" 200 345
+INFO 2025-02-19 00:58:26,459 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:58:28,974 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:58:29,750 basehttp "POST /api/cards/ HTTP/1.1" 201 139
+INFO 2025-02-19 00:58:33,381 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:58:34,026 basehttp "POST /api/cards/ HTTP/1.1" 201 148
+INFO 2025-02-19 00:58:37,705 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 00:58:37,712 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 00:58:39,158 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:58:39,165 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:58:39,863 basehttp "OPTIONS /api/cards/?card_set=9 HTTP/1.1" 200 0
+INFO 2025-02-19 00:58:39,866 basehttp "OPTIONS /api/cards/?card_set=9 HTTP/1.1" 200 0
+INFO 2025-02-19 00:58:39,873 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 398
+INFO 2025-02-19 00:58:39,881 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 398
+INFO 2025-02-19 00:58:41,423 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:58:41,428 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:59:38,598 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:59:38,603 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:59:41,412 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 00:59:41,417 views User ra permissions: set()
+DEBUG 2025-02-19 00:59:41,429 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 00:59:42,886 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 00:59:42,896 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 00:59:42,897 basehttp "POST /api/gemini/ HTTP/1.1" 200 311
+INFO 2025-02-19 00:59:44,111 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 00:59:44,890 basehttp "POST /api/cards/ HTTP/1.1" 201 147
+INFO 2025-02-19 01:00:45,192 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:00:45,198 views User ra permissions: set()
+DEBUG 2025-02-19 01:00:45,208 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:00:47,093 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:00:47,103 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:00:47,104 basehttp "POST /api/gemini/ HTTP/1.1" 200 380
+INFO 2025-02-19 01:00:47,911 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:00:48,879 basehttp "POST /api/cards/ HTTP/1.1" 201 144
+INFO 2025-02-19 01:02:11,481 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:02:11,487 views User ra permissions: set()
+DEBUG 2025-02-19 01:02:11,498 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:02:12,931 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:02:12,940 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:02:12,941 basehttp "POST /api/gemini/ HTTP/1.1" 200 338
+INFO 2025-02-19 01:02:14,383 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:02:15,226 basehttp "POST /api/cards/ HTTP/1.1" 201 144
+INFO 2025-02-19 01:03:32,965 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:03:32,970 views User ra permissions: set()
+DEBUG 2025-02-19 01:03:32,981 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:03:34,764 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:03:34,773 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:03:34,774 basehttp "POST /api/gemini/ HTTP/1.1" 200 293
+INFO 2025-02-19 01:03:36,562 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:03:37,616 basehttp "POST /api/cards/ HTTP/1.1" 201 150
+INFO 2025-02-19 01:06:12,828 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:06:12,834 views User ra permissions: set()
+DEBUG 2025-02-19 01:06:12,845 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:06:14,595 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:06:14,605 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:06:14,606 basehttp "POST /api/gemini/ HTTP/1.1" 200 288
+INFO 2025-02-19 01:06:15,460 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:06:16,293 basehttp "POST /api/cards/ HTTP/1.1" 201 144
+INFO 2025-02-19 01:07:53,534 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:07:53,540 views User ra permissions: set()
+DEBUG 2025-02-19 01:07:53,549 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:07:55,356 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:07:55,366 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:07:55,367 basehttp "POST /api/gemini/ HTTP/1.1" 200 322
+INFO 2025-02-19 01:08:00,015 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:08:01,077 basehttp "POST /api/cards/ HTTP/1.1" 201 138
+INFO 2025-02-19 01:09:36,745 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:09:36,750 views User ra permissions: set()
+DEBUG 2025-02-19 01:09:36,762 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:09:38,514 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:09:38,521 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:09:38,521 basehttp "POST /api/gemini/ HTTP/1.1" 200 313
+INFO 2025-02-19 01:11:17,127 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:11:17,132 views User ra permissions: set()
+DEBUG 2025-02-19 01:11:17,145 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:11:18,690 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:11:18,701 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:11:18,702 basehttp "POST /api/gemini/ HTTP/1.1" 200 326
+INFO 2025-02-19 01:18:58,952 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:18:58,959 views User ra permissions: set()
+DEBUG 2025-02-19 01:18:58,971 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:19:00,962 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:19:00,972 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:19:00,972 basehttp "POST /api/gemini/ HTTP/1.1" 200 555
+INFO 2025-02-19 01:19:06,068 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:07,819 basehttp "POST /api/cards/ HTTP/1.1" 201 168
+INFO 2025-02-19 01:19:10,015 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:19:10,021 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:19:11,224 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:11,232 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:12,182 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 1891
+INFO 2025-02-19 01:19:12,188 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 1891
+INFO 2025-02-19 01:19:17,152 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:19:17,158 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:19:17,735 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:17,742 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:19,577 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 981
+INFO 2025-02-19 01:19:19,583 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 981
+INFO 2025-02-19 01:19:25,420 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:19:25,425 views User ra permissions: set()
+DEBUG 2025-02-19 01:19:25,435 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:19:27,345 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:19:27,354 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:19:27,354 basehttp "POST /api/gemini/ HTTP/1.1" 200 346
+INFO 2025-02-19 01:19:29,109 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:30,624 basehttp "POST /api/cards/ HTTP/1.1" 201 155
+INFO 2025-02-19 01:19:32,511 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:33,223 basehttp "POST /api/cards/ HTTP/1.1" 201 146
+INFO 2025-02-19 01:19:34,817 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:19:34,822 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:19:35,463 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:35,469 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:19:36,262 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:19:36,270 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:19:47,502 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:19:47,506 views User ra permissions: set()
+DEBUG 2025-02-19 01:19:47,517 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:19:49,239 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:19:49,248 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:19:49,248 basehttp "POST /api/gemini/ HTTP/1.1" 200 443
+INFO 2025-02-19 01:21:17,535 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:21:17,540 views User ra permissions: set()
+DEBUG 2025-02-19 01:21:17,550 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:21:19,381 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:21:19,392 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:21:19,393 basehttp "POST /api/gemini/ HTTP/1.1" 200 380
+INFO 2025-02-19 01:23:00,599 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:23:00,605 views User ra permissions: set()
+DEBUG 2025-02-19 01:23:00,616 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:23:02,590 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:23:02,598 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:23:02,599 basehttp "POST /api/gemini/ HTTP/1.1" 200 430
+INFO 2025-02-19 01:23:22,763 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:23:40,472 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:23:40,480 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:23:41,332 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:23:41,338 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:23:42,102 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:23:42,108 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:23:47,047 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:23:47,053 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:23:52,126 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:23:52,130 views User ra permissions: set()
+DEBUG 2025-02-19 01:23:52,140 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:23:53,926 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:23:53,934 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:23:53,935 basehttp "POST /api/gemini/ HTTP/1.1" 200 324
+INFO 2025-02-19 01:23:58,647 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-02-19 01:23:58,650 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-19 01:23:58,654 views User ra permissions: set()
+DEBUG 2025-02-19 01:23:58,656 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+INFO 2025-02-19 01:23:59,868 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+DEBUG 2025-02-19 01:23:59,968 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-19 01:24:00,038 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-19 01:24:00,039 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 26749
+INFO 2025-02-19 01:24:06,042 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:24:10,795 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:24:15,679 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:29:48,793 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:29:48,799 views User ra permissions: set()
+DEBUG 2025-02-19 01:29:48,815 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:29:50,945 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:29:50,955 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:29:50,956 basehttp "POST /api/gemini/ HTTP/1.1" 200 395
+INFO 2025-02-19 01:30:00,961 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:11,430 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:31:11,434 views User ra permissions: set()
+DEBUG 2025-02-19 01:31:11,444 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:31:12,873 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:31:12,881 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:31:12,881 basehttp "POST /api/gemini/ HTTP/1.1" 200 329
+INFO 2025-02-19 01:31:13,924 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:19,301 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:26,486 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:31:26,494 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:31:27,873 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:27,878 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:28,855 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 981
+INFO 2025-02-19 01:31:28,862 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 981
+INFO 2025-02-19 01:31:30,700 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:31:30,706 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:31:32,484 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:32,490 basehttp "GET /api/cardsets/ HTTP/1.1" 200 138
+INFO 2025-02-19 01:31:34,666 basehttp "POST /api/cardsets/ HTTP/1.1" 201 66
+INFO 2025-02-19 01:31:35,745 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:31:35,751 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:31:38,618 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:31:38,623 views User ra permissions: set()
+DEBUG 2025-02-19 01:31:38,631 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:31:40,549 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:31:40,561 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:31:40,562 basehttp "POST /api/gemini/ HTTP/1.1" 200 435
+INFO 2025-02-19 01:33:17,921 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:33:17,925 views User ra permissions: set()
+DEBUG 2025-02-19 01:33:17,936 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:33:19,731 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:33:19,739 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:33:19,740 basehttp "POST /api/gemini/ HTTP/1.1" 200 448
+INFO 2025-02-19 01:33:27,061 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:34:46,760 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:34:46,764 views User ra permissions: set()
+DEBUG 2025-02-19 01:34:46,775 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:34:49,049 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:34:49,058 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:34:49,058 basehttp "POST /api/gemini/ HTTP/1.1" 200 510
+INFO 2025-02-19 01:34:52,012 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:34:52,984 basehttp "POST /api/cards/ HTTP/1.1" 201 204
+INFO 2025-02-19 01:34:56,343 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:34:56,349 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:34:57,253 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:34:57,259 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:34:58,020 basehttp "OPTIONS /api/cards/?card_set=10 HTTP/1.1" 200 0
+INFO 2025-02-19 01:34:58,023 basehttp "OPTIONS /api/cards/?card_set=10 HTTP/1.1" 200 0
+INFO 2025-02-19 01:34:58,031 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 206
+INFO 2025-02-19 01:34:58,040 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 206
+INFO 2025-02-19 01:35:05,811 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:35:05,815 views User ra permissions: set()
+DEBUG 2025-02-19 01:35:05,826 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:35:07,832 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:35:07,841 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:35:07,842 basehttp "POST /api/gemini/ HTTP/1.1" 200 409
+INFO 2025-02-19 01:35:09,964 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:35:11,146 basehttp "POST /api/cards/ HTTP/1.1" 201 150
+INFO 2025-02-19 01:35:13,399 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:35:13,404 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:35:14,470 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:35:14,476 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:35:15,175 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 357
+INFO 2025-02-19 01:35:15,183 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 357
+INFO 2025-02-19 01:35:19,156 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:35:19,160 views User ra permissions: set()
+DEBUG 2025-02-19 01:35:19,170 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:35:21,022 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:35:21,030 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:35:21,031 basehttp "POST /api/gemini/ HTTP/1.1" 200 365
+INFO 2025-02-19 01:35:27,871 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:35:27,876 views User ra permissions: set()
+DEBUG 2025-02-19 01:35:27,885 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:35:29,767 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:35:29,776 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:35:29,777 basehttp "POST /api/gemini/ HTTP/1.1" 200 341
+INFO 2025-02-19 01:35:35,948 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:35:35,953 views User ra permissions: set()
+DEBUG 2025-02-19 01:35:35,963 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:35:38,171 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:35:38,180 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:35:38,180 basehttp "POST /api/gemini/ HTTP/1.1" 200 287
+INFO 2025-02-19 01:40:25,420 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:40:25,423 views User ra permissions: set()
+DEBUG 2025-02-19 01:40:25,435 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:40:27,361 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:40:27,372 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:40:27,373 basehttp "POST /api/gemini/ HTTP/1.1" 200 360
+INFO 2025-02-19 01:40:30,685 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:40:33,777 basehttp "POST /api/cards/ HTTP/1.1" 201 145
+INFO 2025-02-19 01:40:37,852 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:40:38,707 basehttp "POST /api/cards/ HTTP/1.1" 201 146
+INFO 2025-02-19 01:40:40,259 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:40:40,266 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:40:41,170 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:40:41,176 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:40:41,880 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 504
+INFO 2025-02-19 01:40:41,887 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 504
+INFO 2025-02-19 01:40:47,008 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:40:47,012 views User ra permissions: set()
+DEBUG 2025-02-19 01:40:47,025 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:40:48,504 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:40:48,513 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:40:48,514 basehttp "POST /api/gemini/ HTTP/1.1" 200 332
+INFO 2025-02-19 01:44:11,451 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:44:11,455 views User ra permissions: set()
+DEBUG 2025-02-19 01:44:11,464 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:44:13,489 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:44:13,497 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:44:13,498 basehttp "POST /api/gemini/ HTTP/1.1" 200 483
+INFO 2025-02-19 01:44:15,189 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:44:16,375 basehttp "POST /api/cards/ HTTP/1.1" 201 169
+INFO 2025-02-19 01:51:07,485 decorators Handling POST request to /api/gemini/
+INFO 2025-02-19 01:51:07,490 views User ra permissions: set()
+DEBUG 2025-02-19 01:51:07,502 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-19 01:51:09,350 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-19 01:51:09,359 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-19 01:51:09,359 basehttp "POST /api/gemini/ HTTP/1.1" 200 342
+INFO 2025-02-19 01:51:12,873 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:13,880 basehttp "POST /api/cards/ HTTP/1.1" 201 162
+INFO 2025-02-19 01:51:16,557 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:51:16,563 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:51:17,372 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:17,378 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:18,503 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 837
+INFO 2025-02-19 01:51:18,509 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 837
+INFO 2025-02-19 01:51:25,361 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:25,366 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:27,632 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:51:27,638 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:51:47,594 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:51:47,600 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:51:48,506 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:48,512 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:49,117 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:51:49,125 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-02-19 01:51:51,615 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:51,622 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:55,492 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:51:55,499 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:51:56,201 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:51:56,208 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205

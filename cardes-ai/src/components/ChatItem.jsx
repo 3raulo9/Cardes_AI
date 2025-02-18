@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import catIcon from "../static/images/cat_icon.png";
 import anonIcon from "../static/images/anon_icon.png";
-import { SpeakerWaveIcon, ArrowDownTrayIcon, CreditCardIcon } from "@heroicons/react/24/solid";
+import {
+  SpeakerWaveIcon,
+  ArrowDownTrayIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/solid";
 import axiosInstance from "../utils/axiosInstance";
 
 const ChatItem = ({
@@ -65,51 +69,67 @@ const ChatItem = ({
 
   // Function to handle deck selection.
   // It uses the first sentence as the term and the second as the definition.
-const handleDeckSelect = (deck) => {
-  console.log("Selected deck:", deck);
-  const term = chatItem.parts[0] || "";
-  const definition = chatItem.parts[1] || "Definition not provided"; // Fallback text
-  const cardSetId = parseInt(deck.id, 10); // Use the deck's id directly
-  console.log("Posting card with payload:", { term, definition, card_set: cardSetId });
-  axiosInstance
-    .post("/api/cards/", { term, definition, card_set: cardSetId })
-    .then((res) => {
-      alert(`Card added to deck: ${deck.name}`);
-      setShowDeckSelector(false);
-    })
-    .catch((err) => {
-      if (err.response) {
-        console.error("Server error:", err.response.data);
-      } else {
-        console.error("Error adding card:", err);
-      }
-      alert("Error adding card");
-      setShowDeckSelector(false);
-    });
-};
+  const handleDeckSelect = (deck) => {
+    console.log("Selected deck:", deck);
+    console.log("🔍 ChatItem Parts (Before Processing):", chatItem.parts);
 
+    if (!chatItem.term || chatItem.parts.length === 0) {
+      alert("Not enough data to create a card.");
+      return;
+    }
+
+    const term = chatItem.term.trim(); // First sentence (original)
+    const definition = chatItem.parts[0].trim(); // Second sentence (translation)
+
+    console.log("🔍 Extracted Term:", term);
+    console.log("🔍 Extracted Definition:", definition);
+
+    const cardPayload = {
+      term,
+      definition,
+      card_set: deck.id,
+    };
+
+    console.log("📤 Posting card with payload:", cardPayload);
+
+    axiosInstance
+      .post("/api/cards/", cardPayload)
+      .then(() => {
+        alert(`Card added to deck: ${deck.name}`);
+        setShowDeckSelector(false);
+      })
+      .catch((err) => {
+        console.error("❌ Error adding card:", err.response?.data || err);
+        alert("Error adding card");
+        setShowDeckSelector(false);
+      });
+  };
 
   return (
     <>
       <div className={containerClasses.join(" ")}>
         {/* For model messages, always reserve space for the icon */}
-        {isModel && (
+        {/* Add to Deck button should ONLY appear on the second sentence */}
+        {/* If this is the first sentence, show the cat icon */}
+        {isModel && !chatItem.hideIcon && (
           <div className="w-10 flex-shrink-0">
-            {!chatItem.hideIcon ? (
-              <img
-                src={catIcon}
-                alt="Bot Icon"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-md"
-              />
-            ) : (
-              // Empty placeholder to reserve the same width
-              <div className="w-8 h-8 sm:w-10 sm:h-10"></div>
-            )}
+            <img
+              src={catIcon}
+              alt="Bot Icon"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-md"
+            />
           </div>
         )}
 
+
+
         {/* Bubble container with extra left margin */}
-        <div className={`flex flex-col items-start gap-1 ${isModel ? "ml-4" : ""}`}>
+        <div
+  className={`flex flex-col items-start gap-1 ${
+    isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
+  }`}
+>
+
           {/* Message Bubble */}
           <div
             className={`relative max-w-full md:max-w-md rounded-3xl px-4 sm:px-6 py-3 shadow-md ${
@@ -148,7 +168,9 @@ const handleDeckSelect = (deck) => {
 
           {/* Buttons Section */}
           <div
-            className={`flex items-center gap-2 mt-2 ${isUser ? "justify-start" : "justify-end"}`}
+            className={`flex items-center gap-2 mt-2 ${
+              isUser ? "justify-start" : "justify-end"
+            }`}
           >
             <SlCopyButton
               value={chatItem.parts.join(" ")}
@@ -167,7 +189,9 @@ const handleDeckSelect = (deck) => {
               <button
                 className="p-1 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none"
                 aria-label="Download audio"
-                onClick={() => handleTextToSpeech(chatItem.parts.join(" "), true)}
+                onClick={() =>
+                  handleTextToSpeech(chatItem.parts.join(" "), true)
+                }
               >
                 <ArrowDownTrayIcon className="w-6 h-6 text-black" />
               </button>
