@@ -4890,3 +4890,9 @@ INFO 2025-02-19 01:51:55,492 basehttp "GET /api/categories/ HTTP/1.1" 200 55
 INFO 2025-02-19 01:51:55,499 basehttp "GET /api/categories/ HTTP/1.1" 200 55
 INFO 2025-02-19 01:51:56,201 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
 INFO 2025-02-19 01:51:56,208 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:53:35,234 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:53:35,240 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-02-19 01:53:36,687 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 837
+INFO 2025-02-19 01:53:36,693 basehttp "GET /api/cards/?card_set=10 HTTP/1.1" 200 837
+INFO 2025-02-19 01:53:40,145 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-02-19 01:53:40,151 basehttp "GET /api/categories/ HTTP/1.1" 200 55
