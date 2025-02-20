@@ -10,7 +10,7 @@ import CardsPage from "./components/CardsPage";
 import PracticePage from "./components/PracticePage"; // 🛠️ Import Practice Page
 
 function App() {
-  const [ setAuthToken] = useState(localStorage.getItem("accessToken"));
+  const [setAuthToken] = useState(localStorage.getItem("accessToken"));
 
   return (
     <Router>
@@ -25,11 +25,12 @@ function App() {
           element={
             <ChatLayout>
               <Routes>
-                <Route path="/categories" element={<CategoryPage />} />
-                <Route path="/categories/:id" element={<CardSetsPage />} />
-                <Route path="/categories/:id/sets/:setId" element={<CardsPage />} />
-                <Route path="/chat" element={<CardesChat />} />
-                <Route path="/practice/:id" element={<PracticePage />} /> {/* 🛠️ Added Practice Route */}
+                <Route index element={<CategoryPage />} />
+                <Route path="categories" element={<CategoryPage />} />
+                <Route path="categories/:id" element={<CardSetsPage />} />
+                <Route path="categories/:id/sets/:setId" element={<CardsPage />} />
+                <Route path="chat" element={<CardesChat />} />
+                <Route path="practice/:id" element={<PracticePage />} />
               </Routes>
             </ChatLayout>
           }
