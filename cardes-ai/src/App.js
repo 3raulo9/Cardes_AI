@@ -7,24 +7,26 @@ import Register from "./components/Register";
 import CategoryPage from "./components/CategoryPage";
 import CardSetsPage from "./components/CardSetsPage";
 import CardsPage from "./components/CardsPage";
-import PracticePage from "./components/PracticePage"; // 🛠️ Import Practice Page
+import PracticePage from "./components/PracticePage";
 
 function App() {
-  const [setAuthToken] = useState(localStorage.getItem("accessToken"));
+  // Retrieve and manage the auth token (if needed)
+  const [ setAuthToken] = useState(localStorage.getItem("accessToken"));
 
   return (
     <Router>
       <Routes>
-        {/* No Sidebar on Login/Register */}
+        {/* Public Routes: No Sidebar */}
         <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Sidebar stays for all main pages */}
+        {/* Protected / Main Routes: Wrapped in ChatLayout */}
         <Route
           path="/*"
           element={
             <ChatLayout>
               <Routes>
+                {/* Index route for when no sub-path is provided */}
                 <Route index element={<CategoryPage />} />
                 <Route path="categories" element={<CategoryPage />} />
                 <Route path="categories/:id" element={<CardSetsPage />} />
