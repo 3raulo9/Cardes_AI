@@ -16,7 +16,12 @@ SECRET_KEY = 'django-insecure-ua!%&yniddhy_9d72rb#cv*$b!!f-8o^upf+t0pkv$%%fjid67
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "cardes-ai.onrender.com",
+    "localhost",
+    "127.0.0.1",
+    "cardesai.netlify.app"
+]
 
 # Application definition
 
