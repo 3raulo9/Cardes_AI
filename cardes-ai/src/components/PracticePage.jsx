@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useParams, useNavigate } from "react-router-dom";
-import { FiArrowLeft, FiRotateCw } from "react-icons/fi";
 
 const PracticePage = () => {
   const { id } = useParams(); // Card set ID

@@ -10,7 +10,7 @@ import CardsPage from "./components/CardsPage";
 import PracticePage from "./components/PracticePage"; // 🛠️ Import Practice Page
 
 function App() {
-  const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
+  const [ setAuthToken] = useState(localStorage.getItem("accessToken"));
 
   return (
     <Router>

@@ -32,7 +32,6 @@ const ChatItem = ({
     return () => clearTimeout(timeout);
   }, []);
 
-  const handleEditClick = () => setEditMode(true);
   const handleSaveClick = () => {
     if (updateMessage) {
       updateMessage(chatItem.id, newMessageContent);
