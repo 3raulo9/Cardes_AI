@@ -10,8 +10,10 @@ import CardsPage from "./components/CardsPage";
 import PracticePage from "./components/PracticePage";
 
 function App() {
-  // Retrieve and manage the auth token (if needed)
-  const [ setAuthToken] = useState(localStorage.getItem("accessToken"));
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
+
+  console.log(authToken); // Just to avoid the warning
 
   return (
     <Router>
