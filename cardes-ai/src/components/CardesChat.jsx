@@ -56,35 +56,52 @@ const CardesChat = () => {
       toast.error("Please enter a question!");
       return;
     }
-  
+
     // Ensure user message is added BEFORE sending API request
     let updatedChatHistory = shouldAddUserMessage
       ? [...historyToSend, { role: "user", parts: [customValue], id: Date.now() }]
       : historyToSend;
-  
+
     setChatHistory(updatedChatHistory);
-  
+
     setLoading(true);
     setMessageSent(true);
-  
+
     try {
       const { data } = await axiosInstance.post("/api/gemini/", {
         history: updatedChatHistory,
         message: customValue,
       });
-  
+
       console.log("🔍 API Response:", data.text); // Debugging log
-  
+
       const splitLines = data?.text?.split("^").map((line) => line.trim()).filter((line) => line);
-      const modelResponse = splitLines.map((line, index) => ({
-        role: "model",
-        parts: [line],
-        id: Date.now() + index,
-      }));
-  
-      // Fix the chat history update to show messages immediately
+      
+      const modelResponse = [];
+      for (let i = 0; i < splitLines.length; i++) {
+        if (i % 2 === 0) {
+          // First sentence (original)
+          modelResponse.push({
+            role: "model",
+            parts: [splitLines[i]],
+            id: Date.now() + i,
+            hideIcon: false, // Show cat icon
+          });
+        } else {
+          // Second sentence (translation) - Stores first sentence for "Add to Deck"
+          modelResponse.push({
+            role: "model",
+            parts: [splitLines[i]],
+            term: splitLines[i - 1], // Store first sentence as the term
+            id: Date.now() + i,
+            hideIcon: true, // Hide cat icon, show "Add to Deck" button
+          });
+        }
+      }
+
+      // Update chat history to immediately show responses
       setChatHistory((prevChat) => [...prevChat, ...modelResponse]);
-  
+
       setValue("");
     } catch (error) {
       console.error("Fetching error: ", error);
@@ -92,7 +109,8 @@ const CardesChat = () => {
     } finally {
       setLoading(false);
     }
-  };
+};
+
   
   
 
