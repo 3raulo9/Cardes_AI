@@ -5222,3 +5222,52 @@ DEBUG 2025-02-23 19:00:37,930 connectionpool Starting new HTTPS connection (1): 
 DEBUG 2025-02-23 19:00:39,689 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
 INFO 2025-02-23 19:00:39,763 decorators Response status code: 200, URL: /api/text-to-speech/
 INFO 2025-02-23 19:00:39,764 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 46811
+INFO 2025-02-23 21:46:55,426 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 21:48:34,269 basehttp "OPTIONS /api/register/ HTTP/1.1" 200 0
+INFO 2025-02-23 21:48:34,275 decorators Handling POST request to /api/register/
+INFO 2025-02-23 21:48:34,485 views User raragsd registered successfully.
+INFO 2025-02-23 21:48:34,485 decorators Response status code: 201, URL: /api/register/
+INFO 2025-02-23 21:48:34,486 basehttp "POST /api/register/ HTTP/1.1" 201 42
+INFO 2025-02-23 21:48:38,177 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-02-23 21:48:38,179 decorators Handling POST request to /api/login/
+INFO 2025-02-23 21:48:38,394 views Token obtained for raragsd, status code: 200
+INFO 2025-02-23 21:48:38,394 decorators Response status code: 200, URL: /api/login/
+INFO 2025-02-23 21:48:38,395 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-02-23 21:48:41,104 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-02-23 21:48:41,106 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 21:48:41,110 views User raragsd permissions: set()
+DEBUG 2025-02-23 21:48:41,135 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 21:48:44,052 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 21:48:44,061 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 21:48:44,062 basehttp "POST /api/gemini/ HTTP/1.1" 200 18
+INFO 2025-02-23 21:48:45,026 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-02-23 21:48:45,027 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 21:48:45,031 views User raragsd permissions: set()
+DEBUG 2025-02-23 21:48:45,033 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 21:48:46,393 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 21:48:46,443 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 21:48:46,444 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13792
+INFO 2025-02-23 21:48:49,986 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 21:48:49,989 views User raragsd permissions: set()
+DEBUG 2025-02-23 21:48:49,991 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 21:48:51,041 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 21:48:51,058 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 21:48:51,059 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13374
+INFO 2025-02-23 21:48:53,734 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 21:48:53,737 views User raragsd permissions: set()
+DEBUG 2025-02-23 21:48:53,749 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 21:48:55,790 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 21:48:55,801 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 21:48:55,802 basehttp "POST /api/gemini/ HTTP/1.1" 200 408
+INFO 2025-02-23 21:48:57,434 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 21:48:57,440 views User raragsd permissions: set()
+DEBUG 2025-02-23 21:48:57,441 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 21:48:58,537 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 21:48:58,560 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 21:48:58,561 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 22151
+INFO 2025-02-23 21:48:59,240 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 21:48:59,243 views User raragsd permissions: set()
+DEBUG 2025-02-23 21:48:59,244 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 21:49:00,629 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 21:49:00,667 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 21:49:00,668 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 46811
