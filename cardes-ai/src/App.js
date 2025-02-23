@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import CardesChat from "./components/CardesChat";
 import Login from "./components/Login";
 import ChatLayout from "./components/ChatLayout";
@@ -10,10 +10,11 @@ import CardsPage from "./components/CardsPage";
 import PracticePage from "./components/PracticePage";
 
 function App() {
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
 
-  console.log(authToken); // Just to avoid the warning
+  useEffect(() => {
+    setAuthToken(localStorage.getItem("accessToken"));
+  }, []);
 
   return (
     <Router>
@@ -22,21 +23,24 @@ function App() {
         <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected / Main Routes: Wrapped in ChatLayout */}
+        {/* Redirect to login if not authenticated */}
         <Route
           path="/*"
           element={
-            <ChatLayout>
-              <Routes>
-                {/* Index route for when no sub-path is provided */}
-                <Route index element={<CategoryPage />} />
-                <Route path="categories" element={<CategoryPage />} />
-                <Route path="categories/:id" element={<CardSetsPage />} />
-                <Route path="categories/:id/sets/:setId" element={<CardsPage />} />
-                <Route path="chat" element={<CardesChat />} />
-                <Route path="practice/:id" element={<PracticePage />} />
-              </Routes>
-            </ChatLayout>
+            authToken ? (
+              <ChatLayout>
+                <Routes>
+                  <Route index element={<CategoryPage />} />
+                  <Route path="categories" element={<CategoryPage />} />
+                  <Route path="categories/:id" element={<CardSetsPage />} />
+                  <Route path="categories/:id/sets/:setId" element={<CardsPage />} />
+                  <Route path="chat" element={<CardesChat />} />
+                  <Route path="practice/:id" element={<PracticePage />} />
+                </Routes>
+              </ChatLayout>
+            ) : (
+              <Navigate to="/login" replace />
+            )
           }
         />
       </Routes>
@@ -45,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+// TODO: In the future, consider adding a dedicated landing page for users who are not logged in.
