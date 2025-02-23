@@ -82,7 +82,7 @@ pyparsing==3.1.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2023.3.post1
-pywin32==306
+# pywin32==306
 pyzmq==26.0.0
 requests==2.31.0
 rfc3986==1.5.0
