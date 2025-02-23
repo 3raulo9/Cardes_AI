@@ -5118,3 +5118,107 @@ DEBUG 2025-02-22 23:16:50,888 connectionpool Starting new HTTPS connection (1): 
 DEBUG 2025-02-22 23:16:51,943 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
 INFO 2025-02-22 23:16:51,965 decorators Response status code: 200, URL: /api/text-to-speech/
 INFO 2025-02-22 23:16:51,965 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 15464
+INFO 2025-02-23 18:03:34,070 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 18:03:55,177 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-02-23 18:03:55,186 decorators Handling POST request to /api/login/
+INFO 2025-02-23 18:03:55,483 views Token obtained for ra, status code: 200
+INFO 2025-02-23 18:03:55,485 decorators Response status code: 200, URL: /api/login/
+INFO 2025-02-23 18:03:55,486 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-02-23 18:04:03,422 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-02-23 18:04:03,424 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 18:04:03,429 views User ra permissions: set()
+DEBUG 2025-02-23 18:04:03,446 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 18:04:05,066 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 18:04:05,074 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 18:04:05,075 basehttp "POST /api/gemini/ HTTP/1.1" 200 351
+INFO 2025-02-23 18:04:06,197 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-02-23 18:04:06,198 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 18:04:06,203 views User ra permissions: set()
+DEBUG 2025-02-23 18:04:06,205 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 18:04:07,490 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 18:04:07,550 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 18:04:07,551 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 33854
+INFO 2025-02-23 18:04:11,371 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 18:04:11,374 views User ra permissions: set()
+DEBUG 2025-02-23 18:04:11,376 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 18:04:12,520 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 18:04:12,533 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 18:04:12,534 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 29675
+INFO 2025-02-23 18:08:51,212 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 18:08:51,216 views User ra permissions: set()
+DEBUG 2025-02-23 18:08:51,229 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 18:08:52,206 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 18:08:52,219 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 18:08:52,220 basehttp "POST /api/gemini/ HTTP/1.1" 200 47
+INFO 2025-02-23 18:08:59,622 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 18:08:59,626 views User ra permissions: set()
+DEBUG 2025-02-23 18:08:59,636 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 18:09:01,449 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 18:09:01,458 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 18:09:01,459 basehttp "POST /api/gemini/ HTTP/1.1" 200 361
+INFO 2025-02-23 18:09:02,982 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 18:09:02,986 views User ra permissions: set()
+DEBUG 2025-02-23 18:09:02,988 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 18:09:04,595 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 18:09:04,611 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 18:09:04,612 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 28839
+INFO 2025-02-23 18:09:06,020 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 18:09:06,023 views User ra permissions: set()
+DEBUG 2025-02-23 18:09:06,024 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 18:09:07,374 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 18:09:07,392 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 18:09:07,393 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 45975
+INFO 2025-02-23 18:09:10,003 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 18:09:10,006 views User ra permissions: set()
+DEBUG 2025-02-23 18:09:10,007 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 18:09:11,127 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 18:09:11,141 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 18:09:11,142 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 25077
+INFO 2025-02-23 18:18:37,798 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 18:18:53,288 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\serializers.py changed, reloading.
+INFO 2025-02-23 18:18:53,971 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 18:19:21,015 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\serializers.py changed, reloading.
+INFO 2025-02-23 18:19:21,775 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 18:19:43,356 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-02-23 18:19:44,155 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 18:59:00,927 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-02-23 18:59:01,893 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 18:59:07,578 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-02-23 18:59:08,282 autoreload Watching for file changes with StatReloader
+INFO 2025-02-23 19:00:00,822 basehttp "OPTIONS /api/register/ HTTP/1.1" 200 0
+INFO 2025-02-23 19:00:00,828 decorators Handling POST request to /api/register/
+WARNING 2025-02-23 19:00:00,833 views Registration failed: {'email': [ErrorDetail(string='Enter a valid email address.', code='invalid')]}
+ERROR 2025-02-23 19:00:00,833 decorators Error response: 400, URL: /api/register/
+WARNING 2025-02-23 19:00:00,834 log Bad Request: /api/register/
+WARNING 2025-02-23 19:00:00,834 basehttp "POST /api/register/ HTTP/1.1" 400 42
+INFO 2025-02-23 19:00:06,649 decorators Handling POST request to /api/register/
+WARNING 2025-02-23 19:00:06,651 views Registration failed: {'email': [ErrorDetail(string='Enter a valid email address.', code='invalid')]}
+ERROR 2025-02-23 19:00:06,652 decorators Error response: 400, URL: /api/register/
+WARNING 2025-02-23 19:00:06,652 log Bad Request: /api/register/
+WARNING 2025-02-23 19:00:06,653 basehttp "POST /api/register/ HTTP/1.1" 400 42
+INFO 2025-02-23 19:00:21,839 decorators Handling POST request to /api/register/
+INFO 2025-02-23 19:00:22,048 views User rarararara registered successfully.
+INFO 2025-02-23 19:00:22,049 decorators Response status code: 201, URL: /api/register/
+INFO 2025-02-23 19:00:22,049 basehttp "POST /api/register/ HTTP/1.1" 201 42
+INFO 2025-02-23 19:00:26,632 decorators Handling POST request to /api/login/
+INFO 2025-02-23 19:00:26,896 views Token obtained for rarararara, status code: 200
+INFO 2025-02-23 19:00:26,896 decorators Response status code: 200, URL: /api/login/
+INFO 2025-02-23 19:00:26,897 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-02-23 19:00:30,219 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 19:00:30,223 views User rarararara permissions: set()
+DEBUG 2025-02-23 19:00:30,245 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 19:00:30,974 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 19:00:30,988 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 19:00:30,989 basehttp "POST /api/gemini/ HTTP/1.1" 200 43
+INFO 2025-02-23 19:00:34,567 decorators Handling POST request to /api/gemini/
+INFO 2025-02-23 19:00:34,573 views User rarararara permissions: set()
+DEBUG 2025-02-23 19:00:34,583 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-02-23 19:00:36,624 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-02-23 19:00:36,633 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-02-23 19:00:36,634 basehttp "POST /api/gemini/ HTTP/1.1" 200 395
+INFO 2025-02-23 19:00:37,923 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-02-23 19:00:37,928 views User rarararara permissions: set()
+DEBUG 2025-02-23 19:00:37,930 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-02-23 19:00:39,689 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-02-23 19:00:39,763 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-02-23 19:00:39,764 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 46811

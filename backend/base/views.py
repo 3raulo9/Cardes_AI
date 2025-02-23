@@ -103,12 +103,13 @@ VOICE_ID = os.getenv('VOICE_ID')
 
 # Custom JWT token view to remove refresh token
 class MyTokenObtainPairView(TokenObtainPairView):
-    @method_decorator(log_request)
+    @method_decorator(log_request)  # ✅ Ensure proper indentation here
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
-        response.data.pop('refresh', None)  # Remove refresh token from response
+        response.data.pop('refresh', None)  # Remove refresh token safely
         logger.info(f"Token obtained for {request.data.get('username')}, status code: {response.status_code}")
         return response
+
 
 @api_view(['POST'])
 @log_request

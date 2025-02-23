@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Category, CardSet, Card, Message
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -69,3 +70,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         )  # Remove confirm_password before creating the user
         user = User.objects.create_user(**validated_data)
         return user
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)  # Get the default token data
+        data.pop('refresh', None)  # Remove refresh token safely
+        return data
