@@ -106,10 +106,8 @@ const ChatItem = ({
 
   return (
     <>
-      <div className={containerClasses.join(" ")}>
-        {/* For model messages, always reserve space for the icon */}
-        {/* Add to Deck button should ONLY appear on the second sentence */}
-        {/* If this is the first sentence, show the cat icon */}
+      <div className={`flex items-start w-full ${isUser ? "justify-end" : "justify-start"}`}>
+        {/* Bot Icon for AI Responses */}
         {isModel && !chatItem.hideIcon && (
           <div className="w-10 flex-shrink-0">
             <img
@@ -119,42 +117,35 @@ const ChatItem = ({
             />
           </div>
         )}
-
-
-
-        {/* Bubble container with extra left margin */}
+  
+        {/* Chat Bubble */}
         <div
-  className={`flex flex-col items-start gap-1 ${
-    isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
-  }`}
->
-
-          {/* Message Bubble */}
+          className={`flex flex-col items-start gap-1 ${
+            isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
+          }`}
+        >
           <div
-            className={`relative max-w-full md:max-w-md rounded-3xl px-4 sm:px-6 py-3 shadow-md ${
+            className={`relative max-w-full md:max-w-lg rounded-3xl px-5 py-3 shadow-md transition-transform duration-300 transform ${
               isUser
-                ? "bg-orange-800 text-white rounded-br-none"
-                : "bg-white border border-gray-200 text-gray-800 rounded-bl-none"
-            } transition-transform duration-300 transform ${
-              visible ? "scale-100 opacity-100" : "scale-95 opacity-0"
-            }`}
+                ? "bg-primary text-white rounded-br-none"
+                : "bg-gray-100 text-gray-800 border border-gray-200 rounded-bl-none"
+            } ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
           >
             {editMode ? (
               <div className="flex flex-col gap-2">
                 <textarea
-                  className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   value={newMessageContent}
                   onChange={(e) => setNewMessageContent(e.target.value)}
                 />
                 <button
                   onClick={handleSaveClick}
-                  className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1"
+                  className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1 transition"
                 >
                   Save
                 </button>
               </div>
             ) : (
-              // Display each part on its own line.
               <div>
                 {chatItem.parts.map((part, idx) => (
                   <p key={idx} className="whitespace-pre-line break-words">
@@ -164,20 +155,16 @@ const ChatItem = ({
               </div>
             )}
           </div>
-
+  
           {/* Buttons Section */}
-          <div
-            className={`flex items-center gap-2 mt-2 ${
-              isUser ? "justify-start" : "justify-end"
-            }`}
-          >
+          <div className={`flex items-center gap-2 mt-2 ${isUser ? "justify-start" : "justify-end"}`}>
             <SlCopyButton
               value={chatItem.parts.join(" ")}
               className="text-black hover:text-gray-700"
             />
             <SlTooltip content={tooltipContent.listen || "Listen"}>
               <button
-                className="p-1 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none"
+                className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
                 aria-label="Play audio"
                 onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
               >
@@ -186,20 +173,18 @@ const ChatItem = ({
             </SlTooltip>
             <SlTooltip content={tooltipContent.download || "Download"}>
               <button
-                className="p-1 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none"
+                className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
                 aria-label="Download audio"
-                onClick={() =>
-                  handleTextToSpeech(chatItem.parts.join(" "), true)
-                }
+                onClick={() => handleTextToSpeech(chatItem.parts.join(" "), true)}
               >
                 <ArrowDownTrayIcon className="w-6 h-6 text-black" />
               </button>
             </SlTooltip>
-            {/* For model messages representing the second sentence (hideIcon true), show the flashcard button */}
+            {/* Show "Add to Deck" button only for second sentences */}
             {isModel && chatItem.hideIcon && (
               <SlTooltip content="Add to my deck">
                 <button
-                  className="p-1 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none"
+                  className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
                   aria-label="Add to my deck"
                   onClick={openDeckSelector}
                 >
@@ -209,8 +194,8 @@ const ChatItem = ({
             )}
           </div>
         </div>
-
-        {/* For user messages, show the user icon on the right */}
+  
+        {/* User Icon for Sent Messages */}
         {isUser && (
           <div className="w-10 flex-shrink-0">
             <img
@@ -221,22 +206,22 @@ const ChatItem = ({
           </div>
         )}
       </div>
-
-      {/* Modal for deck selection */}
+  
+      {/* Modal for Deck Selection */}
       {showDeckSelector && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-80">
+          <div className="bg-white p-6 rounded-lg w-80 shadow-lg">
             <h2 className="text-xl font-bold mb-4">Select a Deck</h2>
             {loadingDecks ? (
               <p>Loading...</p>
             ) : deckError ? (
-              <p>{deckError}</p>
+              <p className="text-red-500">{deckError}</p>
             ) : (
-              <ul>
+              <ul className="space-y-2">
                 {decks.map((deck) => (
                   <li
                     key={deck.id}
-                    className="cursor-pointer hover:bg-gray-200 p-2 rounded"
+                    className="cursor-pointer p-3 rounded-md hover:bg-gray-200 transition"
                     onClick={() => handleDeckSelect(deck)}
                   >
                     {deck.name}
@@ -245,7 +230,7 @@ const ChatItem = ({
               </ul>
             )}
             <button
-              className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+              className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
               onClick={() => setShowDeckSelector(false)}
             >
               Close
@@ -255,6 +240,7 @@ const ChatItem = ({
       )}
     </>
   );
+  
 };
 
 export default ChatItem;

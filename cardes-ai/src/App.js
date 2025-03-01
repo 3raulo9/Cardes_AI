@@ -8,11 +8,14 @@ import CategoryPage from "./components/CategoryPage";
 import CardSetsPage from "./components/CardSetsPage";
 import CardsPage from "./components/CardsPage";
 import PracticePage from "./components/PracticePage";
+import SettingsPage from "./components/SettingsPage";
+import { loadTheme } from "./utils/themeSwitcher"; // ✅ Load theme on startup
 
 function App() {
   const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
 
   useEffect(() => {
+    loadTheme(); // ✅ Load saved theme or default to Cardes
     setAuthToken(localStorage.getItem("accessToken"));
   }, []);
 
@@ -23,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Redirect to login if not authenticated */}
+        {/* Protected Routes */}
         <Route
           path="/*"
           element={
@@ -36,6 +39,7 @@ function App() {
                   <Route path="categories/:id/sets/:setId" element={<CardsPage />} />
                   <Route path="chat" element={<CardesChat />} />
                   <Route path="practice/:id" element={<PracticePage />} />
+                  <Route path="settings" element={<SettingsPage />} /> {/* ✅ Settings Page */}
                 </Routes>
               </ChatLayout>
             ) : (
@@ -49,5 +53,3 @@ function App() {
 }
 
 export default App;
-
-// TODO: In the future, consider adding a dedicated landing page for users who are not logged in.
