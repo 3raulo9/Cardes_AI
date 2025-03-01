@@ -143,7 +143,7 @@ class GeminiView(APIView):
 
         try:
             response = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={GOOGLE_API_KEY}",
+                f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent?key={GOOGLE_API_KEY}",
                 headers={"Content-Type": "application/json"},
                 json={"contents": [{"parts": [{"text": user_input}]}]}
             )
@@ -158,6 +158,7 @@ class GeminiView(APIView):
         except requests.RequestException as e:
             logger.error(f"Error: {str(e)}")
             return Response({"error": f"HTTP error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @class_log_request
 class TextToSpeechView(APIView):

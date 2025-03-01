@@ -5271,3 +5271,47 @@ DEBUG 2025-02-23 21:48:59,244 connectionpool Starting new HTTPS connection (1): 
 DEBUG 2025-02-23 21:49:00,629 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
 INFO 2025-02-23 21:49:00,667 decorators Response status code: 200, URL: /api/text-to-speech/
 INFO 2025-02-23 21:49:00,668 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 46811
+INFO 2025-03-01 18:50:17,765 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 18:57:55,198 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-01 18:57:55,208 decorators Handling POST request to /api/login/
+INFO 2025-03-01 18:57:55,450 views Token obtained for ra, status code: 200
+INFO 2025-03-01 18:57:55,450 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-01 18:57:55,451 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-01 18:57:56,689 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-03-01 18:57:56,690 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 18:57:56,694 views User ra permissions: set()
+DEBUG 2025-03-01 18:57:56,713 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 18:57:57,275 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 404 None
+ERROR 2025-03-01 18:57:57,280 views Error: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM
+ERROR 2025-03-01 18:57:57,283 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 18:57:57,285 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 18:57:57,286 basehttp "POST /api/gemini/ HTTP/1.1" 500 196
+INFO 2025-03-01 18:58:01,172 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-03-01 18:58:01,175 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-01 18:58:01,188 views User ra permissions: set()
+DEBUG 2025-03-01 18:58:01,192 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-01 18:58:03,103 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-01 18:58:03,186 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-01 18:58:03,186 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 9613
+INFO 2025-03-01 18:58:14,439 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 18:58:14,443 views User ra permissions: set()
+DEBUG 2025-03-01 18:58:14,452 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 18:58:14,919 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 404 None
+ERROR 2025-03-01 18:58:14,920 views Error: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM
+ERROR 2025-03-01 18:58:14,922 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 18:58:14,923 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 18:58:14,924 basehttp "POST /api/gemini/ HTTP/1.1" 500 196
+INFO 2025-03-01 19:00:22,667 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:00:23,632 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:00:26,337 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:00:26,354 views User ra permissions: set()
+DEBUG 2025-03-01 19:00:26,369 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:00:27,521 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:00:27,534 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:00:27,535 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:00:35,529 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-01 19:00:35,535 views User ra permissions: set()
+DEBUG 2025-03-01 19:00:35,537 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-01 19:00:37,150 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-01 19:00:37,209 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-01 19:00:37,210 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 39288
