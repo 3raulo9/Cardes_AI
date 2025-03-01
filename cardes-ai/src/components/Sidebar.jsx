@@ -1,16 +1,11 @@
-import React from "react";
-import {
-  FiPlus,
-  FiSettings,
-  FiHelpCircle,
-  FiLogOut,
-  FiLayers,
-  FiMessageSquare,
-} from "react-icons/fi";
+import React, { useState } from "react";
+import { FiPlus, FiSettings, FiHelpCircle, FiLogOut, FiLayers, FiMessageSquare } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { Fireworks } from "@fireworks-js/react";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
+  const [showFireworks, setShowFireworks] = useState(false);
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -22,11 +17,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     window.location.href = "/login"; // Redirect to login page
   };
 
-  // Placeholder function for viewing chat history
-  const handleViewChats = () => {
-    alert("Chat history feature coming soon! 📜");
-  };
-
   return (
     <>
       {/* Sidebar Container */}
@@ -36,8 +26,25 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         } transition-transform duration-300 z-50 md:translate-x-0 md:static md:shadow-none flex flex-col`}
       >
         {/* Logo / Branding */}
-        <div className="p-6 text-center font-bold text-2xl border-b border-highlight tracking-wide">
+        <div
+          className="p-6 text-center font-bold text-2xl border-b border-highlight tracking-wide relative"
+          onMouseEnter={() => setShowFireworks(true)}
+          onMouseLeave={() => setShowFireworks(false)}
+        >
           Cardes AI
+          {showFireworks && (
+            <Fireworks
+              options={{ rocketsPoint: { min: 50, max: 50 } }}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                pointerEvents: "none",
+              }}
+            />
+          )}
         </div>
 
         {/* Sidebar Content */}
@@ -52,7 +59,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           {/* View Chats Button */}
           <button
             className="flex items-center gap-3 w-full mt-4 py-3 px-5 bg-highlight hover:bg-gray-300 transition rounded-xl text-lg font-semibold shadow-md text-black"
-            onClick={handleViewChats}
+            onClick={() => alert("Chat history feature coming soon! 📜")}
           >
             <FiMessageSquare className="text-xl" /> View Chats
           </button>

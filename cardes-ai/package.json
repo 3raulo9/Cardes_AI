@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fireworks-js/react": "^2.10.8",
     "@heroicons/react": "^2.2.0",
     "@shoelace-style/shoelace": "^2.19.1",
     "animejs": "^3.2.2",

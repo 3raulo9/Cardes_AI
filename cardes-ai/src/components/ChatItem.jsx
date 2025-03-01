@@ -42,13 +42,6 @@ const ChatItem = ({
   const isUser = chatItem.role === "user";
   const isModel = chatItem.role === "model";
 
-  // Container for the entire chat item.
-  const containerClasses = [
-    "flex",
-    "items-start",
-    "w-full",
-    isUser ? "justify-end" : "justify-start",
-  ];
 
   // Function to open the deck selector modal and fetch decks.
   const openDeckSelector = () => {
