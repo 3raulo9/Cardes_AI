@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import logging
 from datetime import timedelta
+from django.core.cache import cache
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,9 +128,14 @@ LOGGING = {
 
 load_dotenv()
 
-# GOOGLE_GEN_AI_KEY = os.getenv('GOOGLE_GEN_AI_KEY')
-# XI_API_KEY = os.getenv('API_KEY')
-# VOICE_ID = 'hFgOzpmS0CMtL2to8sAl'
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake",
+    }
+}
+
+
 
 WSGI_APPLICATION = 'myproj.wsgi.application'
 

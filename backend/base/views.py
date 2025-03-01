@@ -1,9 +1,11 @@
 import logging
 import os
+import time
 import tempfile
-import random  # 🔹 NEW: To pick random rate-limit messages
+import random  # 🔹 Used for random rate-limit messages
 import requests
 from dotenv import load_dotenv
+from django.core.cache import cache  # 🔹 Cache to store per-user cooldowns
 
 from django.http import JsonResponse, FileResponse
 from django.contrib.auth.models import User
@@ -14,7 +16,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -126,16 +127,7 @@ def register(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# Chat application
-import time
-import requests
-from rest_framework.response import Response
-from rest_framework import status
-from django.utils.decorators import method_decorator
-from rest_framework.views import APIView
-from .decorators import class_log_request
-import logging
-import os
+
 
 logger = logging.getLogger(__name__)
 # List of messages to avoid repetition
@@ -149,15 +141,33 @@ RATE_LIMIT_MESSAGES = [
 
 @class_log_request
 class GeminiView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
         user = request.user
+        user_id = user.id  # Each user has a unique ID
         logger.info(f"User {user.username} permissions: {user.get_all_permissions()}")
-        user_input = request.data.get('message', '')
 
+        user_input = request.data.get('message', '')
         if not user_input:
             return Response({"error": "No message provided"}, status=status.HTTP_400_BAD_REQUEST)
 
         API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent"
+
+        # **🔹 Check rate limit for this specific user**
+        last_request_time = cache.get(f"gemini_cooldown_{user_id}")
+
+        COOLDOWN_TIME = 10  # ⏳ Set cooldown per user (10 seconds)
+
+        if last_request_time:
+            time_since_last_request = time.time() - last_request_time
+            if time_since_last_request < COOLDOWN_TIME:
+                warning_message = random.choice(RATE_LIMIT_MESSAGES)
+                logger.warning(f"User {user.username} is sending too many requests. Cooldown active.")
+                return Response({"text": warning_message}, status=status.HTTP_200_OK)
+
+        # **🔹 Store this request timestamp to enforce cooldown**
+        cache.set(f"gemini_cooldown_{user_id}", time.time(), timeout=COOLDOWN_TIME)
 
         try:
             response = requests.post(
@@ -167,13 +177,12 @@ class GeminiView(APIView):
             )
 
             if response.status_code == 429:  # Too Many Requests
-                warning_message = random.choice(RATE_LIMIT_MESSAGES)  # Pick a random warning
-                logger.warning(f"Rate limit reached for user {request.user.username}. Message: {warning_message}")
+                warning_message = random.choice(RATE_LIMIT_MESSAGES)
+                logger.warning(f"User {user.username} is hitting API limits.")
                 return Response({"text": warning_message}, status=status.HTTP_200_OK)
 
             response.raise_for_status()
             response_json = response.json()
-
             text_response = response_json.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "No response")
 
             return Response({"text": text_response}, status=status.HTTP_200_OK)
