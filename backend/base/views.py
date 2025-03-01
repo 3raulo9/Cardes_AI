@@ -1,25 +1,26 @@
 import logging
-from django.http import JsonResponse, FileResponse
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework import status
-import requests
 import os
 import tempfile
-from django.contrib.auth.models import User
+import random  # 🔹 NEW: To pick random rate-limit messages
+import requests
 from dotenv import load_dotenv
+
+from django.http import JsonResponse, FileResponse
+from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
+
+from rest_framework import status, generics, permissions
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+
+# Custom imports from your project
 from .decorators import log_request, require_permissions, class_log_request
-from .models import Chat, Message
-from .serializers import *
-
-
-from rest_framework import generics, permissions
-from .models import Category, CardSet, Card
+from .models import Chat, Message, Category, CardSet, Card
 from .serializers import CategorySerializer, CardSetSerializer, CardSerializer
 
 # 🛠️ List & Create Categories
@@ -126,38 +127,60 @@ def register(request):
 
 
 # Chat application
+import time
+import requests
+from rest_framework.response import Response
+from rest_framework import status
+from django.utils.decorators import method_decorator
+from rest_framework.views import APIView
+from .decorators import class_log_request
+import logging
+import os
+
+logger = logging.getLogger(__name__)
+# List of messages to avoid repetition
+RATE_LIMIT_MESSAGES = [
+    "You're going too fast! Try again in a few seconds.",
+    "Hold on! You're sending messages too quickly. Try again in 5-10 seconds.",
+    "Slow down! The AI needs a moment to respond properly.",
+    "Too many requests! Give it a few seconds before trying again.",
+    "Patience, my friend! Wait a little before sending another message."
+]
+
 @class_log_request
 class GeminiView(APIView):
-    permission_classes = [IsAuthenticated]
-
     def post(self, request):
         user = request.user
         logger.info(f"User {user.username} permissions: {user.get_all_permissions()}")
-        user_input = request.data.get('message', '')  # Input message
+        user_input = request.data.get('message', '')
 
         if not user_input:
             return Response({"error": "No message provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        chat, created = Chat.objects.get_or_create(user=request.user)
-        Message.objects.create(chat=chat, sender='user', content=user_input)  # Save message in db
+        API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent"
 
         try:
             response = requests.post(
-                f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent?key={GOOGLE_API_KEY}",
+                f"{API_URL}?key={os.getenv('GOOGLE_API_KEY')}",
                 headers={"Content-Type": "application/json"},
                 json={"contents": [{"parts": [{"text": user_input}]}]}
             )
-            response.raise_for_status()
 
+            if response.status_code == 429:  # Too Many Requests
+                warning_message = random.choice(RATE_LIMIT_MESSAGES)  # Pick a random warning
+                logger.warning(f"Rate limit reached for user {request.user.username}. Message: {warning_message}")
+                return Response({"text": warning_message}, status=status.HTTP_200_OK)
+
+            response.raise_for_status()
             response_json = response.json()
+
             text_response = response_json.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "No response")
 
-            Message.objects.create(chat=chat, sender='system', content=text_response)
+            return Response({"text": text_response}, status=status.HTTP_200_OK)
 
-            return Response({"text": text_response})
         except requests.RequestException as e:
-            logger.error(f"Error: {str(e)}")
-            return Response({"error": f"HTTP error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            logger.error(f"Error calling Gemini API: {str(e)}")
+            return Response({"text": "The AI is currently unavailable. Please try again later."}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
 
 @class_log_request

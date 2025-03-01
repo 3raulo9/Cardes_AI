@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ua!%&yniddhy_9d72rb#cv*$b!!f-8o^upf+t0pkv$%%fjid67'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # ❌ Avoid logging sensitive data
 
 ALLOWED_HOSTS = [
     "cardes-ai.onrender.com",

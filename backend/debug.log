@@ -5315,3 +5315,437 @@ DEBUG 2025-03-01 19:00:35,537 connectionpool Starting new HTTPS connection (1): 
 DEBUG 2025-03-01 19:00:37,150 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
 INFO 2025-03-01 19:00:37,209 decorators Response status code: 200, URL: /api/text-to-speech/
 INFO 2025-03-01 19:00:37,210 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 39288
+INFO 2025-03-01 19:02:41,499 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:02:42,321 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:02:50,792 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:02:51,539 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:02:54,315 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:02:54,997 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:03:02,673 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:03:03,370 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:03:05,541 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:03:06,286 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:03:10,497 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:03:11,369 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:03:29,879 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\myproj\settings.py changed, reloading.
+INFO 2025-03-01 19:03:30,541 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:03:50,027 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\myproj\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\myproj\settings.py changed, reloading.
+INFO 2025-03-01 19:03:59,201 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:05:04,952 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\myproj\settings.py changed, reloading.
+INFO 2025-03-01 19:05:25,779 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:05:35,545 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\myproj\settings.py changed, reloading.
+INFO 2025-03-01 19:05:40,403 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:06:15,415 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:06:16,133 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:06:44,296 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:06:44,316 views User ra permissions: set()
+DEBUG 2025-03-01 19:06:44,334 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:06:45,439 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:06:45,441 views Gemini API request successful for user ra
+INFO 2025-03-01 19:06:45,443 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:06:45,444 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:06:53,920 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:06:53,924 views User ra permissions: set()
+DEBUG 2025-03-01 19:06:53,933 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:06:55,010 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:06:55,010 views Gemini API request successful for user ra
+INFO 2025-03-01 19:06:55,012 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:06:55,013 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:07:02,478 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:02,483 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:02,496 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:03,782 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:07:03,783 views Gemini API request successful for user ra
+INFO 2025-03-01 19:07:03,784 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:07:03,785 basehttp "POST /api/gemini/ HTTP/1.1" 200 98
+INFO 2025-03-01 19:07:11,246 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:11,251 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:11,263 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:11,742 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:07:11,744 views Error occurred while calling Gemini API
+ERROR 2025-03-01 19:07:11,747 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 19:07:11,749 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 19:07:11,750 basehttp "POST /api/gemini/ HTTP/1.1" 500 31
+INFO 2025-03-01 19:07:15,780 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:15,795 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:15,811 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:16,288 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:07:16,288 views Error occurred while calling Gemini API
+ERROR 2025-03-01 19:07:16,290 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 19:07:16,290 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 19:07:16,290 basehttp "POST /api/gemini/ HTTP/1.1" 500 31
+INFO 2025-03-01 19:07:18,698 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:18,708 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:18,721 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:19,212 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:07:19,214 views Error occurred while calling Gemini API
+ERROR 2025-03-01 19:07:19,217 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 19:07:19,218 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 19:07:19,220 basehttp "POST /api/gemini/ HTTP/1.1" 500 31
+INFO 2025-03-01 19:07:23,272 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:23,277 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:23,289 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:23,775 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:07:23,776 views Error occurred while calling Gemini API
+ERROR 2025-03-01 19:07:23,778 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 19:07:23,778 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 19:07:23,779 basehttp "POST /api/gemini/ HTTP/1.1" 500 31
+INFO 2025-03-01 19:07:32,021 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:32,027 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:32,038 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:32,809 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:07:32,810 views Gemini API request successful for user ra
+INFO 2025-03-01 19:07:32,811 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:07:32,812 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:07:48,753 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:48,758 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:48,768 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:49,849 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:07:49,852 views Gemini API request successful for user ra
+INFO 2025-03-01 19:07:49,854 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:07:49,857 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:07:56,965 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:56,975 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:56,986 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:57,737 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:07:57,739 views Gemini API request successful for user ra
+INFO 2025-03-01 19:07:57,743 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:07:57,745 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:07:58,383 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:07:58,399 views User ra permissions: set()
+DEBUG 2025-03-01 19:07:58,415 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:07:58,902 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:07:58,904 views Error occurred while calling Gemini API
+ERROR 2025-03-01 19:07:58,907 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 19:07:58,909 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 19:07:58,910 basehttp "POST /api/gemini/ HTTP/1.1" 500 31
+INFO 2025-03-01 19:08:02,417 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:08:02,429 views User ra permissions: set()
+DEBUG 2025-03-01 19:08:02,442 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:08:02,910 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:08:02,911 views Error occurred while calling Gemini API
+ERROR 2025-03-01 19:08:02,913 decorators Error response: 500, URL: /api/gemini/
+ERROR 2025-03-01 19:08:02,913 log Internal Server Error: /api/gemini/
+ERROR 2025-03-01 19:08:02,914 basehttp "POST /api/gemini/ HTTP/1.1" 500 31
+INFO 2025-03-01 19:08:58,417 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:08:59,158 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:09:03,308 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:09:03,329 views User ra permissions: set()
+DEBUG 2025-03-01 19:09:03,334 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:09:04,375 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:09:04,378 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:09:04,380 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:09:06,349 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:09:06,353 views User ra permissions: set()
+DEBUG 2025-03-01 19:09:06,354 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:09:07,462 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:09:07,465 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:09:07,466 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:09:08,099 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:09:08,103 views User ra permissions: set()
+DEBUG 2025-03-01 19:09:08,105 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:09:09,134 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:09:09,136 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:09:09,137 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:09:10,038 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:09:10,042 views User ra permissions: set()
+DEBUG 2025-03-01 19:09:10,045 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:09:10,503 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:09:10,504 views Rate limit reached. Retrying 1/3 in 5 seconds...
+DEBUG 2025-03-01 19:09:15,507 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:09:15,983 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:09:15,985 views Rate limit reached. Retrying 2/3 in 5 seconds...
+DEBUG 2025-03-01 19:09:20,987 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:09:21,221 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:09:21,223 views Rate limit reached. Retrying 3/3 in 5 seconds...
+ERROR 2025-03-01 19:09:26,226 decorators Error response: 429, URL: /api/gemini/
+WARNING 2025-03-01 19:09:26,227 log Too Many Requests: /api/gemini/
+WARNING 2025-03-01 19:09:26,228 basehttp "POST /api/gemini/ HTTP/1.1" 429 60
+INFO 2025-03-01 19:11:13,267 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:11:14,005 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:11:17,308 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:17,369 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:17,381 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:18,215 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:11:18,218 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:11:18,219 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:11:19,129 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:19,132 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:19,135 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:20,219 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:11:20,221 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:11:20,222 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:11:21,165 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:21,170 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:21,171 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:22,969 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:11:22,971 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:11:22,971 basehttp "POST /api/gemini/ HTTP/1.1" 200 237
+INFO 2025-03-01 19:11:26,674 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:26,678 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:26,680 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+INFO 2025-03-01 19:11:27,184 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:27,188 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:27,190 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:27,778 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:11:27,780 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:11:27,781 basehttp "POST /api/gemini/ HTTP/1.1" 200 50
+DEBUG 2025-03-01 19:11:28,206 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:11:28,208 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:11:28,208 basehttp "POST /api/gemini/ HTTP/1.1" 200 34
+INFO 2025-03-01 19:11:30,626 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:30,631 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:30,636 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:31,724 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:11:31,725 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:11:31,726 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:11:32,816 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:32,826 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:32,828 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:33,291 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:11:33,293 log Internal Server Error: /api/gemini/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\decorators.py", line 21, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 169, in post
+    warning_message = random.choice(RATE_LIMIT_MESSAGES)  # Pick a random warning
+                      ^^^^^^
+NameError: name 'random' is not defined
+ERROR 2025-03-01 19:11:33,410 basehttp "POST /api/gemini/ HTTP/1.1" 500 145
+INFO 2025-03-01 19:11:35,561 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:35,565 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:35,566 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:36,029 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:11:36,031 log Internal Server Error: /api/gemini/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\decorators.py", line 21, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 169, in post
+    warning_message = random.choice(RATE_LIMIT_MESSAGES)  # Pick a random warning
+                      ^^^^^^
+NameError: name 'random' is not defined
+ERROR 2025-03-01 19:11:36,033 basehttp "POST /api/gemini/ HTTP/1.1" 500 145
+INFO 2025-03-01 19:11:44,040 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:11:44,044 views User ra permissions: set()
+DEBUG 2025-03-01 19:11:44,047 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:11:44,517 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+ERROR 2025-03-01 19:11:44,518 log Internal Server Error: /api/gemini/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\decorators.py", line 21, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 169, in post
+    warning_message = random.choice(RATE_LIMIT_MESSAGES)  # Pick a random warning
+                      ^^^^^^
+NameError: name 'random' is not defined
+ERROR 2025-03-01 19:11:44,519 basehttp "POST /api/gemini/ HTTP/1.1" 500 145
+INFO 2025-03-01 19:12:33,944 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-01 19:12:34,659 autoreload Watching for file changes with StatReloader
+INFO 2025-03-01 19:12:39,010 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:39,028 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:39,035 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:40,036 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:12:40,040 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:40,042 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:12:40,811 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:40,816 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:40,817 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+INFO 2025-03-01 19:12:41,613 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:41,623 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:41,626 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:41,901 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:12:41,902 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:41,904 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-01 19:12:42,131 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:42,136 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:42,138 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:42,607 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:42,608 views Rate limit reached for user ra. Message: Too many requests! Give it a few seconds before trying again.
+INFO 2025-03-01 19:12:42,609 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:42,610 basehttp "POST /api/gemini/ HTTP/1.1" 200 72
+DEBUG 2025-03-01 19:12:42,766 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:12:42,768 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:42,768 basehttp "POST /api/gemini/ HTTP/1.1" 200 52
+INFO 2025-03-01 19:12:46,827 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:46,831 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:46,834 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:47,292 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:47,293 views Rate limit reached for user ra. Message: Patience, my friend! Wait a little before sending another message.
+INFO 2025-03-01 19:12:47,295 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:47,296 basehttp "POST /api/gemini/ HTTP/1.1" 200 77
+INFO 2025-03-01 19:12:49,899 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:49,902 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:49,904 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:50,369 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:50,370 views Rate limit reached for user ra. Message: Hold on! You're sending messages too quickly. Try again in 5-10 seconds.
+INFO 2025-03-01 19:12:50,371 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:50,372 basehttp "POST /api/gemini/ HTTP/1.1" 200 83
+INFO 2025-03-01 19:12:51,973 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:51,978 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:51,979 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:52,148 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:52,149 views Rate limit reached for user ra. Message: Patience, my friend! Wait a little before sending another message.
+INFO 2025-03-01 19:12:52,150 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:52,151 basehttp "POST /api/gemini/ HTTP/1.1" 200 77
+INFO 2025-03-01 19:12:55,359 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:55,362 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:55,365 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:55,834 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:55,835 views Rate limit reached for user ra. Message: Too many requests! Give it a few seconds before trying again.
+INFO 2025-03-01 19:12:55,838 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:55,839 basehttp "POST /api/gemini/ HTTP/1.1" 200 72
+INFO 2025-03-01 19:12:57,339 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:57,342 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:57,345 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:57,802 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:57,804 views Rate limit reached for user ra. Message: Patience, my friend! Wait a little before sending another message.
+INFO 2025-03-01 19:12:57,805 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:57,806 basehttp "POST /api/gemini/ HTTP/1.1" 200 77
+INFO 2025-03-01 19:12:59,046 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:12:59,050 views User ra permissions: set()
+DEBUG 2025-03-01 19:12:59,052 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:12:59,511 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:12:59,512 views Rate limit reached for user ra. Message: You're going too fast! Try again in a few seconds.
+INFO 2025-03-01 19:12:59,514 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:12:59,515 basehttp "POST /api/gemini/ HTTP/1.1" 200 61
+INFO 2025-03-01 19:13:01,326 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:01,329 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:01,330 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:01,488 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:01,489 views Rate limit reached for user ra. Message: Slow down! The AI needs a moment to respond properly.
+INFO 2025-03-01 19:13:01,490 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:01,491 basehttp "POST /api/gemini/ HTTP/1.1" 200 64
+INFO 2025-03-01 19:13:03,936 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:03,939 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:03,941 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:04,104 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:04,104 views Rate limit reached for user ra. Message: You're going too fast! Try again in a few seconds.
+INFO 2025-03-01 19:13:04,106 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:04,107 basehttp "POST /api/gemini/ HTTP/1.1" 200 61
+INFO 2025-03-01 19:13:05,809 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:05,812 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:05,814 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:06,273 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:06,276 views Rate limit reached for user ra. Message: Too many requests! Give it a few seconds before trying again.
+INFO 2025-03-01 19:13:06,277 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:06,278 basehttp "POST /api/gemini/ HTTP/1.1" 200 72
+INFO 2025-03-01 19:13:07,583 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:07,586 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:07,588 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:08,047 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:08,048 views Rate limit reached for user ra. Message: Patience, my friend! Wait a little before sending another message.
+INFO 2025-03-01 19:13:08,049 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:08,049 basehttp "POST /api/gemini/ HTTP/1.1" 200 77
+INFO 2025-03-01 19:13:10,140 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:10,144 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:10,145 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:10,602 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:10,603 views Rate limit reached for user ra. Message: You're going too fast! Try again in a few seconds.
+INFO 2025-03-01 19:13:10,604 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:10,605 basehttp "POST /api/gemini/ HTTP/1.1" 200 61
+INFO 2025-03-01 19:13:11,712 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:11,716 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:11,718 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:11,882 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:11,885 views Rate limit reached for user ra. Message: You're going too fast! Try again in a few seconds.
+INFO 2025-03-01 19:13:11,887 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:11,888 basehttp "POST /api/gemini/ HTTP/1.1" 200 61
+INFO 2025-03-01 19:13:13,182 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:13,186 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:13,188 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:13,345 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:13,346 views Rate limit reached for user ra. Message: Slow down! The AI needs a moment to respond properly.
+INFO 2025-03-01 19:13:13,348 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:13,349 basehttp "POST /api/gemini/ HTTP/1.1" 200 64
+INFO 2025-03-01 19:13:20,449 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:20,452 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:20,454 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:20,619 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-01 19:13:20,620 views Rate limit reached for user ra. Message: Too many requests! Give it a few seconds before trying again.
+INFO 2025-03-01 19:13:20,622 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:20,623 basehttp "POST /api/gemini/ HTTP/1.1" 200 72
+INFO 2025-03-01 19:13:26,123 decorators Handling POST request to /api/gemini/
+INFO 2025-03-01 19:13:26,126 views User ra permissions: set()
+DEBUG 2025-03-01 19:13:26,128 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-01 19:13:28,341 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-01 19:13:28,344 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-01 19:13:28,345 basehttp "POST /api/gemini/ HTTP/1.1" 200 340
