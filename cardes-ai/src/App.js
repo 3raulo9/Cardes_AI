@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import CardesChat from "./components/CardesChat";
-import Login from "./components/Login";
+import CardesChat from "./pages/ChatPage";
+import Login from "./pages/LoginPage";
 import ChatLayout from "./components/ChatLayout";
-import Register from "./components/Register";
-import CategoryPage from "./components/CategoryPage";
-import CardSetsPage from "./components/CardSetsPage";
-import CardsPage from "./components/CardsPage";
-import PracticePage from "./components/PracticePage";
-import SettingsPage from "./components/SettingsPage";
+import Register from "./pages/RegisterPage";
+import CategoryPage from "./pages/CategoryPage";
+import CardSetsPage from "./pages/CardSetsPage";
+import CardsPage from "./pages/CardsPage";
+import PracticePage from "./pages/PracticePage";
+import SettingsPage from "./pages/SettingsPage";
 import { loadTheme } from "./utils/themeSwitcher"; // ✅ Load theme on startup
 
 function App() {
