@@ -40,47 +40,49 @@ const CardSetsPage = () => {
   };
 
   return (
-    <div className="p-6 bg-accent min-h-screen"> {/* 🛠️ Applied `bg-accent` for background */}
+    <div className="p-6 bg-accent min-h-screen"> 
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          {/* 🛠️ Back Button Before the Title */}
           <button
             onClick={() => navigate("/categories")}
             className="bg-secondary text-white px-3 py-2 rounded-lg flex items-center mr-4 hover:bg-primary transition"
           >
             <FiArrowLeft className="mr-2" /> Back
           </button>
-          <h1 className="text-2xl font-bold text-white">Card Sets</h1> {/* 🛠️ Made text white for visibility */}
+          <h1 className="text-2xl font-bold text-white">Card Sets</h1>
         </div>
 
-        <button onClick={createSet} className="bg-secondary text-white px-4 py-2 rounded-lg flex items-center">
+        <button 
+          onClick={createSet} 
+          className="bg-secondary text-white px-4 py-2 rounded-lg flex items-center hover:bg-primary transition"
+        >
           <FiPlus className="mr-2" /> Add Set
         </button>
       </div>
 
-      <ul className="mt-4">
+      <ul className="mt-4 space-y-4">
         {sets.length > 0 ? (
           sets.map((set) => (
             <li
               key={set.id}
-              className="p-4 bg-secondary text-white rounded-lg my-2 flex justify-between items-center"
+              className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-100 hover:shadow-md"
             >
               <span
                 onClick={() => navigate(`/categories/${id}/sets/${set.id}`)}
-                className="cursor-pointer"
+                className="cursor-pointer flex-1"
               >
                 {set.name}
               </span>
               <button
                 onClick={() => startPractice(set.id)}
-                className="bg-primary text-white px-3 py-1 rounded-lg"
+                className="bg-primary text-white px-3 py-1 rounded-lg hover:bg-highlight transition"
               >
                 Practice
               </button>
             </li>
           ))
         ) : (
-          <p className="text-white mt-4">No sets available. Create a new one!</p>
+          <p className="text-white text-center mt-4">No sets available. Create a new one!</p>
         )}
       </ul>
     </div>

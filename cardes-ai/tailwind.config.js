@@ -8,6 +8,9 @@ module.exports = {
         accent: "var(--accent)",   
         darkAccent: "var(--darkAccent)",
       },
+      scale: {
+        100: "1.006", // Custom `scale-100` for normal size
+      },
     },
   },
   plugins: [],

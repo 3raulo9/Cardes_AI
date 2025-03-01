@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import ChatItem from "../components/ChatItem";
-import ToolsWindow from "../components/ToolsWindow"; // Import the Tools Window component
+import ToolsWindow from "../components/ToolsWindow"; 
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
 import { FiMic, FiMicOff, FiSend, FiTool } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import surpriseOptions from "../utils/surpriseData";
+import handleTextToSpeech from "../utils/textToSpeech"; // Import the utility function
 
 const CardesChat = () => {
   const [value, setValue] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
-  const [isToolsOpen, setIsToolsOpen] = useState(false); // State for Tools Window
+  const [isToolsOpen, setIsToolsOpen] = useState(false); 
 
   const handleSpeechRecognition = (phrases) => {
     const speech = phrases[0];
@@ -45,19 +46,12 @@ const CardesChat = () => {
     setValue(randomValue);
   };
 
-  /**
-   * getResponse:
-   *   - customValue: The message to send (this may be the internal query)
-   *   - shouldAddUserMessage: If true (default), a new user message is added to the UI.
-   *   - historyToSend: (optional) A history override to ensure the API call uses the correct chat history.
-   */
   const getResponse = async (customValue = value, shouldAddUserMessage = true, historyToSend = chatHistory) => {
     if (!customValue) {
       toast.error("Please enter a question!");
       return;
     }
 
-    // Ensure user message is added BEFORE sending API request
     let updatedChatHistory = shouldAddUserMessage
       ? [...historyToSend, { role: "user", parts: [customValue], id: Date.now() }]
       : historyToSend;
@@ -73,33 +67,30 @@ const CardesChat = () => {
         message: customValue,
       });
 
-      console.log("🔍 API Response:", data.text); // Debugging log
+      console.log("🔍 API Response:", data.text);
 
       const splitLines = data?.text?.split("^").map((line) => line.trim()).filter((line) => line);
       
       const modelResponse = [];
       for (let i = 0; i < splitLines.length; i++) {
         if (i % 2 === 0) {
-          // First sentence (original)
           modelResponse.push({
             role: "model",
             parts: [splitLines[i]],
             id: Date.now() + i,
-            hideIcon: false, // Show cat icon
+            hideIcon: false, 
           });
         } else {
-          // Second sentence (translation) - Stores first sentence for "Add to Deck"
           modelResponse.push({
             role: "model",
             parts: [splitLines[i]],
-            term: splitLines[i - 1], // Store first sentence as the term
+            term: splitLines[i - 1], 
             id: Date.now() + i,
-            hideIcon: true, // Hide cat icon, show "Add to Deck" button
+            hideIcon: true, 
           });
         }
       }
 
-      // Update chat history to immediately show responses
       setChatHistory((prevChat) => [...prevChat, ...modelResponse]);
 
       setValue("");
@@ -109,49 +100,14 @@ const CardesChat = () => {
     } finally {
       setLoading(false);
     }
-};
+  };
 
-  
-  
-
-  /**
-   * handleTool3Submit:
-   *   - displayMessage: The message to display in the chat UI.
-   *   - internalQuery: The reformatted API query.
-   */
   const handleTool3Submit = (displayMessage, internalQuery) => {
     setIsToolsOpen(false);
     const newUserMsg = { role: "user", parts: [displayMessage], id: Date.now() };
     const newHistory = [...chatHistory, newUserMsg];
     setChatHistory(newHistory);
-    // Call getResponse with the internal query, skipping the addition of a duplicate user message.
     getResponse(internalQuery, false, newHistory);
-  };
-
-  const handleTextToSpeech = async (text, forDownload = false) => {
-    try {
-      const response = await axiosInstance.post(
-        "/api/text-to-speech/",
-        { text },
-        { responseType: "blob" }
-      );
-      const audioBlob = response.data;
-      const audioUrl = URL.createObjectURL(audioBlob);
-      if (forDownload) {
-        const link = document.createElement("a");
-        link.href = audioUrl;
-        link.download = "audio.mp3";
-        link.click();
-        toast.info("Downloading audio...");
-      } else {
-        const audio = new Audio(audioUrl);
-        audio.play();
-        toast.info("Playing audio...");
-      }
-    } catch (error) {
-      console.error("Fetching error: ", error);
-      toast.error("Something went wrong with text-to-speech.");
-    }
   };
 
   const handleKeyPress = (event) => {
@@ -176,7 +132,7 @@ const CardesChat = () => {
             <ChatItem
               key={chatItem.id}
               chatItem={chatItem}
-              handleTextToSpeech={handleTextToSpeech}
+              handleTextToSpeech={handleTextToSpeech} // Pass the function as a prop
               updateMessage={() => {}}
             />
           ))}

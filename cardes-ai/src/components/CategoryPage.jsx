@@ -52,17 +52,17 @@ const CategoryPage = () => {
         <h1 className="text-2xl font-bold ml-11 md:ml-0 text-white">Categories</h1>
         <button
           onClick={createCategory}
-          className="bg-secondary text-white px-4 py-2 rounded-lg flex items-center"
+          className="bg-secondary text-white px-4 py-2 rounded-lg flex items-center hover:bg-primary transition"
         >
           <FiPlus className="mr-2" /> New Category
         </button>
       </div>
 
-      <ul className="mt-4">
+      <ul className="mt-4 space-y-4">
         {categories.map((category) => (
           <li
             key={category.id}
-            className="p-4 bg-secondary text-white rounded-lg my-2 flex justify-between items-center"
+            className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-100 hover:shadow-md"
           >
             <span
               onClick={() => navigate(`/categories/${category.id}`)}
