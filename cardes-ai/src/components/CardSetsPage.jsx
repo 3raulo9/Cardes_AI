@@ -40,12 +40,13 @@ const CardSetsPage = () => {
   };
 
   return (
-    <div className="p-6 bg-accent min-h-screen"> 
-      <div className="flex justify-between items-center">
+    <div className="flex flex-col h-screen bg-accent">
+      {/* Sticky Header */}
+      <div className="p-6 bg-secondary flex justify-between items-center sticky top-0 z-10 shadow-md">
         <div className="flex items-center">
           <button
             onClick={() => navigate("/categories")}
-            className="bg-secondary text-white px-3 py-2 rounded-lg flex items-center mr-4 hover:bg-primary transition"
+            className="bg-primary text-white px-3 py-2 rounded-lg flex items-center mr-4 hover:bg-highlight transition"
           >
             <FiArrowLeft className="mr-2" /> Back
           </button>
@@ -54,37 +55,40 @@ const CardSetsPage = () => {
 
         <button 
           onClick={createSet} 
-          className="bg-secondary text-white px-4 py-2 rounded-lg flex items-center hover:bg-primary transition"
+          className="bg-primary text-white px-4 py-2 rounded-lg flex items-center hover:bg-highlight transition"
         >
           <FiPlus className="mr-2" /> Add Set
         </button>
       </div>
 
-      <ul className="mt-4 space-y-4">
-        {sets.length > 0 ? (
-          sets.map((set) => (
-            <li
-              key={set.id}
-              className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-100 hover:shadow-md"
-            >
-              <span
-                onClick={() => navigate(`/categories/${id}/sets/${set.id}`)}
-                className="cursor-pointer flex-1"
+      {/* Scrollable Card Sets List */}
+      <div className="flex-1 overflow-y-auto p-4">
+        <ul className="space-y-4">
+          {sets.length > 0 ? (
+            sets.map((set) => (
+              <li
+                key={set.id}
+                className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-100 hover:shadow-md"
               >
-                {set.name}
-              </span>
-              <button
-                onClick={() => startPractice(set.id)}
-                className="bg-primary text-white px-3 py-1 rounded-lg hover:bg-highlight transition"
-              >
-                Practice
-              </button>
-            </li>
-          ))
-        ) : (
-          <p className="text-white text-center mt-4">No sets available. Create a new one!</p>
-        )}
-      </ul>
+                <span
+                  onClick={() => navigate(`/categories/${id}/sets/${set.id}`)}
+                  className="cursor-pointer flex-1"
+                >
+                  {set.name}
+                </span>
+                <button
+                  onClick={() => startPractice(set.id)}
+                  className="bg-primary text-white px-3 py-1 rounded-lg hover:bg-highlight transition"
+                >
+                  Practice
+                </button>
+              </li>
+            ))
+          ) : (
+            <p className="text-white text-center mt-4">No sets available. Create a new one!</p>
+          )}
+        </ul>
+      </div>
     </div>
   );
 };
