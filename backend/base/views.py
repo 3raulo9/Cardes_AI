@@ -22,7 +22,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 # Custom imports from your project
 from .decorators import log_request, require_permissions, class_log_request
 from .models import Chat, Message, Category, CardSet, Card
-from .serializers import CategorySerializer, CardSetSerializer, CardSerializer
+from .serializers import CategorySerializer, CardSetSerializer, CardSerializer, UserRegistrationSerializer
 
 # 🛠️ List & Create Categories
 class CategoryListCreateView(generics.ListCreateAPIView):
