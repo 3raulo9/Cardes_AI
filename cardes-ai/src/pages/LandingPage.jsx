@@ -124,8 +124,9 @@ const LandingPage = () => {
         >
           AI-powered <strong className="text-info">text-to-speech</strong>,{" "}
           <strong className="text-danger">smart flashcards</strong>, and{" "}
-          <strong className="text-warning">conversational AI</strong> make language learning{" "}
-          <em className="text-success">fun</em>, <em className="text-warning">interactive</em>, and{" "}
+          <strong className="text-warning">conversational AI</strong> make
+          language learning <em className="text-success">fun</em>,{" "}
+          <em className="text-warning">interactive</em>, and{" "}
           <em className="text-info">personalized</em>!
         </motion.p>
 
@@ -198,7 +199,8 @@ const LandingPage = () => {
           transition={{ duration: 0.7 }}
           className="mb-10 text-gray-300"
         >
-          Click on a phrase to hear <span className="text-info">near-native AI pronunciation</span>.
+          Click on a phrase to hear{" "}
+          <span className="text-info">near-native AI pronunciation</span>.
         </motion.p>
         <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
           {[
@@ -243,11 +245,15 @@ const LandingPage = () => {
             },
             {
               feature: "Flashcards",
-              icon: <FaRegStickyNote className="mx-auto text-3xl text-accent" />,
+              icon: (
+                <FaRegStickyNote className="mx-auto text-3xl text-accent" />
+              ),
             },
             {
               feature: "Speech Recognition",
-              icon: <FaMicrophoneAlt className="mx-auto text-3xl text-accent" />,
+              icon: (
+                <FaMicrophoneAlt className="mx-auto text-3xl text-accent" />
+              ),
             },
           ].map(({ feature, icon }, i) => (
             <motion.div
@@ -261,7 +267,8 @@ const LandingPage = () => {
               {icon}
               <h3 className="text-2xl font-semibold mt-4">{feature}</h3>
               <p className="mt-3 text-gray-600">
-                {feature} helps you learn faster and better with AI-driven technology.
+                {feature} helps you learn faster and better with AI-driven
+                technology.
               </p>
             </motion.div>
           ))}
@@ -280,21 +287,23 @@ const LandingPage = () => {
           What Our Users Say
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {["Amazing tool!", "Helped me ace my exams!", "Best AI tutor ever!"].map(
-            (testimonial, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.2 }}
-                className="bg-white text-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition"
-              >
-                <p className="text-lg font-medium mb-2">"{testimonial}"</p>
-                <p className="text-sm text-gray-600">- Happy User</p>
-              </motion.div>
-            )
-          )}
+          {[
+            "Amazing tool!",
+            "Helped me ace my exams!",
+            "Best AI tutor ever!",
+          ].map((testimonial, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.2 }}
+              className="bg-white text-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition"
+            >
+              <p className="text-lg font-medium mb-2">"{testimonial}"</p>
+              <p className="text-sm text-gray-600">- Happy User</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -350,7 +359,11 @@ const LandingPage = () => {
           Frequently Asked Questions
         </motion.h2>
         <div className="space-y-6 max-w-3xl mx-auto">
-          {["What is Cardes AI?", "How does it help me?", "Is it free to use?"].map((question, i) => (
+          {[
+            "What is Cardes AI?",
+            "How does it help me?",
+            "Is it free to use?",
+          ].map((question, i) => (
             <motion.details
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -359,7 +372,9 @@ const LandingPage = () => {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="bg-secondary p-4 rounded-lg shadow-md hover:shadow-lg transition"
             >
-              <summary className="cursor-pointer text-lg font-semibold">{question}</summary>
+              <summary className="cursor-pointer text-lg font-semibold">
+                {question}
+              </summary>
               <p className="mt-3 text-gray-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu.
               </p>
@@ -373,12 +388,18 @@ const LandingPage = () => {
         <div className="px-6">
           <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
           <div className="flex justify-center space-x-6 text-gray-300 text-2xl">
-            <FaFacebook className="hover:text-white transition cursor-pointer" />
-            <FaTwitter className="hover:text-white transition cursor-pointer" />
-            <FaInstagram className="hover:text-white transition cursor-pointer" />
-            <FaLinkedin className="hover:text-white transition cursor-pointer" />
+            <a
+              href="https://www.linkedin.com/in/raul-asadov/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className="hover:text-white transition cursor-pointer" />
+            </a>
           </div>
-          <p className="mt-4 text-gray-500">&copy; 2025 Cardes AI. All rights reserved.</p>
+
+          <p className="mt-4 text-gray-500">
+            &copy; Raul Asadov 2025 Cardes AI. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>

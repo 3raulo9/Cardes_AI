@@ -7272,3 +7272,29 @@ INFO 2025-03-02 04:36:26,539 decorators Handling POST request to /api/login/
 INFO 2025-03-02 04:36:26,789 views Token obtained for ra, status code: 200
 INFO 2025-03-02 04:36:26,790 decorators Response status code: 200, URL: /api/login/
 INFO 2025-03-02 04:36:26,791 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 04:59:25,264 decorators Handling POST request to /api/login/
+INFO 2025-03-02 04:59:25,529 views Token obtained for ra, status code: 200
+INFO 2025-03-02 04:59:25,529 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 04:59:25,530 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 04:59:27,829 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:59:27,840 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:59:29,436 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:59:29,446 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:59:32,179 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 04:59:32,185 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 04:59:33,311 basehttp "OPTIONS /api/cards/?card_set=9 HTTP/1.1" 200 0
+INFO 2025-03-02 04:59:33,315 basehttp "OPTIONS /api/cards/?card_set=9 HTTP/1.1" 200 0
+INFO 2025-03-02 04:59:33,328 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 1127
+INFO 2025-03-02 04:59:33,334 basehttp "GET /api/cards/?card_set=9 HTTP/1.1" 200 1127
+INFO 2025-03-02 04:59:34,706 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:59:34,712 views User ra permissions: set()
+DEBUG 2025-03-02 04:59:34,724 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:59:36,475 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:59:36,537 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:59:36,538 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 15464
+INFO 2025-03-02 04:59:37,959 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:59:37,967 views User ra permissions: set()
+DEBUG 2025-03-02 04:59:37,970 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:59:39,564 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:59:39,896 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:59:39,897 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 45975
