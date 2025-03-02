@@ -126,7 +126,7 @@ const CardesChat = () => {
 
   return (
     <div className="flex h-screen bg-primary">
-      <div className="flex-1 relative bg-darkAccent p-4 sm:p-6">
+      <div className="flex-1 relative bg-gradient-to-r from-primary via-[-10%] via-darkAccent p-4 sm:p-6">
         <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg flex flex-col space-y-2">
           {chatHistory.map((chatItem) => (
             <ChatItem

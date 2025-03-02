@@ -6689,3 +6689,570 @@ INFO 2025-03-02 02:08:07,599 decorators Response status code: 200, URL: /api/log
 INFO 2025-03-02 02:08:07,600 basehttp "POST /api/login/ HTTP/1.1" 200 242
 INFO 2025-03-02 02:08:10,762 basehttp "GET /api/categories/ HTTP/1.1" 200 55
 INFO 2025-03-02 02:08:10,768 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:09,445 decorators Handling POST request to /api/login/
+INFO 2025-03-02 02:28:09,726 views Token obtained for ra, status code: 200
+INFO 2025-03-02 02:28:09,726 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 02:28:09,727 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 02:28:12,363 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:12,370 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:19,573 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:19,582 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:20,652 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:20,658 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:21,168 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 02:28:21,178 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 02:28:21,696 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 02:28:21,702 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 02:28:23,156 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 02:28:23,165 views User ra permissions: set()
+DEBUG 2025-03-02 02:28:23,169 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 02:28:24,347 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 02:28:24,374 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 02:28:24,375 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 12538
+INFO 2025-03-02 02:28:36,539 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:28:36,548 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:41,372 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:41,378 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:51,593 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:51,598 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:53,925 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:53,931 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:30:57,567 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 02:30:57,572 views User ra permissions: set()
+DEBUG 2025-03-02 02:30:57,576 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 02:30:59,255 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 02:30:59,262 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 02:30:59,263 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-02 02:31:18,870 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:18,878 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:20,468 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:20,475 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:44,669 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:44,677 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:50,168 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:50,173 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:54,167 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:31:54,173 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:38:37,098 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:38:37,105 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:40:03,069 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:40:03,076 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:43:38,885 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:43:38,894 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:44:52,868 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:44:52,874 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:44:55,000 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:44:55,006 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:45:02,054 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:45:02,060 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:45:32,304 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:45:32,309 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:45:35,646 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:45:35,652 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:46:22,709 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:46:22,715 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:47:13,574 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:48:26,543 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 02:48:26,549 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 02:48:27,591 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:48:27,596 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:50:09,437 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:50:20,059 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:50:30,423 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:51:11,172 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:51:51,591 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-02 02:51:51,601 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:52:47,019 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:52:50,694 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:53:32,235 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:54:42,679 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:56:09,934 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:56:54,844 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:02,621 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:05,384 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:05,391 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:14,327 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:19,724 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:21,705 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:26,365 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:29,353 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:34,504 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:36,981 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:40,444 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:43,036 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:46,122 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:51,478 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:54,161 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:58:56,059 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:59:00,320 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:59:02,885 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:59:18,330 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:59:44,588 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:59:45,255 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 02:59:48,269 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:00:48,150 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:01:52,493 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:01:55,369 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:04,906 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:12,994 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:17,196 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:22,280 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:26,696 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:38,666 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:39,710 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:44,435 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:49,185 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:52,294 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:56,212 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:02:58,578 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:04,282 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:11,696 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:11,704 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:15,932 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:19,464 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:22,319 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:23,539 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:26,803 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:29,274 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:31,471 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:35,846 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:37,947 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:39,273 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:42,367 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:46,498 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:48,500 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:03:58,865 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:01,809 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:04,491 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:06,492 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:09,058 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:11,318 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:27,491 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:30,706 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:33,178 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:35,439 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:38,347 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:40,744 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:42,798 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:43,829 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:46,258 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:52,663 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:04:56,705 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:02,625 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:12,947 basehttp "OPTIONS /api/cardsets/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:05:12,950 basehttp "OPTIONS /api/cardsets/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:05:12,959 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:12,965 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:14,775 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:14,782 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:15,677 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:15,683 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:17,220 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:17,226 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:19,132 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:19,140 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:20,920 basehttp "OPTIONS /api/cards/?card_set=8 HTTP/1.1" 200 0
+INFO 2025-03-02 03:05:20,921 basehttp "OPTIONS /api/cards/?card_set=8 HTTP/1.1" 200 0
+INFO 2025-03-02 03:05:20,933 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:05:20,940 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:05:22,011 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:22,018 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:05:22,526 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:22,532 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:28,498 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:28,498 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:36,367 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:36,374 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:45,150 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:05:47,060 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:06:34,825 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:06:41,687 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:06:44,432 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:06:50,429 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:14,091 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:14,531 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:19,403 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:21,226 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:46,727 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:51,182 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:55,103 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:07:57,559 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:01,432 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:08,488 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:10,221 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:14,453 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:16,476 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:20,837 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:23,875 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:08:27,117 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:06,268 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:22,755 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:25,901 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:26,847 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:29,726 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:32,411 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:37,784 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:42,316 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:44,553 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:47,436 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:49,700 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:52,003 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:55,733 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:09:59,504 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:10:12,783 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:10:37,445 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:10:41,314 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:11:00,734 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:11:10,637 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:11:18,438 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:11:55,093 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:11:55,100 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:12:21,330 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:12:21,337 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:12:21,544 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:12:37,031 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:12:52,675 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:12:56,541 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:12:56,546 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:12:57,145 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:12:57,149 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:12:58,514 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:12:58,520 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:12:59,796 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:12:59,801 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:14:26,239 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:14:26,243 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:14:26,247 views User ra permissions: set()
+DEBUG 2025-03-02 03:14:26,249 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:14:27,945 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:14:28,020 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:14:28,021 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 13374
+INFO 2025-03-02 03:14:30,434 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:14:30,437 views User ra permissions: set()
+DEBUG 2025-03-02 03:14:30,439 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:14:31,626 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:14:31,849 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:14:31,850 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 30511
+INFO 2025-03-02 03:15:09,804 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:16:32,163 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:16:35,393 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:16:35,399 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:18:24,463 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:20:40,448 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:23:05,490 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:23:23,871 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:23:33,143 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:23:35,919 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:23:35,924 views User ra permissions: set()
+DEBUG 2025-03-02 03:23:35,927 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:23:37,766 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:23:37,873 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:23:37,874 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 43049
+INFO 2025-03-02 03:24:00,291 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:24:00,291 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:24:02,542 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:24:02,545 views User ra permissions: set()
+DEBUG 2025-03-02 03:24:02,547 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:24:03,838 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:24:04,059 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:24:04,060 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 33436
+INFO 2025-03-02 03:24:05,932 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:24:05,933 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:24:06,854 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:24:06,856 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:24:13,934 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:24:13,937 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:24:17,376 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:24:17,380 views User ra permissions: set()
+DEBUG 2025-03-02 03:24:17,381 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:24:18,749 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:24:18,930 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:24:18,931 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 25077
+INFO 2025-03-02 03:24:28,868 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:24:32,668 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:24:32,677 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:24:36,630 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:24:36,630 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:24:37,190 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:24:37,198 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:25:25,074 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:25:25,074 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:25:25,816 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:25:25,819 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:25:27,966 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:25:27,967 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:25:31,465 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:25:31,466 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:25:56,948 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:26:01,915 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:26:01,918 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:26:03,302 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:26:03,304 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:26:04,389 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:26:04,395 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:29:26,888 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:29:26,890 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:29:26,896 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:26,900 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:29:30,979 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:29:30,985 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:29:30,987 basehttp "POST /api/gemini/ HTTP/1.1" 200 466
+INFO 2025-03-02 03:29:32,850 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:29:32,853 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:32,854 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:29:34,397 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:29:34,436 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:29:34,437 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 25913
+INFO 2025-03-02 03:29:46,936 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:29:46,942 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:46,944 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:29:48,243 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:29:48,277 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:29:48,280 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 10866
+INFO 2025-03-02 03:29:49,456 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:29:49,465 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:49,469 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+INFO 2025-03-02 03:29:51,671 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:29:51,677 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:51,679 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:29:52,330 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:29:52,624 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:29:52,626 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 29675
+DEBUG 2025-03-02 03:29:53,011 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:29:53,607 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:29:53,608 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 53916
+INFO 2025-03-02 03:29:55,526 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:29:55,536 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:55,540 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:29:57,023 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:29:57,028 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:29:57,029 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-02 03:29:58,544 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 03:29:58,547 views User ra permissions: set()
+DEBUG 2025-03-02 03:29:58,549 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 03:29:59,929 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 03:30:00,029 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 03:30:00,030 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 40124
+INFO 2025-03-02 03:30:08,075 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:30:08,081 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:30:09,472 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:30:09,481 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:30:10,835 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:30:10,843 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:30:12,328 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:30:12,335 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:30:12,683 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:30:12,688 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:30:29,252 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:30:29,258 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:31:14,781 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:31:14,787 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:31:35,490 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:31:35,805 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:31:35,806 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:31:35,807 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:31:44,278 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:31:44,282 views User ra permissions: set()
+DEBUG 2025-03-02 03:31:44,283 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:31:47,172 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:31:47,174 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:31:47,175 basehttp "POST /api/gemini/ HTTP/1.1" 200 357
+INFO 2025-03-02 03:34:05,405 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:34:05,410 views User ra permissions: set()
+DEBUG 2025-03-02 03:34:05,412 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:34:08,778 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:34:08,779 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:34:08,780 basehttp "POST /api/gemini/ HTTP/1.1" 200 420
+INFO 2025-03-02 03:34:18,005 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:34:18,008 views User ra permissions: set()
+DEBUG 2025-03-02 03:34:18,009 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:34:20,789 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:34:20,791 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:34:20,791 basehttp "POST /api/gemini/ HTTP/1.1" 200 340
+INFO 2025-03-02 03:35:36,810 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:35:36,817 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:35:37,841 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:35:37,848 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:35:38,435 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:35:38,444 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:35:47,722 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:35:47,728 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:36:50,365 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:36:50,372 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:37:28,963 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:37:28,969 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:37:29,757 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:37:29,763 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:37:30,559 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:37:30,566 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:37:59,623 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:38:12,300 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:38:18,211 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:38:18,216 views User ra permissions: set()
+DEBUG 2025-03-02 03:38:18,218 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:38:19,833 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:38:19,837 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:38:19,838 basehttp "POST /api/gemini/ HTTP/1.1" 200 50
+INFO 2025-03-02 03:38:27,093 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:38:27,097 views User ra permissions: set()
+WARNING 2025-03-02 03:38:27,098 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-02 03:38:27,099 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:38:27,100 basehttp "POST /api/gemini/ HTTP/1.1" 200 64
+INFO 2025-03-02 03:38:31,012 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 03:38:31,016 views User ra permissions: set()
+DEBUG 2025-03-02 03:38:31,019 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 03:38:33,834 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 03:38:33,835 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 03:38:33,836 basehttp "POST /api/gemini/ HTTP/1.1" 200 345
+INFO 2025-03-02 03:42:40,115 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:42:40,183 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:42:40,777 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:42:40,785 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:42:41,237 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:42:41,244 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:42:42,295 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:42:42,302 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:42:42,919 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:42:42,925 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:42:43,667 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:42:43,675 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 03:42:44,177 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:42:44,183 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:42:54,932 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 03:43:20,446 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:20,454 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:23,134 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:23,141 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:28,254 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:28,260 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:33,180 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:33,188 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 03:43:36,654 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:43:36,657 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:43:36,883 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:43:36,884 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:43:36,885 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:45:25,779 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:45:26,077 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:45:26,078 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:45:26,080 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:45:33,951 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:45:34,188 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:45:34,189 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:45:34,189 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:45:38,378 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:45:38,604 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:45:38,605 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:45:38,606 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:45:46,241 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:45:46,512 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:45:46,513 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:45:46,514 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:45:50,623 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:45:50,832 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:45:50,833 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:45:50,834 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:47:35,441 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:47:35,446 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:47:35,773 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:47:35,774 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:47:35,775 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 03:49:57,532 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-02 03:49:57,538 decorators Handling POST request to /api/login/
+INFO 2025-03-02 03:49:57,945 views Token obtained for ra, status code: 200
+INFO 2025-03-02 03:49:57,947 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 03:49:57,947 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 04:00:52,102 decorators Handling POST request to /api/login/
+INFO 2025-03-02 04:00:52,371 views Token obtained for ra, status code: 200
+INFO 2025-03-02 04:00:52,371 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 04:00:52,372 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 04:00:54,606 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-03-02 04:00:54,607 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 04:00:54,612 views User ra permissions: set()
+DEBUG 2025-03-02 04:00:54,618 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 04:00:57,629 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-02 04:00:57,632 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 04:00:57,632 basehttp "POST /api/gemini/ HTTP/1.1" 200 340
+INFO 2025-03-02 04:00:59,911 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-03-02 04:00:59,913 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:00:59,917 views User ra permissions: set()
+DEBUG 2025-03-02 04:00:59,918 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:01:01,458 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:01:01,640 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:01:01,641 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 29675
+INFO 2025-03-02 04:03:10,955 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-02 04:03:10,958 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-02 04:03:10,970 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:03:10,979 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:03:13,845 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:03:13,854 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:03:17,084 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 04:03:17,091 views User ra permissions: set()
+DEBUG 2025-03-02 04:03:17,096 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 04:03:18,045 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-02 04:03:18,045 views User ra is hitting API limits.
+INFO 2025-03-02 04:03:18,047 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 04:03:18,048 basehttp "POST /api/gemini/ HTTP/1.1" 200 64
+INFO 2025-03-02 04:03:20,265 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:03:20,271 views User ra permissions: set()
+DEBUG 2025-03-02 04:03:20,275 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:03:22,520 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:03:22,632 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:03:22,634 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 61440
+INFO 2025-03-02 04:03:22,667 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 04:03:22,675 views User ra permissions: set()
+WARNING 2025-03-02 04:03:22,677 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-02 04:03:22,678 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 04:03:22,679 basehttp "POST /api/gemini/ HTTP/1.1" 200 83
+INFO 2025-03-02 04:03:24,990 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 04:03:24,998 views User ra permissions: set()
+WARNING 2025-03-02 04:03:25,000 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-02 04:03:25,001 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 04:03:25,002 basehttp "POST /api/gemini/ HTTP/1.1" 200 83
+INFO 2025-03-02 04:03:31,952 decorators Handling POST request to /api/gemini/
+INFO 2025-03-02 04:03:31,956 views User ra permissions: set()
+DEBUG 2025-03-02 04:03:31,959 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-02 04:03:32,480 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 429 None
+WARNING 2025-03-02 04:03:32,481 views User ra is hitting API limits.
+INFO 2025-03-02 04:03:32,482 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-02 04:03:32,483 basehttp "POST /api/gemini/ HTTP/1.1" 200 83
+INFO 2025-03-02 04:03:34,146 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:03:34,151 views User ra permissions: set()
+DEBUG 2025-03-02 04:03:34,153 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:03:35,991 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:03:36,441 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:03:36,443 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 89025
+INFO 2025-03-02 04:08:17,071 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:08:17,080 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-02 04:08:18,214 basehttp "OPTIONS /api/cardsets/ HTTP/1.1" 200 0
+INFO 2025-03-02 04:08:18,218 basehttp "OPTIONS /api/cardsets/ HTTP/1.1" 200 0
+INFO 2025-03-02 04:08:18,229 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 04:08:18,235 basehttp "GET /api/cardsets/ HTTP/1.1" 200 205
+INFO 2025-03-02 04:08:19,228 basehttp "OPTIONS /api/cards/?card_set=8 HTTP/1.1" 200 0
+INFO 2025-03-02 04:08:19,233 basehttp "OPTIONS /api/cards/?card_set=8 HTTP/1.1" 200 0
+INFO 2025-03-02 04:08:19,245 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 04:08:19,254 basehttp "GET /api/cards/?card_set=8 HTTP/1.1" 200 2194
+INFO 2025-03-02 04:08:21,109 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:08:21,115 views User ra permissions: set()
+DEBUG 2025-03-02 04:08:21,116 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:08:22,630 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:08:22,654 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:08:22,656 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 12538
+INFO 2025-03-02 04:08:24,104 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:08:24,107 views User ra permissions: set()
+DEBUG 2025-03-02 04:08:24,109 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+INFO 2025-03-02 04:08:26,375 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:08:26,381 views User ra permissions: set()
+DEBUG 2025-03-02 04:08:26,384 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:08:27,037 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:08:27,058 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:08:27,059 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 12538
+INFO 2025-03-02 04:08:27,816 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-02 04:08:27,819 views User ra permissions: set()
+DEBUG 2025-03-02 04:08:27,821 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-02 04:08:28,105 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:08:28,549 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:08:28,550 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 66873
+DEBUG 2025-03-02 04:08:29,265 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-02 04:08:29,395 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-02 04:08:29,396 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 27167

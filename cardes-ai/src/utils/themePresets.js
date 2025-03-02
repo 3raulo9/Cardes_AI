@@ -1,17 +1,4 @@
 const themePresets = {
-  Cardes: {
-    primary:    "#1A150C", // Very dark brown-black for main background
-    secondary:  "#332820", // Deeper brown for secondary backgrounds
-    accent:     "#F48C06", // Vibrant orange accent
-    darkAccent: "#FFB347", // Lighter, more golden-orange accent
-  
-    // Support colors
-    success: "#7F9E43", // Earthy green (still keeps a warm vibe)
-    warning: "#FD9E02", // Bright orange for warnings
-    danger:  "#AC2C20", // Deep red-orange
-    info:    "#D37C2A", // Brownish-orange for info
-  }
-  ,
   Midnight: {
     primary: "#1B1F3B",
     secondary: "#4A4E69",

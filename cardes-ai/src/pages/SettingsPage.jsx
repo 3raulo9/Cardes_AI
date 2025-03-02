@@ -25,7 +25,7 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full bg-primary">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent  ">
       {/* Top Navigation Tabs - Styled for better contrast */}
       <div className="w-full bg-secondary shadow-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4">

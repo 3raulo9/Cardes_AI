@@ -34,103 +34,112 @@ const CardsPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-accent">
-      {/* Sticky Header */}
-      <div className="p-4 bg-secondary flex justify-between items-center sticky top-0 z-10 shadow-md">
-        <div className="flex items-center">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent  text-white">
+      {/* Sticky Header with Wave */}
+      <header className="relative z-10">
+        {/* Header Bar */}
+        <div className="bg-secondary px-6 py-4 flex justify-between items-center shadow-md">
+          <div className="flex items-center">
+            <button
+              onClick={() => navigate(`/categories/${id}`)}
+              className="bg-primary text-white px-3 py-2 rounded-lg flex items-center hover:bg-darkAccent transition"
+            >
+              <FiArrowLeft className="mr-2" /> Back
+            </button>
+            <h1 className="text-2xl font-bold text-white ml-4">Cards</h1>
+          </div>
           <button
-            onClick={() => navigate(`/categories/${id}`)}
-            className="bg-primary text-white px-3 py-2 rounded-lg flex items-center hover:bg-highlight transition"
+            onClick={addCard}
+            className="flex items-center bg-primary text-white px-4 py-2 rounded-lg hover:bg-darkAccent transition"
           >
-            <FiArrowLeft className="mr-2" /> Back
+            <FiPlus className="mr-2" /> Add Card
           </button>
-          <h1 className="text-2xl font-bold text-white ml-4">Cards</h1>
         </div>
-        <button
-          onClick={addCard}
-          className="bg-primary text-white px-4 py-2 rounded-lg flex items-center hover:bg-highlight transition"
-        >
-          <FiPlus className="mr-2" /> Add Card
-        </button>
-      </div>
 
-      {/* Scrollable Cards List */}
-      <div className="flex-1 overflow-y-auto p-4">
-        <ul className="space-y-4">
-          {cards.length > 0 ? (
-            cards.map((card) => (
-              <li
-                key={card.id}
-                className="p-4 bg-secondary text-white rounded-lg shadow-md transition-transform duration-300 ease-out hover:scale-100 hover:shadow-xl"
-              >
-                <div className="flex items-center gap-2">
-                  <strong>Term:</strong> {card.term}
+      </header>
 
-                  {/* Copy Term Button */}
-                  <SlTooltip content="Copy Term">
-                    <SlCopyButton value={card.term} className="text-white hover:text-gray-300" />
-                  </SlTooltip>
-
-                  {/* Listen to Term */}
-                  <SlTooltip content="Listen">
-                    <button
-                      className="p-2 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Play Term"
-                      onClick={() => handleTextToSpeech(card.term)}
-                    >
-                      <SpeakerWaveIcon className="w-6 h-6 text-white" />
-                    </button>
-                  </SlTooltip>
-
-                  {/* Download Term */}
-                  <SlTooltip content="Download">
-                    <button
-                      className="p-2 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Download Term"
-                      onClick={() => handleTextToSpeech(card.term, true)}
-                    >
-                      <ArrowDownTrayIcon className="w-6 h-6 text-white" />
-                    </button>
-                  </SlTooltip>
-                </div>
-
-                <div className="flex items-center gap-2 mt-2">
-                  <strong>Definition:</strong> {card.definition}
-
-                  {/* Copy Definition Button */}
-                  <SlTooltip content="Copy Definition">
-                    <SlCopyButton value={card.definition} className="text-white hover:text-gray-300" />
-                  </SlTooltip>
-
-                  {/* Listen to Definition */}
-                  <SlTooltip content="Listen">
-                    <button
-                      className="p-2 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Play Definition"
-                      onClick={() => handleTextToSpeech(card.definition)}
-                    >
-                      <SpeakerWaveIcon className="w-6 h-6 text-white" />
-                    </button>
-                  </SlTooltip>
-
-                  {/* Download Definition */}
-                  <SlTooltip content="Download">
-                    <button
-                      className="p-2 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Download Definition"
-                      onClick={() => handleTextToSpeech(card.definition, true)}
-                    >
-                      <ArrowDownTrayIcon className="w-6 h-6 text-white" />
-                    </button>
-                  </SlTooltip>
-                </div>
-              </li>
-            ))
-          ) : (
-            <p className="text-white text-center">No cards available. Add new cards!</p>
-          )}
-        </ul>
-      </div>
+      {/* Scrollable Cards Grid */}
+      <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
+        {cards.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {cards.map((card) => (
+              <div
+              key={card.id}
+              className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col gap-1"
+            >
+              {/* Term Row */}
+              <div className="flex items-center gap-2">
+                <strong>Term:</strong> 
+                <span className="flex-1 break-words">{card.term}</span>
+            
+                {/* Copy Term Button */}
+                <SlTooltip content="Copy Term">
+                  <SlCopyButton value={card.term} className="text-white hover:text-gray-300" />
+                </SlTooltip>
+            
+                {/* Listen to Term */}
+                <SlTooltip content="Listen">
+                  <button
+                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                    aria-label="Play Term"
+                    onClick={() => handleTextToSpeech(card.term)}
+                  >
+                    <SpeakerWaveIcon className="w-5 h-5 text-white" />
+                  </button>
+                </SlTooltip>
+            
+                {/* Download Term */}
+                <SlTooltip content="Download">
+                  <button
+                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                    aria-label="Download Term"
+                    onClick={() => handleTextToSpeech(card.term, true)}
+                  >
+                    <ArrowDownTrayIcon className="w-5 h-5 text-white" />
+                  </button>
+                </SlTooltip>
+              </div>
+            
+              {/* Definition Row */}
+              <div className="flex items-center gap-2">
+                <strong>Definition:</strong> 
+                <span className="flex-1 break-words">{card.definition}</span>
+            
+                {/* Copy Definition Button */}
+                <SlTooltip content="Copy Definition">
+                  <SlCopyButton value={card.definition} className="text-white hover:text-gray-300" />
+                </SlTooltip>
+            
+                {/* Listen to Definition */}
+                <SlTooltip content="Listen">
+                  <button
+                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                    aria-label="Play Definition"
+                    onClick={() => handleTextToSpeech(card.definition)}
+                  >
+                    <SpeakerWaveIcon className="w-5 h-5 text-white" />
+                  </button>
+                </SlTooltip>
+            
+                {/* Download Definition */}
+                <SlTooltip content="Download">
+                  <button
+                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                    aria-label="Download Definition"
+                    onClick={() => handleTextToSpeech(card.definition, true)}
+                  >
+                    <ArrowDownTrayIcon className="w-5 h-5 text-white" />
+                  </button>
+                </SlTooltip>
+              </div>
+            </div>
+            
+            ))}
+          </div>
+        ) : (
+          <p className="text-white text-center">No cards available. Add new cards!</p>
+        )}
+      </main>
     </div>
   );
 };

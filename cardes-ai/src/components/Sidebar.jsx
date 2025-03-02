@@ -19,92 +19,121 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   return (
     <>
-      {/* Sidebar Container */}
+      {/* SIDEBAR CONTAINER */}
       <div
-        className={`fixed inset-y-0 left-0 w-72 bg-secondary text-white shadow-lg transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 z-50 md:translate-x-0 md:static md:shadow-none flex flex-col`}
+        className={`
+          fixed inset-y-0 left-0 w-72
+          bg-gradient-to-b from-secondary to-darkAccent text-white
+          shadow-xl transform
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          transition-transform duration-300 z-50
+          md:translate-x-0 md:static md:shadow-none
+          flex flex-col
+        `}
       >
-        {/* Logo / Branding (Now Clickable) */}
-        <button
-          className="p-6 text-center font-bold text-2xl border-b border-highlight tracking-wide relative focus:outline-none"
-          onClick={() => navigate("/")} // ✅ Navigate to Landing Page
-          onMouseEnter={() => setShowFireworks(true)}
-          onMouseLeave={() => setShowFireworks(false)}
-        >
-          Cardes AI
-          {showFireworks && (
-            <Fireworks
-              options={{ rocketsPoint: { min: 50, max: 50 } }}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                pointerEvents: "none",
-              }}
-            />
-          )}
-        </button>
+        {/* TOP SECTION: LOGO & DECORATIVE WAVE */}
+        <div className="relative flex items-center justify-center h-24 cursor-pointer">
+          {/* Decorative wave behind brand */}
+          <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
 
-        {/* Sidebar Content */}
-        <div className="flex-1 overflow-y-auto p-5">
+          </div>
+          {/* Brand Name & Fireworks */}
           <button
-            className="flex items-center gap-3 w-full py-3 px-5 bg-primary hover:bg-accent transition rounded-xl text-lg font-semibold shadow-md"
+            onClick={() => navigate("/")}
+            onMouseEnter={() => setShowFireworks(true)}
+            onMouseLeave={() => setShowFireworks(false)}
+            className="relative text-2xl font-bold tracking-wide focus:outline-none"
+          >
+            Cardes AI
+            {showFireworks && (
+              <Fireworks
+                options={{ rocketsPoint: { min: 50, max: 50 } }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  pointerEvents: "none",
+                }}
+              />
+            )}
+          </button>
+        </div>
+
+        {/* SCROLLABLE CONTENT */}
+        <div className="flex-1 overflow-y-auto p-5 space-y-4">
+          {/* New Chat */}
+          <button
+            className="flex items-center gap-3 w-full py-3 px-5
+                       bg-primary hover:bg-accent
+                       transition rounded-xl text-lg font-semibold shadow-md"
             onClick={() => handleNavigation("/chat")}
           >
-            <FiPlus className="text-xl" /> New Chat
+            <FiPlus className="text-xl" />
+            New Chat
           </button>
 
-          {/* View Chats Button */}
+          {/* View Chats */}
           <button
-            className="flex items-center gap-3 w-full mt-4 py-3 px-5 bg-highlight hover:bg-gray-300 transition rounded-xl text-lg font-semibold shadow-md text-black"
+            className="flex items-center gap-3 w-full py-3 px-5
+                       bg-highlight hover:bg-gray-300
+                       transition rounded-xl text-lg font-semibold shadow-md text-black mt-4"
             onClick={() => alert("Chat history feature coming soon! 📜")}
           >
-            <FiMessageSquare className="text-xl" /> View Chats
+            <FiMessageSquare className="text-xl" />
+            View Chats
           </button>
 
-          {/* Navigation Links */}
+          {/* NAV LINKS */}
           <ul className="mt-6 space-y-4">
             <li
-              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer hover:bg-primary transition font-medium"
+              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
+                         hover:bg-primary transition font-medium"
               onClick={() => handleNavigation("/categories")}
             >
-              <FiLayers className="text-xl" /> Categories
+              <FiLayers className="text-xl" />
+              Categories
             </li>
             <li
-              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer hover:bg-primary transition font-medium"
+              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
+                         hover:bg-primary transition font-medium"
               onClick={() => handleNavigation("/settings")}
             >
-              <FiSettings className="text-xl" /> Settings
+              <FiSettings className="text-xl" />
+              Settings
             </li>
             <li
-              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer hover:bg-primary transition font-medium"
+              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
+                         hover:bg-primary transition font-medium"
               onClick={toggleSidebar}
             >
-              <FiHelpCircle className="text-xl" /> Help
+              <FiHelpCircle className="text-xl" />
+              Help
             </li>
           </ul>
         </div>
 
-        {/* Logout Button */}
-        <div className="p-5 border-t border-highlight">
+        {/* LOGOUT BUTTON */}
+        <div className="p-5 border-highlight">
           <button
             onClick={handleLogout}
-            className="flex items-center justify-center w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 transition text-white text-lg font-semibold shadow-md"
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl
+                       bg-red-600 hover:bg-red-700 transition
+                       text-white text-lg font-semibold shadow-md"
           >
-            <FiLogOut className="text-xl" /> Log Out
+            <FiLogOut className="text-xl" />
+            Log Out
           </button>
         </div>
       </div>
 
-      {/* Dark Overlay Effect (Mobile) */}
+      {/* DARK OVERLAY (Mobile Only) */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40 md:hidden transition-opacity duration-300"
           onClick={toggleSidebar}
-        ></div>
+        />
       )}
     </>
   );

@@ -40,7 +40,7 @@ const CardSetsPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-accent">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent  text-white">
       {/* Sticky Header */}
       <div className="p-6 bg-secondary flex justify-between items-center sticky top-0 z-10 shadow-md">
         <div className="flex items-center">

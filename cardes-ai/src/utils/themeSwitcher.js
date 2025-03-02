@@ -15,7 +15,7 @@ const ALL_KEYS = [
 export const setTheme = (themeName) => {
   if (!themePresets[themeName]) {
     console.warn(`Theme "${themeName}" not found. Falling back to "Cardes".`);
-    themeName = "Cardes"; // ✅ Default theme
+    themeName = "Midnight"; // ✅ Default theme
   }
 
   const theme = themePresets[themeName];

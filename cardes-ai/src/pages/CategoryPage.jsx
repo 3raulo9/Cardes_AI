@@ -23,7 +23,6 @@ const CategoryPage = () => {
         name: name,
         color: "#FF5733", // Default color
       });
-
       setCategories([...categories, response.data]); // Update UI
     } catch (error) {
       console.error("Error creating category:", error.response?.data || error.message);
@@ -47,46 +46,51 @@ const CategoryPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-accent">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent  text-white">
       {/* Sticky Header */}
-      <div className="p-6 bg-secondary flex justify-between items-center sticky top-0 z-10 shadow-md">
-        <h1 className="text-2xl font-bold text-white">Categories</h1>
-        <button
-          onClick={createCategory}
-          className="bg-primary text-white px-4 py-2 rounded-lg flex items-center hover:bg-highlight transition"
-        >
-          <FiPlus className="mr-2" /> New Category
-        </button>
-      </div>
+      <header className="sticky top-0 z-10 shadow-md">
+        {/* Header Bar */}
+        <div className="bg-secondary px-6 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Categories</h1>
+          <button
+            onClick={createCategory}
+            className="flex items-center bg-primary text-white px-4 py-2 rounded-lg hover:bg-darkAccent transition"
+          >
+            <FiPlus className="mr-2" /> New Category
+          </button>
+        </div>
+      </header>
 
       {/* Scrollable Category List */}
-      <div className="flex-1 overflow-y-auto p-4">
-        <ul className="space-y-4">
+      <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
+        <ul className="space-y-4 max-w-3xl mx-auto">
           {categories.length > 0 ? (
             categories.map((category) => (
               <li
                 key={category.id}
-                className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-100 hover:shadow-md"
+                className="bg-secondary text-white rounded-lg flex justify-between items-center px-4 py-3 shadow-md transform transition duration-200 hover:scale-[1.02]"
               >
                 <span
                   onClick={() => navigate(`/categories/${category.id}`)}
-                  className="cursor-pointer flex-1"
+                  className="cursor-pointer flex-1 hover:underline"
                 >
                   {category.name}
                 </span>
                 <button
                   onClick={() => deleteCategory(category.id)}
-                  className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded-lg ml-4"
+                  className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded-lg ml-4 transition"
                 >
                   <FiTrash2 />
                 </button>
               </li>
             ))
           ) : (
-            <p className="text-white text-center">No categories available. Add a new category!</p>
+            <p className="text-white text-center">
+              No categories available. Add a new category!
+            </p>
           )}
         </ul>
-      </div>
+      </main>
     </div>
   );
 };
