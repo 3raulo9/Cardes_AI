@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {FaLinkedin } from "react-icons/fa";
 import { FiVolume2, FiLogOut } from "react-icons/fi";
 
 // Optional icons for features
