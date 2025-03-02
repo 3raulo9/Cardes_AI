@@ -1,65 +1,107 @@
 const themePresets = {
-    Cardes: {
-      primary: "#9A3B3B",
-      secondary: "#C08261",
-      accent: "#E2C799",
-      darkAccent: "#F2ECBE",
-    },
-    Midnight: {
-      primary: "#1B1F3B",
-      secondary: "#4A4E69",
-      accent: "#9A8C98",
-      darkAccent: "#C9ADA7",
-    },
-    Ocean: {
-      primary: "#004E64",
-      secondary: "#00A5CF",
-      accent: "#9FFFCB",
-      darkAccent: "#DAFDBA",
-    },
-    Forest: {
-      primary: "#2C5F2D",
-      secondary: "#97BC62FF",
-      accent: "#D5F0C1",
-      darkAccent: "#F7F6CF",
-    },
-    Sunset: {
-      primary: "#D72638",
-      secondary: "#F46036",
-      accent: "#2E294E",
-      darkAccent: "#1B998B",
-    },
-    Pastel: {
-      primary: "#FFADAD",
-      secondary: "#FFD6A5",
-      accent: "#FDFFB6",
-      darkAccent: "#CAFFBF",
-    },
-    Cyberpunk: {
-      primary: "#ff00ff",
-      secondary: "#00ffff",
-      accent: "#ffcc00",
-      darkAccent: "#ff003c",
-    },
-    DarkMode: {
-      primary: "#121212",
-      secondary: "#1F1F1F",
-      accent: "#BB86FC",
-      darkAccent: "#03DAC6",
-    },
-    Retro: {
-      primary: "#FF7F50",
-      secondary: "#FFD700",
-      accent: "#ADFF2F",
-      darkAccent: "#008080",
-    },
-    Neon: {
-      primary: "#00FF00",
-      secondary: "#FF1493",
-      accent: "#FF4500",
-      darkAccent: "#1E90FF",
-    },
-  };
+  Cardes: {
+    primary:    "#1A150C", // Very dark brown-black for main background
+    secondary:  "#332820", // Deeper brown for secondary backgrounds
+    accent:     "#F48C06", // Vibrant orange accent
+    darkAccent: "#FFB347", // Lighter, more golden-orange accent
   
-  export default themePresets;
-  
+    // Support colors
+    success: "#7F9E43", // Earthy green (still keeps a warm vibe)
+    warning: "#FD9E02", // Bright orange for warnings
+    danger:  "#AC2C20", // Deep red-orange
+    info:    "#D37C2A", // Brownish-orange for info
+  }
+  ,
+  Midnight: {
+    primary: "#1B1F3B",
+    secondary: "#4A4E69",
+    accent: "#9A8C98",
+    darkAccent: "#C9ADA7",
+    success: "#52796F",
+    warning: "#EBB61F",
+    danger: "#773344",
+    info:    "#3B6BA3",
+  },
+  Ocean: {
+    primary: "#004E64",
+    secondary: "#00A5CF",
+    accent: "#9FFFCB",
+    darkAccent: "#DAFDBA",
+    success: "#5DCF8B",
+    warning: "#FFC74D",
+    danger: "#FF5B59",
+    info:    "#47E1FF",
+  },
+  Forest: {
+    primary: "#2C5F2D",
+    secondary: "#97BC62FF",
+    accent: "#D5F0C1",
+    darkAccent: "#F7F6CF",
+    success: "#4CA64C",
+    warning: "#E7C64C",
+    danger: "#9E2A2B",
+    info:    "#72ACC8",
+  },
+  Sunset: {
+    primary: "#D72638",
+    secondary: "#F46036",
+    accent: "#2E294E",
+    darkAccent: "#1B998B",
+    success: "#4FBF77",
+    warning: "#F5C956",
+    danger: "#BF1B1B",
+    info:    "#7D80B0",
+  },
+  Pastel: {
+    primary: "#FFADAD",
+    secondary: "#FFD6A5",
+    accent: "#FDFFB6",
+    darkAccent: "#CAFFBF",
+    success: "#A0F57B",
+    warning: "#FEF4A9",
+    danger: "#FFAEB5",
+    info:    "#9BF3F0",
+  },
+  Cyberpunk: {
+    primary: "#ff00ff",
+    secondary: "#00ffff",
+    accent: "#ffcc00",
+    darkAccent: "#ff003c",
+    success: "#00ff8c",
+    warning: "#faff00",
+    danger: "#ff0022",
+    info:    "#22ffdb",
+  },
+  DarkMode: {
+    primary: "#121212",
+    secondary: "#1F1F1F",
+    accent: "#BB86FC",
+    darkAccent: "#03DAC6",
+    success: "#03C771",
+    warning: "#F7A325",
+    danger: "#CF6679",
+    info:    "#59B8EE",
+  },
+  Retro: {
+    primary: "#FF7F50",
+    secondary: "#FFD700",
+    accent: "#ADFF2F",
+    darkAccent: "#008080",
+    success: "#90EE90",
+    warning: "#FFFACD",
+    danger: "#CD5C5C",
+    info:    "#87CEEB",
+  },
+  Neon: {
+    primary: "#00FF00",
+    secondary: "#FF1493",
+    accent: "#FF4500",
+    darkAccent: "#1E90FF",
+    success: "#39FF14",
+    warning: "#FFFF00",
+    danger: "#FF0000",
+    info:    "#50FFFF",
+  },
+};
+
+export default themePresets;
