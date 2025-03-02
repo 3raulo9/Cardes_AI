@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; // 🚀 Animations
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"; // Social Icons
 import { FiVolume2, FiLogOut } from "react-icons/fi"; // Icons
@@ -7,7 +7,6 @@ import { FiVolume2, FiLogOut } from "react-icons/fi"; // Icons
 const LandingPage = () => {
   const [email, setEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
 
   // Check if user is logged in
   useEffect(() => {
