@@ -25,9 +25,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 z-50 md:translate-x-0 md:static md:shadow-none flex flex-col`}
       >
-        {/* Logo / Branding */}
-        <div
-          className="p-6 text-center font-bold text-2xl border-b border-highlight tracking-wide relative"
+        {/* Logo / Branding (Now Clickable) */}
+        <button
+          className="p-6 text-center font-bold text-2xl border-b border-highlight tracking-wide relative focus:outline-none"
+          onClick={() => navigate("/")} // ✅ Navigate to Landing Page
           onMouseEnter={() => setShowFireworks(true)}
           onMouseLeave={() => setShowFireworks(false)}
         >
@@ -45,7 +46,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               }}
             />
           )}
-        </div>
+        </button>
 
         {/* Sidebar Content */}
         <div className="flex-1 overflow-y-auto p-5">
