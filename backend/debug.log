@@ -7256,3 +7256,19 @@ INFO 2025-03-02 04:08:28,550 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 6
 DEBUG 2025-03-02 04:08:29,265 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
 INFO 2025-03-02 04:08:29,395 decorators Response status code: 200, URL: /api/text-to-speech/
 INFO 2025-03-02 04:08:29,396 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 27167
+INFO 2025-03-02 04:16:52,418 autoreload Watching for file changes with StatReloader
+INFO 2025-03-02 04:22:00,323 decorators Handling POST request to /api/login/
+WARNING 2025-03-02 04:22:00,544 log Unauthorized: /api/login/
+WARNING 2025-03-02 04:22:00,545 basehttp "POST /api/login/ HTTP/1.1" 401 63
+INFO 2025-03-02 04:22:03,901 decorators Handling POST request to /api/login/
+INFO 2025-03-02 04:22:04,189 views Token obtained for ra, status code: 200
+INFO 2025-03-02 04:22:04,189 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 04:22:04,190 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 04:22:16,140 decorators Handling POST request to /api/login/
+INFO 2025-03-02 04:22:16,382 views Token obtained for ra, status code: 200
+INFO 2025-03-02 04:22:16,383 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 04:22:16,383 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-02 04:36:26,539 decorators Handling POST request to /api/login/
+INFO 2025-03-02 04:36:26,789 views Token obtained for ra, status code: 200
+INFO 2025-03-02 04:36:26,790 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-02 04:36:26,791 basehttp "POST /api/login/ HTTP/1.1" 200 242

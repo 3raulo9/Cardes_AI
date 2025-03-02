@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // 🚀 Animations
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"; // Social Icons
-import { FiVolume2, FiLogOut } from "react-icons/fi"; // Icons
+import { motion } from "framer-motion";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FiVolume2, FiLogOut } from "react-icons/fi";
 
 // Optional icons for features
 import { FaRobot, FaRegStickyNote, FaMicrophoneAlt } from "react-icons/fa";
@@ -11,19 +11,37 @@ const LandingPage = () => {
   const [email, setEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check if user is logged in
+  // State to track whether we've scrolled far enough to show buttons in header
+  const [showHeaderButtons, setShowHeaderButtons] = useState(false);
+
+  // On mount, check if user is logged in
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     setIsLoggedIn(!!token);
   }, []);
 
-  // Logout Function (Logs out without redirecting)
+  // Listen for window scroll, toggle showHeaderButtons after threshold
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = 490;
+      if (window.scrollY > threshold) {
+        setShowHeaderButtons(true);
+      } else {
+        setShowHeaderButtons(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Logout
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     setIsLoggedIn(false);
   };
 
-  // Function to Play AI TTS Audio
+  // Play TTS Audio
   const playAudio = (fileName) => {
     const audio = new Audio(`/audio/${fileName}`);
     audio.play().catch((err) => console.error("Error playing audio:", err));
@@ -31,49 +49,63 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-primary to-accent text-white flex flex-col">
-      {/* 🔥 Sticky Header */}
-      <header className="w-full py-6 px-8 flex justify-between items-center fixed top-0 left-0 bg-opacity-90 bg-secondary shadow-md z-50">
-        <h1 className="text-3xl font-bold cursor-pointer transition hover:text-gray-300">
+      {/** HEADER */}
+      <header
+        className={`
+          w-full py-6 px-8 fixed top-0 left-0 bg-opacity-90 bg-secondary shadow-md z-50
+          flex items-center transition-all duration-300
+          ${showHeaderButtons ? "justify-between" : "justify-center"}
+        `}
+      >
+        {/** Left: Cardes AI text */}
+        <h1 className="text-xl sm:text-3xl font-bold cursor-pointer transition hover:text-gray-300">
           <Link to="/">Cardes AI</Link>
         </h1>
-        <nav className="flex items-center space-x-4">
-          {!isLoggedIn ? (
-            <>
-              <Link
-                to="/login"
-                className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
-              >
-                Register
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/categories"
-                className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
-              >
-                Continue Learning
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300 flex items-center"
-              >
-                <FiLogOut className="mr-2" /> Logout
-              </button>
-            </>
-          )}
-        </nav>
+
+        {/** Right: Buttons appear only if showHeaderButtons == true */}
+        {showHeaderButtons && (
+          <nav className="flex items-center space-x-4">
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  to="/login"
+                  className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/categories"
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+                >
+                  Continue Learning
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300 flex items-center"
+                >
+                  <FiLogOut className="mr-2" /> Logout
+                </button>
+              </>
+            )}
+          </nav>
+        )}
       </header>
 
-      {/* 🚀 Hero Section with wave decoration */}
-      <div className="relative w-full flex-grow flex flex-col justify-center items-center text-center px-6 pt-24 md:pt-32 pb-20">
-        {/* Add bottom padding (pb-20) so the wave doesn't cut the text */}
+      {/** HERO SECTION */}
+      {/**
+       * Only show the buttons within the hero if we haven't scrolled past threshold
+       * (i.e., showHeaderButtons == false).
+       */}
+      <div className="relative w-full flex-grow flex flex-col justify-center items-center text-center px-6 pt-32 sm:pt-24 pb-20">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,7 +129,43 @@ const LandingPage = () => {
           <em className="text-info">personalized</em>!
         </motion.p>
 
-        {/* Decorative wave at the bottom of the Hero */}
+        {!showHeaderButtons && (
+          <nav className="flex items-center space-x-4 mt-4 sm:mt-0">
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  to="/login"
+                  className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/categories"
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+                >
+                  Continue Learning
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300 flex items-center"
+                >
+                  <FiLogOut className="mr-2" /> Logout
+                </button>
+              </>
+            )}
+          </nav>
+        )}
+
+        {/** Decorative wave at the bottom of the Hero */}
         <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
           <svg
             className="relative block w-full h-20 md:h-32"
@@ -112,7 +180,6 @@ const LandingPage = () => {
           </svg>
         </div>
       </div>
-
       {/* 🔊 AI-Powered TTS Showcase */}
       <section className="relative py-20 px-6 bg-darkAccent text-center">
         <motion.h2
