@@ -7298,3 +7298,30 @@ DEBUG 2025-03-02 04:59:37,970 connectionpool Starting new HTTPS connection (1): 
 DEBUG 2025-03-02 04:59:39,564 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
 INFO 2025-03-02 04:59:39,896 decorators Response status code: 200, URL: /api/text-to-speech/
 INFO 2025-03-02 04:59:39,897 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 45975
+INFO 2025-03-03 00:19:06,637 autoreload Watching for file changes with StatReloader
+INFO 2025-03-03 01:02:35,940 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-03 01:02:35,941 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-03 01:02:36,008 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:02:36,013 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:02:38,971 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:02:38,977 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:02:44,297 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-03-03 01:02:44,299 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:02:44,305 views User ra permissions: set()
+DEBUG 2025-03-03 01:02:44,315 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-03 01:02:45,513 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-03 01:02:45,517 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:02:45,518 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-03 01:02:48,330 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-03-03 01:02:48,333 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-03 01:02:48,337 views User ra permissions: set()
+DEBUG 2025-03-03 01:02:48,338 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-03 01:02:49,629 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-03 01:02:49,752 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-03 01:02:49,753 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 36362
+INFO 2025-03-03 01:03:08,037 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:03:08,043 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:18:49,062 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:18:49,071 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:19:39,343 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:19:39,348 basehttp "GET /api/categories/ HTTP/1.1" 200 55
