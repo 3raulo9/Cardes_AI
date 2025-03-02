@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {FaLinkedin } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { FiVolume2, FiLogOut } from "react-icons/fi";
+import yourFirstImage from "../static/images/firstimage.jpg";
+import secondImage from "../static/images/secondImage.jpg";
+
+import thirdImage from "../static/images/thirdImage.jpg";
 
 // Optional icons for features
 import { FaRobot, FaRegStickyNote, FaMicrophoneAlt } from "react-icons/fa";
@@ -306,6 +310,103 @@ const LandingPage = () => {
           ))}
         </div>
       </section>
+{/* 
+  Place this section BEFORE the "Subscribe to Our Newsletter" section 
+  in your LandingPage or wherever you'd like it to appear.
+*/}
+
+<section className="py-20 px-6 bg-darkAccent text-white">
+  <h2 className="text-4xl font-bold mb-10 text-center">
+    How This Website Came to Life
+  </h2>
+
+  {/* 1st Block (Image on the left, Text on the right) */}
+  <div className="flex flex-col md:flex-row items-center gap-8 mb-10">
+    <div className="md:w-1/2 flex justify-center">
+      <img
+        src={yourFirstImage}
+        alt="Raul the Dev and Language Learner"
+        className="w-full max-w-sm h-auto rounded shadow-lg"
+      />
+    </div>
+    <div className="md:w-1/2">
+      <h3 className="text-2xl font-semibold mb-2">Meet Raul Asadov</h3>
+      <p className="text-gray-200 leading-relaxed">
+        From the time I first discovered the beauty of foreign scripts and
+        sounds, I felt an insatiable hunger to learn new languages. Nothing
+        brings me more joy than exploring how people communicate around the
+        globe and how words shape our thoughts. Over the years, I envisioned a
+        single hub that could combine <strong>personalized flashcards</strong>,
+        harness the power of<strong> AI-driven learning</strong>, and provide
+        incredibly <strong>natural text-to-speech</strong> capabilities.
+        My goal has always been to make language acquisition an exciting,
+        dynamic, and downright magical experience. With AI-generated decks
+        tailored to each learner’s specific needs, we’re diving into a future
+        where every user can progress at their own pace, guided by advanced
+        technology that understands and adapts to them. And the best part?
+        We’re just getting started—soon, we’ll be rolling out{" "}
+        <em>AI-generated courses</em> that use your level, interests, and goals
+        to create a truly one-of-a-kind journey!
+      </p>
+    </div>
+  </div>
+
+  {/* 2nd Block (Text on the left, Image on the right) */}
+  <div className="flex flex-col md:flex-row-reverse items-center gap-8 mb-10">
+    <div className="md:w-1/2 flex justify-center">
+      <img
+        src={secondImage}
+        alt="Raul's Developer Experience"
+        className="w-full max-w-sm h-auto rounded shadow-lg"
+      />
+    </div>
+    <div className="md:w-1/2">
+      <h3 className="text-2xl font-semibold mb-2">5+ Years of Dev Expertise</h3>
+      <p className="text-gray-200 leading-relaxed">
+        Crafting user-centric applications and pushing creative boundaries
+        has been my calling throughout my 5+ years in software development.
+        My formal journey took off with two immersive years at John Brice
+        Bootcamp, where I dove headfirst into front-end design, back-end
+        architecture, databases, APIs—you name it. Picking up multiple
+        programming languages along the way, I’ve always believed in the
+        power of merging clean code with an engaging user experience.
+        Every project I tackle aims to bridge the gap between people and
+        technology. Seeing real users benefit from what I build—the very
+        tools that simplify and enrich their daily lives—is, in my mind,
+        the best reward a developer could ask for!
+      </p>
+    </div>
+  </div>
+
+  {/* 3rd Block (Image on the left, Text on the right) */}
+  <div className="flex flex-col md:flex-row items-center gap-8">
+    <div className="md:w-1/2 flex justify-center">
+      <img
+        src={thirdImage}
+        alt="How Yazyk was born"
+        className="w-full max-w-sm h-auto rounded shadow-lg"
+      />
+    </div>
+    <div className="md:w-1/2">
+      <h3 className="text-2xl font-semibold mb-2">The Birth of Yazyk</h3>
+      <p className="text-gray-200 leading-relaxed">
+        During my second year at John Brice, the gears really started turning—
+        I wanted to build a space that fulfilled a growing need: an all-in-one
+        tool for mastering new languages. That’s how “Yazyk” came to be, a name
+        drawn from a Slavic word meaning “tongue.” It’s a nod to both the
+        anatomical part of our speech mechanism and the linguistic diversity
+        we aim to celebrate. In honor of my very first orange cat, our adorable
+        mascot embodies the spirit of curiosity, warmth, and a playful approach
+        to learning. My hope is that, as you explore Yazyk, you’ll feel just as
+        excited discovering new expressions and cultures as I did while creating
+        this platform. Here’s to a vibrant community of learners who continue
+        pushing the boundaries of language study—together, we’ll write the next
+        chapter in the global conversation!
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* 📩 Newsletter Subscription */}
       <section className="py-20 px-6 bg-secondary text-center">
