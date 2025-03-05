@@ -7325,3 +7325,53 @@ INFO 2025-03-03 01:18:49,062 basehttp "GET /api/categories/ HTTP/1.1" 200 55
 INFO 2025-03-03 01:18:49,071 basehttp "GET /api/categories/ HTTP/1.1" 200 55
 INFO 2025-03-03 01:19:39,343 basehttp "GET /api/categories/ HTTP/1.1" 200 55
 INFO 2025-03-03 01:19:39,348 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-03 01:24:06,462 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:24:06,466 views User ra permissions: set()
+DEBUG 2025-03-03 01:24:06,469 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-03 01:24:07,354 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-03 01:24:07,358 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:24:07,360 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-03 01:24:12,021 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:24:12,024 views User ra permissions: set()
+WARNING 2025-03-03 01:24:12,026 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-03 01:24:12,026 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:24:12,027 basehttp "POST /api/gemini/ HTTP/1.1" 200 77
+INFO 2025-03-03 01:24:13,427 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:24:13,432 views User ra permissions: set()
+WARNING 2025-03-03 01:24:13,433 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-03 01:24:13,433 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:24:13,434 basehttp "POST /api/gemini/ HTTP/1.1" 200 77
+INFO 2025-03-03 01:24:25,330 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:24:25,341 views User ra permissions: set()
+DEBUG 2025-03-03 01:24:25,348 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-03 01:24:26,080 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-03 01:24:26,082 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:24:26,082 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-03 01:24:31,368 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:24:31,373 views User ra permissions: set()
+WARNING 2025-03-03 01:24:31,373 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-03 01:24:31,374 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:24:31,374 basehttp "POST /api/gemini/ HTTP/1.1" 200 64
+INFO 2025-03-03 01:24:34,335 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:24:34,339 views User ra permissions: set()
+WARNING 2025-03-03 01:24:34,339 views User ra is sending too many requests. Cooldown active.
+INFO 2025-03-03 01:24:34,340 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:24:34,340 basehttp "POST /api/gemini/ HTTP/1.1" 200 83
+INFO 2025-03-03 01:53:09,895 decorators Handling POST request to /api/gemini/
+INFO 2025-03-03 01:53:09,913 views User ra permissions: set()
+DEBUG 2025-03-03 01:53:09,957 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-03 01:53:11,105 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-03 01:53:11,110 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-03 01:53:11,113 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-05 23:33:57,855 autoreload Watching for file changes with StatReloader
+INFO 2025-03-06 00:50:04,034 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-06 00:50:04,037 basehttp "OPTIONS /api/categories/ HTTP/1.1" 200 0
+INFO 2025-03-06 00:50:04,123 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-06 00:50:04,129 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-06 01:39:10,587 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-06 01:39:10,592 decorators Handling POST request to /api/login/
+INFO 2025-03-06 01:39:10,824 views Token obtained for ra, status code: 200
+INFO 2025-03-06 01:39:10,824 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-06 01:39:10,825 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-06 01:39:13,140 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-06 01:39:13,153 basehttp "GET /api/categories/ HTTP/1.1" 200 55

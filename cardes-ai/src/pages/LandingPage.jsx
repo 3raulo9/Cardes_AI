@@ -8,6 +8,7 @@ import {
   FaMicrophoneAlt,
 } from "react-icons/fa";
 import { FiVolume2, FiLogOut, FiArrowUp } from "react-icons/fi";
+import { Typewriter } from "react-simple-typewriter";
 
 // Import your images
 import firstImage from "../static/images/firstimage.jpg";
@@ -15,7 +16,6 @@ import secondImage from "../static/images/secondImage.png";
 import thirdImage from "../static/images/thirdImage.jpg";
 
 // Example hero background image path:
-const HERO_BG = "path-to-your-hero-bg.jpg"; // Replace with your actual background image path
 
 const LandingPage = () => {
   const [email, setEmail] = useState("");
@@ -61,52 +61,33 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-primary to-accent text-white flex flex-col relative">
-      {/** Typing effect CSS */}
-      <style>{`
-        .typing-title {
-          white-space: nowrap;
-          overflow: hidden;
-          display: inline-block;
-          border-right: 4px solid rgba(255,255,255,0.75);
-          width: 0;
-          animation: typing 3s steps(30, end) forwards, 
-                     blink-caret 0.75s step-end infinite;
-        }
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-        @keyframes blink-caret {
-          50% { border-color: transparent }
-        }
-      `}</style>
-
       {/** HEADER */}
       <header
-        className={`fixed top-0 left-0 w-full py-4 sm:py-6 px-4 sm:px-8 bg-opacity-90 bg-secondary shadow-md z-50 
-          flex items-center transition-all duration-300 ${
-            showHeaderButtons ? "justify-between" : "justify-center"
-          }`}
+        className={`
+    w-full py-6 px-8 fixed top-0 left-0 bg-opacity-90 bg-secondary shadow-md z-50
+    flex items-center transition-all duration-300
+    ${showHeaderButtons ? "justify-between" : "justify-center"}
+  `}
       >
-        <h1 className="text-lg sm:text-2xl md:text-3xl font-bold cursor-pointer transition hover:text-gray-300">
+        {/** Left: Cardes AI text */}
+        <h1 className="text-xl sm:text-3xl font-bold cursor-pointer transition hover:text-gray-300">
           <Link to="/">Cardes AI</Link>
         </h1>
 
+        {/** Right: Buttons appear only if showHeaderButtons == true */}
         {showHeaderButtons && (
-          <nav className="flex items-center space-x-2 sm:space-x-4">
+          <nav className="flex items-center space-x-4">
             {!isLoggedIn ? (
               <>
                 <Link
                   to="/login"
-                  className="px-4 py-2 sm:px-6 bg-white text-primary font-semibold rounded-full 
-                             shadow-md hover:bg-gray-200 transition duration-300 text-sm sm:text-base"
+                  className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 sm:px-6 bg-primary text-white font-semibold rounded-full 
-                             shadow-md hover:bg-darkAccent transition duration-300 text-sm sm:text-base"
+                  className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
                 >
                   Register
                 </Link>
@@ -115,17 +96,15 @@ const LandingPage = () => {
               <>
                 <Link
                   to="/categories"
-                  className="px-4 py-2 sm:px-6 bg-accent text-white font-semibold rounded-full 
-                             shadow-md hover:bg-darkAccent transition duration-300 text-sm sm:text-base"
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
                 >
-                  Continue
+                  Continue Learning
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 sm:px-6 bg-accent text-white font-semibold rounded-full 
-                             shadow-md hover:bg-darkAccent transition duration-300 flex items-center text-sm sm:text-base"
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300 flex items-center"
                 >
-                  <FiLogOut className="mr-1 sm:mr-2" /> Logout
+                  <FiLogOut className="mr-2" /> Logout
                 </button>
               </>
             )}
@@ -133,91 +112,78 @@ const LandingPage = () => {
         )}
       </header>
 
-      {/** HERO SECTION */}
-      <div
-        className="relative w-full flex-grow flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-24 sm:pt-32 pb-20
-          bg-center bg-cover"
-        style={{
-          backgroundImage: `url(${HERO_BG})`,
-        }}
-      >
-        {/** Semi-transparent overlay */}
-        <div className="absolute inset-0 bg-darkAccent bg-opacity-60 z-0"></div>
+      {/* Spacer div to add spacing below fixed header */}
+      <div className="h-10 sm:h-10 md:h-13"></div>
 
-        {/** Floating shapes */}
-        <div className="absolute top-10 left-[10%] w-16 h-16 sm:w-24 sm:h-24 bg-accent rounded-full blur-2xl opacity-30 animate-pulse"></div>
-        <div className="absolute top-1/3 right-[15%] w-12 h-12 sm:w-16 sm:h-16 bg-success rounded-full blur-xl opacity-25 animate-bounce"></div>
-        <div className="absolute bottom-10 left-[20%] w-12 h-12 sm:w-20 sm:h-20 bg-warning rounded-full blur-2xl opacity-20 animate-ping"></div>
+      <div className="relative w-full flex-grow flex flex-col justify-center items-center text-center px-6 pt-32 sm:pt-24 pb-20">
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md"
+        >
+          <Typewriter
+            words={["Speak Fluently,", "Learn Effortlessly."]}
+            loop={false}
+            cursor
+            cursorStyle="|"
+            typeSpeed={70}
+            deleteSpeed={50}
+          />
+        </motion.h2>
 
-        {/** Hero content (above overlay) */}
-        <div className="relative z-10 flex flex-col items-center">
-          <motion.h2
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            // Adjust heading size for mobile, scale up for desktop
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-md"
-          >
-            <span className="typing-title">Speak Fluently</span>
-            <br />
-            <span className="text-success">Learn Effortlessly</span>.
-          </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="mt-4 text-lg text-gray-200 max-w-xl leading-relaxed"
+        >
+          AI-powered text-to-speech smart flashcards, and conversational AI make
+          language learning fun, interactive, and personalized.
+        </motion.p>
+        <div className="h-10 sm:h-10 md:h-13"></div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.3, duration: 1 }}
-            className="mt-4 text-sm sm:text-base md:text-lg text-gray-200 max-w-md sm:max-w-xl leading-relaxed"
-          >
-            AI-powered text-to-speech, smart flashcards, and conversational AI
-            make language learning fun, interactive, and personalized.
-          </motion.p>
-
-          {!showHeaderButtons && (
-            <nav className="flex items-center space-x-3 sm:space-x-4 mt-6 sm:mt-8">
-              {!isLoggedIn ? (
-                <>
-                  <Link
-                    to="/login"
-                    className="px-4 py-2 bg-white text-primary font-semibold rounded-full 
-                               shadow-md hover:bg-gray-200 transition duration-300 text-sm sm:text-base"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    to="/register"
-                    className="px-4 py-2 bg-primary text-white font-semibold rounded-full 
-                               shadow-md hover:bg-darkAccent transition duration-300 text-sm sm:text-base"
-                  >
-                    Register
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/categories"
-                    className="px-4 py-2 bg-accent text-white font-semibold rounded-full
-                               shadow-md hover:bg-darkAccent transition duration-300 text-sm sm:text-base"
-                  >
-                    Continue
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="px-4 py-2 bg-accent text-white font-semibold rounded-full 
-                               shadow-md hover:bg-darkAccent transition duration-300 flex items-center text-sm sm:text-base"
-                  >
-                    <FiLogOut className="mr-1 sm:mr-2" /> Logout
-                  </button>
-                </>
-              )}
-            </nav>
-          )}
-        </div>
+        {!showHeaderButtons && (
+          <nav className="flex items-center space-x-4 mt-4 sm:mt-0">
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  to="/login"
+                  className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/categories"
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+                >
+                  Continue Learning
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300 flex items-center"
+                >
+                  <FiLogOut className="mr-2" /> Logout
+                </button>
+              </>
+            )}
+          </nav>
+        )}
+        <div className="h-10 sm:h-10 md:h-13"></div>
 
         {/** Decorative wave at the bottom of the Hero */}
         <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
           <svg
-            className="relative block w-full h-14 sm:h-20 md:h-32"
+            className="relative block w-full h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
           >
@@ -233,8 +199,8 @@ const LandingPage = () => {
       {/** 🔊 AI-Powered TTS Showcase */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent text-center">
         {/** Wave on top (reversed) */}
-        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-          <svg
+        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
+        <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -290,12 +256,11 @@ const LandingPage = () => {
           ))}
         </div>
       </section>
-
       {/** 🎨 Features Section */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
         {/** Reversed wave on top */}
-        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-          <svg
+        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
+        <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -326,11 +291,15 @@ const LandingPage = () => {
             },
             {
               feature: "Flashcards",
-              icon: <FaRegStickyNote className="mx-auto text-3xl text-accent" />,
+              icon: (
+                <FaRegStickyNote className="mx-auto text-3xl text-accent" />
+              ),
             },
             {
               feature: "Speech Recognition",
-              icon: <FaMicrophoneAlt className="mx-auto text-3xl text-accent" />,
+              icon: (
+                <FaMicrophoneAlt className="mx-auto text-3xl text-accent" />
+              ),
             },
           ].map(({ feature, icon }, i) => (
             <motion.div
@@ -358,8 +327,8 @@ const LandingPage = () => {
       {/** 💬 Testimonials Section */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-r from-secondary to-darkAccent">
         {/** Reversed wave on top */}
-        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-          <svg
+        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
+        <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -371,45 +340,62 @@ const LandingPage = () => {
             />
           </svg>
         </div>
+        <div className="h-10 sm:h-10 md:h-13"></div>
 
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-white"
+          className="text-center text-2l sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-white"
         >
           What Our Users Say
         </motion.h2>
 
         {/** Single column on mobile, two on md, three on lg */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-          {["Amazing tool!", "Helped me ace my exams!", "Best AI tutor ever!"].map(
-            (testimonial, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.2 }}
-                className="bg-white text-gray-900 p-4 sm:p-6 rounded-lg shadow-lg 
+          {[
+            "Amazing tool!",
+            "Helped me ace my exams!",
+            "Best AI tutor ever!",
+          ].map((testimonial, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.2 }}
+              className="bg-white text-gray-900 p-4 sm:p-6 rounded-lg shadow-lg 
                            hover:shadow-2xl transition-transform transform hover:-translate-y-1"
-              >
-                <p className="text-base sm:text-lg font-medium mb-2">
-                  "{testimonial}"
-                </p>
-                <p className="text-xs sm:text-sm text-gray-600">- Happy User</p>
-              </motion.div>
-            )
-          )}
+            >
+              <p className="text-base sm:text-lg font-medium mb-2">
+                "{testimonial}"
+              </p>
+              <p className="text-xs sm:text-sm text-gray-600">- Happy User</p>
+            </motion.div>
+          ))}
+        </div>
+        <div className="h-10 sm:h-10 md:h-13"></div>
+
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+          <svg
+            className="relative block w-full h-20 md:h-32"
+            viewBox="0 0 120 28"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,20 C40,40 80,0 120,20 L120,30 L0,30 Z"
+              fill="currentColor"
+              className="text-darkAccent"
+            />
+          </svg>
         </div>
       </section>
-
       {/** ABOUT / ORIGIN SECTIONS */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent text-white">
         {/** Reversed wave on top */}
-        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-          <svg
+        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
+        <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -545,39 +531,23 @@ const LandingPage = () => {
             <p className="text-gray-200 leading-relaxed">
               During my second year at John Brice, the gears really started
               turning—I wanted to build a space that fulfilled a growing need:
-              an all-in-one tool for mastering new languages. That’s how
-              “Yazyk” came to be, a name drawn from a Slavic word meaning
-              “tongue.” It’s a nod to both the anatomical part of our speech
-              mechanism and the linguistic diversity we aim to celebrate. In
-              honor of my very first orange cat, our adorable mascot embodies
-              the spirit of curiosity, warmth, and a playful approach to
-              learning. My hope is that, as you explore Yazyk, you’ll feel just
-              as excited discovering new expressions and cultures as I did while
-              creating this platform. Here’s to a vibrant community of learners
-              who continue pushing the boundaries of language study—together,
-              we’ll write the next chapter in the global conversation!
+              an all-in-one tool for mastering new languages. That’s how “Yazyk”
+              came to be, a name drawn from a Slavic word meaning “tongue.” It’s
+              a nod to both the anatomical part of our speech mechanism and the
+              linguistic diversity we aim to celebrate. In honor of my very
+              first orange cat, our adorable mascot embodies the spirit of
+              curiosity, warmth, and a playful approach to learning. My hope is
+              that, as you explore Yazyk, you’ll feel just as excited
+              discovering new expressions and cultures as I did while creating
+              this platform. Here’s to a vibrant community of learners who
+              continue pushing the boundaries of language study—together, we’ll
+              write the next chapter in the global conversation!
             </p>
           </motion.div>
         </div>
       </section>
-
       {/** 📩 Newsletter Subscription */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-secondary text-center">
-        {/** Reversed wave on top */}
-        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-          <svg
-            className="relative block w-full h-14 sm:h-20 md:h-32"
-            viewBox="0 0 120 28"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,20 C40,40 80,0 120,20 L120,30 L0,30 Z"
-              fill="currentColor"
-              className="text-secondary"
-            />
-          </svg>
-        </div>
-
         <motion.h2
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -611,18 +581,19 @@ const LandingPage = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button className="mt-4 sm:mt-0 sm:ml-0 sm:rounded-l-none sm:rounded-r-lg px-6 py-2 bg-accent text-white font-semibold 
-                             hover:bg-darkAccent transition w-full sm:w-auto">
+          <button
+            className="mt-4 sm:mt-0 sm:ml-0 sm:rounded-l-none sm:rounded-r-lg px-6 py-2 bg-accent text-white font-semibold 
+                             hover:bg-darkAccent transition w-full sm:w-auto"
+          >
             Subscribe
           </button>
         </motion.div>
       </section>
-
       {/** 🏆 FAQ Section */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
         {/** Reversed wave on top */}
-        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180">
-          <svg
+        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
+        <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -670,10 +641,27 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/** 🌍 Footer */}
-      <footer className="bg-darkAccent text-center pt-6 sm:pt-10 pb-6 sm:pb-10">
+      {/* 🌍 Footer */}
+      <footer className="relative bg-gradient-to-r from-primary to-accent text-center pt-14 sm:pt-20 pb-6 sm:pb-10">
+        {/* Transparent reversed wave on top */}
+        {/* Transparent reversed wave on top */}
+        <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
+          <svg
+            className="block w-full h-14 sm:h-20 md:h-32"
+            viewBox="0 0 120 28"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,20 C40,40 80,0 120,20 L120,30 L0,30 Z"
+              fill="currentColor"
+              className="text-darkAccent"
+            />
+          </svg>
+        </div>
+
         <div className="px-4 sm:px-6">
           <h3 className="text-lg sm:text-xl font-semibold mb-4">Follow Us</h3>
+
           <div className="flex justify-center space-x-6 text-gray-300 text-2xl">
             <a
               href="https://www.linkedin.com/in/raul-asadov/"
@@ -683,13 +671,13 @@ const LandingPage = () => {
               <FaLinkedin className="hover:text-white transition cursor-pointer" />
             </a>
           </div>
-          <p className="mt-4 text-gray-500 text-sm sm:text-base">
+
+          <p className="mt-4 text-white text-sm sm:text-base">
             &copy; 2025 Cardes AI | Created by Raul Asadov. All rights reserved.
           </p>
         </div>
       </footer>
 
-      {/** "Scroll to Top" Button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
