@@ -234,7 +234,7 @@ const StatsModal = ({ correct, incorrect, total, onRestart, onGoBack }) => {
    - Top card is draggable/flippable
    - Next card is offset behind
 ------------------------------ */
-const EpicPracticePage = () => {
+const PracticePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -419,4 +419,4 @@ const EpicPracticePage = () => {
   );
 };
 
-export default EpicPracticePage;
+export default PracticePage;
