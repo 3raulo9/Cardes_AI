@@ -200,7 +200,7 @@ const LandingPage = () => {
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent text-center">
         {/** Wave on top (reversed) */}
         <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
-        <svg
+          <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -260,7 +260,7 @@ const LandingPage = () => {
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
         {/** Reversed wave on top */}
         <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
-        <svg
+          <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -328,7 +328,7 @@ const LandingPage = () => {
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-r from-secondary to-darkAccent">
         {/** Reversed wave on top */}
         <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
-        <svg
+          <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -352,12 +352,21 @@ const LandingPage = () => {
           What Our Users Say
         </motion.h2>
 
-        {/** Single column on mobile, two on md, three on lg */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {[
-            "Amazing tool!",
-            "Helped me ace my exams!",
-            "Best AI tutor ever!",
+            {
+              text: "Best AI flashcard tool I've ever used!",
+              user: "Adi from Tel Aviv",
+            },
+            {
+              text: "Made studying efficient and enjoyable!",
+              user: "Noa from Tel Aviv",
+            },
+            {
+              text: "Perfect for quick revision before exams!",
+              user: "Mark from Tel Aviv",
+            },
+
           ].map((testimonial, i) => (
             <motion.div
               key={i}
@@ -365,13 +374,14 @@ const LandingPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.2 }}
-              className="bg-white text-gray-900 p-4 sm:p-6 rounded-lg shadow-lg 
-                           hover:shadow-2xl transition-transform transform hover:-translate-y-1"
+              className="bg-white text-gray-900 p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1"
             >
               <p className="text-base sm:text-lg font-medium mb-2">
-                "{testimonial}"
+                "{testimonial.text}"
               </p>
-              <p className="text-xs sm:text-sm text-gray-600">- Happy User</p>
+              <p className="text-xs sm:text-sm text-gray-600">
+                - {testimonial.user}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -395,7 +405,7 @@ const LandingPage = () => {
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent text-white">
         {/** Reversed wave on top */}
         <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
-        <svg
+          <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
@@ -593,7 +603,7 @@ const LandingPage = () => {
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
         {/** Reversed wave on top */}
         <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
-        <svg
+          <svg
             className="relative block w-full h-14 sm:h-20 md:h-32"
             viewBox="0 0 120 28"
             preserveAspectRatio="none"
