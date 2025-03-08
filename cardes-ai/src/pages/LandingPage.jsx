@@ -18,7 +18,6 @@ import thirdImage from "../static/images/thirdImage.jpg";
 // Example hero background image path:
 
 const LandingPage = () => {
-  const [email, setEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Show/hide buttons in header after a scroll threshold
