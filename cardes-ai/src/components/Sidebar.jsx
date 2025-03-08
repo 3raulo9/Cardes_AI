@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { FiPlus, FiSettings, FiHelpCircle, FiLogOut, FiLayers, FiMessageSquare } from "react-icons/fi";
+import { 
+  FiPlus, FiSettings, FiLogOut, FiLayers, FiMessageSquare,
+  FiCompass, FiBookOpen, FiUsers 
+} from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { Fireworks } from "@fireworks-js/react";
 
@@ -35,7 +38,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="relative flex items-center justify-center h-24 cursor-pointer">
           {/* Decorative wave behind brand */}
           <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-
           </div>
           {/* Brand Name & Fireworks */}
           <button
@@ -103,13 +105,32 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <FiSettings className="text-xl" />
               Settings
             </li>
+
+
+            {/* New Options with Alert */}
             <li
               className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
                          hover:bg-primary transition font-medium"
-              onClick={toggleSidebar}
+              onClick={() => alert("Journey feature coming soon!")}
             >
-              <FiHelpCircle className="text-xl" />
-              Help
+              <FiCompass className="text-xl" />
+              Journey
+            </li>
+            <li
+              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
+                         hover:bg-primary transition font-medium"
+              onClick={() => alert("Courses feature coming soon!")}
+            >
+              <FiBookOpen className="text-xl" />
+              Courses
+            </li>
+            <li
+              className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
+                         hover:bg-primary transition font-medium"
+              onClick={() => alert("Community feature coming soon!")}
+            >
+              <FiUsers className="text-xl" />
+              Community
             </li>
           </ul>
         </div>
