@@ -37,17 +37,19 @@ const ChatItem = ({
   const [videoTitle, setVideoTitle] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
 
-  // States for multi-word selection
+  // States for multi-word selection (mouse selection already exists; now add touch selection)
   const [selectedText, setSelectedText] = useState("");
   const [selectionPos, setSelectionPos] = useState({ x: 0, y: 0 });
   const [showSelectionMenu, setShowSelectionMenu] = useState(false);
 
-  // New states for usage count and premium modal
+  // New state: For touch–based selection (applies per part)
+  // Structure: { count: number, part: number, base?: number, range?: [number, number] }
+  const [touchSelection, setTouchSelection] = useState(null);
   const premiumUsageLimit = 5;
   const [usageCount, setUsageCount] = useState(0);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  // Ref for outside click detection
+  // Ref for detecting clicks outside our container
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -58,7 +60,10 @@ const ChatItem = ({
   // Close dropdown if clicking outside the container
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target)
+      ) {
         setShowDropdownForWord(null);
       }
     };
@@ -67,7 +72,7 @@ const ChatItem = ({
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Listen for multi-word selection on mouse up
+  // Listen for multi-word text selection on mouse up (existing logic)
   useEffect(() => {
     const handleMouseUp = () => {
       const selection = window.getSelection();
@@ -99,27 +104,50 @@ const ChatItem = ({
   const isUser = chatItem.role === "user";
   const isModel = chatItem.role === "model";
 
-  // Toggle dropdown for a specific word
-  const handleWordClick = (wordIndex, e) => {
+  // ----------------------------
+  // Touch–based token selection logic:
+  // ----------------------------
+  const handleTokenTouch = (partIndex, tokenIndex) => {
+    // If no selection exists, or a selection is already extended (count===2), start new selection.
+    if (
+      !touchSelection ||
+      touchSelection.count === 2 ||
+      touchSelection.part !== partIndex
+    ) {
+      setTouchSelection({ count: 1, part: partIndex, base: tokenIndex });
+    } else if (touchSelection.count === 1) {
+      // Second tap in same part: extend selection if a different token is tapped.
+      if (tokenIndex === touchSelection.base) {
+        // If tapped the same word, do nothing.
+        return;
+      }
+      const start = Math.min(touchSelection.base, tokenIndex);
+      const end = Math.max(touchSelection.base, tokenIndex);
+      setTouchSelection({ count: 2, part: partIndex, range: [start, end] });
+    }
+  };
+  // ----------------------------
+
+  // Toggle individual token dropdown (for non–touch or initial click)
+  const handleWordClick = (combinedIndex, e) => {
     e.stopPropagation();
+    // Also clear any touch–selection (so that desktop clicks always show single–word dropdown)
+    setTouchSelection(null);
     setShowDropdownForWord((prev) =>
-      prev === wordIndex ? null : wordIndex
+      prev === combinedIndex ? null : combinedIndex
     );
   };
 
-  // Perform the YouTube search for a given text (only if usage is below limit)
+  // Perform the YouTube search for a given text (respecting usage limits)
   const handleSearchPronunciation = async (text) => {
     if (usageCount >= premiumUsageLimit) {
       setShowPremiumModal(true);
       return;
     }
-
-    // Increase usage count (using functional update to guarantee correct value)
     setUsageCount((prev) => prev + 1);
 
     const queriesToTry = [text, text.toLowerCase(), text.toUpperCase()];
     let foundResults = null;
-
     for (let q of queriesToTry) {
       const results = await searchYouTube(q);
       if (results.length > 0) {
@@ -127,7 +155,6 @@ const ChatItem = ({
         break;
       }
     }
-
     if (!foundResults) {
       alert(
         "No matching video found. Try a shorter word/sentence or check spelling!"
@@ -136,13 +163,14 @@ const ChatItem = ({
       setShowSelectionMenu(false);
       return;
     }
-
     const video = foundResults[0];
     setVideoTitle(video.snippet.title);
     setVideoUrl(`https://www.youtube.com/watch?v=${video.id.videoId}`);
     setModalOpen(true);
     setShowDropdownForWord(null);
     setShowSelectionMenu(false);
+    // Reset touch selection after a search
+    setTouchSelection(null);
   };
 
   // Close the pronunciation modal
@@ -152,7 +180,7 @@ const ChatItem = ({
     setVideoUrl("");
   };
 
-  // Premium modal component for usage limit exceeded
+  // Premium modal for when usage limit is exceeded
   const PremiumModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
     return (
@@ -190,12 +218,26 @@ const ChatItem = ({
   };
 
   /**
-   * Splits each part into tokens (words and whitespace) while preserving spacing/punctuation.
+   * Splits a part into tokens (words & whitespace) while preserving spacing.
+   * Also applies touch selection highlighting.
    */
   const renderPart = (part, partIndex) => {
     const tokens = part.split(/(\s+)/);
-    return tokens.map((token, tokenIndex) => {
+    const tokenElements = tokens.map((token, tokenIndex) => {
       const combinedIndex = `${partIndex}-${tokenIndex}`;
+      // Determine if this token is selected via touch
+      let isSelected = false;
+      if (touchSelection && touchSelection.part === partIndex) {
+        if (touchSelection.count === 1 && tokenIndex === touchSelection.base) {
+          isSelected = true;
+        } else if (
+          touchSelection.count === 2 &&
+          tokenIndex >= touchSelection.range[0] &&
+          tokenIndex <= touchSelection.range[1]
+        ) {
+          isSelected = true;
+        }
+      }
       if (/^\s+$/.test(token)) {
         return <span key={combinedIndex}>{token}</span>;
       } else {
@@ -203,27 +245,73 @@ const ChatItem = ({
           <span key={combinedIndex} className="relative inline-block">
             <span
               onClick={(e) => handleWordClick(combinedIndex, e)}
-              className="clickable-word cursor-pointer transition-colors duration-200 hover:text-blue-500 hover:underline decoration-blue-500"
+              onTouchStart={(e) => {
+                e.stopPropagation();
+                handleTokenTouch(partIndex, tokenIndex);
+              }}
+              className={`cursor-pointer transition-colors duration-200 hover:text-blue-500 hover:underline decoration-blue-500 ${
+                isSelected ? "bg-blue-200" : ""
+              }`}
             >
               {token}
             </span>
-            {showDropdownForWord === combinedIndex && (
-              <div className="dropdown-box absolute z-10 bg-primary text-white p-2 mt-2 rounded-lg shadow-lg transition-all duration-200">
-                <div className="text-xs text-white mb-1">
-                  Uses left {premiumUsageLimit - usageCount}/{premiumUsageLimit}
+            {/* Only show dropdown for non–extended (touchSelection not active) */}
+            {showDropdownForWord === combinedIndex &&
+              !touchSelection && (
+                <div className="absolute z-10 bg-primary text-white p-2 mt-2 rounded-lg shadow-lg transition-all duration-200">
+                  <div className="text-xs text-white mb-1">
+                    Uses left {premiumUsageLimit - usageCount}/{premiumUsageLimit}
+                  </div>
+                  <button
+                    onClick={() => handleSearchPronunciation(token)}
+                    className="block w-full text-left hover:bg-primary-dark px-3 py-1 rounded"
+                  >
+                    Pronunciation
+                  </button>
                 </div>
-                <button
-                  onClick={() => handleSearchPronunciation(token)}
-                  className="block w-full text-left hover:bg-primary-dark px-3 py-1 rounded"
-                >
-                  Pronunciation
-                </button>
-              </div>
-            )}
+              )}
           </span>
         );
       }
     });
+
+    return (
+      <>
+        <div>{tokenElements}</div>
+        {/* If touch selection is extended, render a global pronunciation button for the selected sentence */}
+        {touchSelection &&
+          touchSelection.part === partIndex &&
+          touchSelection.count === 2 && (
+            <div className="mt-2">
+              <button
+                onClick={() =>
+                  handleSearchPronunciation(
+                    tokens
+                      .slice(
+                        touchSelection.range[0],
+                        touchSelection.range[1] + 1
+                      )
+                      .join("")
+                  )
+                }
+                className="bg-primary text-white px-3 py-1 rounded shadow hover:bg-primary-dark"
+              >
+                Pronunciation for "
+                {tokens
+                  .slice(
+                    touchSelection.range[0],
+                    touchSelection.range[1] + 1
+                  )
+                  .join("")}
+                "
+              </button>
+              <div className="text-xs text-white mt-1">
+                Uses left {premiumUsageLimit - usageCount}/{premiumUsageLimit}
+              </div>
+            </div>
+          )}
+      </>
+    );
   };
 
   // Deck-related functions remain unchanged
@@ -250,7 +338,6 @@ const ChatItem = ({
     const term = chatItem.term.trim();
     const definition = chatItem.parts[0].trim();
     const cardPayload = { term, definition, card_set: deck.id };
-
     axiosInstance
       .post("/api/cards/", cardPayload)
       .then(() => {
@@ -281,7 +368,6 @@ const ChatItem = ({
               />
             </div>
           )}
-
           <div
             className={`flex flex-col items-start gap-1 ${
               isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
@@ -318,7 +404,6 @@ const ChatItem = ({
                 </>
               )}
             </div>
-
             <div
               className={`flex items-center gap-2 mt-2 ${
                 isUser ? "justify-start" : "justify-end"
@@ -363,7 +448,6 @@ const ChatItem = ({
               )}
             </div>
           </div>
-
           {isUser && (
             <div className="w-10 flex-shrink-0">
               <img
@@ -407,7 +491,7 @@ const ChatItem = ({
           </div>
         )}
 
-        {/* Floating selection menu for multi-word selection */}
+        {/* Floating selection menu for multi-word selection (for non-touch selection) */}
         {showSelectionMenu && (
           <div
             className="fixed z-20"
@@ -443,7 +527,7 @@ const ChatItem = ({
         videoUrl={videoUrl}
       />
 
-      {/* Premium Modal for exceeding usage */}
+      {/* Premium Modal for usage limit exceeded */}
       <PremiumModal
         isOpen={showPremiumModal}
         onClose={() => setShowPremiumModal(false)}
