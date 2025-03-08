@@ -5,6 +5,7 @@
   "dependencies": {
     "@fireworks-js/react": "^2.10.8",
     "@heroicons/react": "^2.2.0",
+    "@react-oauth/google": "^0.12.1",
     "@shoelace-style/shoelace": "^2.19.1",
     "animejs": "^3.2.2",
     "annyang": "^2.6.1",

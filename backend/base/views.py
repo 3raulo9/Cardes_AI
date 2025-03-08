@@ -23,6 +23,67 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from .decorators import log_request, require_permissions, class_log_request
 from .models import Chat, Message, Category, CardSet, Card
 from .serializers import CategorySerializer, CardSetSerializer, CardSerializer, UserRegistrationSerializer
+from google.auth.transport import requests as google_requests
+from google.oauth2 import id_token
+from django.conf import settings
+from django.contrib.auth.models import User
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def google_login(request):
+    """
+    Verify the Google ID token from the frontend, fetch or create the user,
+    and return a JWT access token for your application.
+    """
+    token = request.data.get('token')
+    if not token:
+        return Response({"error": "No token provided."}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        # 1. Verify the token with Google's library
+        idinfo = id_token.verify_oauth2_token(
+            token,
+            google_requests.Request(),
+            settings.GOOGLE_CLIENT_ID
+        )
+        # idinfo now contains user info from Google
+        # Example fields: idinfo['email'], idinfo['given_name'], idinfo['family_name']
+
+        # 2. Extract user info
+        email = idinfo.get('email')
+        first_name = idinfo.get('given_name', '')
+        last_name = idinfo.get('family_name', '')
+
+        if not email:
+            return Response({"error": "Google token is missing email."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 3. Fetch or create a User in Django
+        user, created = User.objects.get_or_create(email=email, defaults={
+            'username': email,  # or any unique scheme you want
+            'first_name': first_name,
+            'last_name': last_name
+        })
+
+        # 4. Generate JWT token (access token) for the user
+        refresh = RefreshToken.for_user(user)
+        # If you don’t want to return refresh token, just remove it
+        # from the response like you do in MyTokenObtainPairView.
+
+        # 5. Return the token to the frontend
+        return Response({
+            "accessToken": str(refresh.access_token),
+            # "refreshToken": str(refresh), # if you need it
+            "message": "User logged in or registered via Google successfully."
+        }, status=status.HTTP_200_OK)
+
+    except ValueError:
+        # Token verification failed
+        return Response({"error": "Invalid Google token."}, status=status.HTTP_401_UNAUTHORIZED)
 
 # 🛠️ List & Create Categories
 class CategoryListCreateView(generics.ListCreateAPIView):

@@ -21,12 +21,14 @@ urlpatterns = [
     path("chat-history/", ChatHistoryView.as_view(), name="chat_history"),
     path("categories/", CategoryListCreateView.as_view(), name="category-list-create"),
     path("categories/<int:pk>/", CategoryDetailView.as_view(), name="category-detail"),
-    path("categories/<int:pk>/", CategoryDetailView.as_view(), name="category-detail"),  # 🛠️ DELETE endpoint
-
+    path(
+        "categories/<int:pk>/", CategoryDetailView.as_view(), name="category-detail"
+    ),  # 🛠️ DELETE endpoint
     # Card Sets
     path("cardsets/", CardSetListCreateView.as_view(), name="cardset-list-create"),
     path("cardsets/<int:pk>/", CardSetDetailView.as_view(), name="cardset-detail"),
     # Cards
     path("cards/", CardListCreateView.as_view(), name="card-list-create"),
     path("cards/<int:pk>/", CardDetailView.as_view(), name="card-detail"),
+    path("google-login/", google_login, name="google_login"),
 ]

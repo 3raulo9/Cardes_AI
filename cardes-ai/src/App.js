@@ -8,23 +8,28 @@ import CardSetsPage from "./pages/CardSetsPage";
 import CardsPage from "./pages/CardsPage";
 import PracticePage from "./pages/PracticePage";
 import SettingsPage from "./pages/SettingsPage";
-import LandingPage from "./pages/LandingPage";  // ✅ Import Landing Page
+import LandingPage from "./pages/LandingPage";  // ✅ Default Landing Page
 import ChatLayout from "./components/ChatLayout";
-import { loadTheme } from "./utils/themeSwitcher"; // ✅ Load theme on startup
+import { loadTheme } from "./utils/themeSwitcher";
+
+// A simple component to guard protected routes
+const PrivateRoute = ({ authToken, children }) => {
+  return authToken ? children : <Navigate to="/" replace />;
+};
 
 function App() {
   const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
 
+  // Load theme on startup. The authToken will be updated by login, so we don't need to re-read it here.
   useEffect(() => {
     loadTheme();
-    setAuthToken(localStorage.getItem("accessToken"));
   }, []);
 
   return (
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} /> {/* ✅ Default Landing Page */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
         <Route path="/register" element={<Register />} />
 
@@ -32,7 +37,7 @@ function App() {
         <Route
           path="/*"
           element={
-            authToken ? (
+            <PrivateRoute authToken={authToken}>
               <ChatLayout>
                 <Routes>
                   <Route index element={<CategoryPage />} />
@@ -44,9 +49,7 @@ function App() {
                   <Route path="settings" element={<SettingsPage />} />
                 </Routes>
               </ChatLayout>
-            ) : (
-              <Navigate to="/" replace /> // ✅ Redirect unauthenticated users to Landing Page
-            )
+            </PrivateRoute>
           }
         />
       </Routes>

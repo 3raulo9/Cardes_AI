@@ -7732,3 +7732,53 @@ DEBUG 2025-03-08 23:27:10,814 connectionpool Starting new HTTPS connection (1): 
 DEBUG 2025-03-08 23:27:11,910 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
 INFO 2025-03-08 23:27:11,911 decorators Response status code: 200, URL: /api/gemini/
 INFO 2025-03-08 23:27:11,911 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-08 23:31:34,313 decorators Handling POST request to /api/gemini/
+INFO 2025-03-08 23:31:34,317 views User ra permissions: set()
+DEBUG 2025-03-08 23:31:34,319 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-08 23:31:35,404 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-08 23:31:35,408 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-08 23:31:35,410 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-08 23:36:40,115 decorators Handling POST request to /api/gemini/
+INFO 2025-03-08 23:36:40,118 views User ra permissions: set()
+DEBUG 2025-03-08 23:36:40,121 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-08 23:36:40,893 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-08 23:36:40,895 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-08 23:36:40,896 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-08 23:49:34,456 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:49:34,464 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:53:08,285 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:53:08,293 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:53:11,293 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:53:11,301 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:54:57,697 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:54:57,710 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:55:00,150 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:55:00,158 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:55:14,740 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:55:14,744 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:56:09,662 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:56:09,669 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:57:13,166 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:57:13,174 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:57:16,675 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:57:16,676 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:57:22,480 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-08 23:57:22,486 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:32:19,016 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:32:19,022 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:32:20,698 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:32:20,703 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:32:50,097 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:32:50,103 basehttp "GET /api/categories/ HTTP/1.1" 200 55
+INFO 2025-03-09 00:55:23,440 decorators Handling POST request to /api/login/
+INFO 2025-03-09 00:55:23,639 views Token obtained for ra, status code: 200
+INFO 2025-03-09 00:55:23,639 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-09 00:55:23,640 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-09 00:59:34,418 autoreload Watching for file changes with StatReloader
+INFO 2025-03-09 00:59:46,975 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\urls.py changed, reloading.
+INFO 2025-03-09 00:59:47,695 autoreload Watching for file changes with StatReloader
+INFO 2025-03-09 00:59:52,046 autoreload Watching for file changes with StatReloader
+INFO 2025-03-09 01:22:11,649 autoreload Watching for file changes with StatReloader
+INFO 2025-03-09 01:23:42,767 basehttp "OPTIONS /api/google-register/ HTTP/1.1" 200 0
+WARNING 2025-03-09 01:23:42,783 log Not Found: /api/google-register/
+WARNING 2025-03-09 01:23:42,784 basehttp "POST /api/google-register/ HTTP/1.1" 404 179

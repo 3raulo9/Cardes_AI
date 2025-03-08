@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { motion } from "framer-motion"; // Animation Library
 import { Link } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = ({ setAuthToken }) => {
   const [username, setUsername] = useState("");
@@ -28,13 +29,32 @@ const Login = ({ setAuthToken }) => {
     }
   };
 
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const token = credentialResponse.credential;
+      // Send the Google token to your backend endpoint for login
+      const { data } = await axiosInstance.post("/api/google-login/", { token });
+      // Assume backend returns your app's accessToken
+      localStorage.setItem("accessToken", data.accessToken);
+      setAuthToken(data.accessToken);
+      navigate("/chat");
+    } catch (error) {
+      console.error("Google login error:", error);
+      setError("Google login failed. Please try again.");
+    }
+  };
+
+  const handleGoogleError = () => {
+    setError("Google Sign In was unsuccessful. Please try again later.");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary to-accent text-white">
       <header className="relative z-10">
         <div className="bg-secondary px-6 py-4 flex items-center justify-center shadow-md">
           <h1 className="text-3xl font-bold cursor-pointer transition hover:text-gray-300">
             <Link to="/">Cardes AI</Link>
-          </h1>{" "}
+          </h1>
         </div>
       </header>
 
@@ -88,12 +108,25 @@ const Login = ({ setAuthToken }) => {
             <FiLogIn className="mr-2" /> Log In
           </button>
 
+          {/* OR DIVIDER */}
+          <div className="flex items-center my-4">
+            <hr className="flex-grow border-t border-gray-500" />
+            <span className="mx-2 text-gray-300">Or</span>
+            <hr className="flex-grow border-t border-gray-500" />
+          </div>
+
+          {/* GOOGLE LOGIN BUTTON */}
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+          />
+
           {/* REGISTER LINK */}
           <p className="text-center mt-4">
             Don't have an account?{" "}
-            <a href="/register" className="text-accent hover:underline">
+            <Link to="/register" className="text-accent hover:underline">
               Register here
-            </a>
+            </Link>
           </p>
         </motion.form>
       </main>

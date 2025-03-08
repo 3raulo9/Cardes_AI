@@ -135,6 +135,7 @@ CACHES = {
     }
 }
 
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '')
 
 
 WSGI_APPLICATION = 'myproj.wsgi.application'
