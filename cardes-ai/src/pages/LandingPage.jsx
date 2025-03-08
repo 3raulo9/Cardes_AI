@@ -556,7 +556,7 @@ const LandingPage = () => {
           </motion.div>
         </div>
       </section>
-      {/** 📩 Newsletter Subscription */}
+      {/* * 📩 Newsletter Subscription
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-secondary text-center">
         <motion.h2
           initial={{ opacity: 0, x: 30 }}
@@ -598,7 +598,7 @@ const LandingPage = () => {
             Subscribe
           </button>
         </motion.div>
-      </section>
+      </section> */}
       {/** 🏆 FAQ Section */}
       <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
         {/** Reversed wave on top */}
