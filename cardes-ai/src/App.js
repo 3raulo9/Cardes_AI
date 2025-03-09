@@ -8,9 +8,11 @@ import CardSetsPage from "./pages/CardSetsPage";
 import CardsPage from "./pages/CardsPage";
 import PracticePage from "./pages/PracticePage";
 import SettingsPage from "./pages/SettingsPage";
-import LandingPage from "./pages/LandingPage";  // ✅ Default Landing Page
+import LandingPage from "./pages/LandingPage";  // Default Landing Page
+import AboutPage from "./pages/AboutPage"; // About page import
 import ChatLayout from "./components/ChatLayout";
 import { loadTheme } from "./utils/themeSwitcher";
+import ScrollToTop from "./utils/ScrollToTop"; // Import the new component
 
 // A simple component to guard protected routes
 const PrivateRoute = ({ authToken, children }) => {
@@ -20,18 +22,19 @@ const PrivateRoute = ({ authToken, children }) => {
 function App() {
   const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
 
-  // Load theme on startup. The authToken will be updated by login, so we don't need to re-read it here.
   useEffect(() => {
     loadTheme();
   }, []);
 
   return (
     <Router>
+      <ScrollToTop /> {/* This will scroll to top on every route change */}
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<AboutPage />} />
 
         {/* Protected Routes */}
         <Route
