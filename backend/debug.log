@@ -7782,3 +7782,102 @@ INFO 2025-03-09 01:22:11,649 autoreload Watching for file changes with StatReloa
 INFO 2025-03-09 01:23:42,767 basehttp "OPTIONS /api/google-register/ HTTP/1.1" 200 0
 WARNING 2025-03-09 01:23:42,783 log Not Found: /api/google-register/
 WARNING 2025-03-09 01:23:42,784 basehttp "POST /api/google-register/ HTTP/1.1" 404 179
+INFO 2025-03-09 02:21:16,390 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-09 02:21:16,395 decorators Handling POST request to /api/login/
+INFO 2025-03-09 02:21:16,746 views Token obtained for ra, status code: 200
+INFO 2025-03-09 02:21:16,746 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-09 02:21:16,747 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-09 02:21:21,985 basehttp "OPTIONS /api/gemini/ HTTP/1.1" 200 0
+INFO 2025-03-09 02:21:21,987 decorators Handling POST request to /api/gemini/
+INFO 2025-03-09 02:21:21,991 views User ra permissions: set()
+DEBUG 2025-03-09 02:21:21,997 connectionpool Starting new HTTPS connection (1): generativelanguage.googleapis.com:443
+DEBUG 2025-03-09 02:21:23,097 connectionpool https://generativelanguage.googleapis.com:443 "POST /v1/models/gemini-1.5-pro-002:generateContent?key=AIzaSyA_Ctsjmwz9AHRGu_V6HH4gtKNW5N_oFqM HTTP/1.1" 200 None
+INFO 2025-03-09 02:21:23,099 decorators Response status code: 200, URL: /api/gemini/
+INFO 2025-03-09 02:21:23,099 basehttp "POST /api/gemini/ HTTP/1.1" 200 49
+INFO 2025-03-09 02:21:24,185 basehttp "OPTIONS /api/text-to-speech/ HTTP/1.1" 200 0
+INFO 2025-03-09 02:21:24,187 decorators Handling POST request to /api/text-to-speech/
+INFO 2025-03-09 02:21:24,190 views User ra permissions: set()
+DEBUG 2025-03-09 02:21:24,195 connectionpool Starting new HTTPS connection (1): api.elevenlabs.io:443
+DEBUG 2025-03-09 02:21:25,617 connectionpool https://api.elevenlabs.io:443 "POST /v1/text-to-speech/hFgOzpmS0CMtL2to8sAl HTTP/1.1" 200 None
+INFO 2025-03-09 02:21:25,699 decorators Response status code: 200, URL: /api/text-to-speech/
+INFO 2025-03-09 02:21:25,700 basehttp "POST /api/text-to-speech/ HTTP/1.1" 200 36362
+INFO 2025-03-10 00:13:34,490 autoreload Watching for file changes with StatReloader
+INFO 2025-03-10 00:13:50,473 basehttp "OPTIONS /api/login/ HTTP/1.1" 200 0
+INFO 2025-03-10 00:13:50,481 decorators Handling POST request to /api/login/
+INFO 2025-03-10 00:13:50,717 views Token obtained for ra, status code: 200
+INFO 2025-03-10 00:13:50,717 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-10 00:13:50,718 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-10 00:14:07,738 basehttp "OPTIONS /api/google-login/ HTTP/1.1" 200 0
+DEBUG 2025-03-10 00:14:07,749 requests Making request: GET https://www.googleapis.com/oauth2/v1/certs
+DEBUG 2025-03-10 00:14:07,758 connectionpool Starting new HTTPS connection (1): www.googleapis.com:443
+DEBUG 2025-03-10 00:14:07,895 connectionpool https://www.googleapis.com:443 "GET /oauth2/v1/certs HTTP/1.1" 200 1754
+ERROR 2025-03-10 00:14:07,910 log Internal Server Error: /api/google-login/
+Traceback (most recent call last):
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py", line 66, in google_login
+    user, created = User.objects.get_or_create(email=email, defaults={
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\db\models\query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\env\Lib\site-packages\django\db\models\query.py", line 652, in get
+    raise self.model.MultipleObjectsReturned(
+django.contrib.auth.models.User.MultipleObjectsReturned: get() returned more than one User -- it returned 2!
+ERROR 2025-03-10 00:14:08,012 basehttp "POST /api/google-login/ HTTP/1.1" 500 145
+INFO 2025-03-10 00:14:56,084 decorators Handling POST request to /api/login/
+INFO 2025-03-10 00:14:56,299 views Token obtained for ra, status code: 200
+INFO 2025-03-10 00:14:56,300 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-10 00:14:56,300 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-10 00:15:06,386 basehttp "OPTIONS /api/register/ HTTP/1.1" 200 0
+INFO 2025-03-10 00:15:06,390 decorators Handling POST request to /api/register/
+INFO 2025-03-10 00:15:06,630 views User rarassss registered successfully.
+INFO 2025-03-10 00:15:06,630 decorators Response status code: 201, URL: /api/register/
+INFO 2025-03-10 00:15:06,631 basehttp "POST /api/register/ HTTP/1.1" 201 42
+INFO 2025-03-10 00:15:10,332 decorators Handling POST request to /api/login/
+INFO 2025-03-10 00:15:10,589 views Token obtained for rarassss, status code: 200
+INFO 2025-03-10 00:15:10,590 decorators Response status code: 200, URL: /api/login/
+INFO 2025-03-10 00:15:10,591 basehttp "POST /api/login/ HTTP/1.1" 200 242
+INFO 2025-03-10 00:16:49,588 autoreload C:\Users\Raul\Desktop\PROGRAMMING\AI\Geimini_by_Google\New folder\chat_bot_gemini_try_one\backend\base\views.py changed, reloading.
+INFO 2025-03-10 00:16:50,417 autoreload Watching for file changes with StatReloader
+DEBUG 2025-03-10 00:16:56,787 requests Making request: GET https://www.googleapis.com/oauth2/v1/certs
+DEBUG 2025-03-10 00:16:56,792 connectionpool Starting new HTTPS connection (1): www.googleapis.com:443
+DEBUG 2025-03-10 00:16:56,884 connectionpool https://www.googleapis.com:443 "GET /oauth2/v1/certs HTTP/1.1" 200 1758
+INFO 2025-03-10 00:16:56,921 basehttp "POST /api/google-login/ HTTP/1.1" 200 313
+DEBUG 2025-03-10 00:17:10,709 requests Making request: GET https://www.googleapis.com/oauth2/v1/certs
+DEBUG 2025-03-10 00:17:10,711 connectionpool Starting new HTTPS connection (1): www.googleapis.com:443
+DEBUG 2025-03-10 00:17:10,795 connectionpool https://www.googleapis.com:443 "GET /oauth2/v1/certs HTTP/1.1" 200 1758
+INFO 2025-03-10 00:17:10,811 basehttp "POST /api/google-login/ HTTP/1.1" 200 313
+INFO 2025-03-10 00:17:36,750 basehttp "OPTIONS /api/google-register/ HTTP/1.1" 200 0
+WARNING 2025-03-10 00:17:36,801 log Not Found: /api/google-register/
+WARNING 2025-03-10 00:17:36,801 basehttp "POST /api/google-register/ HTTP/1.1" 404 179
+WARNING 2025-03-10 00:17:42,342 log Not Found: /api/google-register/
+WARNING 2025-03-10 00:17:42,343 basehttp "POST /api/google-register/ HTTP/1.1" 404 179
+WARNING 2025-03-10 00:17:47,894 log Not Found: /api/google-register/
+WARNING 2025-03-10 00:17:47,894 basehttp "POST /api/google-register/ HTTP/1.1" 404 179

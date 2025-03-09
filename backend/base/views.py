@@ -51,8 +51,6 @@ def google_login(request):
             google_requests.Request(),
             settings.GOOGLE_CLIENT_ID
         )
-        # idinfo now contains user info from Google
-        # Example fields: idinfo['email'], idinfo['given_name'], idinfo['family_name']
 
         # 2. Extract user info
         email = idinfo.get('email')
@@ -62,28 +60,42 @@ def google_login(request):
         if not email:
             return Response({"error": "Google token is missing email."}, status=status.HTTP_400_BAD_REQUEST)
 
-        # 3. Fetch or create a User in Django
-        user, created = User.objects.get_or_create(email=email, defaults={
-            'username': email,  # or any unique scheme you want
-            'first_name': first_name,
-            'last_name': last_name
-        })
+        # 3. Find or create a user with this email.
+        matching_users = User.objects.filter(email=email)
+        if matching_users.count() == 0:
+            # No user exists, create one
+            user = User.objects.create_user(
+                username=email,  # or another unique scheme
+                email=email,
+                first_name=first_name,
+                last_name=last_name
+            )
+            created = True
+        elif matching_users.count() == 1:
+            # Exactly one user with this email
+            user = matching_users.first()
+            created = False
+        else:
+            # Multiple users with the same email → unify them or delete duplicates
+            user = matching_users.first()
+            # Option 1: Delete duplicates
+            for dup in matching_users[1:]:
+                dup.delete()
+            created = False
 
         # 4. Generate JWT token (access token) for the user
         refresh = RefreshToken.for_user(user)
-        # If you don’t want to return refresh token, just remove it
-        # from the response like you do in MyTokenObtainPairView.
 
         # 5. Return the token to the frontend
         return Response({
             "accessToken": str(refresh.access_token),
-            # "refreshToken": str(refresh), # if you need it
             "message": "User logged in or registered via Google successfully."
         }, status=status.HTTP_200_OK)
 
     except ValueError:
         # Token verification failed
         return Response({"error": "Invalid Google token."}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 # 🛠️ List & Create Categories
 class CategoryListCreateView(generics.ListCreateAPIView):
