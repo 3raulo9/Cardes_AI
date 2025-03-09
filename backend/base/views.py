@@ -96,6 +96,67 @@ def google_login(request):
         # Token verification failed
         return Response({"error": "Invalid Google token."}, status=status.HTTP_401_UNAUTHORIZED)
 
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def google_register(request):
+    """
+    Verify the Google ID token from the frontend, register a new user if one doesn't exist,
+    or log in an existing user, then return a JWT access token.
+    """
+    token = request.data.get('token')
+    if not token:
+        return Response({"error": "No token provided."}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        # Verify the token using Google's library.
+        idinfo = id_token.verify_oauth2_token(
+            token,
+            google_requests.Request(),
+            settings.GOOGLE_CLIENT_ID
+        )
+
+        # Extract user info from the token.
+        email = idinfo.get('email')
+        first_name = idinfo.get('given_name', '')
+        last_name = idinfo.get('family_name', '')
+
+        if not email:
+            return Response({"error": "Google token is missing email."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Check if a user with this email already exists.
+        matching_users = User.objects.filter(email=email)
+        if matching_users.count() == 0:
+            # No user exists, create a new one.
+            user = User.objects.create_user(
+                username=email,  # Using email as username; adjust if needed.
+                email=email,
+                first_name=first_name,
+                last_name=last_name
+            )
+            message = "User registered via Google successfully."
+        elif matching_users.count() == 1:
+            # Exactly one user exists; we'll log them in.
+            user = matching_users.first()
+            message = "User logged in via Google successfully."
+        else:
+            # Multiple users found; keep the first and delete duplicates.
+            user = matching_users.first()
+            for dup in matching_users[1:]:
+                dup.delete()
+            message = "User logged in via Google successfully (duplicates removed)."
+
+        # Generate JWT token (access token) for the user.
+        refresh = RefreshToken.for_user(user)
+
+        # Return the token and message.
+        return Response({
+            "accessToken": str(refresh.access_token),
+            "message": message
+        }, status=status.HTTP_200_OK)
+
+    except ValueError:
+        # Token verification failed.
+        return Response({"error": "Invalid Google token."}, status=status.HTTP_401_UNAUTHORIZED)
 
 # 🛠️ List & Create Categories
 class CategoryListCreateView(generics.ListCreateAPIView):

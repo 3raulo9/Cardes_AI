@@ -8,6 +8,7 @@ import {
   CreditCardIcon,
 } from "@heroicons/react/24/solid";
 import axiosInstance from "../utils/axiosInstance";
+import { GiTurtle } from "react-icons/gi"; // Turtle icon
 
 // Import the search function & the PronunciationModal
 import { searchYouTube } from "../utils/youtubeAPI";
@@ -37,13 +38,12 @@ const ChatItem = ({
   const [videoTitle, setVideoTitle] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
 
-  // States for multi-word selection (mouse selection already exists; now add touch selection)
+  // States for multi-word selection
   const [selectedText, setSelectedText] = useState("");
   const [selectionPos, setSelectionPos] = useState({ x: 0, y: 0 });
   const [showSelectionMenu, setShowSelectionMenu] = useState(false);
 
-  // New state: For touch–based selection (applies per part)
-  // Structure: { count: number, part: number, base?: number, range?: [number, number] }
+  // Touch-based selection
   const [touchSelection, setTouchSelection] = useState(null);
   const premiumUsageLimit = 5;
   const [usageCount, setUsageCount] = useState(0);
@@ -60,19 +60,15 @@ const ChatItem = ({
   // Close dropdown if clicking outside the container
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
         setShowDropdownForWord(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Listen for multi-word text selection on mouse up (existing logic)
+  // Listen for multi-word text selection on mouse up
   useEffect(() => {
     const handleMouseUp = () => {
       const selection = window.getSelection();
@@ -105,10 +101,9 @@ const ChatItem = ({
   const isModel = chatItem.role === "model";
 
   // ----------------------------
-  // Touch–based token selection logic:
+  // Touch-based token selection logic:
   // ----------------------------
   const handleTokenTouch = (partIndex, tokenIndex) => {
-    // If no selection exists, or a selection is already extended (count===2), start new selection.
     if (
       !touchSelection ||
       touchSelection.count === 2 ||
@@ -116,9 +111,7 @@ const ChatItem = ({
     ) {
       setTouchSelection({ count: 1, part: partIndex, base: tokenIndex });
     } else if (touchSelection.count === 1) {
-      // Second tap in same part: extend selection if a different token is tapped.
       if (tokenIndex === touchSelection.base) {
-        // If tapped the same word, do nothing.
         return;
       }
       const start = Math.min(touchSelection.base, tokenIndex);
@@ -128,17 +121,16 @@ const ChatItem = ({
   };
   // ----------------------------
 
-  // Toggle individual token dropdown (for non–touch or initial click)
+  // Toggle individual token dropdown
   const handleWordClick = (combinedIndex, e) => {
     e.stopPropagation();
-    // Also clear any touch–selection (so that desktop clicks always show single–word dropdown)
     setTouchSelection(null);
     setShowDropdownForWord((prev) =>
       prev === combinedIndex ? null : combinedIndex
     );
   };
 
-  // Perform the YouTube search for a given text (respecting usage limits)
+  // Perform the YouTube search for pronunciation
   const handleSearchPronunciation = async (text) => {
     if (usageCount >= premiumUsageLimit) {
       setShowPremiumModal(true);
@@ -156,9 +148,7 @@ const ChatItem = ({
       }
     }
     if (!foundResults) {
-      alert(
-        "No matching video found. Try a shorter word/sentence or check spelling!"
-      );
+      alert("No matching video found. Try a shorter word/sentence or check spelling!");
       setShowDropdownForWord(null);
       setShowSelectionMenu(false);
       return;
@@ -169,18 +159,15 @@ const ChatItem = ({
     setModalOpen(true);
     setShowDropdownForWord(null);
     setShowSelectionMenu(false);
-    // Reset touch selection after a search
     setTouchSelection(null);
   };
 
-  // Close the pronunciation modal
   const handleCloseModal = () => {
     setModalOpen(false);
     setVideoTitle("");
     setVideoUrl("");
   };
 
-  // Premium modal for when usage limit is exceeded
   const PremiumModal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
     return (
@@ -225,7 +212,6 @@ const ChatItem = ({
     const tokens = part.split(/(\s+)/);
     const tokenElements = tokens.map((token, tokenIndex) => {
       const combinedIndex = `${partIndex}-${tokenIndex}`;
-      // Determine if this token is selected via touch
       let isSelected = false;
       if (touchSelection && touchSelection.part === partIndex) {
         if (touchSelection.count === 1 && tokenIndex === touchSelection.base) {
@@ -255,21 +241,19 @@ const ChatItem = ({
             >
               {token}
             </span>
-            {/* Only show dropdown for non–extended (touchSelection not active) */}
-            {showDropdownForWord === combinedIndex &&
-              !touchSelection && (
-                <div className="absolute z-10 bg-primary text-white p-2 mt-2 rounded-lg shadow-lg transition-all duration-200">
-                  <div className="text-xs text-white mb-1">
-                    Uses left {premiumUsageLimit - usageCount}/{premiumUsageLimit}
-                  </div>
-                  <button
-                    onClick={() => handleSearchPronunciation(token)}
-                    className="block w-full text-left hover:bg-primary-dark px-3 py-1 rounded"
-                  >
-                    Pronunciation
-                  </button>
+            {showDropdownForWord === combinedIndex && !touchSelection && (
+              <div className="absolute z-10 bg-primary text-white p-2 mt-2 rounded-lg shadow-lg transition-all duration-200">
+                <div className="text-xs text-white mb-1">
+                  Uses left {premiumUsageLimit - usageCount}/{premiumUsageLimit}
                 </div>
-              )}
+                <button
+                  onClick={() => handleSearchPronunciation(token)}
+                  className="block w-full text-left hover:bg-primary-dark px-3 py-1 rounded"
+                >
+                  Pronunciation
+                </button>
+              </div>
+            )}
           </span>
         );
       }
@@ -278,7 +262,6 @@ const ChatItem = ({
     return (
       <>
         <div>{tokenElements}</div>
-        {/* If touch selection is extended, render a global pronunciation button for the selected sentence */}
         {touchSelection &&
           touchSelection.part === partIndex &&
           touchSelection.count === 2 && (
@@ -286,12 +269,10 @@ const ChatItem = ({
               <button
                 onClick={() =>
                   handleSearchPronunciation(
-                    tokens
-                      .slice(
-                        touchSelection.range[0],
-                        touchSelection.range[1] + 1
-                      )
-                      .join("")
+                    tokens.slice(
+                      touchSelection.range[0],
+                      touchSelection.range[1] + 1
+                    ).join("")
                   )
                 }
                 className="bg-primary text-white px-3 py-1 rounded shadow hover:bg-primary-dark"
@@ -368,86 +349,112 @@ const ChatItem = ({
               />
             </div>
           )}
-          <div
-            className={`flex flex-col items-start gap-1 ${
-              isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
-            }`}
-          >
-            <div
-              className={`relative max-w-full md:max-w-lg rounded-3xl px-5 py-3 shadow-md transition-transform duration-300 transform ${
-                isUser
-                  ? "bg-primary text-white rounded-br-none"
-                  : "bg-gray-100 text-gray-800 border border-gray-200 rounded-bl-none"
-              } ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
-            >
-              {editMode ? (
-                <div className="flex flex-col gap-2">
-                  <textarea
-                    className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    value={newMessageContent}
-                    onChange={(e) => setNewMessageContent(e.target.value)}
-                  />
-                  <button
-                    onClick={handleSaveClick}
-                    className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1 transition"
-                  >
-                    Save
-                  </button>
-                </div>
-              ) : (
-                <>
-                  {chatItem.parts.map((part, idx) => (
-                    <div key={idx} className="whitespace-pre-line break-words">
-                      {renderPart(part, idx)}
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-            <div
-              className={`flex items-center gap-2 mt-2 ${
-                isUser ? "justify-start" : "justify-end"
-              }`}
-            >
-              <SlCopyButton
-                value={chatItem.parts.join(" ")}
-                className="text-black hover:text-gray-700"
-              />
-              <SlTooltip content={tooltipContent.listen || "Listen"}>
-                <button
-                  className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
-                  aria-label="Play audio"
-                  onClick={() =>
-                    handleTextToSpeech(chatItem.parts.join(" "))
-                  }
-                >
-                  <SpeakerWaveIcon className="w-6 h-6 text-black" />
-                </button>
-              </SlTooltip>
-              <SlTooltip content={tooltipContent.download || "Download"}>
-                <button
-                  className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
-                  aria-label="Download audio"
-                  onClick={() =>
-                    handleTextToSpeech(chatItem.parts.join(" "), true)
-                  }
-                >
-                  <ArrowDownTrayIcon className="w-6 h-6 text-black" />
-                </button>
-              </SlTooltip>
-              {isModel && chatItem.hideIcon && (
-                <SlTooltip content="Add to my deck">
-                  <button
-                    className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
-                    aria-label="Add to my deck"
-                    onClick={openDeckSelector}
-                  >
-                    <CreditCardIcon className="w-6 h-6 text-black" />
-                  </button>
-                </SlTooltip>
-              )}
-            </div>
+<div
+  className={`flex flex-col items-start gap-1 ${
+    isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
+  }`}
+>
+  {/* MESSAGE BUBBLE */}
+  <div
+    className={`relative max-w-full md:max-w-lg rounded-3xl px-5 py-3 shadow-md transition-transform duration-300 transform ${
+      isUser
+        ? "bg-primary text-white rounded-br-none"
+        : "bg-gray-100 text-gray-800 border border-gray-200 rounded-bl-none"
+    } ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
+  >
+    {editMode ? (
+      <div className="flex flex-col gap-2">
+        <textarea
+          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+          value={newMessageContent}
+          onChange={(e) => setNewMessageContent(e.target.value)}
+        />
+        <button
+          onClick={handleSaveClick}
+          className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1 transition"
+        >
+          Save
+        </button>
+      </div>
+    ) : (
+      <>
+        {chatItem.parts.map((part, idx) => (
+          <div key={idx} className="whitespace-pre-line break-words">
+            {renderPart(part, idx)}
           </div>
+        ))}
+      </>
+    )}
+  </div>
+
+  {/* BUTTONS ROW */}
+  <div
+    className={`flex items-center gap-2 mt-2 ${
+      isUser ? "justify-start" : "justify-end"
+    }`}
+  >
+    <SlCopyButton
+      value={chatItem.parts.join(" ")}
+      className="text-black hover:text-gray-700"
+    />
+
+    {/* Speaker + Turtle + Download in one group */}
+    <div className="relative inline-flex items-center group">
+      {/* SPEAKER ICON */}
+      <SlTooltip content={tooltipContent.listen || "Listen"}>
+        <button
+          className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
+          aria-label="Play audio"
+          onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
+        >
+          <SpeakerWaveIcon className="w-6 h-6 text-black" />
+        </button>
+      </SlTooltip>
+
+      {/* TURTLE ICON (inline but hidden by default) */}
+      <SlTooltip content="Turtle">
+        <button
+          className="
+            p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition-all duration-300
+            w-0 opacity-0 overflow-hidden
+            group-hover:w-auto group-hover:opacity-100 group-hover:mx-1
+          "
+          aria-label="Turtle Action"
+          onClick={() => console.log("Turtle clicked")}
+        >
+          <GiTurtle className="w-6 h-6 text-black" />
+        </button>
+      </SlTooltip>
+
+      {/* DOWNLOAD ICON (close on the right) */}
+      <SlTooltip content={tooltipContent.download || "Download"}>
+        <button
+          className="
+            p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition
+            ml-0 group-hover:ml-1.5  /* Slight shift on hover, or remove if you want none */
+          "
+          aria-label="Download audio"
+          onClick={() => handleTextToSpeech(chatItem.parts.join(" "), true)}
+        >
+          <ArrowDownTrayIcon className="w-6 h-6 text-black" />
+        </button>
+      </SlTooltip>
+    </div>
+
+    {isModel && chatItem.hideIcon && (
+      <SlTooltip content="Add to my deck">
+        <button
+          className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
+          aria-label="Add to my deck"
+          onClick={openDeckSelector}
+        >
+          <CreditCardIcon className="w-6 h-6 text-black" />
+        </button>
+      </SlTooltip>
+    )}
+  </div>
+</div>
+
           {isUser && (
             <div className="w-10 flex-shrink-0">
               <img
@@ -491,7 +498,7 @@ const ChatItem = ({
           </div>
         )}
 
-        {/* Floating selection menu for multi-word selection (for non-touch selection) */}
+        {/* Floating selection menu for multi-word selection (non-touch) */}
         {showSelectionMenu && (
           <div
             className="fixed z-20"

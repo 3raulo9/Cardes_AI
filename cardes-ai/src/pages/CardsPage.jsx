@@ -5,39 +5,49 @@ import { FiPlus, FiArrowLeft } from "react-icons/fi";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import { SpeakerWaveIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 import handleTextToSpeech from "../utils/textToSpeech"; // Import TTS utility
+import Loader from "../components/Loader"; // Import the loader component
 
 const CardsPage = () => {
   const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(true); // New loading state
   const { setId, id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!setId) return;
-
     axiosInstance
       .get(`/api/cards/?card_set=${setId}`)
-      .then((res) => setCards(res.data))
-      .catch((err) => console.error("Error fetching cards:", err));
+      .then((res) => {
+        setCards(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching cards:", err);
+        setLoading(false);
+      });
   }, [setId]);
 
   const addCard = async () => {
     const term = prompt("Enter the term:");
     if (!term) return;
-
     const definition = prompt("Enter the definition:");
     if (!definition) return;
-
-    axiosInstance
-      .post("/api/cards/", { term, definition, card_set: setId })
-      .then((res) => setCards([...cards, res.data]))
-      .catch((err) => console.error("Error adding card:", err));
+    try {
+      const response = await axiosInstance.post("/api/cards/", {
+        term,
+        definition,
+        card_set: setId,
+      });
+      setCards([...cards, response.data]); // Update UI
+    } catch (err) {
+      console.error("Error adding card:", err.response?.data || err.message);
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent  text-white">
-      {/* Sticky Header with Wave */}
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent text-white">
+      {/* Sticky Header with Back Button */}
       <header className="relative z-10">
-        {/* Header Bar */}
         <div className="bg-secondary px-6 py-4 flex justify-between items-center shadow-md">
           <div className="flex items-center">
             <button
@@ -55,89 +65,86 @@ const CardsPage = () => {
             <FiPlus className="mr-2" /> Add Card
           </button>
         </div>
-
       </header>
 
       {/* Scrollable Cards Grid */}
       <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
-        {cards.length > 0 ? (
+        {loading || cards.length === 0 ? (
+          <Loader />
+        ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {cards.map((card) => (
               <div
-              key={card.id}
-              className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col gap-1"
-            >
-              {/* Term Row */}
-              <div className="flex items-center gap-2">
-                <strong>Term:</strong> 
-                <span className="flex-1 break-words">{card.term}</span>
-            
-                {/* Copy Term Button */}
-                <SlTooltip content="Copy Term">
-                  <SlCopyButton value={card.term} className="text-white hover:text-gray-300" />
-                </SlTooltip>
-            
-                {/* Listen to Term */}
-                <SlTooltip content="Listen">
-                  <button
-                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                    aria-label="Play Term"
-                    onClick={() => handleTextToSpeech(card.term)}
-                  >
-                    <SpeakerWaveIcon className="w-5 h-5 text-white" />
-                  </button>
-                </SlTooltip>
-            
-                {/* Download Term */}
-                <SlTooltip content="Download">
-                  <button
-                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                    aria-label="Download Term"
-                    onClick={() => handleTextToSpeech(card.term, true)}
-                  >
-                    <ArrowDownTrayIcon className="w-5 h-5 text-white" />
-                  </button>
-                </SlTooltip>
+                key={card.id}
+                className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col gap-1"
+              >
+                {/* Term Row */}
+                <div className="flex items-center gap-2">
+                  <strong>Term:</strong>
+                  <span className="flex-1 break-words">{card.term}</span>
+                  {/* Copy Term Button */}
+                  <SlTooltip content="Copy Term">
+                    <SlCopyButton
+                      value={card.term}
+                      className="text-white hover:text-gray-300"
+                    />
+                  </SlTooltip>
+                  {/* Listen to Term */}
+                  <SlTooltip content="Listen">
+                    <button
+                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                      aria-label="Play Term"
+                      onClick={() => handleTextToSpeech(card.term)}
+                    >
+                      <SpeakerWaveIcon className="w-5 h-5 text-white" />
+                    </button>
+                  </SlTooltip>
+                  {/* Download Term */}
+                  <SlTooltip content="Download">
+                    <button
+                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                      aria-label="Download Term"
+                      onClick={() => handleTextToSpeech(card.term, true)}
+                    >
+                      <ArrowDownTrayIcon className="w-5 h-5 text-white" />
+                    </button>
+                  </SlTooltip>
+                </div>
+                {/* Definition Row */}
+                <div className="flex items-center gap-2">
+                  <strong>Definition:</strong>
+                  <span className="flex-1 break-words">{card.definition}</span>
+                  {/* Copy Definition Button */}
+                  <SlTooltip content="Copy Definition">
+                    <SlCopyButton
+                      value={card.definition}
+                      className="text-white hover:text-gray-300"
+                    />
+                  </SlTooltip>
+                  {/* Listen to Definition */}
+                  <SlTooltip content="Listen">
+                    <button
+                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                      aria-label="Play Definition"
+                      onClick={() => handleTextToSpeech(card.definition)}
+                    >
+                      <SpeakerWaveIcon className="w-5 h-5 text-white" />
+                    </button>
+                  </SlTooltip>
+                  {/* Download Definition */}
+                  <SlTooltip content="Download">
+                    <button
+                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
+                      aria-label="Download Definition"
+                      onClick={() => handleTextToSpeech(card.definition, true)}
+                    >
+                      <ArrowDownTrayIcon className="w-5 h-5 text-white" />
+                    </button>
+                  </SlTooltip>
+                </div>
               </div>
-            
-              {/* Definition Row */}
-              <div className="flex items-center gap-2">
-                <strong>Definition:</strong> 
-                <span className="flex-1 break-words">{card.definition}</span>
-            
-                {/* Copy Definition Button */}
-                <SlTooltip content="Copy Definition">
-                  <SlCopyButton value={card.definition} className="text-white hover:text-gray-300" />
-                </SlTooltip>
-            
-                {/* Listen to Definition */}
-                <SlTooltip content="Listen">
-                  <button
-                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                    aria-label="Play Definition"
-                    onClick={() => handleTextToSpeech(card.definition)}
-                  >
-                    <SpeakerWaveIcon className="w-5 h-5 text-white" />
-                  </button>
-                </SlTooltip>
-            
-                {/* Download Definition */}
-                <SlTooltip content="Download">
-                  <button
-                    className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                    aria-label="Download Definition"
-                    onClick={() => handleTextToSpeech(card.definition, true)}
-                  >
-                    <ArrowDownTrayIcon className="w-5 h-5 text-white" />
-                  </button>
-                </SlTooltip>
-              </div>
-            </div>
-            
             ))}
           </div>
-        ) : (
-          <p className="text-white text-center">No cards available. Add new cards!</p>
         )}
       </main>
     </div>

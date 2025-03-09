@@ -31,4 +31,6 @@ urlpatterns = [
     path("cards/", CardListCreateView.as_view(), name="card-list-create"),
     path("cards/<int:pk>/", CardDetailView.as_view(), name="card-detail"),
     path("google-login/", google_login, name="google_login"),
+    path("google-register/", google_register, name="google_register"),
+
 ]

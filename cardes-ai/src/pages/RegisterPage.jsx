@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FiUserPlus } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { GoogleLogin } from "@react-oauth/google";
+import Loader from "../components/Loader"; // Import our combined loader
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,17 +24,21 @@ const Register = () => {
     }
 
     try {
+      setError("");
+      setLoading(true);
       await axiosInstance.post("/api/register/", {
         username,
         email,
         password,
         confirm_password: confirmPassword,
       });
-      setSuccess("Registration successful! Redirecting to login...");
-      setError("");
-      setTimeout(() => navigate("/login"), 2000);
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       console.error(error);
+      setLoading(false);
       setError(
         error.response?.data?.error || "Registration failed. Please try again."
       );
@@ -42,14 +47,18 @@ const Register = () => {
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
+      setError("");
+      setLoading(true);
       const token = credentialResponse.credential;
       const { data } = await axiosInstance.post("/api/google-register/", { token });
       localStorage.setItem("accessToken", data.accessToken);
-      setSuccess("Registration successful via Google! Redirecting...");
-      setError("");
-      setTimeout(() => navigate("/categories"), 2000);
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       console.error("Google registration error:", error);
+      setLoading(false);
       setError("Google registration failed. Please try again.");
     }
   };
@@ -59,7 +68,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary to-accent text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary to-accent text-white relative">
+      {loading && <Loader />}  {/* Conditionally render the loader overlay */}
       <header className="relative z-10">
         <div className="bg-secondary px-6 py-4 flex items-center justify-center shadow-md">
           <h1 className="text-3xl font-bold cursor-pointer transition hover:text-gray-300">
@@ -68,7 +78,7 @@ const Register = () => {
         </div>
       </header>
 
-      <main className="flex flex-1 items-center justify-center p-6">
+      <main className="flex flex-1 items-center justify-center p-6 relative z-10">
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
@@ -77,18 +87,11 @@ const Register = () => {
           className="bg-darkAccent p-8 rounded-2xl shadow-lg max-w-md w-full space-y-6 text-center border border-gray-600"
         >
           <h2 className="text-3xl font-bold text-white mb-4">Create an Account</h2>
-          
           {error && (
             <p className="text-red-400 text-center p-2 rounded-md border border-red-400">
               {error}
             </p>
           )}
-          {success && (
-            <p className="text-green-400 text-center p-2 rounded-md border border-green-400">
-              {success}
-            </p>
-          )}
-          
           <div className="space-y-5">
             <div>
               <label className="block font-semibold mb-1 text-accent">

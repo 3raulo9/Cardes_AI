@@ -71,32 +71,10 @@ const SettingsPage = () => {
                     ))}
                   </select>
                 </div>
-
-                {/* Other Appearance Settings */}
-                <div className="mb-6">
-                  <h4 className="text-lg font-medium text-gray-700 mb-2">Dashboard Layout</h4>
-                  <div className="flex flex-wrap gap-4">
-                    <button className="p-3 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                      Default
-                    </button>
-                    <button className="p-3 border border-gray-300 rounded-lg bg-gray-200 hover:bg-gray-300 transition">
-                      Simplified
-                    </button>
-                    <button className="p-3 border border-gray-300 rounded-lg bg-gray-300 hover:bg-gray-400 transition">
-                      Custom CSS
-                    </button>
-                  </div>
-                </div>
               </div>
             )}
 
-            {/* Placeholder for other tabs */}
-            {selectedTab !== "appearance" && (
-              <div>
-                <h3 className="text-xl font-semibold mb-4">{selectedTab} Settings</h3>
-                <p className="text-gray-600">Content for {selectedTab} settings will be here.</p>
-              </div>
-            )}
+
           </div>
         </div>
       </div>

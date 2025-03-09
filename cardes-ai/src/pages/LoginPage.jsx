@@ -5,16 +5,20 @@ import { FiLogIn } from "react-icons/fi";
 import { motion } from "framer-motion"; // Animation Library
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
+import Loader from "../components/Loader"; // Import the loader component
 
 const Login = ({ setAuthToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setError("");
+      setLoading(true);
       const response = await axiosInstance.post("/api/login/", {
         username,
         password,
@@ -22,24 +26,33 @@ const Login = ({ setAuthToken }) => {
       const accessToken = response.data.access;
       localStorage.setItem("accessToken", accessToken);
       setAuthToken(accessToken);
-      navigate("/chat");
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/chat");
+      }, 2000);
     } catch (error) {
       console.error(error);
+      setLoading(false);
       setError("Invalid username or password.");
     }
   };
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
+      setError("");
+      setLoading(true);
       const token = credentialResponse.credential;
       // Send the Google token to your backend endpoint for login
       const { data } = await axiosInstance.post("/api/google-login/", { token });
-      // Assume backend returns your app's accessToken
       localStorage.setItem("accessToken", data.accessToken);
       setAuthToken(data.accessToken);
-      navigate("/chat");
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/chat");
+      }, 2000);
     } catch (error) {
       console.error("Google login error:", error);
+      setLoading(false);
       setError("Google login failed. Please try again.");
     }
   };
@@ -49,7 +62,10 @@ const Login = ({ setAuthToken }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary to-accent text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary to-accent text-white relative">
+      {/* Conditionally render the loader overlay */}
+      {loading && <Loader />}
+      
       <header className="relative z-10">
         <div className="bg-secondary px-6 py-4 flex items-center justify-center shadow-md">
           <h1 className="text-3xl font-bold cursor-pointer transition hover:text-gray-300">
@@ -59,7 +75,7 @@ const Login = ({ setAuthToken }) => {
       </header>
 
       {/* LOGIN FORM CARD */}
-      <main className="flex flex-1 items-center justify-center p-6">
+      <main className="flex flex-1 items-center justify-center p-6 relative z-10">
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
