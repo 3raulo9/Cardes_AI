@@ -3,6 +3,7 @@ aniso8601==10.0.0
 asgiref==3.7.2
 async-timeout==5.0.1
 blinker==1.9.0
+cachetools==5.5.2
 certifi==2024.2.2
 chardet==3.0.4
 charset-normalizer==3.4.1
@@ -20,6 +21,7 @@ Flask-Login==0.6.3
 Flask-Migrate==4.0.5
 Flask-RESTful==0.3.10
 Flask-SQLAlchemy==3.1.1
+google-auth==2.38.0
 googletrans==4.0.0rc1
 greenlet==3.1.1
 gunicorn==21.2.0
@@ -42,6 +44,8 @@ numpy==1.26.4
 packaging==24.2
 pandas==2.2.1
 pillow==11.1.0
+pyasn1==0.6.1
+pyasn1_modules==0.4.1
 PyJWT==2.10.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
@@ -49,6 +53,7 @@ pytz==2025.1
 redis==5.2.1
 requests==2.31.0
 rfc3986==1.5.0
+rsa==4.9
 scikit-image==0.23.1
 scipy==1.13.0
 six==1.16.0
