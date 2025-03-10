@@ -1,15 +1,31 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaRobot, FaRegStickyNote, FaMicrophoneAlt } from "react-icons/fa";
-import { FiVolume2, FiArrowUp } from "react-icons/fi";
+import { FiVolume2, FiArrowUp, FiLogOut } from "react-icons/fi";
 import { Typewriter } from "react-simple-typewriter";
+import React, { useState, useEffect } from "react";
 
 import Header from "../components/Header"; // Extracted header component
 import Footer from "../components/Footer"; // Footer component
 
 const LandingPage = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check login status on mount
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    setIsLoggedIn(!!token);
+  }, []);
+  // Function to play audio files in the TTS showcase
+  const playAudio = (fileName) => {
+    const audio = new Audio(`/audio/${fileName}`);
+    audio.play().catch((err) => console.error("Error playing audio:", err));
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+  };
 
   // Listen for scroll events to control "Back to Top" button visibility
   useEffect(() => {
@@ -20,12 +36,6 @@ const LandingPage = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Function to play audio files in the TTS showcase
-  const playAudio = (fileName) => {
-    const audio = new Audio(`/audio/${fileName}`);
-    audio.play().catch((err) => console.error("Error playing audio:", err));
-  };
 
   // Scroll to top function for the button
   const scrollToTop = () => {
@@ -63,25 +73,48 @@ const LandingPage = () => {
           transition={{ delay: 0.5, duration: 1 }}
           className="mt-4 text-lg text-gray-200 max-w-xl leading-relaxed"
         >
-          AI-powered text-to-speech smart flashcards, and conversational AI make language learning fun, interactive, and personalized.
+          AI-powered text-to-speech smart flashcards, and conversational AI make
+          language learning fun, interactive, and personalized.
         </motion.p>
         <div className="h-10 sm:h-10 md:h-13"></div>
-        {/* Navigation buttons appear below the hero */}
+
+        {/* Conditional Navigation Buttons */}
         <nav className="flex items-center space-x-4 mt-4 sm:mt-0">
-          <Link
-            to="/login"
-            className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
-          >
-            Register
-          </Link>
+          {!isLoggedIn ? (
+            <>
+              <Link
+                to="/login"
+                className="px-6 py-2 bg-white text-primary font-semibold rounded-full shadow-md hover:bg-gray-200 transition duration-300"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="px-6 py-2 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/categories"
+                className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300"
+              >
+                Continue Learning
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="px-6 py-2 bg-accent text-white font-semibold rounded-full shadow-md hover:bg-darkAccent transition duration-300 flex items-center"
+              >
+                <FiLogOut className="mr-2" /> Logout
+              </button>
+            </>
+          )}
         </nav>
+
         <div className="h-10 sm:h-10 md:h-13"></div>
+
         {/* Decorative wave at the bottom of the Hero */}
         <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
           <svg
@@ -190,11 +223,15 @@ const LandingPage = () => {
             },
             {
               feature: "Flashcards",
-              icon: <FaRegStickyNote className="mx-auto text-3xl text-accent" />,
+              icon: (
+                <FaRegStickyNote className="mx-auto text-3xl text-accent" />
+              ),
             },
             {
               feature: "Speech Recognition",
-              icon: <FaMicrophoneAlt className="mx-auto text-3xl text-accent" />,
+              icon: (
+                <FaMicrophoneAlt className="mx-auto text-3xl text-accent" />
+              ),
             },
           ].map(({ feature, icon }, i) => (
             <motion.div
@@ -206,9 +243,12 @@ const LandingPage = () => {
               className="bg-white text-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1"
             >
               {icon}
-              <h3 className="text-xl sm:text-2xl font-semibold mt-4">{feature}</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold mt-4">
+                {feature}
+              </h3>
               <p className="mt-3 text-gray-600 text-sm sm:text-base">
-                {feature} helps you learn faster and better with AI-driven technology.
+                {feature} helps you learn faster and better with AI-driven
+                technology.
               </p>
             </motion.div>
           ))}
@@ -243,9 +283,18 @@ const LandingPage = () => {
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {[
-            { text: "Best AI flashcard tool I've ever used!", user: "Adi from Tel Aviv" },
-            { text: "Made studying efficient and enjoyable!", user: "Noa from Tel Aviv" },
-            { text: "Perfect for quick revision before exams!", user: "Mark from Tel Aviv" },
+            {
+              text: "Best AI flashcard tool I've ever used!",
+              user: "Adi from Tel Aviv",
+            },
+            {
+              text: "Made studying efficient and enjoyable!",
+              user: "Noa from Tel Aviv",
+            },
+            {
+              text: "Perfect for quick revision before exams!",
+              user: "Mark from Tel Aviv",
+            },
           ].map((testimonial, i) => (
             <motion.div
               key={i}
@@ -255,8 +304,12 @@ const LandingPage = () => {
               transition={{ duration: 0.5, delay: i * 0.2 }}
               className="bg-white text-gray-900 p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-1"
             >
-              <p className="text-base sm:text-lg font-medium mb-2">"{testimonial.text}"</p>
-              <p className="text-xs sm:text-sm text-gray-600">- {testimonial.user}</p>
+              <p className="text-base sm:text-lg font-medium mb-2">
+                "{testimonial.text}"
+              </p>
+              <p className="text-xs sm:text-sm text-gray-600">
+                - {testimonial.user}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -275,8 +328,8 @@ const LandingPage = () => {
           </svg>
         </div>
       </section>
-{/** 🏆 FAQ Section */}
-<section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
+      {/** 🏆 FAQ Section */}
+      <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-darkAccent">
         {/** Reversed wave on top */}
         <div className="pointer-events-none absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 -mt-px">
           <svg
