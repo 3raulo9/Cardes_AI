@@ -1,5 +1,5 @@
 // JourneyPage.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TutorialOverlay from "../components/TutorialOverlay";
 
@@ -62,7 +62,7 @@ const JourneyPage = () => {
   const [seedClicked, setSeedClicked] = useState(false);
   const [seedBuried, setSeedBuried] = useState(false);
   const [showTree, setShowTree] = useState(false);
-  const [showCommentTooltip, setShowCommentTooltip] = useState(false);
+  const [setShowCommentTooltip] = useState(false);
 
   // For the auto-resizing textarea
   const textareaRef = useRef(null);
