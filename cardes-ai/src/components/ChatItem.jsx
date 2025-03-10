@@ -411,20 +411,21 @@ const ChatItem = ({
         </button>
       </SlTooltip>
 
-      {/* TURTLE ICON (inline but hidden by default) */}
-      <SlTooltip content="Turtle">
-        <button
-          className="
-            p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition-all duration-300
-            w-0 opacity-0 overflow-hidden
-            group-hover:w-auto group-hover:opacity-100 group-hover:mx-1
-          "
-          aria-label="Turtle Action"
-          onClick={() => console.log("Turtle clicked")}
-        >
-          <GiTurtle className="w-6 h-6 text-black" />
-        </button>
-      </SlTooltip>
+{/* TURTLE ICON (Slow TTS) */}
+<SlTooltip content="Slow speech">
+  <button
+    className="
+      p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition-all duration-300
+      w-0 opacity-0 overflow-hidden
+      group-hover:w-auto group-hover:opacity-100 group-hover:mx-1
+    "
+    aria-label="Slow text-to-speech"
+    onClick={() => handleTextToSpeech(chatItem.parts.join(" "), false, true)}
+  >
+    <GiTurtle className="w-6 h-6 text-black" />
+  </button>
+</SlTooltip>
+
 
       {/* DOWNLOAD ICON (close on the right) */}
       <SlTooltip content={tooltipContent.download || "Download"}>

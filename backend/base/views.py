@@ -32,6 +32,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.http import StreamingHttpResponse, JsonResponse
+from pydub import AudioSegment
+import io
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -376,6 +379,51 @@ class TextToSpeechView(APIView):
             logger.error(f"Error generating audio: {e}")
             return JsonResponse({'error': 'Error generating the audio'}, status=500)
 
+class SlowTextToSpeechView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        logger.info(f"User {user.username} is requesting slow TTS.")
+
+        text = request.data.get("text")
+        if not text:
+            return JsonResponse({"error": "Text is required"}, status=400)
+
+        # ElevenLabs API URL
+        url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
+        headers = {
+            "xi-api-key": ELABS_API_KEY,
+            "Content-Type": "application/json",
+            "Accept": "audio/mpeg",
+        }
+
+        # Adjust speed to slow down speech (default speed is 1.0)
+        data = {
+            "text": text,
+            "model_id": "eleven_multilingual_v2",
+            "voice_settings": {
+                "stability": 0.3,  # Makes speech more dynamic
+                "similarity_boost": 0.5,  # Keeps it close to original
+                "style": 0.5,  # Lower values make speech more natural
+                "use_speaker_boost": False,  # Disable boosting for a more controlled speed
+                "speed": 0.7  # The lower this value, the slower the speech
+            }
+        }
+
+        try:
+            # Call ElevenLabs API
+            response = requests.post(url, json=data, headers=headers, stream=True)
+            response.raise_for_status()
+
+            return StreamingHttpResponse(response.raw, content_type="audio/mpeg")
+
+        except requests.exceptions.HTTPError as http_err:
+            logger.error(f"HTTP error occurred: {http_err}")
+            return JsonResponse({"error": f"HTTP error: {http_err}"}, status=response.status_code)
+        except Exception as e:
+            logger.error(f"Error generating audio: {e}")
+            return JsonResponse({"error": "Error generating the audio"}, status=500)
 class ChatHistoryView(APIView):
     permission_classes = [IsAuthenticated]
 

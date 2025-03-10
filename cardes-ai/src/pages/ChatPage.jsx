@@ -7,7 +7,7 @@ import { FiMic, FiMicOff, FiSend, FiTool } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import surpriseOptions from "../utils/surpriseData";
-import handleTextToSpeech from "../utils/textToSpeech"; // Import the utility function
+import handleTextToSpeech from "../utils/handleTextToSpeech"; // Import the utility function
 
 const CardesChat = () => {
   const [value, setValue] = useState("");

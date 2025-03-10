@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FiPlus, FiArrowLeft } from "react-icons/fi";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import { SpeakerWaveIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
-import handleTextToSpeech from "../utils/textToSpeech"; // Import TTS utility
+import handleTextToSpeech from "../utils/handleTextToSpeech"; // Import TTS utility
 import Loader from "../components/Loader"; // Import the loader component
 
 const CardsPage = () => {

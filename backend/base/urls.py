@@ -9,6 +9,7 @@ from .views import (
     CardSetDetailView,
     CardListCreateView,
     CardDetailView,
+    SlowTextToSpeechView,
 )
 
 urlpatterns = [
@@ -18,6 +19,7 @@ urlpatterns = [
     path("register/", register, name="register_user"),
     path("gemini/", GeminiView.as_view(), name="gemini_view"),
     path("text-to-speech/", TextToSpeechView.as_view(), name="text_to_speech_view"),
+    path("text-to-speech-slow/", SlowTextToSpeechView.as_view(), name="text_to_speech_slow"),
     path("chat-history/", ChatHistoryView.as_view(), name="chat_history"),
     path("categories/", CategoryListCreateView.as_view(), name="category-list-create"),
     path("categories/<int:pk>/", CategoryDetailView.as_view(), name="category-detail"),
