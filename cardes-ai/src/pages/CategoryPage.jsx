@@ -33,7 +33,7 @@ const CategoryPage = () => {
     try {
       const response = await axiosInstance.post("/api/categories/", {
         name: name,
-        color: "#FF5733", // Default color if you want
+        color: "#FF5733", // Default color (optional)
       });
       setCategories([...categories, response.data]);
     } catch (error) {
@@ -76,38 +76,41 @@ const CategoryPage = () => {
         </div>
       </header>
 
-      {/* Scrollable Category List */}
+      {/* Scrollable Categories Grid */}
       <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
-        <ul className="space-y-4 max-w-3xl mx-auto">
-          {loading ? (
-            <Loader />
-          ) : categories.length === 0 ? (
-            <p className="text-center text-gray-300 text-lg mt-4">
-              You haven't added any categories yet.
-            </p>
-          ) : (
-            categories.map((category) => (
-              <li
+        {loading ? (
+          <Loader />
+        ) : categories.length === 0 ? (
+          <p className="text-center text-gray-300 text-lg mt-4">
+            You haven't added any categories yet.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {categories.map((category) => (
+              <div
                 key={category.id}
-                className="bg-secondary text-white rounded-lg flex justify-between items-center px-4 py-3 shadow-md transform transition duration-200 hover:scale-[1.02]"
+                className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between"
               >
-                {/* Clicking the category name navigates to that category page */}
-                <span
+                {/* Category name (click to view sets) */}
+                <strong
                   onClick={() => navigate(`/categories/${category.id}`)}
-                  className="cursor-pointer flex-1 hover:underline"
+                  className="block mb-2 text-xl cursor-pointer hover:underline"
                 >
                   {category.name}
-                </span>
+                </strong>
+
+                {/* Delete button */}
                 <button
                   onClick={() => deleteCategory(category.id)}
-                  className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded-lg ml-4 transition"
+                  className="flex items-center justify-center bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded-md transition mt-2"
                 >
-                  <FiTrash2 />
+                  <FiTrash2 className="mr-2" />
+                  Delete
                 </button>
-              </li>
-            ))
-          )}
-        </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );

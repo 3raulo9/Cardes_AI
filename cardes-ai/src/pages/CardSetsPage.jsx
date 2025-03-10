@@ -57,6 +57,11 @@ const CardSetsPage = () => {
     }
   };
 
+  const goToSet = (setId) => {
+    // Navigate to the list of cards in this set
+    navigate(`/categories/${id}/sets/${setId}`);
+  };
+
   const startPractice = (setId) => {
     navigate(`/practice/${setId}`);
   };
@@ -64,56 +69,66 @@ const CardSetsPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent text-white">
       {/* Sticky Header */}
-      <div className="p-6 bg-secondary flex justify-between items-center sticky top-0 z-10 shadow-md">
-        <div className="flex items-center">
+      <header className="relative z-10">
+        <div className="bg-secondary px-6 py-4 flex justify-between items-center shadow-md">
+          <div className="flex items-center">
+            <button
+              onClick={() => navigate("/categories")}
+              className="bg-primary text-white px-3 py-2 rounded-lg flex items-center hover:bg-highlight transition"
+            >
+              <FiArrowLeft className="mr-2" /> Back
+            </button>
+            <h1 className="text-2xl font-bold text-white ml-4">Card Sets</h1>
+          </div>
           <button
-            onClick={() => navigate("/categories")}
-            className="bg-primary text-white px-3 py-2 rounded-lg flex items-center mr-4 hover:bg-highlight transition"
+            onClick={createSet}
+            className="flex items-center bg-primary text-white px-4 py-2 rounded-lg hover:bg-highlight transition"
           >
-            <FiArrowLeft className="mr-2" /> Back
+            <FiPlus className="mr-2" /> Add Set
           </button>
-          <h1 className="text-2xl font-bold text-white">Card Sets</h1>
         </div>
-        <button
-          onClick={createSet}
-          className="bg-primary text-white px-4 py-2 rounded-lg flex items-center hover:bg-highlight transition"
-        >
-          <FiPlus className="mr-2" /> Add Set
-        </button>
-      </div>
+      </header>
 
-      {/* Scrollable Card Sets List */}
-      <div className="flex-1 overflow-y-auto p-4">
+      {/* Scrollable Sets Grid */}
+      <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
         {loading ? (
           <Loader />
-        ) : sets.length > 0 ? (
-          <ul className="space-y-4">
-            {sets.map((set) => (
-              <li
-                key={set.id}
-                className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-105 hover:shadow-md"
-              >
-                <span
-                  onClick={() => navigate(`/categories/${id}/sets/${set.id}`)}
-                  className="cursor-pointer flex-1"
-                >
-                  {set.name}
-                </span>
-                <button
-                  onClick={() => startPractice(set.id)}
-                  className="bg-primary text-white px-3 py-1 rounded-lg hover:bg-highlight transition"
-                >
-                  Practice
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-white text-center mt-4">
+        ) : sets.length === 0 ? (
+          <p className="text-center text-gray-300 text-lg mt-4">
             No sets available. Create one!
           </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {sets.map((set) => (
+              <div
+                key={set.id}
+                className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between"
+              >
+                <div>
+                  {/* Set Name */}
+                  <strong className="block mb-2 text-xl">{set.name}</strong>
+                  {/* Additional data for the set could go here */}
+                </div>
+                {/* Buttons */}
+                <div className="flex mt-4 gap-2">
+                  <button
+                    onClick={() => goToSet(set.id)}
+                    className="flex-1 bg-primary text-white px-3 py-2 rounded-lg hover:bg-highlight transition"
+                  >
+                    View Cards
+                  </button>
+                  <button
+                    onClick={() => startPractice(set.id)}
+                    className="flex-1 bg-primary text-white px-3 py-2 rounded-lg hover:bg-highlight transition"
+                  >
+                    Practice
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
-      </div>
+      </main>
     </div>
   );
 };
