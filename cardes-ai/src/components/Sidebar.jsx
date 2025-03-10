@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { 
-  FiPlus, FiSettings, FiLogOut, FiLayers, FiMessageSquare,
-  FiCompass, FiBookOpen, FiUsers 
+import {
+  FiPlus,
+  FiSettings,
+  FiLogOut,
+  FiLayers,
+  FiMessageSquare,
+  FiCompass,
+  FiBookOpen,
+  FiUsers,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { Fireworks } from "@fireworks-js/react";
@@ -37,8 +43,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         {/* TOP SECTION: LOGO & DECORATIVE WAVE */}
         <div className="relative flex items-center justify-center h-24 cursor-pointer">
           {/* Decorative wave behind brand */}
-          <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-          </div>
+          <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]"></div>
           {/* Brand Name & Fireworks */}
           <button
             onClick={() => navigate("/")}
@@ -106,16 +111,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               Settings
             </li>
 
-
             {/* New Options with Alert */}
             <li
               className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
-                         hover:bg-primary transition font-medium"
-              onClick={() => alert("Journey feature coming soon!")}
+             hover:bg-primary transition font-medium"
+              onClick={() => handleNavigation("/journey")}
             >
               <FiCompass className="text-xl" />
               Journey
             </li>
+
             <li
               className="flex items-center gap-3 text-lg px-5 py-3 rounded-xl cursor-pointer
                          hover:bg-primary transition font-medium"

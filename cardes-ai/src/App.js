@@ -13,6 +13,7 @@ import AboutPage from "./pages/AboutPage"; // About page import
 import ChatLayout from "./components/ChatLayout";
 import { loadTheme } from "./utils/themeSwitcher";
 import ScrollToTop from "./utils/ScrollToTop"; // Import the new component
+import JourneyPage from "./pages/JourneyPage"; // Import JourneyPage
 
 // A simple component to guard protected routes
 const PrivateRoute = ({ authToken, children }) => {
@@ -50,6 +51,8 @@ function App() {
                   <Route path="chat" element={<CardesChat />} />
                   <Route path="practice/:id" element={<PracticePage />} />
                   <Route path="settings" element={<SettingsPage />} />
+                  <Route path="journey" element={<JourneyPage />} />
+
                 </Routes>
               </ChatLayout>
             </PrivateRoute>

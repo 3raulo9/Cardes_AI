@@ -11,7 +11,7 @@
     "annyang": "^2.6.1",
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
-    "framer-motion": "^12.4.7",
+    "framer-motion": "^12.4.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",

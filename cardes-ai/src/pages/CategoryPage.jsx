@@ -1,14 +1,17 @@
+// CategoryPage.js
 import React, { useState, useEffect } from "react";
-import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
-import Loader from "../components/Loader"; // Import the loader component
+import axiosInstance from "../utils/axiosInstance";
+import Loader from "../components/Loader";
+import TutorialOverlay from "../components/TutorialOverlay"; // <-- same overlay component
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  // Fetch categories on mount
   useEffect(() => {
     axiosInstance
       .get("/api/categories/")
@@ -22,6 +25,7 @@ const CategoryPage = () => {
       });
   }, []);
 
+  // Create a new category
   const createCategory = async () => {
     const name = prompt("Enter category name:");
     if (!name) return;
@@ -29,19 +33,16 @@ const CategoryPage = () => {
     try {
       const response = await axiosInstance.post("/api/categories/", {
         name: name,
-        color: "#FF5733", // Default color
+        color: "#FF5733", // Default color if you want
       });
-      // Update UI with the new category
       setCategories([...categories, response.data]);
     } catch (error) {
-      console.error(
-        "Error creating category:",
-        error.response?.data || error.message
-      );
+      console.error("Error creating category:", error.response?.data || error.message);
       alert(`Error: ${JSON.stringify(error.response?.data)}`);
     }
   };
 
+  // Delete a category
   const deleteCategory = async (categoryId) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this category? All sets and cards within it will also be deleted."
@@ -50,18 +51,18 @@ const CategoryPage = () => {
 
     try {
       await axiosInstance.delete(`/api/categories/${categoryId}/`);
-      setCategories(categories.filter((category) => category.id !== categoryId));
+      setCategories(categories.filter((cat) => cat.id !== categoryId));
     } catch (error) {
-      console.error(
-        "Error deleting category:",
-        error.response?.data || error.message
-      );
+      console.error("Error deleting category:", error.response?.data || error.message);
       alert(`Error: ${JSON.stringify(error.response?.data)}`);
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-primary via-[-10%] via-darkAccent text-white">
+      {/* The shared tutorial overlay, ID = "categories" */}
+      <TutorialOverlay tutorialID="categories" />
+
       {/* Sticky Header */}
       <header className="sticky top-0 z-10 shadow-md">
         <div className="bg-secondary px-6 py-4 flex justify-between items-center">
@@ -90,6 +91,7 @@ const CategoryPage = () => {
                 key={category.id}
                 className="bg-secondary text-white rounded-lg flex justify-between items-center px-4 py-3 shadow-md transform transition duration-200 hover:scale-[1.02]"
               >
+                {/* Clicking the category name navigates to that category page */}
                 <span
                   onClick={() => navigate(`/categories/${category.id}`)}
                   className="cursor-pointer flex-1 hover:underline"
