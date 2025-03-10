@@ -1,5 +1,5 @@
-// JourneyPage.js
-import React, { useState, useEffect, useRef} from "react";
+// JourneyPage.jsx
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TutorialOverlay from "../components/TutorialOverlay";
 
@@ -62,7 +62,8 @@ const JourneyPage = () => {
   const [seedClicked, setSeedClicked] = useState(false);
   const [seedBuried, setSeedBuried] = useState(false);
   const [showTree, setShowTree] = useState(false);
-  const [setShowCommentTooltip] = useState(false);
+  // We only use the setter, not the current state, so destructure as [, setShowCommentTooltip]
+  const [, setShowCommentTooltip] = useState(false);
 
   // For the auto-resizing textarea
   const textareaRef = useRef(null);
@@ -70,18 +71,18 @@ const JourneyPage = () => {
   // --------------------
   // Seed click -> open modal
   // --------------------
-  const handleSeedClick = () => {
+  const handleSeedClick = useCallback(() => {
     if (!seedClicked) {
       setUserInput(""); // Clear input when first showing modal
       setShowModal(true);
     }
-  };
+  }, [seedClicked]);
 
   // --------------------
   // Generate random phrase
   // (ensuring two different languages)
   // --------------------
-  const handleRandom = () => {
+  const handleRandom = useCallback(() => {
     const place = getRandomElement(places);
     const lang1 = getRandomElement(languages);
     let lang2 = getRandomElement(languages);
@@ -93,7 +94,7 @@ const JourneyPage = () => {
 
     const phrase = `I want to learn how to talk at the ${place} in ${lang1} using ${lang2}.`;
     setUserInput(phrase);
-  };
+  }, []);
 
   // --------------------
   // Auto-resize on change
@@ -102,24 +103,22 @@ const JourneyPage = () => {
     setUserInput(e.target.value);
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height =
-        textareaRef.current.scrollHeight + "px";
+      textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
     }
   };
 
-  // Recalc on any userInput change (e.g. “Random” button)
+  // Recalc on userInput changes
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height =
-        textareaRef.current.scrollHeight + "px";
+      textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
     }
   }, [userInput]);
 
   // --------------------
   // Modal OK -> bury seed
   // --------------------
-  const handleOk = () => {
+  const handleOk = useCallback(() => {
     setShowModal(false);
     setSeedClicked(true);
     // Animate burying
@@ -131,14 +130,14 @@ const JourneyPage = () => {
         setShowCommentTooltip(true);
       }, 1000);
     }, 500);
-  };
+  }, [setShowModal, setSeedClicked, setSeedBuried, setShowTree, setShowCommentTooltip]);
 
   // --------------------
   // Modal Cancel
   // --------------------
-  const handleCancel = () => {
+  const handleCancel = useCallback(() => {
     setShowModal(false);
-  };
+  }, [setShowModal]);
 
   // Press ESC to cancel, ENTER to confirm if modal is open
   useEffect(() => {
@@ -150,7 +149,7 @@ const JourneyPage = () => {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [showModal]);
+  }, [showModal, handleOk, handleCancel]);
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center bg-gradient-to-b from-sky-300 to-sky-100 overflow-hidden">
@@ -191,7 +190,6 @@ const JourneyPage = () => {
           <motion.div
             className="absolute bottom-[5rem] flex flex-col items-center"
           >
-           
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{
@@ -199,7 +197,7 @@ const JourneyPage = () => {
                 scale: 1,
                 transition: { delay: 1, duration: 0.5, ease: "easeOut" },
               }}
-              className=" bottom-[10rem] relative text-white bg-green-500  p-9 rounded-xl mt-10 text-center border-4 border-green-700 "
+              className=" bottom-[10rem] relative text-white bg-green-500 p-9 rounded-xl mt-10 text-center border-4 border-green-700 "
             >
               This is a demo, nothing's actually working yet,
               <br />
@@ -214,7 +212,7 @@ const JourneyPage = () => {
               className="w-9 bg-amber-900 h-40 rounded-t-md"
             />
 
-            {/* 2) Foliage appears (scale+fade) after trunk finishes */}
+            {/* Foliage can appear after trunk finishes, etc. */}
           </motion.div>
         )}
       </AnimatePresence>
