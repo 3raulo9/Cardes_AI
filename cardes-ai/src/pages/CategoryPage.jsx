@@ -78,9 +78,12 @@ const CategoryPage = () => {
       {/* Scrollable Category List */}
       <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
         <ul className="space-y-4 max-w-3xl mx-auto">
-          {/* If still loading or if no categories, show the Loader */}
-          {loading || categories.length === 0 ? (
+          {loading ? (
             <Loader />
+          ) : categories.length === 0 ? (
+            <p className="text-center text-gray-300 text-lg mt-4">
+              You haven't added any categories yet.
+            </p>
           ) : (
             categories.map((category) => (
               <li

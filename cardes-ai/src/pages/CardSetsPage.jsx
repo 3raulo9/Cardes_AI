@@ -1,28 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
-import { useParams, useNavigate } from "react-router-dom"; // 🛠️ Import useNavigate
-import { FiPlus, FiArrowLeft } from "react-icons/fi"; // 🛠️ Import Back Icon
-import Loader from "../components/Loader"; // Import the Loader component
+import { useParams, useNavigate } from "react-router-dom";
+import { FiPlus, FiArrowLeft } from "react-icons/fi";
+import Loader from "../components/Loader";
 
 const CardSetsPage = () => {
   const [sets, setSets] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
   const { id } = useParams(); // Category ID from URL
-  const navigate = useNavigate(); // 🛠️ Initialize navigate function
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // First, check if any categories exist
     axiosInstance
-      .get("/api/cardsets/")
+      .get("/api/categories/")
       .then((res) => {
-        const filteredSets = res.data.filter((set) => set.category === parseInt(id));
-        setSets(filteredSets);
-        setLoading(false);
+        if (res.data.length === 0) {
+          // If no categories exist, redirect to /categories
+          navigate("/categories");
+        } else {
+          // If categories exist, fetch the card sets filtered by category
+          axiosInstance
+            .get("/api/cardsets/")
+            .then((res) => {
+              const filteredSets = res.data.filter(
+                (set) => set.category === parseInt(id)
+              );
+              setSets(filteredSets);
+              setLoading(false);
+            })
+            .catch((err) => {
+              console.error("Error fetching sets:", err);
+              setLoading(false);
+            });
+        }
       })
       .catch((err) => {
-        console.error("Error fetching sets:", err);
+        console.error("Error fetching categories:", err);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, navigate]);
 
   const createSet = async () => {
     const name = prompt("Enter set name:");
@@ -31,10 +48,9 @@ const CardSetsPage = () => {
     try {
       const response = await axiosInstance.post("/api/cardsets/", {
         name: name,
-        category: parseInt(id), // Ensure category ID is sent correctly
+        category: parseInt(id),
       });
-
-      setSets([...sets, response.data]); // Update UI
+      setSets([...sets, response.data]); // Update UI with new set
     } catch (error) {
       console.error("Error creating set:", error.response?.data || error.message);
       alert(`Error: ${JSON.stringify(error.response?.data)}`);
@@ -58,9 +74,8 @@ const CardSetsPage = () => {
           </button>
           <h1 className="text-2xl font-bold text-white">Card Sets</h1>
         </div>
-
-        <button 
-          onClick={createSet} 
+        <button
+          onClick={createSet}
           className="bg-primary text-white px-4 py-2 rounded-lg flex items-center hover:bg-highlight transition"
         >
           <FiPlus className="mr-2" /> Add Set
@@ -71,34 +86,32 @@ const CardSetsPage = () => {
       <div className="flex-1 overflow-y-auto p-4">
         {loading ? (
           <Loader />
-        ) : (
+        ) : sets.length > 0 ? (
           <ul className="space-y-4">
-            {sets.length > 0 ? (
-              sets.map((set) => (
-                <li
-                  key={set.id}
-                  className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-100 hover:shadow-md"
+            {sets.map((set) => (
+              <li
+                key={set.id}
+                className="p-4 bg-secondary text-white rounded-lg flex justify-between items-center transition-transform duration-300 ease-out hover:scale-105 hover:shadow-md"
+              >
+                <span
+                  onClick={() => navigate(`/categories/${id}/sets/${set.id}`)}
+                  className="cursor-pointer flex-1"
                 >
-                  <span
-                    onClick={() => navigate(`/categories/${id}/sets/${set.id}`)}
-                    className="cursor-pointer flex-1"
-                  >
-                    {set.name}
-                  </span>
-                  <button
-                    onClick={() => startPractice(set.id)}
-                    className="bg-primary text-white px-3 py-1 rounded-lg hover:bg-highlight transition"
-                  >
-                    Practice
-                  </button>
-                </li>
-              ))
-            ) : (
-              <p className="text-white text-center mt-4">
-                No sets available. Create a new one!
-              </p>
-            )}
+                  {set.name}
+                </span>
+                <button
+                  onClick={() => startPractice(set.id)}
+                  className="bg-primary text-white px-3 py-1 rounded-lg hover:bg-highlight transition"
+                >
+                  Practice
+                </button>
+              </li>
+            ))}
           </ul>
+        ) : (
+          <p className="text-white text-center mt-4">
+            No sets available. Create one!
+          </p>
         )}
       </div>
     </div>

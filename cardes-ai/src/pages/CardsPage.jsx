@@ -4,28 +4,43 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FiPlus, FiArrowLeft } from "react-icons/fi";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import { SpeakerWaveIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
-import handleTextToSpeech from "../utils/handleTextToSpeech"; // Import TTS utility
-import Loader from "../components/Loader"; // Import the loader component
+import handleTextToSpeech from "../utils/handleTextToSpeech";
+import Loader from "../components/Loader";
 
 const CardsPage = () => {
   const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
   const { setId, id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!setId) return;
+    // First, check if any categories exist
     axiosInstance
-      .get(`/api/cards/?card_set=${setId}`)
+      .get("/api/categories/")
       .then((res) => {
-        setCards(res.data);
-        setLoading(false);
+        if (res.data.length === 0) {
+          // If no categories exist, redirect to the /categories page
+          navigate("/categories");
+        } else {
+          // If categories exist, fetch the cards for the current set
+          if (!setId) return;
+          axiosInstance
+            .get(`/api/cards/?card_set=${setId}`)
+            .then((res) => {
+              setCards(res.data);
+              setLoading(false);
+            })
+            .catch((err) => {
+              console.error("Error fetching cards:", err);
+              setLoading(false);
+            });
+        }
       })
       .catch((err) => {
-        console.error("Error fetching cards:", err);
+        console.error("Error fetching categories:", err);
         setLoading(false);
       });
-  }, [setId]);
+  }, [setId, navigate]);
 
   const addCard = async () => {
     const term = prompt("Enter the term:");
@@ -69,8 +84,12 @@ const CardsPage = () => {
 
       {/* Scrollable Cards Grid */}
       <main className="flex-1 overflow-y-auto px-4 pb-6 pt-4">
-        {loading || cards.length === 0 ? (
+        {loading ? (
           <Loader />
+        ) : cards.length === 0 ? (
+          <p className="text-center text-gray-300 text-lg mt-4">
+            No cards available. Add a new one!
+          </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {cards.map((card) => (
@@ -82,29 +101,23 @@ const CardsPage = () => {
                 <div className="flex items-center gap-2">
                   <strong>Term:</strong>
                   <span className="flex-1 break-words">{card.term}</span>
-                  {/* Copy Term Button */}
                   <SlTooltip content="Copy Term">
-                    <SlCopyButton
-                      value={card.term}
-                      className="text-white hover:text-gray-300"
-                    />
+                    <SlCopyButton value={card.term} className="text-white" />
                   </SlTooltip>
-                  {/* Listen to Term */}
                   <SlTooltip content="Listen">
                     <button
-                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Play Term"
                       onClick={() => handleTextToSpeech(card.term)}
+                      className="p-1 rounded-full hover:bg-gray-700 transition"
+                      aria-label="Play Term"
                     >
                       <SpeakerWaveIcon className="w-5 h-5 text-white" />
                     </button>
                   </SlTooltip>
-                  {/* Download Term */}
                   <SlTooltip content="Download">
                     <button
-                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Download Term"
                       onClick={() => handleTextToSpeech(card.term, true)}
+                      className="p-1 rounded-full hover:bg-gray-700 transition"
+                      aria-label="Download Term"
                     >
                       <ArrowDownTrayIcon className="w-5 h-5 text-white" />
                     </button>
@@ -114,29 +127,23 @@ const CardsPage = () => {
                 <div className="flex items-center gap-2">
                   <strong>Definition:</strong>
                   <span className="flex-1 break-words">{card.definition}</span>
-                  {/* Copy Definition Button */}
                   <SlTooltip content="Copy Definition">
-                    <SlCopyButton
-                      value={card.definition}
-                      className="text-white hover:text-gray-300"
-                    />
+                    <SlCopyButton value={card.definition} className="text-white" />
                   </SlTooltip>
-                  {/* Listen to Definition */}
                   <SlTooltip content="Listen">
                     <button
-                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Play Definition"
                       onClick={() => handleTextToSpeech(card.definition)}
+                      className="p-1 rounded-full hover:bg-gray-700 transition"
+                      aria-label="Play Definition"
                     >
                       <SpeakerWaveIcon className="w-5 h-5 text-white" />
                     </button>
                   </SlTooltip>
-                  {/* Download Definition */}
                   <SlTooltip content="Download">
                     <button
-                      className="p-1 bg-transparent rounded-full hover:bg-gray-700 focus:outline-none transition"
-                      aria-label="Download Definition"
                       onClick={() => handleTextToSpeech(card.definition, true)}
+                      className="p-1 rounded-full hover:bg-gray-700 transition"
+                      aria-label="Download Definition"
                     >
                       <ArrowDownTrayIcon className="w-5 h-5 text-white" />
                     </button>
