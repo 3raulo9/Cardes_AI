@@ -30,7 +30,7 @@ const TUTORIALS = {
     ],
   },
 
-  // NEW: Chatbot tutorial
+  // Chatbot tutorial with extra bullet about word-click feature
   chatbot: {
     title: "Welcome to CardesChat!",
     paragraphs: [
@@ -42,6 +42,7 @@ const TUTORIALS = {
       "Click the microphone icon to enable voice input.",
       "Use TTS (Text-to-Speech) on any response for audio playback.",
       "Open the Tools window (wrench icon) for extra functionality.",
+      "Tap any word in the chat to see its real-world usage (e.g., a YouTube example) or to check pronunciation – select multiple words to learn entire sentences!",
       "Clear the chat history when you want to start fresh.",
     ],
   },
@@ -51,7 +52,7 @@ const TUTORIALS = {
  * Reusable tutorial overlay component.
  *
  * Props:
- *   - tutorialID (string): e.g. "journey", "categories", or "chatbot"
+ *   - tutorialID (string): "journey", "categories", "chatbot", etc.
  */
 export default function TutorialOverlay({ tutorialID }) {
   const [showTutorial, setShowTutorial] = useState(false);
@@ -69,7 +70,7 @@ export default function TutorialOverlay({ tutorialID }) {
     setShowTutorial(false);
   };
 
-  // If no data or user already closed it, render nothing
+  // If no tutorial data or user closed it, render nothing
   if (!showTutorial || !TUTORIALS[tutorialID]) {
     return null;
   }

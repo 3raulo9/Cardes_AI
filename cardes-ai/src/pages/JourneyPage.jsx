@@ -1,8 +1,50 @@
 // JourneyPage.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import TutorialOverlay from "../components/TutorialOverlay"; // <-- import the shared overlay
+import TutorialOverlay from "../components/TutorialOverlay";
 
+// Returns a random element from an array
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Arrays for random phrase generation
+const places = [
+  "airport",
+  "restaurant",
+  "hotel",
+  "train station",
+  "bus station",
+  "shopping mall",
+  "museum",
+  "library",
+  "university",
+  "park",
+  "stadium",
+  "concert hall",
+  "hospital",
+  "pharmacy",
+  "theater",
+  "beach",
+  "bar",
+  "bakery",
+  "supermarket",
+];
+
+const languages = [
+  "French",
+  "Spanish",
+  "German",
+  "Japanese",
+  "Chinese",
+  "Arabic",
+  "Greek",
+  "Italian",
+  "Russian",
+  "Hebrew",
+];
+
+// Simple cloud BG
 function CloudBackground() {
   return (
     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -14,6 +56,7 @@ function CloudBackground() {
 }
 
 const JourneyPage = () => {
+  // State hooks
   const [showModal, setShowModal] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [seedClicked, setSeedClicked] = useState(false);
@@ -21,33 +64,83 @@ const JourneyPage = () => {
   const [showTree, setShowTree] = useState(false);
   const [showCommentTooltip, setShowCommentTooltip] = useState(false);
 
-  // Handle the seed click -> show the input modal
+  // For the auto-resizing textarea
+  const textareaRef = useRef(null);
+
+  // --------------------
+  // Seed click -> open modal
+  // --------------------
   const handleSeedClick = () => {
     if (!seedClicked) {
+      setUserInput(""); // Clear input when first showing modal
       setShowModal(true);
     }
   };
 
-  // When user confirms -> close modal, animate seed bury, then show tree
+  // --------------------
+  // Generate random phrase
+  // (ensuring two different languages)
+  // --------------------
+  const handleRandom = () => {
+    const place = getRandomElement(places);
+    const lang1 = getRandomElement(languages);
+    let lang2 = getRandomElement(languages);
+
+    // Force two different languages
+    while (lang2 === lang1) {
+      lang2 = getRandomElement(languages);
+    }
+
+    const phrase = `I want to learn how to talk at the ${place} in ${lang1} using ${lang2}.`;
+    setUserInput(phrase);
+  };
+
+  // --------------------
+  // Auto-resize on change
+  // --------------------
+  const handleChange = (e) => {
+    setUserInput(e.target.value);
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height =
+        textareaRef.current.scrollHeight + "px";
+    }
+  };
+
+  // Recalc on any userInput change (e.g. “Random” button)
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height =
+        textareaRef.current.scrollHeight + "px";
+    }
+  }, [userInput]);
+
+  // --------------------
+  // Modal OK -> bury seed
+  // --------------------
   const handleOk = () => {
     setShowModal(false);
     setSeedClicked(true);
+    // Animate burying
     setTimeout(() => {
       setSeedBuried(true);
+      // After bury animation, show tree
       setTimeout(() => {
         setShowTree(true);
-        // Show tooltip once the tree is visible
         setShowCommentTooltip(true);
       }, 1000);
     }, 500);
   };
 
-  // Close the modal without burying
+  // --------------------
+  // Modal Cancel
+  // --------------------
   const handleCancel = () => {
     setShowModal(false);
   };
 
-  // Listen for ESC (to cancel) or ENTER (to confirm) when modal is open
+  // Press ESC to cancel, ENTER to confirm if modal is open
   useEffect(() => {
     const onKeyDown = (e) => {
       if (showModal) {
@@ -61,81 +154,72 @@ const JourneyPage = () => {
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center bg-gradient-to-b from-sky-300 to-sky-100 overflow-hidden">
-      {/* The shared tutorial overlay, unique ID = "journey" */}
+      {/* Reusable tutorial overlay */}
       <TutorialOverlay tutorialID="journey" />
 
       <CloudBackground />
 
-      {/* Ground at the bottom */}
-      <div className="absolute bottom-0 w-full h-20 bg-green-600" />
+      {/* Lower ground (green) behind everything */}
+      <div className="absolute bottom-0 w-full h-20 bg-green-600 z-10" />
 
-      {/* The seed (z-0 ensures it is behind the modal) */}
+      {/* Slightly upper ground (brown) in front so seed can pass behind */}
+      <div className="absolute bottom-0 w-full h-16 bg-yellow-800 z-20" />
+
+      {/* 
+        The seed. 
+        - Bounces on hover to encourage clicking
+        - Falls to y:400 when seedBuried = true 
+      */}
       {!showTree && (
         <motion.div
+          className="z-0 cursor-pointer bg-yellow-800 w-14 h-14 rounded-full shadow-lg border-4 border-yellow-600 flex items-center justify-center text-white text-center font-bold absolute"
           initial={{ y: 0 }}
           animate={{
-            y: seedBuried ? 150 : 0,
+            y: seedBuried ? 400 : 0,
             transition: { duration: 1, ease: "easeInOut" },
           }}
+          whileHover={{ scale: 1.1, rotate: 5 }}
           onClick={handleSeedClick}
-          className="z-0 cursor-pointer bg-yellow-800 w-14 h-14 rounded-full shadow-lg border-4 border-yellow-600 flex items-center justify-center text-white text-center font-bold absolute"
         >
           {!seedClicked && <span className="text-xs">Click Me</span>}
         </motion.div>
       )}
 
-      {/* Tree grows from the ground */}
+      {/* Tree grows from the ground once the seed is buried */}
       <AnimatePresence>
         {showTree && (
           <motion.div
             className="absolute bottom-[5rem] flex flex-col items-center"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
           >
-            {/* Tree trunk */}
-            <div className="w-8 bg-amber-900 h-40 rounded-t-md" />
-            {/* Tree foliage */}
-            <div className="w-32 h-32 bg-green-500 rounded-full -mt-8 shadow-lg border-4 border-green-700" />
-
-            {/* Final comment box */}
+           
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2, duration: 1 }}
-              className="relative text-black bg-white p-4 rounded-xl mt-6 text-center"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: { delay: 1, duration: 0.5, ease: "easeOut" },
+              }}
+              className=" bottom-[10rem] relative text-white bg-green-500  p-9 rounded-xl mt-10 text-center border-4 border-green-700 "
             >
-              this is a demo, nothing's actually working yet,
+              This is a demo, nothing's actually working yet,
               <br />
               but try other options on the website
-
-              {/* A small tooltip above the comment */}
-              <AnimatePresence>
-                {showCommentTooltip && (
-                  <motion.div
-                    className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-60 bg-gray-800 text-white p-2 text-sm rounded shadow-lg"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                  >
-                    This message is just a placeholder.
-                    <br />
-                    In the future, it might show progress or hints.
-                    <button
-                      className="block bg-gray-600 hover:bg-gray-700 mt-2 py-1 px-2 rounded ml-auto mr-auto"
-                      onClick={() => setShowCommentTooltip(false)}
-                    >
-                      Got it
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </motion.div>
+
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 2 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              style={{ transformOrigin: "bottom center" }}
+              className="w-9 bg-amber-900 h-40 rounded-t-md"
+            />
+
+            {/* 2) Foliage appears (scale+fade) after trunk finishes */}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Modal (z-50 ensures it is above the seed) */}
+      {/* --------------- Modal --------------- */}
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -143,6 +227,10 @@ const JourneyPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            // ARIA for accessibility
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
           >
             <motion.div
               className="bg-white rounded-lg p-6 max-w-md w-full shadow-xl flex flex-col"
@@ -150,19 +238,34 @@ const JourneyPage = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
             >
-              <h2 className="text-xl font-bold mb-4">Enter what you want to learn</h2>
-              <input
-                className="border border-gray-300 p-2 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              {/* The heading for screen readers */}
+              <h2 id="modalTitle" className="text-xl font-bold mb-4">
+                Enter what you want to learn
+              </h2>
+
+              {/* Auto-resizing textarea */}
+              <textarea
+                ref={textareaRef}
+                rows={1}
+                className="border border-gray-300 p-2 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all"
                 placeholder="I want to learn..."
                 value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
+                onChange={handleChange}
               />
+
+              {/* Modal buttons */}
               <div className="flex justify-end space-x-2 mt-2">
                 <button
                   onClick={handleCancel}
                   className="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300"
                 >
                   Cancel
+                </button>
+                <button
+                  onClick={handleRandom}
+                  className="py-2 px-4 bg-purple-600 text-white rounded hover:bg-purple-700"
+                >
+                  Random
                 </button>
                 <button
                   onClick={handleOk}
