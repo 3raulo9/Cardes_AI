@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:8000/", // Use environment variable with fallback
+  baseURL: process.env.REACT_APP_BACKEND_URL || "https://cardes-ai.onrender.com", // Use environment variable with fallback
   headers: {
     "Content-Type": "application/json",
   },
