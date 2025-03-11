@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import axiosInstance from "../utils/axiosInstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { useParams, useNavigate } from "react-router-dom";
 
 /* ----------------------------------
@@ -234,7 +234,7 @@ const StatsModal = ({ correct, incorrect, total, onRestart, onGoBack }) => {
    - Top card is draggable/flippable
    - Next card is offset behind
 ------------------------------ */
-const PracticePage = () => {
+const SimpleReviewPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -419,4 +419,4 @@ const PracticePage = () => {
   );
 };
 
-export default PracticePage;
+export default SimpleReviewPage;
