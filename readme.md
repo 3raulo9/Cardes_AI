@@ -21,6 +21,7 @@
   - [Frontend Setup (React)](#frontend-setup-react)
     - [Install Dependencies](#install-dependencies-1)
     - [Setup Environment Variables](#setup-environment-variables-1)
+    - [Configure Backend URL](#configure-backend-url)
     - [Run Development Server](#run-development-server)
   - [Additional Notes](#additional-notes)
 
@@ -131,9 +132,25 @@ In the React root directory, create a file named **.env**:
 ```bash
 REACT_APP_YOUTUBE_API_KEY="that one API for youtube search"
 REACT_APP_GOOGLE_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
+REACT_APP_BACKEND_URL="http://127.0.0.1:8000/"  # Change this if your backend is hosted remotely
 ```
 
-**Important:** Variables for Create React App must start with **REACT_APP_** to be recognized.
+### Configure Backend URL
+
+To ensure the React frontend connects properly to the Django backend, update **cardes-ai/src/utils/axiosInstance.js** with the following:
+
+```javascript
+import axios from "axios";
+
+const instance = axios.create({
+  baseURL: process.env.REACT_APP_BACKEND_URL || "http://127.0.0.1:8000/", // Use environment variable with fallback
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export default instance;
+```
 
 ### Run Development Server
 
@@ -154,4 +171,5 @@ This usually launches at [http://localhost:3000](http://localhost:3000). Ensure 
   - In React, run **npm run build** to create an optimized production build in the **build** folder.
 - **Security:** Never commit your **.env** files to Git or any public repo. Add **.env** to your **.gitignore**.
 - **API Calls:** Double-check that your React code references the correct environment variables when communicating with the Django backend or external APIs.
+
 
