@@ -17,6 +17,13 @@
     - [Create Virtual Environment](#create-virtual-environment)
     - [Install Dependencies](#install-dependencies)
     - [Setup Environment Variables](#setup-environment-variables)
+- [API Keys and Configurations Explanation for Cardes AI](#api-keys-and-configurations-explanation-for-cardes-ai)
+    - [1. **Gemini API Key (Google AI Studio)**](#1-gemini-api-key-google-ai-studio)
+    - [2. **ElevenLabs API Key**](#2-elevenlabs-api-key)
+    - [3. **Voice ID from ElevenLabs**](#3-voice-id-from-elevenlabs)
+    - [4. **Allowed Hosts in Django**](#4-allowed-hosts-in-django)
+    - [5. **Google Client ID for OAuth**](#5-google-client-id-for-oauth)
+    - [6. **Django Secret Key**](#6-django-secret-key)
     - [Run Migrations \& Development Server](#run-migrations--development-server)
   - [Frontend Setup (React)](#frontend-setup-react)
     - [Install Dependencies](#install-dependencies-1)
@@ -81,6 +88,112 @@ ALLOWED_HOSTS="localhost,your-frontend-domain.com"
 GOOGLE_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
 DJANGO_SECRET_KEY="your-secret-key"
 ```
+
+# API Keys and Configurations Explanation for Cardes AI
+
+### 1. **Gemini API Key (Google AI Studio)**
+
+To obtain an API key for Gemini:
+- Visit [Google AI Studio](https://makersuite.google.com/app/apikey).
+- Create a new project or select an existing one.
+- Generate an API key from the API Keys section.
+- Copy the generated API key and set it as `GOOGLE_API_KEY` in your `.env`.
+
+```env
+GOOGLE_API_KEY="your-gemini-api-key"
+```
+
+---
+
+### 2. **ElevenLabs API Key**
+
+To get your ElevenLabs API key:
+- Sign up or log in to [ElevenLabs](https://elevenlabs.io/).
+- Navigate to your profile and select the **API Keys** tab.
+- Generate a new API key and copy it.
+- Paste this key in your `.env` file under `ELABS_API_KEY`.
+
+```env
+ELABS_API_KEY="your-elevenlabs-api-key"
+```
+
+---
+
+### 3. **Voice ID from ElevenLabs**
+
+To find a specific Voice ID:
+- Visit [ElevenLabs Voice Library](https://elevenlabs.io/voice-lab).
+- Choose or create your desired voice.
+- Click on the voice, and the **Voice ID** will be displayed.
+- Copy and paste this Voice ID into your `.env` as `VOICE_ID`.
+
+```env
+VOICE_ID="voice-id-from-elabs"
+```
+
+---
+
+### 4. **Allowed Hosts in Django**
+
+`ALLOWED_HOSTS` restricts access to your Django application from specific hostnames or domains:
+- Include `localhost` or `127.0.0.1` for local development.
+- Add your domain or frontend URL for production.
+- Separate multiple hosts by commas.
+
+```env
+ALLOWED_HOSTS="localhost,127.0.0.1,your-production-domain.com"
+```
+
+---
+
+### 5. **Google Client ID for OAuth**
+
+To obtain a Google Client ID:
+- Go to [Google Cloud Console](https://console.cloud.google.com/).
+- Create a project or select an existing one.
+- Navigate to **APIs & Services** > **Credentials**.
+- Select **Create Credentials** > **OAuth Client ID**.
+- Configure your app details and authorized domains.
+- After creation, copy your Client ID and set it as `GOOGLE_CLIENT_ID`.
+
+```env
+GOOGLE_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
+```
+
+*(Also set this Client ID in your React frontend's `.env` as `REACT_APP_GOOGLE_CLIENT_ID`.)*
+
+---
+
+### 6. **Django Secret Key**
+
+Django requires a secret key for cryptographic signing:
+- Generate a secure key using Python:
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(50))"
+```
+
+- Paste the generated key into your `.env`:
+
+```env
+DJANGO_SECRET_KEY="your-generated-secret-key"
+```
+
+**Note:** Never expose this key publicly or commit it to version control.
+
+---
+
+**Example Complete `.env` file:**
+
+```env
+GOOGLE_API_KEY="your-gemini-api-key"
+ELABS_API_KEY="your-elevenlabs-api-key"
+VOICE_ID="voice-id-from-elabs"
+ALLOWED_HOSTS="localhost,127.0.0.1,your-production-domain.com"
+GOOGLE_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
+DJANGO_SECRET_KEY="your-generated-secret-key"
+```
+
 
 **Tip:**  
 - You can generate a secure secret key with:
