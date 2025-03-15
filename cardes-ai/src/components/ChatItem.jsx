@@ -52,6 +52,9 @@ const ChatItem = ({
   // Ref for detecting clicks outside our container
   const containerRef = useRef(null);
 
+  // State to track if audio is playing
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
   useEffect(() => {
     const timeout = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(timeout);
@@ -332,6 +335,20 @@ const ChatItem = ({
       });
   };
 
+  // Wrapper function to disable speaker and turtle while audio is playing.
+  const handlePlayAudio = async (download = false, slow = false) => {
+    if (audioPlaying) return; // Prevent multiple triggers
+    setAudioPlaying(true);
+    try {
+      // Await the TTS function if it returns a promise.
+      await handleTextToSpeech(chatItem.parts.join(" "), download, slow);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setAudioPlaying(false);
+    }
+  };
+
   return (
     <>
       <div ref={containerRef} className="relative">
@@ -349,112 +366,115 @@ const ChatItem = ({
               />
             </div>
           )}
-<div
-  className={`flex flex-col items-start gap-1 ${
-    isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
-  }`}
->
-  {/* MESSAGE BUBBLE */}
-  <div
-    className={`relative max-w-full md:max-w-lg rounded-3xl px-5 py-3 shadow-md transition-transform duration-300 transform ${
-      isUser
-        ? "bg-primary text-white rounded-br-none"
-        : "bg-gray-100 text-gray-800 border border-gray-200 rounded-bl-none"
-    } ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
-  >
-    {editMode ? (
-      <div className="flex flex-col gap-2">
-        <textarea
-          className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-          value={newMessageContent}
-          onChange={(e) => setNewMessageContent(e.target.value)}
-        />
-        <button
-          onClick={handleSaveClick}
-          className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1 transition"
-        >
-          Save
-        </button>
-      </div>
-    ) : (
-      <>
-        {chatItem.parts.map((part, idx) => (
-          <div key={idx} className="whitespace-pre-line break-words">
-            {renderPart(part, idx)}
+          <div
+            className={`flex flex-col items-start gap-1 ${
+              isModel ? (chatItem.hideIcon ? "ml-14" : "ml-5") : ""
+            }`}
+          >
+            {/* MESSAGE BUBBLE */}
+            <div
+              className={`relative max-w-full md:max-w-lg rounded-3xl px-5 py-3 shadow-md transition-transform duration-300 transform ${
+                isUser
+                  ? "bg-primary text-white rounded-br-none"
+                  : "bg-gray-100 text-gray-800 border border-gray-200 rounded-bl-none"
+              } ${visible ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
+            >
+              {editMode ? (
+                <div className="flex flex-col gap-2">
+                  <textarea
+                    className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    value={newMessageContent}
+                    onChange={(e) => setNewMessageContent(e.target.value)}
+                  />
+                  <button
+                    onClick={handleSaveClick}
+                    className="self-end bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-1 transition"
+                  >
+                    Save
+                  </button>
+                </div>
+              ) : (
+                <>
+                  {chatItem.parts.map((part, idx) => (
+                    <div key={idx} className="whitespace-pre-line break-words">
+                      {renderPart(part, idx)}
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+
+            {/* BUTTONS ROW */}
+            <div
+              className={`flex items-center gap-2 mt-2 ${
+                isUser ? "justify-start" : "justify-end"
+              }`}
+            >
+              <SlCopyButton
+                value={chatItem.parts.join(" ")}
+                className="text-black hover:text-gray-700"
+              />
+
+              {/* Speaker + Turtle + Download in one group */}
+              <div className="relative inline-flex items-center group">
+                {/* SPEAKER ICON */}
+                <SlTooltip content={tooltipContent.listen || "Listen"}>
+                  <button
+                    disabled={audioPlaying}
+                    className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
+                    aria-label="Play audio"
+                    onClick={() => handlePlayAudio(false, false)}
+                  >
+                    <SpeakerWaveIcon className="w-6 h-6 text-black" />
+                  </button>
+                </SlTooltip>
+
+                {/* TURTLE ICON (Slow TTS) */}
+                <SlTooltip content="Slow speech">
+                  <button
+                    disabled={audioPlaying}
+                    className="
+                      p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition-all duration-300
+                      w-0 opacity-0 overflow-hidden
+                      group-hover:w-auto group-hover:opacity-100 group-hover:mx-1
+                    "
+                    aria-label="Slow text-to-speech"
+                    onClick={() => handlePlayAudio(false, true)}
+                  >
+                    <GiTurtle className="w-6 h-6 text-black" />
+                  </button>
+                </SlTooltip>
+
+                {/* DOWNLOAD ICON (close on the right) */}
+                <SlTooltip content={tooltipContent.download || "Download"}>
+                  <button
+                    className="
+                      p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition
+                      ml-0 group-hover:ml-1.5
+                    "
+                    aria-label="Download audio"
+                    onClick={() =>
+                      handleTextToSpeech(chatItem.parts.join(" "), true)
+                    }
+                  >
+                    <ArrowDownTrayIcon className="w-6 h-6 text-black" />
+                  </button>
+                </SlTooltip>
+              </div>
+
+              {isModel && chatItem.hideIcon && (
+                <SlTooltip content="Add to my deck">
+                  <button
+                    className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
+                    aria-label="Add to my deck"
+                    onClick={openDeckSelector}
+                  >
+                    <CreditCardIcon className="w-6 h-6 text-black" />
+                  </button>
+                </SlTooltip>
+              )}
+            </div>
           </div>
-        ))}
-      </>
-    )}
-  </div>
-
-  {/* BUTTONS ROW */}
-  <div
-    className={`flex items-center gap-2 mt-2 ${
-      isUser ? "justify-start" : "justify-end"
-    }`}
-  >
-    <SlCopyButton
-      value={chatItem.parts.join(" ")}
-      className="text-black hover:text-gray-700"
-    />
-
-    {/* Speaker + Turtle + Download in one group */}
-    <div className="relative inline-flex items-center group">
-      {/* SPEAKER ICON */}
-      <SlTooltip content={tooltipContent.listen || "Listen"}>
-        <button
-          className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
-          aria-label="Play audio"
-          onClick={() => handleTextToSpeech(chatItem.parts.join(" "))}
-        >
-          <SpeakerWaveIcon className="w-6 h-6 text-black" />
-        </button>
-      </SlTooltip>
-
-{/* TURTLE ICON (Slow TTS) */}
-<SlTooltip content="Slow speech">
-  <button
-    className="
-      p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition-all duration-300
-      w-0 opacity-0 overflow-hidden
-      group-hover:w-auto group-hover:opacity-100 group-hover:mx-1
-    "
-    aria-label="Slow text-to-speech"
-    onClick={() => handleTextToSpeech(chatItem.parts.join(" "), false, true)}
-  >
-    <GiTurtle className="w-6 h-6 text-black" />
-  </button>
-</SlTooltip>
-
-
-      {/* DOWNLOAD ICON (close on the right) */}
-      <SlTooltip content={tooltipContent.download || "Download"}>
-        <button
-          className="
-            p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition
-            ml-0 group-hover:ml-1.5  /* Slight shift on hover, or remove if you want none */
-          "
-          aria-label="Download audio"
-          onClick={() => handleTextToSpeech(chatItem.parts.join(" "), true)}
-        >
-          <ArrowDownTrayIcon className="w-6 h-6 text-black" />
-        </button>
-      </SlTooltip>
-    </div>
-
-    {isModel && chatItem.hideIcon && (
-      <SlTooltip content="Add to my deck">
-        <button
-          className="p-2 bg-transparent rounded-full hover:bg-gray-100 focus:outline-none transition"
-          aria-label="Add to my deck"
-          onClick={openDeckSelector}
-        >
-          <CreditCardIcon className="w-6 h-6 text-black" />
-        </button>
-      </SlTooltip>
-    )}
-  </div>
-</div>
 
           {isUser && (
             <div className="w-10 flex-shrink-0">
