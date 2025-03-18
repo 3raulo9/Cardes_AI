@@ -267,7 +267,9 @@ def register(request):
 
 
 logger = logging.getLogger(__name__)
-# List of messages to avoid repetition
+
+
+# List of random "slow down" messages if a user calls too quickly
 RATE_LIMIT_MESSAGES = [
     "You're going too fast! Try again in a few seconds.",
     "Hold on! You're sending messages too quickly. Try again in 5-10 seconds.",
@@ -276,58 +278,97 @@ RATE_LIMIT_MESSAGES = [
     "Patience, my friend! Wait a little before sending another message."
 ]
 
-@class_log_request
+# List of random messages if the user has reached the free usage limit
+FREE_LIMIT_MESSAGES = [
+    "You have reached your free limit. Please buy premium for more requests.",
+    "That’s all for free requests! Upgrade to premium to continue.",
+    "Your free-plan requests are maxed out. Purchase premium for more.",
+    "No more freebies—please consider buying premium for unlimited use."
+]
+
 class GeminiView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
         user = request.user
-        user_id = user.id  # Each user has a unique ID
+        user_id = user.id
         logger.info(f"User {user.username} permissions: {user.get_all_permissions()}")
+
+        # ----------------------
+        # 1. Check usage limit
+        # ----------------------
+        max_requests = 4
+        current_usage = cache.get(f"gemini_request_count_{user_id}", 0)
+        
+        # If user has reached the max usage, return a friendly message with 200
+        if current_usage >= max_requests:
+            limit_message = random.choice(FREE_LIMIT_MESSAGES)
+            logger.warning(f"User {user.username} exceeded the free usage limit.")
+            return Response({"text": limit_message}, status=status.HTTP_200_OK)
+            # ↑ NOTE: We use 200 instead of 403 to avoid a front-end error. 
+
+        # If not yet at the limit, increment usage
+        cache.set(f"gemini_request_count_{user_id}", current_usage + 1, None)
+        # (Add a timeout if you want a daily reset, e.g. timeout=86400 for 24 hours.)
 
         user_input = request.data.get('message', '')
         if not user_input:
             return Response({"error": "No message provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent"
-
-        # **🔹 Check rate limit for this specific user**
+        # -------------------------------
+        # 2. Check short-term cooldown
+        # -------------------------------
         last_request_time = cache.get(f"gemini_cooldown_{user_id}")
-
-        COOLDOWN_TIME = 10  # ⏳ Set cooldown per user (10 seconds)
+        COOLDOWN_TIME = 10  # 10 seconds cooldown
 
         if last_request_time:
             time_since_last_request = time.time() - last_request_time
             if time_since_last_request < COOLDOWN_TIME:
                 warning_message = random.choice(RATE_LIMIT_MESSAGES)
-                logger.warning(f"User {user.username} is sending too many requests. Cooldown active.")
+                logger.warning(f"User {user.username} is sending requests too quickly.")
                 return Response({"text": warning_message}, status=status.HTTP_200_OK)
 
-        # **🔹 Store this request timestamp to enforce cooldown**
+        # Update or set the cooldown timestamp
         cache.set(f"gemini_cooldown_{user_id}", time.time(), timeout=COOLDOWN_TIME)
+
+        # ---------------------
+        # 3. Call Gemini API
+        # ---------------------
+        API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent"
+        google_api_key = os.getenv('GOOGLE_API_KEY')  # or settings.GOOGLE_API_KEY
 
         try:
             response = requests.post(
-                f"{API_URL}?key={os.getenv('GOOGLE_API_KEY')}",
+                f"{API_URL}?key={google_api_key}",
                 headers={"Content-Type": "application/json"},
                 json={"contents": [{"parts": [{"text": user_input}]}]}
             )
 
-            if response.status_code == 429:  # Too Many Requests
+            # If external API says "Too Many Requests," return a random "slow down" message
+            if response.status_code == 429:
                 warning_message = random.choice(RATE_LIMIT_MESSAGES)
-                logger.warning(f"User {user.username} is hitting API limits.")
+                logger.warning(f"User {user.username} is hitting Gemini API rate limits.")
                 return Response({"text": warning_message}, status=status.HTTP_200_OK)
 
-            response.raise_for_status()
+            response.raise_for_status()  # raise error if status is not 2xx
             response_json = response.json()
-            text_response = response_json.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "No response")
+
+            text_response = (
+                response_json
+                .get("candidates", [{}])[0]
+                .get("content", {})
+                .get("parts", [{}])[0]
+                .get("text", "No response")
+            )
 
             return Response({"text": text_response}, status=status.HTTP_200_OK)
 
         except requests.RequestException as e:
             logger.error(f"Error calling Gemini API: {str(e)}")
-            return Response({"text": "The AI is currently unavailable. Please try again later."}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
-
+            return Response(
+                {"text": "The AI is currently unavailable. Please try again later."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE
+            )
 
 @class_log_request
 class TextToSpeechView(APIView):
