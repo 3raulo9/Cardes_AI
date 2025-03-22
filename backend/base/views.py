@@ -286,6 +286,7 @@ FREE_LIMIT_MESSAGES = [
     "No more freebies—please consider buying premium for unlimited use."
 ]
 
+
 class GeminiView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -294,24 +295,30 @@ class GeminiView(APIView):
         user_id = user.id
         logger.info(f"User {user.username} permissions: {user.get_all_permissions()}")
 
+        # -----------------------------------------------------------------
+        # 0. If user is a superuser, SKIP ALL LIMITS (usage + cooldown).
+        # -----------------------------------------------------------------
+        if user.is_superuser:
+            logger.info(f"User {user.username} is superuser; skipping rate limits.")
+            return self._call_gemini_api(request)
+
         # ----------------------
         # 1. Check usage limit
         # ----------------------
         max_requests = 4
         current_usage = cache.get(f"gemini_request_count_{user_id}", 0)
-        
-        # If user has reached the max usage, return a friendly message with 200
+
         if current_usage >= max_requests:
             limit_message = random.choice(FREE_LIMIT_MESSAGES)
             logger.warning(f"User {user.username} exceeded the free usage limit.")
             return Response({"text": limit_message}, status=status.HTTP_200_OK)
-            # ↑ NOTE: We use 200 instead of 403 to avoid a front-end error. 
+            # ↑ We use 200 instead of 403 to avoid a front-end error
 
-        # If not yet at the limit, increment usage
         cache.set(f"gemini_request_count_{user_id}", current_usage + 1, None)
-        # (Add a timeout if you want a daily reset, e.g. timeout=86400 for 24 hours.)
+        # If you want a daily reset, add timeout=86400 for 24 hours
 
-        user_input = request.data.get('message', '')
+        # Make sure we have valid user input
+        user_input = request.data.get("message", "")
         if not user_input:
             return Response({"error": "No message provided"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -319,7 +326,7 @@ class GeminiView(APIView):
         # 2. Check short-term cooldown
         # -------------------------------
         last_request_time = cache.get(f"gemini_cooldown_{user_id}")
-        COOLDOWN_TIME = 10  # 10 seconds cooldown
+        COOLDOWN_TIME = 10  # 10 seconds
 
         if last_request_time:
             time_since_last_request = time.time() - last_request_time
@@ -328,14 +335,23 @@ class GeminiView(APIView):
                 logger.warning(f"User {user.username} is sending requests too quickly.")
                 return Response({"text": warning_message}, status=status.HTTP_200_OK)
 
-        # Update or set the cooldown timestamp
         cache.set(f"gemini_cooldown_{user_id}", time.time(), timeout=COOLDOWN_TIME)
 
         # ---------------------
         # 3. Call Gemini API
         # ---------------------
+        return self._call_gemini_api(request)
+
+    def _call_gemini_api(self, request):
+        """
+        Helper function that calls the external Gemini API.
+        """
+        user_input = request.data.get('message', '')
+        if not user_input:
+            return Response({"error": "No message provided"}, status=status.HTTP_400_BAD_REQUEST)
+
         API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent"
-        google_api_key = os.getenv('GOOGLE_API_KEY')  # or settings.GOOGLE_API_KEY
+        google_api_key = os.getenv("GOOGLE_API_KEY")  # or settings.GOOGLE_API_KEY
 
         try:
             response = requests.post(
@@ -344,13 +360,13 @@ class GeminiView(APIView):
                 json={"contents": [{"parts": [{"text": user_input}]}]}
             )
 
-            # If external API says "Too Many Requests," return a random "slow down" message
+            # If external API says "Too Many Requests," return "slow down" message
             if response.status_code == 429:
                 warning_message = random.choice(RATE_LIMIT_MESSAGES)
-                logger.warning(f"User {user.username} is hitting Gemini API rate limits.")
+                logger.warning(f"User {request.user.username} hit Gemini API rate limits.")
                 return Response({"text": warning_message}, status=status.HTTP_200_OK)
 
-            response.raise_for_status()  # raise error if status is not 2xx
+            response.raise_for_status()
             response_json = response.json()
 
             text_response = (
@@ -370,15 +386,56 @@ class GeminiView(APIView):
                 status=status.HTTP_503_SERVICE_UNAVAILABLE
             )
 
-@class_log_request
+# Path to the local "freelimit.mp3" file
+FREELIMIT_MP3_PATH = os.path.join(settings.BASE_DIR, 'base', 'static', 'freelimit.mp3')
+
+# Max total requests across both endpoints
+MAX_REQUESTS = 4
+
+def handle_usage_limit(request):
+    """
+    Checks a shared usage limit across both TTS endpoints.
+    - If user is superuser => No limit.
+    - If user (non-superuser) has >= MAX_REQUESTS => return freelimit.mp3
+    - Otherwise increment usage by 1.
+    """
+    user = request.user
+    if user.is_superuser:
+        logger.info(f"User {user.username} is superuser; skipping limit checks.")
+        return None  # Means "go ahead, no limit"
+
+    # We store a shared key so that calls to normal & slow TTS add up together
+    cache_key = f"tts_usage_count_{user.id}"
+    current_usage = cache.get(cache_key, 0)
+
+    if current_usage >= MAX_REQUESTS:
+        # Return the freelimit.mp3 file
+        logger.warning(f"User {user.username} exceeded the TTS usage limit.")
+        try:
+            return FileResponse(open(FREELIMIT_MP3_PATH, 'rb'), as_attachment=True, filename="freelimit.mp3")
+        except FileNotFoundError:
+            logger.error("freelimit.mp3 not found on the server.")
+            return JsonResponse({"error": "freelimit.mp3 not found."}, status=500)
+
+    # Increment usage
+    cache.set(cache_key, current_usage + 1, None)
+    return None  # Means "continue"
+
+
 class TextToSpeechView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
         user = request.user
-        logger.info(f"User {user.username} permissions: {user.get_all_permissions()}")
-        text = request.data.get('text')
+        logger.info(f"User {user.username} called TextToSpeechView.")
 
+        # -- 1. Check usage limit (shared) --
+        limit_response = handle_usage_limit(request)
+        if limit_response is not None:
+            return limit_response  # either freelimit.mp3 or error
+
+        # -- 2. Normal TTS logic if not limited --
+        text = request.data.get('text')
         if not text:
             return JsonResponse({'error': 'Text is required'}, status=400)
 
@@ -394,13 +451,7 @@ class TextToSpeechView(APIView):
             'voice_settings': {
                 'stability': 0.5,
                 'similarity_boost': 0.5
-            },
-            'languages': [
-                {
-                    'language_id': "fr-FR",
-                    'name': "French Voiceover"
-                }
-            ]
+            }
         }
 
         try:
@@ -413,6 +464,7 @@ class TextToSpeechView(APIView):
                     f.write(chunk)
 
             return FileResponse(open(temp_file.name, 'rb'), as_attachment=True, filename='audio.mp3')
+
         except requests.exceptions.HTTPError as http_err:
             logger.error(f"HTTP error occurred: {http_err}")
             return JsonResponse({'error': f"HTTP error: {http_err}"}, status=response.status_code)
@@ -420,40 +472,43 @@ class TextToSpeechView(APIView):
             logger.error(f"Error generating audio: {e}")
             return JsonResponse({'error': 'Error generating the audio'}, status=500)
 
+
 class SlowTextToSpeechView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
         user = request.user
-        logger.info(f"User {user.username} is requesting slow TTS.")
+        logger.info(f"User {user.username} called SlowTextToSpeechView.")
 
+        # -- 1. Check usage limit (shared) --
+        limit_response = handle_usage_limit(request)
+        if limit_response is not None:
+            return limit_response  # either freelimit.mp3 or error
+
+        # -- 2. Slow TTS logic if not limited --
         text = request.data.get("text")
         if not text:
             return JsonResponse({"error": "Text is required"}, status=400)
 
-        # ElevenLabs API URL
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
         headers = {
             "xi-api-key": ELABS_API_KEY,
             "Content-Type": "application/json",
             "Accept": "audio/mpeg",
         }
-
-        # Adjust speed to slow down speech (default speed is 1.0)
         data = {
             "text": text,
             "model_id": "eleven_multilingual_v2",
             "voice_settings": {
-                "stability": 0.3,  # Makes speech more dynamic
-                "similarity_boost": 0.5,  # Keeps it close to original
-                "style": 0.5,  # Lower values make speech more natural
-                "use_speaker_boost": False,  # Disable boosting for a more controlled speed
-                "speed": 0.7  # The lower this value, the slower the speech
+                "stability": 0.3,
+                "similarity_boost": 0.5,
+                "style": 0.5,
+                "use_speaker_boost": False,
+                "speed": 0.7
             }
         }
 
         try:
-            # Call ElevenLabs API
             response = requests.post(url, json=data, headers=headers, stream=True)
             response.raise_for_status()
 
