@@ -300,7 +300,7 @@ const SimpleReviewPage = () => {
       };
     }
     return { background: "transparent" };
-  }, [dragState]); // Updated dependency array
+  }, [dragState]);
 
   // Fetch cards from API and store them in both cards and initialCards.
   useEffect(() => {
