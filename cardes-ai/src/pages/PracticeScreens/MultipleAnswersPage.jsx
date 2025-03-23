@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { useParams, useNavigate } from "react-router-dom";
+import handleTextToSpeech from "../../utils/handleTextToSpeech";
+import { SpeakerWaveIcon } from "@heroicons/react/24/solid";
 
 /**
  * MultipleAnswersPage
@@ -24,6 +26,12 @@ const MultipleAnswersPage = () => {
   const [feedback, setFeedback] = useState(""); // "correct" or "wrong"
   const [showConfetti, setShowConfetti] = useState(false);
 
+  // New state for the pre-practice prompt
+  const [showPrompt, setShowPrompt] = useState(true);
+  // "term" means the question shows the term and options are definitions.
+  // "definition" means the question shows the definition and options are terms.
+  const [displayMode, setDisplayMode] = useState("term");
+
   // Makes sure we only click once per question
   const [clickable, setClickable] = useState(true);
 
@@ -41,7 +49,7 @@ const MultipleAnswersPage = () => {
       .catch((err) => console.error(err));
   }, [id]);
 
-  // 2) Build multiple-choice answers (when currentIndex changes)
+  // 2) Build multiple-choice answers (when currentIndex or displayMode changes)
   useEffect(() => {
     // If no cards or out of range, do nothing
     if (cards.length === 0 || currentIndex >= cards.length) return;
@@ -52,17 +60,22 @@ const MultipleAnswersPage = () => {
 
     // Current card
     const currentCard = cards[currentIndex];
-    // Grab 4 random definitions
-    let otherDefs = cards
-      .filter((c) => c.id !== currentCard.id)
-      .map((c) => c.definition);
-    otherDefs = shuffleArray(otherDefs).slice(0, 4);
 
-    // Combine correct + distractors, shuffle
-    const combined = shuffleArray([...otherDefs, currentCard.definition]);
+    // Based on displayMode, pick distractor values.
+    // If mode is "term", question shows term so options are definitions.
+    // If mode is "definition", question shows definition so options are terms.
+    const correctValue =
+      displayMode === "term" ? currentCard.definition : currentCard.term;
+    let otherValues = cards
+      .filter((c) => c.id !== currentCard.id)
+      .map((c) => (displayMode === "term" ? c.definition : c.term));
+    otherValues = shuffleArray(otherValues).slice(0, 4);
+
+    // Combine correct answer with distractors and shuffle
+    const combined = shuffleArray([...otherValues, correctValue]);
     setOptions(combined);
 
-    // Animate the "term" container
+    // Animate the "term" container (question container)
     if (termRef.current) {
       void termRef.current.offsetWidth;
       termRef.current.classList.remove("animate-fadeIn");
@@ -75,7 +88,7 @@ const MultipleAnswersPage = () => {
       buttonsContainerRef.current.classList.remove("animate-slideUp");
       setTimeout(() => buttonsContainerRef.current.classList.add("animate-slideUp"), 10);
     }
-  }, [cards, currentIndex]);
+  }, [cards, currentIndex, displayMode]);
 
   // 3) Confetti on finish
   useEffect(() => {
@@ -90,15 +103,19 @@ const MultipleAnswersPage = () => {
   const shuffleArray = (arr) => arr.slice().sort(() => Math.random() - 0.5);
 
   // handleAnswer: user picks an option
-  const handleAnswer = (selectedDef) => {
-    // If user spam-clicked (already answered) or index is out of range => do nothing
+  const handleAnswer = (selectedOption) => {
+    // If user already answered or index is out of range, do nothing
     if (!clickable || currentIndex >= cards.length) return;
 
-    // Mark that user has clicked -> disable further clicks
     setClickable(false);
 
-    const correctDef = cards[currentIndex].definition;
-    if (selectedDef === correctDef) {
+    // Determine correct answer based on displayMode
+    const correctAnswer =
+      displayMode === "term"
+        ? cards[currentIndex].definition
+        : cards[currentIndex].term;
+
+    if (selectedOption === correctAnswer) {
       setScore((prev) => prev + 1);
       setFeedback("correct");
       // Play correct sound
@@ -128,6 +145,43 @@ const MultipleAnswersPage = () => {
     setFinished(false);
     setFeedback("");
   };
+
+  // ------------------------- PRE-PRACTICE PROMPT -------------------------
+  if (showPrompt) {
+    return (
+      <div className="select-none min-h-screen flex flex-col items-center justify-center bg-accent text-white p-6 animate-fadeInSlow">
+        <h1 className="text-3xl font-extrabold mb-4">Select Practice Mode</h1>
+        <div className="flex flex-col gap-2 mb-6">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="displayMode"
+              value="term"
+              checked={displayMode === "term"}
+              onChange={() => setDisplayMode("term")}
+            />
+            <span>Show Term (answers are definitions)</span>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="displayMode"
+              value="definition"
+              checked={displayMode === "definition"}
+              onChange={() => setDisplayMode("definition")}
+            />
+            <span>Show Definition (answers are terms)</span>
+          </label>
+        </div>
+        <button
+          onClick={() => setShowPrompt(false)}
+          className="bg-success px-4 py-2 rounded hover:bg-highlight font-bold text-lg transition transform hover:scale-110"
+        >
+          Continue
+        </button>
+      </div>
+    );
+  }
 
   // ------------------------- EARLY RETURNS -------------------------
 
@@ -176,8 +230,10 @@ const MultipleAnswersPage = () => {
   }
 
   // ------------------------- MAIN RENDER -------------------------
-  // Now we're sure currentIndex < cards.length
-  const currentTerm = cards[currentIndex].term;
+  // Determine the question text based on displayMode.
+  const currentCard = cards[currentIndex];
+  const questionText =
+    displayMode === "term" ? currentCard.term : currentCard.definition;
 
   return (
     <div className="select-none min-h-screen bg-accent text-white flex flex-col items-center justify-center p-6 relative overflow-hidden animate-fadeInSlow">
@@ -191,32 +247,48 @@ const MultipleAnswersPage = () => {
           Multiple Answers
         </h1>
 
-        {/* Term container */}
+        {/* Question container with speaker button */}
         <div
           ref={termRef}
-          className="mb-6 text-2xl font-bold text-center animate-fadeIn"
+          className="mb-6 text-2xl font-bold text-center animate-fadeIn flex items-center justify-center"
         >
           <span className="tracking-wide">
-            <strong>Term:</strong> {currentTerm}
+            <strong>{displayMode === "term" ? "Term:" : "Definition:"}</strong> {questionText}
           </span>
+          <button
+            onClick={() => handleTextToSpeech(questionText)}
+            className="ml-2 p-1 rounded-full hover:bg-gray-700 transition"
+            aria-label="Play Question Text"
+          >
+            <SpeakerWaveIcon className="w-5 h-5 text-white" />
+          </button>
         </div>
 
-        {/* Buttons container */}
+        {/* Options container with speaker buttons for each option */}
         <div
           ref={buttonsContainerRef}
           className="grid grid-cols-1 gap-4 animate-slideUp"
         >
           {options.map((opt, idx) => (
-            <button
+            <div
               key={idx}
               onClick={() => handleAnswer(opt)}
-              className={
-                "bg-primary hover:bg-highlight text-white rounded p-4 text-left transition transform hover:-translate-y-1 " +
-                "hover:shadow-xl hover:scale-105"
-              }
+              className="bg-primary hover:bg-highlight text-white rounded p-4 text-left transition transform hover:-translate-y-1 hover:shadow-xl hover:scale-105 cursor-pointer"
             >
-              {opt}
-            </button>
+              <div className="flex items-center justify-between">
+                <span>{opt}</span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleTextToSpeech(opt);
+                  }}
+                  className="ml-2 p-1 rounded-full hover:bg-gray-700 transition"
+                  aria-label="Play Option Text"
+                >
+                  <SpeakerWaveIcon className="w-5 h-5 text-white" />
+                </button>
+              </div>
+            </div>
           ))}
         </div>
 
