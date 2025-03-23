@@ -166,21 +166,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=365 * 100),  # Set to 100 years
-    "REFRESH_TOKEN_LIFETIME": timedelta(
-        days=365 * 100
-    ),  # Optional, since you're not using refresh tokens
+    # Use SlidingToken instead of the default AccessToken
+    "AUTH_TOKEN_CLASSES": (
+        "rest_framework_simplejwt.tokens.SlidingToken",
+    ),
+    # The token will be valid for 7 days from the time it’s issued or refreshed
+    "SLIDING_TOKEN_LIFETIME": timedelta(days=7),
+    # The maximum time period in which the token can be refreshed (also set to 7 days)
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=7),
+    # Other settings as needed
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
-    "UPDATE_LAST_LOGIN": False,
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
-    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-    "TOKEN_TYPE_CLAIM": "token_type",
 }
-
 
 # Internationalization
 LANGUAGE_CODE = "en-us"
