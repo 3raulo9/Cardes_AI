@@ -1,7 +1,7 @@
 import axios from "axios";
-import jwtDecode from "jwt-decode";
-
+import { jwtDecode } from 'jwt-decode';
 const BASE_URL = "https://cardes-ai.onrender.com";
+
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// Function to refresh the token
+
 const refreshToken = async (currentToken) => {
   try {
     const response = await axios.post(
