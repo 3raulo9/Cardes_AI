@@ -31,7 +31,7 @@ const TopFlashcard = ({
     const absX = Math.abs(dragState.x);
     if (absX <= SWIPE_DISTANCE_THRESHOLD) return 1;
     return Math.max(0, 1 - (absX - SWIPE_DISTANCE_THRESHOLD) / SWIPE_DISTANCE_THRESHOLD);
-  }, [dragState.x]);
+  }, [dragState]);
 
   // Pointer down: start tracking
   const handlePointerDown = (e) => {
@@ -74,7 +74,7 @@ const TopFlashcard = ({
     };
 
     requestAnimationFrame(animate);
-  }, [dragState.x, setDragState]);
+  }, [dragState, setDragState]);
 
   // Pointer up: decide whether to trigger swipe based on distance or velocity
   const handlePointerUp = () => {
@@ -300,7 +300,7 @@ const SimpleReviewPage = () => {
       };
     }
     return { background: "transparent" };
-  }, [dragState.x]);
+  }, [dragState]); // Updated dependency array
 
   // Fetch cards from API and store them in both cards and initialCards.
   useEffect(() => {
