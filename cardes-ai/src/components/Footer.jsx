@@ -58,7 +58,7 @@ const Footer = () => {
         )}
 
         <p className="mt-4 text-white text-sm sm:text-base">
-          &copy; 2025 Cardes AI | Created by Raul Asadov. All rights reserved.
+          &copy; 2025 Cardes | Created by Raul Asadov. All rights reserved.
         </p>
       </div>
     </footer>

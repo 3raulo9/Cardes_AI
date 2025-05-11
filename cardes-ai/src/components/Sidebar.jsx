@@ -51,7 +51,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             onMouseLeave={() => setShowFireworks(false)}
             className="relative text-2xl font-bold tracking-wide focus:outline-none"
           >
-            Cardes AI
+            Cardes
             {showFireworks && (
               <Fireworks
                 options={{ rocketsPoint: { min: 50, max: 50 } }}

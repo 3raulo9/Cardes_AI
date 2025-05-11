@@ -69,7 +69,7 @@ const Login = ({ setAuthToken }) => {
       <header className="relative z-10">
         <div className="bg-secondary px-6 py-4 flex items-center justify-center shadow-md">
           <h1 className="text-3xl font-bold cursor-pointer transition hover:text-gray-300">
-            <Link to="/">Cardes AI</Link>
+            <Link to="/">Cardes</Link>
           </h1>
         </div>
       </header>

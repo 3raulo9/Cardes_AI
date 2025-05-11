@@ -37,7 +37,7 @@ const Header = () => {
     >
       {/* Left: Site Title */}
       <h1 className="text-xl sm:text-3xl font-bold cursor-pointer transition hover:text-gray-300">
-        <Link to="/">Cardes AI</Link>
+        <Link to="/">Cardes</Link>
       </h1>
 
       {/* Right: Conditional Navigation */}

@@ -182,7 +182,7 @@ const CardesChat = () => {
         <div className="mt-6 space-y-4">
           <input
             value={value}
-            placeholder="Message Cardes AI..."
+            placeholder="Message Cardes..."
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
             className="w-full border border-gray-300 rounded-full p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary"

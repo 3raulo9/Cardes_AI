@@ -4,7 +4,7 @@ from django.http import JsonResponse
 
 # Simple homepage response
 def home(request):
-    return JsonResponse({"message": "Welcome to Cardes AI Backend!"})
+    return JsonResponse({"message": "Welcome to Cardes Backend!"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),

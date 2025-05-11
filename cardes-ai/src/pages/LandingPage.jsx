@@ -213,7 +213,7 @@ const LandingPage = () => {
           transition={{ duration: 0.7 }}
           className="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-white"
         >
-          Why Choose Cardes AI?
+          Why Choose Cardes?
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mx-auto max-w-6xl">
           {[
@@ -357,7 +357,7 @@ const LandingPage = () => {
         {/** Space out details on small screens */}
         <div className="space-y-4 sm:space-y-6 max-w-3xl mx-auto">
           {[
-            "What is Cardes AI?",
+            "What is Cardes?",
             "How does it help me?",
             "Is it free to use?",
           ].map((question, i) => (

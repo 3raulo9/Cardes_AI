@@ -1,4 +1,4 @@
-# Cardes AI
+# Cardes
 
 > **A full-stack AI-powered project** – combining a Django REST API backend with a React frontend.
 
@@ -10,14 +10,14 @@
 
 ## Table of Contents
 
-- [Cardes AI](#cardes-ai)
+- [Cardes](#cardes)
   - [Table of Contents](#table-of-contents)
   - [Project Overview](#project-overview)
   - [Backend Setup (Django)](#backend-setup-django)
     - [Create Virtual Environment](#create-virtual-environment)
     - [Install Dependencies](#install-dependencies)
     - [Setup Environment Variables](#setup-environment-variables)
-- [API Keys and Configurations Explanation for Cardes AI](#api-keys-and-configurations-explanation-for-cardes-ai)
+- [API Keys and Configurations Explanation for Cardes](#api-keys-and-configurations-explanation-for-cardes)
     - [1. **Gemini API Key (Google AI Studio)**](#1-gemini-api-key-google-ai-studio)
     - [2. **ElevenLabs API Key**](#2-elevenlabs-api-key)
     - [3. **Voice ID from ElevenLabs**](#3-voice-id-from-elevenlabs)
@@ -36,7 +36,7 @@
 
 ## Project Overview
 
-**Cardes AI** is a project that leverages:
+**Cardes** is a project that leverages:
 
 - **Django REST Framework** for the backend
 - **React** for a modern, responsive UI
@@ -89,7 +89,7 @@ GOOGLE_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
 DJANGO_SECRET_KEY="your-secret-key"
 ```
 
-# API Keys and Configurations Explanation for Cardes AI
+# API Keys and Configurations Explanation for Cardes
 
 ### 1. **Gemini API Key (Google AI Studio)**
 
