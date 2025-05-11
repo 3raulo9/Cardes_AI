@@ -1,8 +1,8 @@
 // src/pages/ChatSessionsListPage.jsx
 import React, { useState, useEffect, useMemo } from 'react'; // Added useMemo
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchChatSessions, createChatSession } from '../services/chatApiService';
-import { FiPlusCircle, FiMessageSquare, FiInbox, FiLoader, FiArrowRight } from 'react-icons/fi'; // Added FiArrowRight
+import { fetchChatSessions  } from '../services/chatApiService';
+import { FiPlusCircle, FiMessageSquare, FiInbox, FiArrowRight } from 'react-icons/fi'; // Added FiArrowRight
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify'; // Assuming you use react-toastify
 

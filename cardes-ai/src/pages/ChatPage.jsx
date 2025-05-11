@@ -1,127 +1,55 @@
-// src/pages/ChatPage.jsx (Adapted from your CardesChat.js, aiming for minimal visual change)
+// src/pages/ChatPage.jsx
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axiosInstance from "../utils/axiosInstance"; // Make sure this is your configured instance
 import {
   fetchChatSessionDetails,
   postMessageToSession,
   createChatSession,
 } from "../services/chatApiService"; // Ensure this path is correct
-import ChatItem from "../components/ChatItem";
-import ToolsWindow from "../components/ToolsWindow";
-import useSpeechRecognition from "../hooks/useSpeechRecognition";
-import { FiMic, FiMicOff, FiSend, FiTool } from "react-icons/fi"; // Your original icons
+import ChatItem from "../components/ChatItem"; // Ensure this path is correct
+import ToolsWindow from "../components/ToolsWindow"; // Ensure this path is correct
+import useSpeechRecognition from "../hooks/useSpeechRecognition"; // Ensure this path is correct
+import { FiMic, FiMicOff, FiSend, FiTool } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import surpriseOptions from "../utils/surpriseData";
-import handleTextToSpeech from "../utils/handleTextToSpeech";
-import TutorialOverlay from "../components/TutorialOverlay";
+import surpriseOptions from "../utils/surpriseData"; // Ensure this path is correct
+import handleTextToSpeech from "../utils/handleTextToSpeech"; // Ensure this path is correct
+import TutorialOverlay from "../components/TutorialOverlay"; // Ensure this path is correct
 
-// This component will now be responsible for a single chat session (new or existing)
-const ChatPage = () => { // Renamed from CardesChat if this is the new standard name
+const ChatPage = () => {
   const { sessionId: routeSessionId } = useParams();
   const navigate = useNavigate();
 
-  // States from your original component
-  const [value, setValue] = useState(""); // User's current input
-  const [chatHistory, setChatHistory] = useState([]); // Messages displayed in the chat
-  const [loading, setLoading] = useState(false); // True when waiting for AI response
-  const [messageSent, setMessageSent] = useState(false); // From your old code, to show "Clear Chat"
+  const [value, setValue] = useState("");
+  const [chatHistory, setChatHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
   const [isToolsOpen, setIsToolsOpen] = useState(false);
-
-  // New state to manage the current backend session
   const [currentSessionId, setCurrentSessionId] = useState(null);
-
   const messagesEndRef = useRef(null);
-
-  // --- Speech Recognition (from your old code) ---
-  const handleSpeechRecognition = useCallback((phrases) => {
-    const speech = phrases[0];
-    setValue(speech);
-    // Automatically send the message after speech recognition
-    // This will now use the updated handleSendMessage logic
-    if (speech.trim()) {
-      handleSendMessage(speech.trim());
-    }
-  }, [/* dependencies for handleSendMessage if any, or empty if it uses up-to-date state via closures */]); // Re-eval if handleSendMessage changes
-
-  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
 
   // --- Scroll to bottom ---
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  useEffect(scrollToBottom, [chatHistory]);
-
-
-  // --- Load chat data based on sessionId (NEW FUNCTIONALITY) ---
+  // --- useEffect for scrolling ---
   useEffect(() => {
-    // This effect runs when the component mounts or routeSessionId changes.
-    // It determines if we're loading an existing chat or starting a new one.
-    if (routeSessionId) {
-      setLoading(true); // Use general loading indicator while fetching
-      setChatHistory([]); // Clear any previous local state
-      fetchChatSessionDetails(routeSessionId)
-        .then((response) => {
-          setCurrentSessionId(response.data.id);
-          setChatHistory(
-            response.data.messages.map((msg) => ({
-              role: msg.sender,
-              parts: [msg.content], // Assuming ChatItem expects parts as an array
-              id: msg.id,
-              timestamp: msg.timestamp,
-              // Add other properties your ChatItem might expect from the old structure
-              // hideIcon: (determine based on msg.sender or other logic if needed)
-            }))
-          );
-          // Optional: Set a page title or some identifier if needed
-          // document.title = response.data.title || `Chat ${response.data.id}`;
-          setMessageSent(response.data.messages.length > 0);
-        })
-        .catch((err) => {
-          console.error("Failed to fetch chat details:", err);
-          toast.error("Could not load chat. Starting a new chat.");
-          // If loading an existing chat fails, reset to a new chat state
-          setCurrentSessionId(null);
-          setChatHistory([]);
-          setMessageSent(false);
-          navigate("/chat", { replace: true }); // Navigate to the base /chat URL for a new chat
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      // No routeSessionId: this is a new chat. Reset state.
-      setCurrentSessionId(null);
-      setChatHistory([]);
-      setValue("");
-      setMessageSent(false);
-      // No loading needed as it's a fresh state
-    }
-  }, [routeSessionId, navigate]);
+    scrollToBottom();
+  }, [chatHistory, scrollToBottom]); // scrollToBottom is stable, chatHistory triggers scroll
 
-
-  // --- "Surprise me" button logic (from your old code) ---
-  const surprise = () => {
-    if (loading) return;
-    const randomValue =
-      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
-    setValue(randomValue);
-  };
-
-  // --- Main function to send message and get response (ADAPTED FROM OLD getResponse) ---
-  const handleSendMessage = async (customValue = value) => {
+  // --- Main function to send message and get response ---
+  // This is the primary, corrected, and memoized version.
+  const handleSendMessage = useCallback(async (customValue = value) => {
     const trimmedMessage = customValue.trim();
     if (!trimmedMessage) {
       toast.error("Please enter a question!");
       return;
     }
 
-    setLoading(true); // Show loading indicator
+    setLoading(true);
     setValue(""); // Clear input field
 
-    // Optimistic UI update for user's message
     const optimisticUserMessage = {
       role: "user",
       parts: [trimmedMessage],
@@ -129,27 +57,23 @@ const ChatPage = () => { // Renamed from CardesChat if this is the new standard 
       timestamp: new Date().toISOString(),
     };
     setChatHistory((prevHistory) => [...prevHistory, optimisticUserMessage]);
-    setMessageSent(true); // To show "Clear Chat" button
+    setMessageSent(true);
 
     try {
       let sessionToUse = currentSessionId;
 
       if (!sessionToUse) {
-        // If no current session, create one
-        const newSessionResponse = await createChatSession(); // Backend will handle title if not provided
+        const newSessionResponse = await createChatSession();
         sessionToUse = newSessionResponse.data.id;
         setCurrentSessionId(sessionToUse);
-        // Update URL to reflect the new session without full page reload
         navigate(`/chat/${sessionToUse}`, { replace: true });
       }
 
-      // Post message to the (potentially new) session
       const response = await postMessageToSession(sessionToUse, trimmedMessage);
       const { user_message, ai_message } = response.data;
 
-      // Update chat history with confirmed messages from backend
       setChatHistory((prevHistory) => [
-        ...prevHistory.filter((msg) => msg.id !== optimisticUserMessage.id), // Remove optimistic
+        ...prevHistory.filter((msg) => msg.id !== optimisticUserMessage.id),
         { role: user_message.sender, parts: [user_message.content], id: user_message.id, timestamp: user_message.timestamp },
         { role: ai_message.sender, parts: [ai_message.content], id: ai_message.id, timestamp: ai_message.timestamp },
       ]);
@@ -157,59 +81,118 @@ const ChatPage = () => { // Renamed from CardesChat if this is the new standard 
     } catch (error) {
       console.error("Fetching error: ", error);
       toast.error("Something went wrong, please try again.");
-      // Revert optimistic update on error
-      setChatHistory((prevHistory) =>
-        prevHistory.filter((msg) => msg.id !== optimisticUserMessage.id)
-      );
-      // If the optimistic message was the only one, reset messageSent
-      if (chatHistory.length === 1 && chatHistory[0].id === optimisticUserMessage.id) {
-        setMessageSent(false);
-      }
+      
+      // Revert optimistic update and manage messageSent based on the resulting history
+      setChatHistory(prevHistory => {
+        const newHistory = prevHistory.filter(msg => msg.id !== optimisticUserMessage.id);
+        if (newHistory.length === 0) {
+          setMessageSent(false); // If history becomes empty, set messageSent to false
+        }
+        return newHistory;
+      });
     } finally {
-      setLoading(false); // Hide loading indicator
+      setLoading(false);
     }
+  }, [value, currentSessionId, navigate]); // Dependencies for handleSendMessage
+
+
+  // --- Speech Recognition ---
+  const handleSpeechRecognition = useCallback((phrases) => {
+    const speech = phrases[0];
+    setValue(speech);
+    if (speech.trim()) {
+      handleSendMessage(speech.trim()); // Calls the single, memoized handleSendMessage
+    }
+  }, [handleSendMessage]); // Depends on the memoized handleSendMessage
+
+  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
+
+
+  // --- Load chat data based on sessionId ---
+  useEffect(() => {
+    if (routeSessionId) {
+      setLoading(true); // Indicate loading of history
+      setChatHistory([]); // Clear previous chat messages
+      fetchChatSessionDetails(routeSessionId)
+        .then((response) => {
+          setCurrentSessionId(response.data.id);
+          setChatHistory(
+            response.data.messages.map((msg) => ({
+              role: msg.sender,
+              parts: [msg.content],
+              id: msg.id,
+              timestamp: msg.timestamp,
+            }))
+          );
+          setMessageSent(response.data.messages.length > 0);
+        })
+        .catch((err) => {
+          console.error("Failed to fetch chat details:", err);
+          toast.error("Could not load chat. Starting a new chat.");
+          // Reset to a new chat state if loading fails
+          setCurrentSessionId(null);
+          setChatHistory([]);
+          setValue(""); // Also clear input value for a truly new chat
+          setMessageSent(false);
+          navigate("/chat", { replace: true }); // Navigate to base /chat URL
+        })
+        .finally(() => {
+          setLoading(false); // Done loading history (or attempting to)
+        });
+    } else {
+      // No routeSessionId: this is a new chat. Reset all relevant state.
+      setCurrentSessionId(null);
+      setChatHistory([]);
+      setValue("");
+      setMessageSent(false);
+      // No setLoading(true/false) here as it's an initial state, not an async operation
+    }
+  }, [routeSessionId, navigate]); // Effect depends on routeSessionId and navigate
+
+
+  // --- "Surprise me" button logic ---
+  const surprise = () => {
+    if (loading) return;
+    const randomValue =
+      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
+    setValue(randomValue);
   };
 
-  // --- Tool submit logic (adapted from your old code) ---
+  // --- Tool submit logic ---
   const handleTool3Submit = (displayMessage, internalQuery) => {
     if (loading) return;
     setIsToolsOpen(false);
-    // Optimistically add the display message for the tool to the chat
     const optimisticToolMessage = {
-      role: "user", // Or a custom role if you want to style tool interactions differently
+      role: "user", // Or a custom role for styling if needed
       parts: [displayMessage],
       id: `temp-tool-${Date.now()}`,
       timestamp: new Date().toISOString(),
     };
     setChatHistory((prevHistory) => [...prevHistory, optimisticToolMessage]);
     setMessageSent(true);
-
-    // Send the internal query to the AI using the main sendMessage flow
-    handleSendMessage(internalQuery);
+    handleSendMessage(internalQuery); // Calls the single, memoized handleSendMessage
   };
 
-  // --- Send on Enter (from your old code) ---
+  // --- Send on Enter ---
   const handleKeyPress = (event) => {
-    if (event.key === "Enter" && !event.shiftKey && !loading) { // Added !event.shiftKey to allow multiline with Shift+Enter if input becomes textarea
-      event.preventDefault(); // Prevent default form submission if it's in a form
-      handleSendMessage();
+    if (event.key === "Enter" && !event.shiftKey && !loading) {
+      event.preventDefault();
+      handleSendMessage(); // Calls the single, memoized handleSendMessage
     }
   };
 
-  // --- Clear the chat (adapted from your old code) ---
-  // This now means starting a "new chat" interface, not deleting from backend.
+  // --- Clear the chat ---
   const clear = () => {
     setValue("");
     setChatHistory([]);
-    setCurrentSessionId(null); // Reset current session ID
+    setCurrentSessionId(null); // Critical to reset for a new session logic
     setMessageSent(false);
     toast.success("Ready for a new chat!");
-    // Navigate to the base /chat URL to signify a new, unsaved chat state
-    if (routeSessionId) { // Only navigate if we were on a specific chat URL
+    // If user was in a specific chat, navigate to the generic /chat to signify "new"
+    if (routeSessionId) {
         navigate("/chat", { replace: true });
     }
   };
-
 
   // --- JSX Structure (FROM YOUR OLD CODE) ---
   return (
@@ -221,13 +204,13 @@ const ChatPage = () => { // Renamed from CardesChat if this is the new standard 
         <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg flex flex-col space-y-2">
           {chatHistory.map((chatItem) => (
             <ChatItem
-              key={chatItem.id} // Will be temp ID then backend ID
+              key={chatItem.id}
               chatItem={chatItem}
               handleTextToSpeech={handleTextToSpeech}
               updateMessage={() => {}}
             />
           ))}
-          {/* This is your original loading indicator style */}
+          {/* This is your original loading indicator style, shows when AI is responding or history is loading */}
           {loading && (
             <div className="text-center text-gray-500 animate-pulse">
               Loading...
@@ -243,7 +226,7 @@ const ChatPage = () => { // Renamed from CardesChat if this is the new standard 
             placeholder="Message Cardes..."
             onChange={(e) => setValue(e.target.value)}
             onKeyPress={handleKeyPress}
-            disabled={loading} // Disable input while AI is responding
+            disabled={loading}
             className="w-full border border-gray-300 rounded-full p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-70"
           />
 
@@ -276,14 +259,13 @@ const ChatPage = () => { // Renamed from CardesChat if this is the new standard 
 
             <div className="flex space-x-2">
               <button
-                onClick={() => handleSendMessage()}
+                onClick={() => handleSendMessage()} // Calls the single, memoized handleSendMessage
                 disabled={!value.trim() || loading}
                 className="bg-primary text-white px-4 py-2 rounded-full hover:bg-accent disabled:opacity-70"
               >
                 <FiSend className="inline" /> Send
               </button>
-              {/* "Clear Chat" button from your old code, uses adapted clear function */}
-              {messageSent && ( // Show if any message has been sent in the current view
+              {messageSent && (
                 <button
                   onClick={clear}
                   disabled={loading}
@@ -307,4 +289,4 @@ const ChatPage = () => { // Renamed from CardesChat if this is the new standard 
   );
 };
 
-export default ChatPage; // Or CardesChat, depending on your file naming convention
+export default ChatPage;
