@@ -122,7 +122,7 @@ const CardSetsPage = () => {
                     className="flex-1 bg-primary text-white px-3 py-2 rounded-lg hover:bg-highlight transition"
                   >
                     Practice
-                  </button>
+                  </button> 
                 </div>
               </div>
             ))}
