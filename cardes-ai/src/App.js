@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import CardesChat from "./pages/ChatPage";
+import ChatSessionsListPage from "./pages/ChatSessionsListPage"; // Create this new page
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import CategoryPage from "./pages/CategoryPage";
@@ -23,12 +24,19 @@ import WritingReviewPage from "./pages/PracticeScreens/WritingReviewPage";
 const PrivateRoute = ({ authToken, children }) => {
   return authToken ? children : <Navigate to="/" replace />;
 };
-
 function App() {
   const [authToken, setAuthToken] = useState(localStorage.getItem("accessToken"));
 
   useEffect(() => {
     loadTheme();
+    // Optional: Add a listener to update authToken if it changes in another tab/window
+    const handleStorageChange = () => {
+      setAuthToken(localStorage.getItem("accessToken"));
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
 
   return (
@@ -37,47 +45,43 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
+        <Route path="/login" element={<Login setAuthToken={setAuthToken} />} /> {/* Pass setAuthToken */}
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<AboutPage />} />
 
         {/* Protected Routes */}
         <Route
-          path="/*"
+          path="/*" // This catch-all needs to be more specific or ChatLayout needs to handle 404s
           element={
             <PrivateRoute authToken={authToken}>
               <ChatLayout>
-                <Routes>
-                  <Route index element={<CategoryPage />} />
+                <Routes> {/* Nested Routes within ChatLayout */}
+                  <Route index element={<CategoryPage />} /> {/* Default for authenticated users */}
                   <Route path="categories" element={<CategoryPage />} />
                   <Route path="categories/:id" element={<CardSetsPage />} />
                   <Route path="categories/:id/sets/:setId" element={<CardsPage />} />
-                  <Route path="chat" element={<CardesChat />} />
+
+                  {/* New Chat History Routes */}
+                  <Route path="chats" element={<ChatSessionsListPage />} /> {/* List all chats */}
+                  <Route path="chat/:sessionId" element={<CardesChat />} /> {/* Specific existing chat */}
+                  <Route path="chat" element={<CardesChat />} /> {/* New chat (no sessionId yet) */}
+
                   <Route path="settings" element={<SettingsPage />} />
                   <Route path="journey" element={<JourneyPage />} />
-
-                  {/* 
-                      1) Show the user the practice mode selection
-                         upon /practice/:id
-                  */}
                   <Route path="practice/:id" element={<PracticeModeSelection />} />
-
-                  {/* 
-                      2) Then define sub-routes for each practice mode
-                         /practice/:id/simple
-                         /practice/:id/multiple
-                         /practice/:id/match
-                         /practice/:id/writing
-                  */}
                   <Route path="practice/:id/simple" element={<SimpleReviewPage />} />
                   <Route path="practice/:id/multiple" element={<MultipleAnswersPage />} />
                   <Route path="practice/:id/match" element={<MatchCardsPage />} />
                   <Route path="practice/:id/writing" element={<WritingReviewPage />} />
+
+                   {/* Consider adding a 404 route within ChatLayout as well */}
+                   {/* <Route path="*" element={<NotFoundPageInsideLayout />} /> */}
                 </Routes>
               </ChatLayout>
             </PrivateRoute>
           }
         />
+        {/* <Route path="*" element={<NotFoundPagePublic />} />  A general 404 page */}
       </Routes>
     </Router>
   );

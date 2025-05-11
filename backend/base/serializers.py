@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Category, CardSet, Card, Message
+from .models import Category, CardSet,Chat, Card, Message
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
@@ -39,7 +39,20 @@ class MessageSerializer(serializers.ModelSerializer):
         model = Message
         fields = ["id", "sender", "content", "timestamp"]
 
+class ChatSessionListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chat
+        fields = ['id', 'title', 'user', 'created_at', 'updated_at']
+        read_only_fields = ['user'] # User will be set from request
 
+class ChatSessionDetailSerializer(serializers.ModelSerializer):
+    messages = MessageSerializer(many=True, read_only=True) # Nested messages
+
+    class Meta:
+        model = Chat
+        fields = ['id', 'title', 'user', 'created_at', 'updated_at', 'messages']
+        read_only_fields = ['user']
+        
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True, required=True, style={"input_type": "password"}

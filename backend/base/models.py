@@ -32,12 +32,43 @@ class Card(models.Model):
     def __str__(self):
         return self.term
 
-class Chat(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Chat(models.Model): # This will be our "Chat Session"
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="chats") # related_name is good
+    title = models.CharField(max_length=100, blank=True, null=True) # For displaying on /chats page
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True) # To sort by recent activity
+
+    def __str__(self):
+        return self.title or f"Chat {self.id} with {self.user.username}"
+
+    def save(self, *args, **kwargs):
+        # Auto-generate a title from the first message if not set
+        if not self.title and self.pk: # Check if instance is saved and has messages
+            first_message = self.messages.order_by('timestamp').first()
+            if first_message:
+                # Take first 5-7 words of the first USER message as title
+                if first_message.sender == 'user':
+                     self.title = ' '.join(first_message.content.split()[:7])
+                     if len(first_message.content.split()) > 7:
+                        self.title += "..."
+        super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['-updated_at'] # Show most recently updated chats first
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, related_name='messages', on_delete=models.CASCADE)
-    sender = models.CharField(max_length=50)  # 'user' or 'system'
+    # Ensure sender choices are clear for user vs. AI
+    SENDER_CHOICES = [
+        ('user', 'User'),
+        ('ai', 'AI'),
+    ]
+    sender = models.CharField(max_length=10, choices=SENDER_CHOICES) # Changed max_length
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.get_sender_display()} in Chat {self.chat.id}: {self.content[:30]}"
+
+    class Meta:
+        ordering = ['timestamp'] # Messages within a chat should be chronological

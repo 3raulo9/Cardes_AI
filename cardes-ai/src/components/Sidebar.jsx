@@ -4,7 +4,7 @@ import {
   FiSettings,
   FiLogOut,
   FiLayers,
-  FiMessageSquare,
+  FiMessageSquare, // Keep this icon for "View Chats"
   FiCompass,
   FiBookOpen,
   FiUsers,
@@ -18,12 +18,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const handleNavigation = (path) => {
     navigate(path);
-    toggleSidebar(); // Close sidebar after clicking
+    if (toggleSidebar) { // Check if toggleSidebar is provided before calling
+      toggleSidebar(); // Close sidebar after clicking
+    }
   };
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken"); // Clear token
-    window.location.href = "/"; // Redirect to login page
+    // Instead of full page reload, use navigate for SPA behavior if / is a React route
+    navigate("/"); // Redirect to landing/login page handled by React Router
+    // If "/" truly is outside your React app and requires a full reload, then:
+    // window.location.href = "/";
   };
 
   return (
@@ -46,7 +51,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]"></div>
           {/* Brand Name & Fireworks */}
           <button
-            onClick={() => navigate("/")}
+            onClick={() => handleNavigation("/")} // Use handleNavigation for consistency
             onMouseEnter={() => setShowFireworks(true)}
             onMouseLeave={() => setShowFireworks(false)}
             className="relative text-2xl font-bold tracking-wide focus:outline-none"
@@ -75,22 +80,23 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             className="flex items-center gap-3 w-full py-3 px-5
                        bg-primary hover:bg-accent
                        transition rounded-xl text-lg font-semibold shadow-md"
-            onClick={() => handleNavigation("/chat")}
+            onClick={() => handleNavigation("/chat")} // Navigates to new chat interface
           >
             <FiPlus className="text-xl" />
             New Chat
           </button>
 
-          {/* View Chats */}
+          {/* === MODIFIED View Chats Button === */}
           <button
             className="flex items-center gap-3 w-full py-3 px-5
                        bg-highlight hover:bg-gray-300
                        transition rounded-xl text-lg font-semibold shadow-md text-black mt-4"
-            onClick={() => alert("Chat history feature coming soon! 📜")}
+            onClick={() => handleNavigation("/chats")} // Changed from alert to navigate
           >
             <FiMessageSquare className="text-xl" />
             View Chats
           </button>
+          {/* ================================ */}
 
           {/* NAV LINKS */}
           <ul className="mt-6 space-y-4">
@@ -155,7 +161,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </div>
 
       {/* DARK OVERLAY (Mobile Only) */}
-      {isOpen && (
+      {isOpen && toggleSidebar && ( // Check if toggleSidebar is provided
         <div
           className="fixed inset-0 bg-black opacity-50 z-40 md:hidden transition-opacity duration-300"
           onClick={toggleSidebar}
