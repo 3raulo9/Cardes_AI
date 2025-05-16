@@ -5,16 +5,47 @@ import {
   fetchChatSessionDetails,
   postMessageToSession,
   createChatSession,
-} from "../services/chatApiService"; // Ensure this path is correct
-import ChatItem from "../components/ChatItem"; // Ensure this path is correct
-import ToolsWindow from "../components/ToolsWindow"; // Ensure this path is correct
-import useSpeechRecognition from "../hooks/useSpeechRecognition"; // Ensure this path is correct
+} from "../services/chatApiService";
+import ChatItem from "../components/ChatItem";
+import ToolsWindow from "../components/ToolsWindow";
+import useSpeechRecognition from "../hooks/useSpeechRecognition";
 import { FiMic, FiMicOff, FiSend, FiTool } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import surpriseOptions from "../utils/surpriseData"; // Ensure this path is correct
-import handleTextToSpeech from "../utils/handleTextToSpeech"; // Ensure this path is correct
-import TutorialOverlay from "../components/TutorialOverlay"; // Ensure this path is correct
+import surpriseOptions from "../utils/surpriseData";
+import handleTextToSpeech from "../utils/handleTextToSpeech";
+import TutorialOverlay from "../components/TutorialOverlay";
+
+// ────────────────────────────────────────────────────────────
+// Helper → explodes a caret-delimited AI response into many
+// ChatItem-shaped objects so each sentence/translation gets
+// its own bubble (with copy / TTS / add-to-deck etc.).
+// ────────────────────────────────────────────────────────────
+const explodeByCaret = (raw) =>
+  raw
+    .split("^")
+    .map((chunk) => chunk.trim())
+    .filter(Boolean)
+    .flatMap((chunk, idx, arr) =>
+      idx % 2 === 0
+        ? [
+            // original sentence – show icon
+            {
+              role: "model",
+              parts: [chunk],
+              hideIcon: false,
+            },
+          ]
+        : [
+            // translation – no icon, but keep “term” (=preceding French)
+            {
+              role: "model",
+              parts: [chunk],
+              term: arr[idx - 1],
+              hideIcon: true,
+            },
+          ]
+    );
 
 const ChatPage = () => {
   const { sessionId: routeSessionId } = useParams();
@@ -28,204 +59,193 @@ const ChatPage = () => {
   const [currentSessionId, setCurrentSessionId] = useState(null);
   const messagesEndRef = useRef(null);
 
-  // --- Scroll to bottom ---
+  // ── Scroll to bottom whenever chat updates ──
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  // --- useEffect for scrolling ---
-  useEffect(() => {
-    scrollToBottom();
-  }, [chatHistory, scrollToBottom]); // scrollToBottom is stable, chatHistory triggers scroll
+  useEffect(scrollToBottom, [chatHistory, scrollToBottom]);
 
-  // --- Main function to send message and get response ---
-  // This is the primary, corrected, and memoized version.
-  const handleSendMessage = useCallback(async (customValue = value) => {
-    const trimmedMessage = customValue.trim();
-    if (!trimmedMessage) {
-      toast.error("Please enter a question!");
-      return;
-    }
-
-    setLoading(true);
-    setValue(""); // Clear input field
-
-    const optimisticUserMessage = {
-      role: "user",
-      parts: [trimmedMessage],
-      id: `temp-user-${Date.now()}`,
-      timestamp: new Date().toISOString(),
-    };
-    setChatHistory((prevHistory) => [...prevHistory, optimisticUserMessage]);
-    setMessageSent(true);
-
-    try {
-      let sessionToUse = currentSessionId;
-
-      if (!sessionToUse) {
-        const newSessionResponse = await createChatSession();
-        sessionToUse = newSessionResponse.data.id;
-        setCurrentSessionId(sessionToUse);
-        navigate(`/chat/${sessionToUse}`, { replace: true });
+  // ───────────────────────────────────────────
+  // MAIN SEND / RECEIVE LOGIC
+  // ───────────────────────────────────────────
+  const handleSendMessage = useCallback(
+    async (customValue = value) => {
+      const trimmedMessage = customValue.trim();
+      if (!trimmedMessage) {
+        toast.error("Please enter a question!");
+        return;
       }
 
-      const response = await postMessageToSession(sessionToUse, trimmedMessage);
-      const { user_message, ai_message } = response.data;
+      setLoading(true);
+      setValue("");
 
-      setChatHistory((prevHistory) => [
-        ...prevHistory.filter((msg) => msg.id !== optimisticUserMessage.id),
-        { role: user_message.sender, parts: [user_message.content], id: user_message.id, timestamp: user_message.timestamp },
-        { role: ai_message.sender, parts: [ai_message.content], id: ai_message.id, timestamp: ai_message.timestamp },
-      ]);
+      // optimistic user bubble
+      const optimisticUser = {
+        role: "user",
+        parts: [trimmedMessage],
+        id: `temp-user-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+      };
+      setChatHistory((h) => [...h, optimisticUser]);
+      setMessageSent(true);
 
-    } catch (error) {
-      console.error("Fetching error: ", error);
-      toast.error("Something went wrong, please try again.");
-      
-      // Revert optimistic update and manage messageSent based on the resulting history
-      setChatHistory(prevHistory => {
-        const newHistory = prevHistory.filter(msg => msg.id !== optimisticUserMessage.id);
-        if (newHistory.length === 0) {
-          setMessageSent(false); // If history becomes empty, set messageSent to false
+      try {
+        // ensure we have a session
+        let session = currentSessionId;
+        if (!session) {
+          const newSession = await createChatSession();
+          session = newSession.data.id;
+          setCurrentSessionId(session);
+          navigate(`/chat/${session}`, { replace: true });
         }
-        return newHistory;
-      });
-    } finally {
-      setLoading(false);
-    }
-  }, [value, currentSessionId, navigate]); // Dependencies for handleSendMessage
 
+        // talk to the backend
+        const res = await postMessageToSession(session, trimmedMessage);
+        const { user_message, ai_message } = res.data;
 
-  // --- Speech Recognition ---
-  const handleSpeechRecognition = useCallback((phrases) => {
-    const speech = phrases[0];
-    setValue(speech);
-    if (speech.trim()) {
-      handleSendMessage(speech.trim()); // Calls the single, memoized handleSendMessage
-    }
-  }, [handleSendMessage]); // Depends on the memoized handleSendMessage
+        // convert AI message to one or many chunks
+        const aiChunks = ai_message.content.includes("^")
+          ? explodeByCaret(ai_message.content)
+          : [
+              {
+                role: ai_message.sender,
+                parts: [ai_message.content],
+                hideIcon: false,
+              },
+            ];
 
-  const { isListening, startListening, stopListening } = useSpeechRecognition(handleSpeechRecognition);
+        // attach stable ids so React is happy
+        const stampedChunks = aiChunks.map((c, i) => ({
+          ...c,
+          id: `${ai_message.id}-${i}`,
+          timestamp: ai_message.timestamp,
+        }));
 
+        // replace optimistic + add real messages
+        setChatHistory((h) => [
+          ...h.filter((m) => m.id !== optimisticUser.id),
+          {
+            role: user_message.sender,
+            parts: [user_message.content],
+            id: user_message.id,
+            timestamp: user_message.timestamp,
+          },
+          ...stampedChunks,
+        ]);
+      } catch (err) {
+        console.error(err);
+        toast.error("Something went wrong, please try again.");
+        setChatHistory((h) => h.filter((m) => m.id !== optimisticUser.id));
+        if (chatHistory.length === 0) setMessageSent(false);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [value, currentSessionId, navigate, chatHistory]
+  );
 
-  // --- Load chat data based on sessionId ---
+  // ── Speech recognition hook ──
+  const handleSpeechRecognition = useCallback(
+    (phrases) => {
+      const speech = phrases[0];
+      setValue(speech);
+      if (speech.trim()) handleSendMessage(speech.trim());
+    },
+    [handleSendMessage]
+  );
+  const { isListening, startListening, stopListening } =
+    useSpeechRecognition(handleSpeechRecognition);
+
+  // ── Load existing session (route param) ──
   useEffect(() => {
-    if (routeSessionId) {
-      setLoading(true); // Indicate loading of history
-      setChatHistory([]); // Clear previous chat messages
-      fetchChatSessionDetails(routeSessionId)
-        .then((response) => {
-          setCurrentSessionId(response.data.id);
-          setChatHistory(
-            response.data.messages.map((msg) => ({
-              role: msg.sender,
-              parts: [msg.content],
-              id: msg.id,
-              timestamp: msg.timestamp,
-            }))
-          );
-          setMessageSent(response.data.messages.length > 0);
-        })
-        .catch((err) => {
-          console.error("Failed to fetch chat details:", err);
-          toast.error("Could not load chat. Starting a new chat.");
-          // Reset to a new chat state if loading fails
-          setCurrentSessionId(null);
-          setChatHistory([]);
-          setValue(""); // Also clear input value for a truly new chat
-          setMessageSent(false);
-          navigate("/chat", { replace: true }); // Navigate to base /chat URL
-        })
-        .finally(() => {
-          setLoading(false); // Done loading history (or attempting to)
-        });
-    } else {
-      // No routeSessionId: this is a new chat. Reset all relevant state.
+    if (!routeSessionId) {
+      // fresh chat
       setCurrentSessionId(null);
       setChatHistory([]);
       setValue("");
       setMessageSent(false);
-      // No setLoading(true/false) here as it's an initial state, not an async operation
+      return;
     }
-  }, [routeSessionId, navigate]); // Effect depends on routeSessionId and navigate
 
+    setLoading(true);
+    fetchChatSessionDetails(routeSessionId)
+      .then(({ data }) => {
+        setCurrentSessionId(data.id);
+        setChatHistory(
+          data.messages.map((m) => ({
+            role: m.sender,
+            parts: [m.content],
+            id: m.id,
+            timestamp: m.timestamp,
+          }))
+        );
+        setMessageSent(data.messages.length > 0);
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Could not load chat. Starting new chat.");
+        navigate("/chat", { replace: true });
+      })
+      .finally(() => setLoading(false));
+  }, [routeSessionId, navigate]);
 
-  // --- "Surprise me" button logic ---
+  // ── Misc helpers ──
   const surprise = () => {
-    if (loading) return;
-    const randomValue =
-      surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)];
-    setValue(randomValue);
-  };
-
-  // --- Tool submit logic ---
-  const handleTool3Submit = (displayMessage, internalQuery) => {
-    if (loading) return;
-    setIsToolsOpen(false);
-    const optimisticToolMessage = {
-      role: "user", // Or a custom role for styling if needed
-      parts: [displayMessage],
-      id: `temp-tool-${Date.now()}`,
-      timestamp: new Date().toISOString(),
-    };
-    setChatHistory((prevHistory) => [...prevHistory, optimisticToolMessage]);
-    setMessageSent(true);
-    handleSendMessage(internalQuery); // Calls the single, memoized handleSendMessage
-  };
-
-  // --- Send on Enter ---
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter" && !event.shiftKey && !loading) {
-      event.preventDefault();
-      handleSendMessage(); // Calls the single, memoized handleSendMessage
+    if (!loading) {
+      setValue(
+        surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)]
+      );
     }
   };
 
-  // --- Clear the chat ---
   const clear = () => {
     setValue("");
     setChatHistory([]);
-    setCurrentSessionId(null); // Critical to reset for a new session logic
+    setCurrentSessionId(null);
     setMessageSent(false);
     toast.success("Ready for a new chat!");
-    // If user was in a specific chat, navigate to the generic /chat to signify "new"
-    if (routeSessionId) {
-        navigate("/chat", { replace: true });
-    }
+    if (routeSessionId) navigate("/chat", { replace: true });
   };
 
-  // --- JSX Structure (FROM YOUR OLD CODE) ---
+  // ───────────────────────────────────────────
+  // JSX
+  // ───────────────────────────────────────────
   return (
     <div className="flex h-screen bg-primary">
       <TutorialOverlay tutorialID="chatbot" />
 
       <div className="flex-1 relative bg-gradient-to-r from-primary via-[-10%] via-darkAccent p-4 sm:p-6">
-        {/* Chat messages area */}
+        {/* CHAT AREA */}
         <div className="h-[60vh] md:h-[70vh] overflow-y-auto p-4 bg-white rounded-xl shadow-lg flex flex-col space-y-2">
-          {chatHistory.map((chatItem) => (
+          {chatHistory.map((item) => (
             <ChatItem
-              key={chatItem.id}
-              chatItem={chatItem}
+              key={item.id}
+              chatItem={item}
               handleTextToSpeech={handleTextToSpeech}
               updateMessage={() => {}}
             />
           ))}
-          {/* This is your original loading indicator style, shows when AI is responding or history is loading */}
           {loading && (
             <div className="text-center text-gray-500 animate-pulse">
-              Loading...
+              Loading…
             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input area + Buttons */}
+        {/* INPUT + BUTTONS */}
         <div className="mt-6 space-y-4">
           <input
             value={value}
-            placeholder="Message Cardes..."
+            placeholder="Message Cardes…"
             onChange={(e) => setValue(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyPress={(e) => {
+              if (e.key === "Enter" && !e.shiftKey && !loading) {
+                e.preventDefault();
+                handleSendMessage();
+              }
+            }}
             disabled={loading}
             className="w-full border border-gray-300 rounded-full p-4 text-lg focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-70"
           />
@@ -239,15 +259,19 @@ const ChatPage = () => {
               >
                 Surprise Me
               </button>
+
               <button
                 className={`p-2 rounded-full ${
                   isListening ? "bg-red-500" : "bg-secondary"
                 } text-white disabled:opacity-70`}
-                onClick={() => (isListening ? stopListening() : startListening())}
+                onClick={() =>
+                  isListening ? stopListening() : startListening()
+                }
                 disabled={loading}
               >
                 {isListening ? <FiMicOff /> : <FiMic />}
               </button>
+
               <button
                 className="p-2 bg-secondary text-white rounded-full hover:bg-accent transition duration-200 disabled:opacity-70"
                 onClick={() => setIsToolsOpen(true)}
@@ -259,12 +283,13 @@ const ChatPage = () => {
 
             <div className="flex space-x-2">
               <button
-                onClick={() => handleSendMessage()} // Calls the single, memoized handleSendMessage
+                onClick={() => handleSendMessage()}
                 disabled={!value.trim() || loading}
                 className="bg-primary text-white px-4 py-2 rounded-full hover:bg-accent disabled:opacity-70"
               >
                 <FiSend className="inline" /> Send
               </button>
+
               {messageSent && (
                 <button
                   onClick={clear}
@@ -278,10 +303,23 @@ const ChatPage = () => {
           </div>
         </div>
 
+        {/* TOOLS WINDOW + TOASTS */}
         <ToolsWindow
           isOpen={isToolsOpen}
           onClose={() => setIsToolsOpen(false)}
-          onTool3Submit={handleTool3Submit}
+          onTool3Submit={(displayMessage, internalQuery) => {
+            if (loading) return;
+            setIsToolsOpen(false);
+            const optimisticTool = {
+              role: "user",
+              parts: [displayMessage],
+              id: `temp-tool-${Date.now()}`,
+              timestamp: new Date().toISOString(),
+            };
+            setChatHistory((h) => [...h, optimisticTool]);
+            setMessageSent(true);
+            handleSendMessage(internalQuery);
+          }}
         />
         <ToastContainer theme="colored" position="bottom-right" autoClose={3000} />
       </div>
