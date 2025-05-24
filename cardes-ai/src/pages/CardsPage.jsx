@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useParams, useNavigate } from "react-router-dom";
-import { FiPlus, FiArrowLeft } from "react-icons/fi";
+import { FiPlus, FiArrowLeft, FiEdit, FiTrash2 } from "react-icons/fi";
 import { SlCopyButton, SlTooltip } from "@shoelace-style/shoelace/dist/react";
 import { SpeakerWaveIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 import handleTextToSpeech from "../utils/handleTextToSpeech";
@@ -14,15 +14,12 @@ const CardsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // First, check if any categories exist
     axiosInstance
       .get("/api/categories/")
       .then((res) => {
         if (res.data.length === 0) {
-          // If no categories exist, redirect to the /categories page
           navigate("/categories");
         } else {
-          // If categories exist, fetch the cards for the current set
           if (!setId) return;
           axiosInstance
             .get(`/api/cards/?card_set=${setId}`)
@@ -53,9 +50,38 @@ const CardsPage = () => {
         definition,
         card_set: setId,
       });
-      setCards([...cards, response.data]); // Update UI
+      setCards([...cards, response.data]);
     } catch (err) {
       console.error("Error adding card:", err.response?.data || err.message);
+    }
+  };
+
+  const editCard = async (card) => {
+    const newTerm = prompt("Edit term:", card.term);
+    if (!newTerm) return;
+    const newDefinition = prompt("Edit definition:", card.definition);
+    if (!newDefinition) return;
+
+    try {
+      const response = await axiosInstance.patch(`/api/cards/${card.id}/`, {
+        term: newTerm,
+        definition: newDefinition,
+      });
+      setCards(
+        cards.map((c) => (c.id === card.id ? { ...c, ...response.data } : c))
+      );
+    } catch (err) {
+      console.error("Error editing card:", err.response?.data || err.message);
+    }
+  };
+
+  const deleteCard = async (cardId) => {
+    if (!window.confirm("Delete this card?")) return;
+    try {
+      await axiosInstance.delete(`/api/cards/${cardId}/`);
+      setCards(cards.filter((c) => c.id !== cardId));
+    } catch (err) {
+      console.error("Error deleting card:", err.response?.data || err.message);
     }
   };
 
@@ -95,7 +121,7 @@ const CardsPage = () => {
             {cards.map((card) => (
               <div
                 key={card.id}
-                className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col gap-1"
+                className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col gap-2"
               >
                 {/* Term Row */}
                 <div className="flex items-center gap-2">
@@ -123,6 +149,7 @@ const CardsPage = () => {
                     </button>
                   </SlTooltip>
                 </div>
+
                 {/* Definition Row */}
                 <div className="flex items-center gap-2">
                   <strong>Definition:</strong>
@@ -148,6 +175,24 @@ const CardsPage = () => {
                       <ArrowDownTrayIcon className="w-5 h-5 text-white" />
                     </button>
                   </SlTooltip>
+                </div>
+
+                {/* Action Buttons Row */}
+                <div className="flex justify-end gap-2 pt-2">
+                  <button
+                    onClick={() => editCard(card)}
+                    className="p-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition"
+                    aria-label="Edit"
+                  >
+                    <FiEdit />
+                  </button>
+                  <button
+                    onClick={() => deleteCard(card.id)}
+                    className="p-2 bg-red-500 hover:bg-red-700 text-white rounded-lg transition"
+                    aria-label="Delete"
+                  >
+                    <FiTrash2 />
+                  </button>
                 </div>
               </div>
             ))}

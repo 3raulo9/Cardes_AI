@@ -42,6 +42,27 @@ const CategoryPage = () => {
     }
   };
 
+  // Edit a category
+  const editCategory = async (category) => {
+    const newName = prompt("Edit category name:", category.name);
+    if (!newName || newName === category.name) return;
+
+    try {
+      const response = await axiosInstance.patch(`/api/categories/${category.id}/`, {
+        name: newName,
+      });
+
+      setCategories(
+        categories.map((cat) =>
+          cat.id === category.id ? { ...cat, name: response.data.name } : cat
+        )
+      );
+    } catch (error) {
+      console.error("Error updating category:", error.response?.data || error.message);
+      alert(`Error: ${JSON.stringify(error.response?.data)}`);
+    }
+  };
+
   // Delete a category
   const deleteCategory = async (categoryId) => {
     const confirmDelete = window.confirm(
@@ -99,14 +120,25 @@ const CategoryPage = () => {
                   {category.name}
                 </strong>
 
-                {/* Delete button */}
-                <button
-                  onClick={() => deleteCategory(category.id)}
-                  className="flex items-center justify-center bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded-md transition mt-2"
-                >
-                  <FiTrash2 className="mr-2" />
-                  Delete
-                </button>
+                {/* Action buttons */}
+                <div className="flex space-x-2 mt-2">
+                  {/* Edit button */}
+                  <button
+                    onClick={() => editCategory(category)}
+                    className="flex-1 flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded-md transition"
+                  >
+                    ✏️ Edit
+                  </button>
+
+                  {/* Delete button */}
+                  <button
+                    onClick={() => deleteCategory(category.id)}
+                    className="flex-1 flex items-center justify-center bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded-md transition"
+                  >
+                    <FiTrash2 className="mr-2" />
+                    Delete
+                  </button>
+                </div>
               </div>
             ))}
           </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useParams, useNavigate } from "react-router-dom";
-import { FiPlus, FiArrowLeft } from "react-icons/fi";
+import { FiPlus, FiArrowLeft, FiTrash2 } from "react-icons/fi";
 import Loader from "../components/Loader";
 
 const CardSetsPage = () => {
@@ -11,15 +11,12 @@ const CardSetsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // First, check if any categories exist
     axiosInstance
       .get("/api/categories/")
       .then((res) => {
         if (res.data.length === 0) {
-          // If no categories exist, redirect to /categories
           navigate("/categories");
         } else {
-          // If categories exist, fetch the card sets filtered by category
           axiosInstance
             .get("/api/cardsets/")
             .then((res) => {
@@ -50,15 +47,45 @@ const CardSetsPage = () => {
         name: name,
         category: parseInt(id),
       });
-      setSets([...sets, response.data]); // Update UI with new set
+      setSets([...sets, response.data]);
     } catch (error) {
       console.error("Error creating set:", error.response?.data || error.message);
       alert(`Error: ${JSON.stringify(error.response?.data)}`);
     }
   };
 
+  const editSet = async (set) => {
+    const newName = prompt("Edit set name:", set.name);
+    if (!newName || newName === set.name) return;
+
+    try {
+      const response = await axiosInstance.patch(`/api/cardsets/${set.id}/`, {
+        name: newName,
+      });
+
+      setSets(
+        sets.map((s) => (s.id === set.id ? { ...s, name: response.data.name } : s))
+      );
+    } catch (error) {
+      console.error("Error updating set:", error.response?.data || error.message);
+      alert(`Error: ${JSON.stringify(error.response?.data)}`);
+    }
+  };
+
+  const deleteSet = async (setId) => {
+    const confirmDelete = window.confirm("Delete this set and all its cards?");
+    if (!confirmDelete) return;
+
+    try {
+      await axiosInstance.delete(`/api/cardsets/${setId}/`);
+      setSets(sets.filter((s) => s.id !== setId));
+    } catch (error) {
+      console.error("Error deleting set:", error.response?.data || error.message);
+      alert(`Error: ${JSON.stringify(error.response?.data)}`);
+    }
+  };
+
   const goToSet = (setId) => {
-    // Navigate to the list of cards in this set
     navigate(`/categories/${id}/sets/${setId}`);
   };
 
@@ -105,11 +132,16 @@ const CardSetsPage = () => {
                 className="p-4 bg-secondary text-white rounded-lg shadow-md transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col justify-between"
               >
                 <div>
-                  {/* Set Name */}
-                  <strong className="block mb-2 text-xl">{set.name}</strong>
-                  {/* Additional data for the set could go here */}
+                  {/* Clickable set name */}
+                  <strong
+                    onClick={() => goToSet(set.id)}
+                    className="block mb-2 text-xl cursor-pointer hover:underline transition"
+                  >
+                    {set.name}
+                  </strong>
                 </div>
-                {/* Buttons */}
+
+                {/* View & Practice Buttons */}
                 <div className="flex mt-4 gap-2">
                   <button
                     onClick={() => goToSet(set.id)}
@@ -122,7 +154,24 @@ const CardSetsPage = () => {
                     className="flex-1 bg-primary text-white px-3 py-2 rounded-lg hover:bg-highlight transition"
                   >
                     Practice
-                  </button> 
+                  </button>
+                </div>
+
+                {/* Edit & Delete Buttons */}
+                <div className="flex mt-2 gap-2">
+                  <button
+                    onClick={() => editSet(set)}
+                    className="flex-1 bg-yellow-500 text-white px-3 py-2 rounded-lg hover:bg-yellow-600 transition"
+                  >
+                    ✏️ Edit
+                  </button>
+                  <button
+                    onClick={() => deleteSet(set.id)}
+                    className="flex-1 bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-700 transition"
+                  >
+                    <FiTrash2 className="mr-2 inline-block" />
+                    Delete
+                  </button>
                 </div>
               </div>
             ))}
