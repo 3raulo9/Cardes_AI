@@ -82,9 +82,9 @@ const Tool1Form = ({ onSubmit, isActive, isOpen }) => {
   const [expression, setExpression] = useState("");
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    if (isActive && isOpen && inputRef.current) inputRef.current.focus();
-  }, [isActive, isOpen]);
+  // useEffect(() => {
+  //   if (isActive && isOpen && inputRef.current) inputRef.current.focus();
+  // }, [isActive, isOpen]);
 
   const perform = (expr) => {
     if (!expr.trim()) return alert("Please enter an expression.");
@@ -128,9 +128,9 @@ const Tool2Form = ({ onSubmit, isActive, isOpen }) => {
   const [letter, setLetter] = useState("");
   const langInputRef = useRef(null);
 
-  useEffect(() => {
-    if (isActive && isOpen && langInputRef.current) langInputRef.current.focus();
-  }, [isActive, isOpen]);
+  // useEffect(() => {
+  //   if (isActive && isOpen && langInputRef.current) langInputRef.current.focus();
+  // }, [isActive, isOpen]);
 
   const perform = (lang, ltr) => {
     if (!lang.trim() || !ltr.trim()) return alert("Please fill in all fields.");
@@ -185,9 +185,9 @@ const Tool3Form = ({ onSubmit, isActive, isOpen }) => {
   const [translation, setTranslation] = useState("");
   const countInputRef = useRef(null);
 
-  useEffect(() => {
-    if (isActive && isOpen && countInputRef.current) countInputRef.current.focus();
-  }, [isActive, isOpen]);
+  // useEffect(() => {
+  //   if (isActive && isOpen && countInputRef.current) countInputRef.current.focus();
+  // }, [isActive, isOpen]);
 
   const perform = (c, lang, w, t) => {
     if (!c || !lang || !w || !t) return alert("Please fill in all fields for Tool 3.");
