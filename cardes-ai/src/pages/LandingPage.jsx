@@ -284,16 +284,16 @@ const LandingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {[
             {
-              text: "Best AI flashcard tool I've ever used!",
-              user: "Adi from Tel Aviv",
+              text: "It has never been easier to learn the language I want.",
+              user: "Matya from Tel Aviv.",
             },
             {
-              text: "Made studying efficient and enjoyable!",
-              user: "Noa from Tel Aviv",
+              text: "Made studying efficient and enjoyable.",
+              user: "Maria from Tel Aviv.",
             },
             {
               text: "Perfect for quick revision before exams!",
-              user: "Mark from Tel Aviv",
+              user: "Eden from Tel Aviv.",
             },
           ].map((testimonial, i) => (
             <motion.div
